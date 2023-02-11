@@ -1,0 +1,633 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		631CF0402991E78D00701F1E /* TweakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631CF03F2991E78D00701F1E /* TweakView.swift */; };
+		6333CA7A2992721B003A28E2 /* TweakView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6333CA792992721B003A28E2 /* TweakView.xib */; };
+		638D284F297C35A7002CBD1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638D284E297C35A7002CBD1C /* AppDelegate.swift */; };
+		63ADDA9F2970BE1A0096296C /* utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDA9E2970BE1A0096296C /* utility.swift */; };
+		63ADDAA22970BE250096296C /* ViewOrganismDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAA02970BE250096296C /* ViewOrganismDialog.swift */; };
+		63ADDAA32970BE250096296C /* ViewOrganismDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAA12970BE250096296C /* ViewOrganismDialog.xib */; };
+		63ADDAA72970BE5B0096296C /* AboutDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAA42970BE5B0096296C /* AboutDialog.swift */; };
+		63ADDAA82970BE5B0096296C /* AboutDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAA52970BE5B0096296C /* AboutDialog.xib */; };
+		63ADDAA92970BE5B0096296C /* EXPERIMENTAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAA62970BE5B0096296C /* EXPERIMENTAL.swift */; };
+		63ADDABE2970BE6E0096296C /* save_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAAB2970BE6E0096296C /* save_but.png */; };
+		63ADDABF2970BE6E0096296C /* tools_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAAC2970BE6E0096296C /* tools_but.png */; };
+		63ADDAC02970BE6E0096296C /* view_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAAD2970BE6E0096296C /* view_but.png */; };
+		63ADDAC12970BE6E0096296C /* cut_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAAE2970BE6E0096296C /* cut_but.png */; };
+		63ADDAC22970BE6E0096296C /* run_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAAF2970BE6E0096296C /* run_but.png */; };
+		63ADDAC32970BE6E0096296C /* zoomout_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAB02970BE6E0096296C /* zoomout_but.png */; };
+		63ADDAC42970BE6E0096296C /* runmany_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAB12970BE6E0096296C /* runmany_but.png */; };
+		63ADDAC52970BE6E0096296C /* stop_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAB22970BE6E0096296C /* stop_but.png */; };
+		63ADDAC62970BE6E0096296C /* single_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAB32970BE6E0096296C /* single_but.png */; };
+		63ADDAC72970BE6E0096296C /* copy_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAB42970BE6E0096296C /* copy_but.png */; };
+		63ADDAC82970BE6E0096296C /* viewall_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAB52970BE6E0096296C /* viewall_but.png */; };
+		63ADDAC92970BE6E0096296C /* about.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAB62970BE6E0096296C /* about.bmp */; };
+		63ADDACA2970BE6E0096296C /* new_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAB72970BE6E0096296C /* new_but.png */; };
+		63ADDACB2970BE6E0096296C /* paste_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAB82970BE6E0096296C /* paste_but.png */; };
+		63ADDACC2970BE6E0096296C /* open_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAB92970BE6E0096296C /* open_but.png */; };
+		63ADDACD2970BE6E0096296C /* zoomin_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDABA2970BE6E0096296C /* zoomin_but.png */; };
+		63ADDACE2970BE6E0096296C /* evolve.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDABB2970BE6E0096296C /* evolve.png */; };
+		63ADDACF2970BE6E0096296C /* evolveDoc.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDABC2970BE6E0096296C /* evolveDoc.png */; };
+		63ADDAD02970BE6E0096296C /* 3d_but.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDABD2970BE6E0096296C /* 3d_but.png */; };
+		63ADDAE72970BE7D0096296C /* cell_noops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAD32970BE7D0096296C /* cell_noops.cpp */; };
+		63ADDAE82970BE7D0096296C /* phascii.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAD42970BE7D0096296C /* phascii.cpp */; };
+		63ADDAE92970BE7D0096296C /* organism.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAD62970BE7D0096296C /* organism.cpp */; };
+		63ADDAEA2970BE7D0096296C /* kforth_execute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAD72970BE7D0096296C /* kforth_execute.cpp */; };
+		63ADDAEB2970BE7D0096296C /* help.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAD82970BE7D0096296C /* help.cpp */; };
+		63ADDAEC2970BE7D0096296C /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAD92970BE7D0096296C /* random.cpp */; };
+		63ADDAED2970BE7D0096296C /* cell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDADA2970BE7D0096296C /* cell.cpp */; };
+		63ADDAEE2970BE7D0096296C /* organism_finder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDADB2970BE7D0096296C /* organism_finder.cpp */; };
+		63ADDAEF2970BE7D0096296C /* spore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDADC2970BE7D0096296C /* spore.cpp */; };
+		63ADDAF02970BE7D0096296C /* evolve_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDADD2970BE7D0096296C /* evolve_io.cpp */; };
+		63ADDAF12970BE7D0096296C /* kforth_compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDADF2970BE7D0096296C /* kforth_compiler.cpp */; };
+		63ADDAF22970BE7D0096296C /* universe_creation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAE02970BE7D0096296C /* universe_creation.cpp */; };
+		63ADDAF32970BE7D0096296C /* universe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAE12970BE7D0096296C /* universe.cpp */; };
+		63ADDAF42970BE7D0096296C /* kforth_interpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAE22970BE7D0096296C /* kforth_interpreter.cpp */; };
+		63ADDAF52970BE7D0096296C /* kforth_mutate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAE42970BE7D0096296C /* kforth_mutate.cpp */; };
+		63ADDAF62970BE7D0096296C /* evolve_io_ascii.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAE52970BE7D0096296C /* evolve_io_ascii.cpp */; };
+		63ADDAF72970BE7D0096296C /* swift_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAE62970BE7D0096296C /* swift_interface.cpp */; };
+		63ADDAF92970BE8F0096296C /* help in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAF82970BE8F0096296C /* help */; };
+		63ADDAFB2970BE980096296C /* ev5stuff in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAFA2970BE980096296C /* ev5stuff */; };
+		63ADDAFE2970BEA90096296C /* FindDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDAFC2970BEA90096296C /* FindDialog.swift */; };
+		63ADDAFF2970BEA90096296C /* FindDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDAFD2970BEA90096296C /* FindDialog.xib */; };
+		63ADDB022970BEB70096296C /* StrainPopulation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDB002970BEB70096296C /* StrainPopulation.xib */; };
+		63ADDB032970BEB70096296C /* StrainPopulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB012970BEB70096296C /* StrainPopulation.swift */; };
+		63ADDB062970BECC0096296C /* UniverseDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB042970BECC0096296C /* UniverseDialog.swift */; };
+		63ADDB072970BECC0096296C /* UniverseDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDB052970BECC0096296C /* UniverseDialog.xib */; };
+		63ADDB0A2970BEE30096296C /* StrainCustomizeDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB082970BEE30096296C /* StrainCustomizeDialog.swift */; };
+		63ADDB0B2970BEE30096296C /* StrainCustomizeDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDB092970BEE30096296C /* StrainCustomizeDialog.xib */; };
+		63ADDB0E2970BEFE0096296C /* NewUniverseDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB0C2970BEFE0096296C /* NewUniverseDialog.swift */; };
+		63ADDB0F2970BEFE0096296C /* NewUniverseDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDB0D2970BEFE0096296C /* NewUniverseDialog.xib */; };
+		63ADDB112970BF140096296C /* FileBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB102970BF140096296C /* FileBridge.swift */; };
+		63ADDB132970BF1D0096296C /* ZoomHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB122970BF1D0096296C /* ZoomHistory.swift */; };
+		63ADDB152970BF2A0096296C /* transfrm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB142970BF2A0096296C /* transfrm.swift */; };
+		63ADDB182970BF330096296C /* EvolveCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB162970BF330096296C /* EvolveCanvas.swift */; };
+		63ADDB192970BF330096296C /* EvolveCanvas.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDB172970BF330096296C /* EvolveCanvas.xib */; };
+		63ADDB1B2970BF3C0096296C /* FileDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB1A2970BF3C0096296C /* FileDialog.swift */; };
+		63ADDB1E2970BF580096296C /* KforthInstructionDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDB1C2970BF580096296C /* KforthInstructionDialog.xib */; };
+		63ADDB1F2970BF580096296C /* KforthInstructionDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB1D2970BF580096296C /* KforthInstructionDialog.swift */; };
+		63ADDB222970BF6C0096296C /* KforthInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB202970BF6C0096296C /* KforthInterpreter.swift */; };
+		63ADDB232970BF6C0096296C /* KforthInterpreter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDB212970BF6C0096296C /* KforthInterpreter.xib */; };
+		63ADDB272970C07B0096296C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDB262970C07B0096296C /* MainMenu.xib */; };
+		63ADDB2A2970C0980096296C /* Evolve5Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDB282970C0980096296C /* Evolve5Document.xib */; };
+		63ADDB2B2970C0980096296C /* Evolve5Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ADDB292970C0980096296C /* Evolve5Document.swift */; };
+		63ADDB2D2970C0AE0096296C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63ADDB2C2970C0AE0096296C /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		631CF03F2991E78D00701F1E /* TweakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakView.swift; sourceTree = "<group>"; };
+		6333CA792992721B003A28E2 /* TweakView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweakView.xib; sourceTree = "<group>"; };
+		638D284E297C35A7002CBD1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		63ADDA882970BC200096296C /* Evolve5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Evolve5.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63ADDA972970BC210096296C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63ADDA982970BC210096296C /* Evolve5.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Evolve5.entitlements; sourceTree = "<group>"; };
+		63ADDA9E2970BE1A0096296C /* utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utility.swift; sourceTree = "<group>"; };
+		63ADDAA02970BE250096296C /* ViewOrganismDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewOrganismDialog.swift; sourceTree = "<group>"; };
+		63ADDAA12970BE250096296C /* ViewOrganismDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewOrganismDialog.xib; sourceTree = "<group>"; };
+		63ADDAA42970BE5B0096296C /* AboutDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutDialog.swift; sourceTree = "<group>"; };
+		63ADDAA52970BE5B0096296C /* AboutDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutDialog.xib; sourceTree = "<group>"; };
+		63ADDAA62970BE5B0096296C /* EXPERIMENTAL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXPERIMENTAL.swift; sourceTree = "<group>"; };
+		63ADDAAB2970BE6E0096296C /* save_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_but.png; sourceTree = "<group>"; };
+		63ADDAAC2970BE6E0096296C /* tools_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tools_but.png; sourceTree = "<group>"; };
+		63ADDAAD2970BE6E0096296C /* view_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view_but.png; sourceTree = "<group>"; };
+		63ADDAAE2970BE6E0096296C /* cut_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cut_but.png; sourceTree = "<group>"; };
+		63ADDAAF2970BE6E0096296C /* run_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run_but.png; sourceTree = "<group>"; };
+		63ADDAB02970BE6E0096296C /* zoomout_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zoomout_but.png; sourceTree = "<group>"; };
+		63ADDAB12970BE6E0096296C /* runmany_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = runmany_but.png; sourceTree = "<group>"; };
+		63ADDAB22970BE6E0096296C /* stop_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop_but.png; sourceTree = "<group>"; };
+		63ADDAB32970BE6E0096296C /* single_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = single_but.png; sourceTree = "<group>"; };
+		63ADDAB42970BE6E0096296C /* copy_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = copy_but.png; sourceTree = "<group>"; };
+		63ADDAB52970BE6E0096296C /* viewall_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = viewall_but.png; sourceTree = "<group>"; };
+		63ADDAB62970BE6E0096296C /* about.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = about.bmp; sourceTree = "<group>"; };
+		63ADDAB72970BE6E0096296C /* new_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_but.png; sourceTree = "<group>"; };
+		63ADDAB82970BE6E0096296C /* paste_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paste_but.png; sourceTree = "<group>"; };
+		63ADDAB92970BE6E0096296C /* open_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_but.png; sourceTree = "<group>"; };
+		63ADDABA2970BE6E0096296C /* zoomin_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zoomin_but.png; sourceTree = "<group>"; };
+		63ADDABB2970BE6E0096296C /* evolve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evolve.png; sourceTree = "<group>"; };
+		63ADDABC2970BE6E0096296C /* evolveDoc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evolveDoc.png; sourceTree = "<group>"; };
+		63ADDABD2970BE6E0096296C /* 3d_but.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3d_but.png; sourceTree = "<group>"; };
+		63ADDAD22970BE7D0096296C /* Evolve5-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Evolve5-Bridging-Header.h"; sourceTree = "<group>"; };
+		63ADDAD32970BE7D0096296C /* cell_noops.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cell_noops.cpp; sourceTree = "<group>"; };
+		63ADDAD42970BE7D0096296C /* phascii.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = phascii.cpp; sourceTree = "<group>"; };
+		63ADDAD52970BE7D0096296C /* evolve_simulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evolve_simulator.h; sourceTree = "<group>"; };
+		63ADDAD62970BE7D0096296C /* organism.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = organism.cpp; sourceTree = "<group>"; };
+		63ADDAD72970BE7D0096296C /* kforth_execute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kforth_execute.cpp; sourceTree = "<group>"; };
+		63ADDAD82970BE7D0096296C /* help.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = help.cpp; sourceTree = "<group>"; };
+		63ADDAD92970BE7D0096296C /* random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random.cpp; sourceTree = "<group>"; };
+		63ADDADA2970BE7D0096296C /* cell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cell.cpp; sourceTree = "<group>"; };
+		63ADDADB2970BE7D0096296C /* organism_finder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = organism_finder.cpp; sourceTree = "<group>"; };
+		63ADDADC2970BE7D0096296C /* spore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spore.cpp; sourceTree = "<group>"; };
+		63ADDADD2970BE7D0096296C /* evolve_io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = evolve_io.cpp; sourceTree = "<group>"; };
+		63ADDADE2970BE7D0096296C /* phascii.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = phascii.h; sourceTree = "<group>"; };
+		63ADDADF2970BE7D0096296C /* kforth_compiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kforth_compiler.cpp; sourceTree = "<group>"; };
+		63ADDAE02970BE7D0096296C /* universe_creation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = universe_creation.cpp; sourceTree = "<group>"; };
+		63ADDAE12970BE7D0096296C /* universe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = universe.cpp; sourceTree = "<group>"; };
+		63ADDAE22970BE7D0096296C /* kforth_interpreter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kforth_interpreter.cpp; sourceTree = "<group>"; };
+		63ADDAE32970BE7D0096296C /* evolve_simulator_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evolve_simulator_private.h; sourceTree = "<group>"; };
+		63ADDAE42970BE7D0096296C /* kforth_mutate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kforth_mutate.cpp; sourceTree = "<group>"; };
+		63ADDAE52970BE7D0096296C /* evolve_io_ascii.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = evolve_io_ascii.cpp; sourceTree = "<group>"; };
+		63ADDAE62970BE7D0096296C /* swift_interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = swift_interface.cpp; sourceTree = "<group>"; };
+		63ADDAF82970BE8F0096296C /* help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = help; sourceTree = "<group>"; };
+		63ADDAFA2970BE980096296C /* ev5stuff */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ev5stuff; sourceTree = "<group>"; };
+		63ADDAFC2970BEA90096296C /* FindDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindDialog.swift; sourceTree = "<group>"; };
+		63ADDAFD2970BEA90096296C /* FindDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindDialog.xib; sourceTree = "<group>"; };
+		63ADDB002970BEB70096296C /* StrainPopulation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrainPopulation.xib; sourceTree = "<group>"; };
+		63ADDB012970BEB70096296C /* StrainPopulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrainPopulation.swift; sourceTree = "<group>"; };
+		63ADDB042970BECC0096296C /* UniverseDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniverseDialog.swift; sourceTree = "<group>"; };
+		63ADDB052970BECC0096296C /* UniverseDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UniverseDialog.xib; sourceTree = "<group>"; };
+		63ADDB082970BEE30096296C /* StrainCustomizeDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrainCustomizeDialog.swift; sourceTree = "<group>"; };
+		63ADDB092970BEE30096296C /* StrainCustomizeDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrainCustomizeDialog.xib; sourceTree = "<group>"; };
+		63ADDB0C2970BEFE0096296C /* NewUniverseDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUniverseDialog.swift; sourceTree = "<group>"; };
+		63ADDB0D2970BEFE0096296C /* NewUniverseDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewUniverseDialog.xib; sourceTree = "<group>"; };
+		63ADDB102970BF140096296C /* FileBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBridge.swift; sourceTree = "<group>"; };
+		63ADDB122970BF1D0096296C /* ZoomHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomHistory.swift; sourceTree = "<group>"; };
+		63ADDB142970BF2A0096296C /* transfrm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = transfrm.swift; sourceTree = "<group>"; };
+		63ADDB162970BF330096296C /* EvolveCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvolveCanvas.swift; sourceTree = "<group>"; };
+		63ADDB172970BF330096296C /* EvolveCanvas.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EvolveCanvas.xib; sourceTree = "<group>"; };
+		63ADDB1A2970BF3C0096296C /* FileDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDialog.swift; sourceTree = "<group>"; };
+		63ADDB1C2970BF580096296C /* KforthInstructionDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KforthInstructionDialog.xib; sourceTree = "<group>"; };
+		63ADDB1D2970BF580096296C /* KforthInstructionDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KforthInstructionDialog.swift; sourceTree = "<group>"; };
+		63ADDB202970BF6C0096296C /* KforthInterpreter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KforthInterpreter.swift; sourceTree = "<group>"; };
+		63ADDB212970BF6C0096296C /* KforthInterpreter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KforthInterpreter.xib; sourceTree = "<group>"; };
+		63ADDB262970C07B0096296C /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		63ADDB282970C0980096296C /* Evolve5Document.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Evolve5Document.xib; sourceTree = "<group>"; };
+		63ADDB292970C0980096296C /* Evolve5Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evolve5Document.swift; sourceTree = "<group>"; };
+		63ADDB2C2970C0AE0096296C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../EVOLVE/Evolve4/Evolve4/Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63ADDA852970BC200096296C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		63ADDA7F2970BC200096296C = {
+			isa = PBXGroup;
+			children = (
+				63ADDAFA2970BE980096296C /* ev5stuff */,
+				63ADDAF82970BE8F0096296C /* help */,
+				63ADDAD12970BE7D0096296C /* Simulator */,
+				63ADDAAA2970BE6E0096296C /* bmp */,
+				63ADDA8A2970BC200096296C /* Evolve5 */,
+				63ADDA892970BC200096296C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63ADDA892970BC200096296C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63ADDA882970BC200096296C /* Evolve5.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63ADDA8A2970BC200096296C /* Evolve5 */ = {
+			isa = PBXGroup;
+			children = (
+				63ADDB262970C07B0096296C /* MainMenu.xib */,
+				63ADDAFC2970BEA90096296C /* FindDialog.swift */,
+				63ADDAFD2970BEA90096296C /* FindDialog.xib */,
+				638D284E297C35A7002CBD1C /* AppDelegate.swift */,
+				63ADDB292970C0980096296C /* Evolve5Document.swift */,
+				63ADDB282970C0980096296C /* Evolve5Document.xib */,
+				63ADDB2C2970C0AE0096296C /* Assets.xcassets */,
+				63ADDA972970BC210096296C /* Info.plist */,
+				63ADDA982970BC210096296C /* Evolve5.entitlements */,
+				63ADDA9E2970BE1A0096296C /* utility.swift */,
+				63ADDAA02970BE250096296C /* ViewOrganismDialog.swift */,
+				63ADDAA12970BE250096296C /* ViewOrganismDialog.xib */,
+				63ADDAA42970BE5B0096296C /* AboutDialog.swift */,
+				63ADDAA52970BE5B0096296C /* AboutDialog.xib */,
+				63ADDAA62970BE5B0096296C /* EXPERIMENTAL.swift */,
+				63ADDB012970BEB70096296C /* StrainPopulation.swift */,
+				63ADDB002970BEB70096296C /* StrainPopulation.xib */,
+				63ADDB042970BECC0096296C /* UniverseDialog.swift */,
+				63ADDB052970BECC0096296C /* UniverseDialog.xib */,
+				63ADDB082970BEE30096296C /* StrainCustomizeDialog.swift */,
+				63ADDB092970BEE30096296C /* StrainCustomizeDialog.xib */,
+				63ADDB0C2970BEFE0096296C /* NewUniverseDialog.swift */,
+				63ADDB0D2970BEFE0096296C /* NewUniverseDialog.xib */,
+				63ADDB102970BF140096296C /* FileBridge.swift */,
+				63ADDB122970BF1D0096296C /* ZoomHistory.swift */,
+				63ADDB142970BF2A0096296C /* transfrm.swift */,
+				63ADDB162970BF330096296C /* EvolveCanvas.swift */,
+				63ADDB172970BF330096296C /* EvolveCanvas.xib */,
+				63ADDB1A2970BF3C0096296C /* FileDialog.swift */,
+				63ADDB1D2970BF580096296C /* KforthInstructionDialog.swift */,
+				63ADDB1C2970BF580096296C /* KforthInstructionDialog.xib */,
+				63ADDB202970BF6C0096296C /* KforthInterpreter.swift */,
+				63ADDB212970BF6C0096296C /* KforthInterpreter.xib */,
+				631CF03F2991E78D00701F1E /* TweakView.swift */,
+				6333CA792992721B003A28E2 /* TweakView.xib */,
+			);
+			path = Evolve5;
+			sourceTree = "<group>";
+		};
+		63ADDAAA2970BE6E0096296C /* bmp */ = {
+			isa = PBXGroup;
+			children = (
+				63ADDAAB2970BE6E0096296C /* save_but.png */,
+				63ADDAAC2970BE6E0096296C /* tools_but.png */,
+				63ADDAAD2970BE6E0096296C /* view_but.png */,
+				63ADDAAE2970BE6E0096296C /* cut_but.png */,
+				63ADDAAF2970BE6E0096296C /* run_but.png */,
+				63ADDAB02970BE6E0096296C /* zoomout_but.png */,
+				63ADDAB12970BE6E0096296C /* runmany_but.png */,
+				63ADDAB22970BE6E0096296C /* stop_but.png */,
+				63ADDAB32970BE6E0096296C /* single_but.png */,
+				63ADDAB42970BE6E0096296C /* copy_but.png */,
+				63ADDAB52970BE6E0096296C /* viewall_but.png */,
+				63ADDAB62970BE6E0096296C /* about.bmp */,
+				63ADDAB72970BE6E0096296C /* new_but.png */,
+				63ADDAB82970BE6E0096296C /* paste_but.png */,
+				63ADDAB92970BE6E0096296C /* open_but.png */,
+				63ADDABA2970BE6E0096296C /* zoomin_but.png */,
+				63ADDABB2970BE6E0096296C /* evolve.png */,
+				63ADDABC2970BE6E0096296C /* evolveDoc.png */,
+				63ADDABD2970BE6E0096296C /* 3d_but.png */,
+			);
+			path = bmp;
+			sourceTree = "<group>";
+		};
+		63ADDAD12970BE7D0096296C /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				63ADDAD22970BE7D0096296C /* Evolve5-Bridging-Header.h */,
+				63ADDAD32970BE7D0096296C /* cell_noops.cpp */,
+				63ADDAD42970BE7D0096296C /* phascii.cpp */,
+				63ADDAD52970BE7D0096296C /* evolve_simulator.h */,
+				63ADDAD62970BE7D0096296C /* organism.cpp */,
+				63ADDAD72970BE7D0096296C /* kforth_execute.cpp */,
+				63ADDAD82970BE7D0096296C /* help.cpp */,
+				63ADDAD92970BE7D0096296C /* random.cpp */,
+				63ADDADA2970BE7D0096296C /* cell.cpp */,
+				63ADDADB2970BE7D0096296C /* organism_finder.cpp */,
+				63ADDADC2970BE7D0096296C /* spore.cpp */,
+				63ADDADD2970BE7D0096296C /* evolve_io.cpp */,
+				63ADDADE2970BE7D0096296C /* phascii.h */,
+				63ADDADF2970BE7D0096296C /* kforth_compiler.cpp */,
+				63ADDAE02970BE7D0096296C /* universe_creation.cpp */,
+				63ADDAE12970BE7D0096296C /* universe.cpp */,
+				63ADDAE22970BE7D0096296C /* kforth_interpreter.cpp */,
+				63ADDAE32970BE7D0096296C /* evolve_simulator_private.h */,
+				63ADDAE42970BE7D0096296C /* kforth_mutate.cpp */,
+				63ADDAE52970BE7D0096296C /* evolve_io_ascii.cpp */,
+				63ADDAE62970BE7D0096296C /* swift_interface.cpp */,
+			);
+			path = Simulator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63ADDA872970BC200096296C /* Evolve5 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63ADDA9B2970BC210096296C /* Build configuration list for PBXNativeTarget "Evolve5" */;
+			buildPhases = (
+				63ADDA842970BC200096296C /* Sources */,
+				63ADDA852970BC200096296C /* Frameworks */,
+				63ADDA862970BC200096296C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Evolve5;
+			productName = Evolve5;
+			productReference = 63ADDA882970BC200096296C /* Evolve5.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63ADDA802970BC200096296C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					63ADDA872970BC200096296C = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 63ADDA832970BC200096296C /* Build configuration list for PBXProject "Evolve5" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 63ADDA7F2970BC200096296C;
+			productRefGroup = 63ADDA892970BC200096296C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63ADDA872970BC200096296C /* Evolve5 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63ADDA862970BC200096296C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63ADDAC82970BE6E0096296C /* viewall_but.png in Resources */,
+				63ADDACD2970BE6E0096296C /* zoomin_but.png in Resources */,
+				63ADDAF92970BE8F0096296C /* help in Resources */,
+				63ADDB2D2970C0AE0096296C /* Assets.xcassets in Resources */,
+				63ADDB022970BEB70096296C /* StrainPopulation.xib in Resources */,
+				63ADDAC42970BE6E0096296C /* runmany_but.png in Resources */,
+				63ADDAA32970BE250096296C /* ViewOrganismDialog.xib in Resources */,
+				63ADDAD02970BE6E0096296C /* 3d_but.png in Resources */,
+				63ADDAFB2970BE980096296C /* ev5stuff in Resources */,
+				63ADDAC22970BE6E0096296C /* run_but.png in Resources */,
+				63ADDABF2970BE6E0096296C /* tools_but.png in Resources */,
+				63ADDB072970BECC0096296C /* UniverseDialog.xib in Resources */,
+				63ADDACC2970BE6E0096296C /* open_but.png in Resources */,
+				63ADDB192970BF330096296C /* EvolveCanvas.xib in Resources */,
+				63ADDAC02970BE6E0096296C /* view_but.png in Resources */,
+				63ADDACE2970BE6E0096296C /* evolve.png in Resources */,
+				63ADDACB2970BE6E0096296C /* paste_but.png in Resources */,
+				63ADDAC62970BE6E0096296C /* single_but.png in Resources */,
+				63ADDAA82970BE5B0096296C /* AboutDialog.xib in Resources */,
+				63ADDAC52970BE6E0096296C /* stop_but.png in Resources */,
+				63ADDAC72970BE6E0096296C /* copy_but.png in Resources */,
+				63ADDACA2970BE6E0096296C /* new_but.png in Resources */,
+				63ADDB0F2970BEFE0096296C /* NewUniverseDialog.xib in Resources */,
+				63ADDAC92970BE6E0096296C /* about.bmp in Resources */,
+				63ADDABE2970BE6E0096296C /* save_but.png in Resources */,
+				63ADDB272970C07B0096296C /* MainMenu.xib in Resources */,
+				63ADDACF2970BE6E0096296C /* evolveDoc.png in Resources */,
+				63ADDB1E2970BF580096296C /* KforthInstructionDialog.xib in Resources */,
+				63ADDAFF2970BEA90096296C /* FindDialog.xib in Resources */,
+				63ADDB0B2970BEE30096296C /* StrainCustomizeDialog.xib in Resources */,
+				63ADDAC32970BE6E0096296C /* zoomout_but.png in Resources */,
+				63ADDB232970BF6C0096296C /* KforthInterpreter.xib in Resources */,
+				6333CA7A2992721B003A28E2 /* TweakView.xib in Resources */,
+				63ADDB2A2970C0980096296C /* Evolve5Document.xib in Resources */,
+				63ADDAC12970BE6E0096296C /* cut_but.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63ADDA842970BC200096296C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63ADDB062970BECC0096296C /* UniverseDialog.swift in Sources */,
+				63ADDA9F2970BE1A0096296C /* utility.swift in Sources */,
+				63ADDB0A2970BEE30096296C /* StrainCustomizeDialog.swift in Sources */,
+				63ADDB152970BF2A0096296C /* transfrm.swift in Sources */,
+				63ADDAA92970BE5B0096296C /* EXPERIMENTAL.swift in Sources */,
+				63ADDB112970BF140096296C /* FileBridge.swift in Sources */,
+				63ADDAED2970BE7D0096296C /* cell.cpp in Sources */,
+				63ADDAF62970BE7D0096296C /* evolve_io_ascii.cpp in Sources */,
+				63ADDAF42970BE7D0096296C /* kforth_interpreter.cpp in Sources */,
+				63ADDAEA2970BE7D0096296C /* kforth_execute.cpp in Sources */,
+				63ADDAEB2970BE7D0096296C /* help.cpp in Sources */,
+				638D284F297C35A7002CBD1C /* AppDelegate.swift in Sources */,
+				63ADDAF02970BE7D0096296C /* evolve_io.cpp in Sources */,
+				631CF0402991E78D00701F1E /* TweakView.swift in Sources */,
+				63ADDAF72970BE7D0096296C /* swift_interface.cpp in Sources */,
+				63ADDB032970BEB70096296C /* StrainPopulation.swift in Sources */,
+				63ADDB2B2970C0980096296C /* Evolve5Document.swift in Sources */,
+				63ADDB0E2970BEFE0096296C /* NewUniverseDialog.swift in Sources */,
+				63ADDAA22970BE250096296C /* ViewOrganismDialog.swift in Sources */,
+				63ADDAE92970BE7D0096296C /* organism.cpp in Sources */,
+				63ADDAF52970BE7D0096296C /* kforth_mutate.cpp in Sources */,
+				63ADDAE72970BE7D0096296C /* cell_noops.cpp in Sources */,
+				63ADDAEC2970BE7D0096296C /* random.cpp in Sources */,
+				63ADDAF22970BE7D0096296C /* universe_creation.cpp in Sources */,
+				63ADDB222970BF6C0096296C /* KforthInterpreter.swift in Sources */,
+				63ADDAEF2970BE7D0096296C /* spore.cpp in Sources */,
+				63ADDAE82970BE7D0096296C /* phascii.cpp in Sources */,
+				63ADDB1B2970BF3C0096296C /* FileDialog.swift in Sources */,
+				63ADDAA72970BE5B0096296C /* AboutDialog.swift in Sources */,
+				63ADDAF12970BE7D0096296C /* kforth_compiler.cpp in Sources */,
+				63ADDB182970BF330096296C /* EvolveCanvas.swift in Sources */,
+				63ADDB1F2970BF580096296C /* KforthInstructionDialog.swift in Sources */,
+				63ADDB132970BF1D0096296C /* ZoomHistory.swift in Sources */,
+				63ADDAFE2970BEA90096296C /* FindDialog.swift in Sources */,
+				63ADDAF32970BE7D0096296C /* universe.cpp in Sources */,
+				63ADDAEE2970BE7D0096296C /* organism_finder.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		63ADDA992970BC210096296C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		63ADDA9A2970BC210096296C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		63ADDA9C2970BC210096296C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Evolve5/Evolve5.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V24H85X7U6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Evolve5/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.etcutmp.Evolve5;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Simulator/Evolve5-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		63ADDA9D2970BC210096296C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Evolve5/Evolve5.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V24H85X7U6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Evolve5/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.etcutmp.Evolve5;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Simulator/Evolve5-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63ADDA832970BC200096296C /* Build configuration list for PBXProject "Evolve5" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63ADDA992970BC210096296C /* Debug */,
+				63ADDA9A2970BC210096296C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63ADDA9B2970BC210096296C /* Build configuration list for PBXNativeTarget "Evolve5" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63ADDA9C2970BC210096296C /* Debug */,
+				63ADDA9D2970BC210096296C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63ADDA802970BC200096296C /* Project object */;
+}
