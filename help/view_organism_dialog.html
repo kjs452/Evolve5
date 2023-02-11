@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Examine  Organism  Dialog</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> December  13th,  2022
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h2> Examine  Organism  Dialog</h2><p>
+ When  you  double-click  on  an  organism,  this  dialog  will  appear.  This  dialog  shows  the  inner  details  of  an  organism.
+</p>
+<IMG  SRC="ViewOrganism.jpg"><p>
+ The  ORGANISM  area  of  this  dialog  displays  stuff  common  to  the  entire  organism.  The  CELL  area  displays  the  stuff  unique
+ to  that  cell.  To  examine  different  cells,  click  on  the  cell  you  want  to  view.
+</p>
+<A NAME="TOC2"></A><h2> ORGANISM</h2><p>
+ This  section  shows  various  details  about  the  organism.  The  genetic  program  (which  is  shared  among  all  the  cells)  is  shown
+ in  the  text  control.  The  highlighted  instruction  is  where  the  selected  cell  is  currently  executing.
+</p>
+<ul>
+<li>
+<b> Organism  ID:</b> Every  organism  is  assigned  a  unique  64-bit  ID  number.  This  ID  increments  as  organisms  are  created.  This  field  displays
+ this  organisms  unique  ID.
+</li>
+
+<li>
+<b> Parent  1:</b> ID  value  for  the  first  parent  (and  only  parent  if  this  organism  was  created  asexually).
+</li>
+
+<li>
+<b> Parent  2:</b> ID  value  for  the  second  parent  (if  this  organism  was  created  sexually).  It  will  be  blank  if  this  organism
+ was  created  asexually.
+</li>
+
+<li>
+<b> Generation</b> The  generation  of  this  organism  all  the  way  back  to  the  first  organism.  We  compute  this  field  based  on
+ the  parents &#x27;generation&#x27;: 
+<pre>
+generation = MAX(parent1.generation, parent2.generation) + 1
+</pre>
+
+</li>
+
+<li>
+<b>#  of  cells:</b> The  number  of  cells  in  this  organism.
+</li>
+
+<li>
+<b> #  of  living  children:</b> number  of  organism  that  have  this  organism  as  a  parent.
+</li>
+
+<li>
+<b> Age:</b> The  number  of  simulation  steps  this  organism  has  survived  through.
+</li>
+
+<li>
+<b> Energy:</b> How  much  energy  does  this  organism  have?  This  excludes  the  amount  of  energy  that  went  into  stack  elements.
+</li>
+
+<li>
+<b> Strain  #:</b> This  is  the  strain  number  for  the  whole  organism.  The  color  of  the  organism  is  also  a  clue  to
+ its  strain.
+</li>
+</ul><A NAME="TOC3"></A><h2> CELL</h2><p>
+ This  section  shows  the  state  of  the  cell  you  have  selected  in  the  display  window.  Use  your  mouse  to  select
+ different  cells.  The  current  cell  is  highlighted  with  a  blue  rectangle.
+</p>
+<p>
+ These  fields  comprise  the &quot;execution  context&quot;.  Each  cell  has  its  own  copy  of  these  fields:
+</p>
+<ul>
+<li>
+<b> Code  Block:</b> This  specifies  the  code  block  currently  being  executed  by  this  cell.  Code  block  numbers  begin  at  0.  Code  block
+ zero  is  normally  labeled &quot;main:&quot;,  and  subsequent  code  blocks  are  labeled &quot;row1,  row2,  row3, ...&quot;.
+</li>
+
+<li>
+<b> Program  Counter:</b> This  is  the  instruction  offset  within  the  code  block.  This  counter  begins  at  0.  If  program  counter  refers  to
+ the  last  instruction  plus  1,  then  this  cell  has  just  reached  the  end  of  a  code  block.
+</li>
+
+<li>
+<b> R0  -  R9:</b> General  Purpose  registers.  Can  be  set  with  the  instructions <b>Rn!,  R0!,  R1!,  R2!, ...</b> and  the  cell  can  fetch  a  register  value  with
+ the  instructions <b>Rn,  R0,  R1,  R2, ...</b>.
+</li>
+
+<li>
+<b> Mood:</b> This  is  like  a  general  purpose  register.  The  cell  can  set  this  field  by  using  the <b>MOOD!</b> instruction.  Other
+ cells  can  query  our  mood  by  using  the <b>MOOD</b> instruction.
+</li>
+
+<li>
+<b> Location:</b> The  grid  location  of  this  cell.
+</li>
+
+<li>
+<b> Message:</b> Like  a  general  purpose  register  except  other  cells  can  set  this  field  by  using  the <b>SEND</b> and <b>BROADCAST</b> instructions.
+ This  cell  can  fetch  the  value  of  this  field  by  using  the <b>RECV</b> instruction.
+</li>
+
+<li>
+<b> Cell:</b> The  cell  number  within  the  organism.
+</li>
+
+<li>
+<b> Data  Stack:</b> Like  the  Forth  programming  language,  this  stack  is  used  to  keep  track  of  data  items  that  the  cell  is
+ using  for  computation.  The  top  of  this  list  box  represents  the  top  of  the  stack.
+</li>
+
+<li>
+<b> Call  Stack:</b> Like  the  Forth  programming  language,  this  stack  contains  the  call  history.  As  code  blocks  are  entered/exited  this  stack  grows
+ The  top  of  this  list  box  represents  the  top  of  the  stack.and  shrinks.
+</li>
+</ul><A NAME="TOC4"></A><h2> BUTTONS:</h2><ul>
+<li>
+<b> Vision  Data:</b> This  button  will  pop  up  another  dialog  showing  the  vision  data  that  the  KFORTH  instructions  LOOK,  WHERE,  WHAT,  NEAREST,
+ FARTHEST. <A HREF="vision_dialog.html">See  vision  dialog</A> for  more  information.
+</li>
+
+<li>
+<b> Step:</b> This  button  will  simulate  the  universe  for  1  step.  The  current  instruction  about  to  execute  is  highlighted.  In  this
+ way  you  can  observe  the  inner  workings  of  a  genetic  program.  (Function  key: <b>F11</b>).
+</li>
+
+<li>
+<b> Step  Over:</b> This  button  will  simulate  the  universe  for  1  step,  but  step  over  any  subroutine  calls.  (Function  key: <b>F10</b>).
+</li>
+
+<li>
+<b> Run:</b> Begin  running  the  program  (actually  this  begins  simulating  the  whole  universe).  Stop  when  the  cell  dies,  or  when  a
+ breakpoint  is  reached.  (Function  key: <b>F5</b>).
+</li>
+
+<li>
+<b> Breakpoint:</b> Insert  a  breakpoint  at  the  current  cursor  position.  Just  select  an  instruction  and  press  this  button.  A  breakpoint  will
+ be  added  (or  removed).  A  breakpoint  will  show  up  as  a  vertical  bar &#x27;|&#x27; next  to  the  instruction. <p>
+Breakpoints  only  apply  to  the  current  cell  being  debugged.  When  you  switch  cells,  the  breakpoints  are  retained,  and  will  be
+ applied  to  the  new  cell.  (Function  key: <b>F9</b>).
+</p>
+
+</li>
+
+<li>
+<b> Clear  Breakpoints:</b> All  breakpoints  will  be  cleared.  (Function  key: <b>F8</b>).
+</li>
+
+<li>
+<b> Instructions:</b> This  button  will  pop  up  a  list  of  KFORTH  instructions  for  your  reference.  Whatever  instruction  the  cursor  is  pointing
+ to  will  be  displayed  in  the  KFORTH  Instruction  dialog.
+</li>
+</ul><HR>
+<A NAME="TOC5"></A><h2> Vision  Tab</h2><p>
+ Pressing  the <b>[Vision]</b> tab  will  display  the  following  dialog.  This  dialog  shows  all  the  current  vision  data  that  will  be
+ used  by  the  KFORTH  instructions  pertaining  to  vision  (LOOK,  WHAT,  WHERE,  NEAREST,  FARTHEST).
+</p>
+<IMG  SRC="VisionDialog.jpg"><p>
+ The  distance  to  each  cell  in  the  8  directions  are  shown  in <b>red</b>.
+</p>
+<p>
+ Choose  from  these  items  in  the  combo  box:
+</p>
+<ul>
+<li>
+<b> LOOK:</b> Reveals  the  type  of  object  of  seen  in  that  direction
+</li><br>
+
+<li>
+<b> SIZE:</b> Reveals  the  size  of  the  organisms  surrounding  this  cell
+</li><br>
+
+<li>
+<b> TEMPERATURE:</b> Reveals  the  amount  of  energy  of  the  organisms  surrounding  this  cell
+</li><br>
+</ul><HR>
+<A NAME="TOC6"></A><h2> Sound  Tab</h2><p>
+ Pressing  the <b>[Sound]</b> tab  will  display  the  following  information.  This  tab  shows  what  the  cell  is &quot;hearing&quot;.  The  MESSAGE  and
+ MOOD  registers  for  the  cells  surrounding  the  current  cell  are  shown.  The  instructions  for  sound  are  SAY,  SHOUT,  SEND,  MOOD,
+ RECV,  MOOD!.
+</p>
+<IMG  SRC="soundtab.jpg"><p>
+ The  distance  to  each  cell  in  the  8  directions  are  shown  in <b>red</b>.
+</p>
+<p>
+ Choose  from  these  items  in  the  combo  box:
+</p>
+<ul>
+<li>
+<b> MESSAGE:</b> Reveals  the  message  register  of  each  cell  seen
+</li><br>
+
+<li>
+<b> MOOD:</b> Reveals  the  mood  register  of  each  cell  seen
+</li><br>
+</ul><HR>
+<A NAME="TOC7"></A><h2> Odor  Tab</h2><p>
+ Pressing  the <b>[Odor]</b> tab  will  display  the  following  information.  This  tab  shows  what  the  cell  is &quot;smelling&quot;.  This  screen  shows
+ the  odor  values  surround  the  current  cell.  The  SMELL  and  EXUDE  instructions  deal  with  odor.
+</p>
+<IMG  SRC="odortab.jpg"><HR>
+<A NAME="TOC8"></A><h2> KFORTH  Instruction  Help  Dialog</h2><p>
+ If  you  click  on <b>[Instructions]</b> the  following  pop-up  dialog  will  appear.  This  is  for  reference  only.
+</p>
+<IMG  SRC="KforthInstructions.jpg">
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:11  EST  2023
+</div>
+</body>
+</html>

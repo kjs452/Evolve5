@@ -1,0 +1,173 @@
+main:
+{
+      13  call 
+}
+
+row1:
+{
+      DSLEN  50  >=  ?exit  DSLEN  2  <  ?exit
+      R0  R1  2swap  R1!  R0!  R0  R1  1  5  10
+      SPAWN  pop  R1!  R0! 
+}
+
+row2:
+{
+     
+}
+
+row3:
+{
+     
+}
+
+row4:
+{
+     
+}
+
+row5:
+{
+     
+}
+
+row6:
+{
+      DSLEN  60  >=  ?exit  R1!  R0!  R0  R1  1
+      5  10  SPAWN  pop 
+}
+
+row7:
+{
+     
+}
+
+row8:
+{
+     
+}
+
+row9:
+{
+     
+}
+
+row10:
+{
+      R0  R1  2dup  11  call  12  call  HALT 
+}
+
+row11:
+{
+      2dup  OMOVE  ?loop 
+}
+
+row12:
+{
+      2dup  EAT  pop  2dup  OMOVE  pop  255  NEAREST
+      EAT  ?loop 
+}
+
+row13:
+{
+      16  call  2  OMOVE  22  call  2dup  14  call
+      22  call  15  call  22  call  16  call  22
+      call  17  R0  -10  22  call  22  0  30  18
+      call  call  22  39  OPCODE  call  20  2dup
+      pop  OMOVE  and  R2!  2dup  EAT  GROW  OMOVE
+      CHOOSE  R4++  TRAP7  -1  2  1  ?loop  R8! 
+}
+
+row14:
+{
+      0  GROW  4  GROW  -85  HOTTEST  OMOVE  1+
+      -38  R0  2dup  2dup  EAT  nop  -5  -3  -49
+      26 
+}
+
+row15:
+{
+      -16  -15  GROW  -85  HOTTEST  OMOVE  GROW
+      R3! 
+}
+
+row16:
+{
+      ENERGY.O  --R5  -26  0  NUM-CELLS  --R6
+      73  GROW  OMOVE  invert  GROW  2dup  9  GROW
+      OMOVE  pop  R3!  96  --R4  -1  2dup  EAT
+      pop  OMOVE 
+}
+
+row17:
+{
+     
+}
+
+row18:
+{
+      ENERGY  6  /  R0!  -1  -4  R0  MAKE-SPORE
+      /  -7  -2  R0  MAKE-SPORE  -83  LOOK  -40
+      FARTHEST  pop 
+}
+
+row19:
+{
+      3  EXUDE  --R9  2over 
+}
+
+row20:
+{
+      -38  pop  96  nip 
+}
+
+row21:
+{
+      -84  ENERGY 
+}
+
+row22:
+{
+      2dup  EAT  ?loop  ?loop  57  -7  -54 
+}
+
+row23:
+{
+     
+}
+
+row24:
+{
+      GROW  R6  -85  HOTTEST  OMOVE  FARTHEST
+      R3! 
+}
+
+row25:
+{
+      14  OPCODE!  23  DSLEN  TRAP8  24  26  17
+      2dup  -59  R7!  ?exit  R7!  PEEK  -71  -62
+      3  EXUDE  --R9  2over  43  TRAP3  call  ?loop
+      GROW  OMOVE  NEAREST  -80  GROW  R3! 
+}
+
+row26:
+{
+     
+}
+
+row27:
+{
+      14  OPCODE!  23  DSLEN  TRAP8  24  26  17
+      2dup  -59  R7!  ?exit  R7!  PEEK  -71  -62
+      3  EXUDE  --R9  2over  43  TRAP3  call  ?loop
+      GROW  OMOVE  NEAREST  -80  GROW  R3! 
+}
+
+row28:
+{
+      POKE  SPREAD-ENERGY  45  NUM-CELLS  pack2 
+}
+
+row29:
+{
+      dup  TRAP8  0  SPREAD-ENERGY 
+}

@@ -1,0 +1,24 @@
+
+
+;
+; PICK test
+;
+main:
+{
+;;	100 200 300 400 -1 PICK .S
+
+;;	pop pop pop pop
+
+;	111 222 333 444
+;		0 PICK .
+;		2 PICK .
+;		1 PICK .
+;		3 PICK .
+
+;	666 100 777 2000 2swap
+
+	101 202 303 404 505 606 2over
+
+}
+
+

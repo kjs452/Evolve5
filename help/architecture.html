@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  5.0 -  Computer  Architecture</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> February  2nd,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Cell  CPU  Architecture</h1><p>
+ This  page  will  describe  in  detail  the  computer  architecture  behind  the  CELL.
+</p>
+<A NAME="TOC2"></A><h2> Table  of  Contents:</h2><ul>
+<li>
+<A HREF="#cpu"> CPU</A>
+</li>
+
+<li>
+<A HREF="#ram"> RAM</A>
+</li>
+
+<li>
+<A HREF="#protections"> Protections</A>
+</li>
+
+<li>
+<A HREF="#protected_codeblock"> Protected  Code  Blocks</A>
+</li>
+
+<li>
+<A HREF="#protected_instructions"> Protected  Instructions</A>
+</li>
+
+<li>
+<A HREF="#maxcb"> Maximum  Code  Blocks</A>
+</li>
+
+<li>
+<A HREF="#traps"> Traps</A>
+</li>
+
+<li>
+<A HREF="#interrupts"> Interrupts</A>
+</li>
+
+<li>
+<A HREF="#trap_safety"> Trap  Safety</A>
+</li>
+
+<li>
+<A HREF="#strains"> Strains  and  Modes</A>
+</li>
+</ul><p>
+ This  diagram  shows  three  cells  which  are  all  part  of  the  same  organism.  Each  cell  is  executing  a  different  part
+ of  the  kforth  program.  This  page  will  explain  the  CPU  architecture
+</p>
+<IMG  SRC="arch1.jpg"><HR>
+<A NAME="cpu"></A><A NAME="TOC3"></A><h2> CPU</h2><p>
+ The <b>cell</b> is  the  thing  that  contains  the  central  processing  unit  which  is  running  the  KFORTH  program.  The <b>cell</b> is
+ the  analog  to  a <b>process</b> and <b>cpu  core</b> in  an  operating  system.  A  cell  is  given  an  execution  time  slice  along
+ with  the  other  cells.  Cells  execute  in  a  round  robin  order  (See  the <A HREF="simulation.html">simulation</A> page).
+</p>
+<p>
+ The  CPU  is  a  16-bit  architecture.  All  values  are  16-bit  signed  integers.  Each  cell  has  a  bank  of  10  registers
+ (<b>R0 ..  R9</b>).  Each  cell  has  a  data  stack,  which  has <b>64</b> elements.  And  a  call  stack  of <b>64</b> elements.
+ The  call  stack  is  how  a  program  calls  subroutines.
+</p>
+<HR>
+<A NAME="ram"></A><A NAME="TOC4"></A><h3> RAM</h3><p>
+ This  architecture  has  256MB  of  random  access  memory.  Each  code  block  can  be  treated  as  an  array  of  15-bit  numbers,
+ which  can  be  read  and  written.  See  the  instructions <tt>NUMBER</tt> and <tt>OPCODE</tt>.  The  weird  thing  about  this  architecture  is
+ that  the  RAM  store  consists  of  15-bit  signed  integers.  This  is  because  the  same  RAM  storage  is  used  for  the
+ instructions  (this  requires  using  a  bit  from  the  16-bit  integers).
+</p>
+<p>
+ There  are  a  maximum  of  16,386  code  blocks.  The  maximum  length  of  a  code  block  is  16,386.  This  is  where
+ the  256MB  figure  was  arrived  at.  Memory  is  accessed  via  two  addresses:  a  code  block  and  an  offset  into  the
+ code  block.
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+{
+   row15 3 NUMBER             ; read item 3 from row15 which is 31
+   123 row15 5 NUMBER!        ; write the value 123 to item 5, in row15.
+}
+
+row15: { 0 19 21 31 42 55 60 }
+</PRE></TD></TABLE></CENTER>
+<p>
+ This  storage  is  shared  between  all  the  cells  in  the  organism.  A  test-and-set  instruction  is  provided: <tt>?NUMBER!</tt>.  This  allows
+ cells  to  syncronize  their  access  to  RAM.
+</p>
+<HR>
+<A NAME="protections"></A><A NAME="TOC5"></A><h2> Protections</h2><p>
+ The <b>blue</b> code  block  labels  indicate &quot;protected  code  blocks&quot;.  A  protected  code  block <b>will  not  mutate</b>.  Further  more,  there  are  restrictions
+ on  what  unprotected  code  can  do.  For  example,  unprotected  code  cannot:
+</p>
+<ul>
+<li>
+ Read  or  Write  protected  code  blocks
+</li>
+
+<li>
+ Call  or  jump  to  protected  code  blocks  (must  use  TRAPs)
+</li>
+</ul><HR>
+<A NAME="protected_codeblock"></A><A NAME="TOC6"></A><h2> Protected  Code  Blocks</h2><p>
+ Protected  code  blocks  do  not  mutate  during  replication.  Also  no  information  leaks  out  of  a  protected  code  blocks  when  mutating
+ the  unprotected  code.  Unprotected  code  cannot  read  or  write  protected  RAM.  Cell&#x27;s  running  in  unprotected  code  cannot  call  protected  code
+ (unless  it  is  via  the <tt>TRAPn</tt> instructions).
+</p>
+<HR>
+<A NAME="maxcb"></A><A NAME="TOC7"></A><h2> Maximum  Code  Blocks</h2><p>
+ This  value  controls  the  number  of  un-protected  code  blocks  that  can  be  mutated  into  existence.  You  can  set  this  value
+ from  the  Mutations  tab  of  the  strain  settings  dialog.
+</p>
+<HR>
+<A NAME="protected_instructions"></A><A NAME="TOC8"></A><h2> Protected  Instructions</h2><p>
+ Protected  instructions  can  be  configured  by  the  Protections  tab  of  the  strain  settings  dialog. <b>A  protected  instruction  will  not  be  generated  by  the  mutation  algorithm.</b> This  gives  the  user  the
+ ability  to  customize  the  behavior  of  instructions.
+</p>
+<HR>
+<A NAME="traps"></A><A NAME="TOC9"></A><h2> Traps</h2><p>
+ A  trap  is  an  instruction  which  calls  one  of  the  special  code  block  numbers.  The  special  code  blocks  numbers  are:
+<tt>1,  2,  3, ...,  9</tt>.  These  numbers  correspond  to  code  block  numbers  1,2,3, ...9.  When  unprotected  code  wants  to  call  protected  code,  it
+ would  use  a  TRAP  instruction.  For  example,  the <tt>TRAP7</tt> instruciton  calls  code  block  7.
+</p>
+<HR>
+<A NAME="interrupts"></A><A NAME="TOC10"></A><h2> Interrupts</h2><p>
+ Some  instructions  can  be  configured  to  interupt  the  target  cell.  For  example,  the <tt>SEND</tt> instruction  can  interrupt  the  cell  in
+ which  the  SEND  operation  was  applied  to.  An  interrupt  uses  the  trap  code  blocks.  By  setting  bits  in  the <tt>SEND</tt> mode,  it  can  be  configured  to  trigger  an  interupt  using  the <tt>TRAP3</tt> code  block.
+</p>
+<p>
+ The  cell  that  is  interrupted  will  finds  its  flow  of  control  transferred  to  the  appropriate  trap  code  block.
+</p>
+<HR>
+<A NAME="trap_safety"></A><A NAME="TOC11"></A><h2> Trap  Safety</h2><p>
+ Evolving  code  will  call  your  trap  handlers  with  all  concievable  arguments  and  states.  You  need  to  protect  your  trap  handler
+ so  that  you  don&#x27;t  leak  protected  behavior  to  the  evolving  programs.
+</p>
+<p>
+ When  unprotected  code  calls  protected  code,  you  need  to  be  careful.  The  stacks  may  be  in  an  unknown  state.  Traps
+ will  not  be  called  unless  there  are  at  least  2  items  remaining  on  the  data  stack.  This  permits  these  safety
+ checks  to  be  performed:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+_trap7: {
+	DSLEN 60 &gt; ?exit
+	CSLEN 60 &gt; ?exit
+	DSLEN 3 &lt; ?exit		; make sure three arguments provided
+	do_something call
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ This  checks  that  there  are  enough  call  stack  and  data  stack  elements  to  perform  the  operation.  If  not,  then  exit.
+ The  third  statement  checks  if  there  are  the  right  number  of  arguments  provided.
+</p>
+<HR>
+<A NAME="strains"></A><A NAME="TOC12"></A><h2> Strains  and  Modes</h2><p>
+ Each  organism  belongs  to  a  strain.  The  simulator  supports  up  to  8  strains  (numbered  0 ...  7),  in  the  same
+ simulation.  Each  strain  can  be  seperately  configured.  The  following  things  can  be  configured:
+</p>
+<ul>
+<li>
+ Mutation  Rates
+</li>
+
+<li>
+ Instruction  Modes
+</li>
+
+<li>
+ Protected  Instructions
+</li>
+
+<li>
+ Protected  Codeblocks
+</li>
+
+<li>
+ Initial  Kforth  Program
+</li>
+</ul><p>
+ To  re-use  a  strain  between  simulations,  you  use  a <b>Strain  Profile</b>.  You  give  a  name  to  your  profile  and  use
+ this  to  create  new  simulations.
+</p>
+<p>
+<b> Modes</b> are  on/off  flags  associated  with  each  instruction.  The  behavior  of  instructions  can  be  modified  by  setting  the  flags  appropriately.
+ See <A HREF="modes.html">modes</A>.
+</p>
+<BR><BR><BR><BR><BR><BR><BR><BR>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:09  EST  2023
+</div>
+</body>
+</html>

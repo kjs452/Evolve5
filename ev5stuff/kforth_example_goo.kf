@@ -1,0 +1,30 @@
+
+
+;
+; Test file
+;
+main:
+{
+	111 print  ; this gives an error because 'print' is not defined
+	4 R0!
+	junk call
+}
+
+junk:
+{
+	bar call
+}
+
+
+bar:
+{
+	100 200 300 print print print
+
+	{ R0 1- R0!	; R0 = R0 - 1
+
+	R0 print
+
+	R0 ?loop } call
+
+}
+

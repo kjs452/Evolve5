@@ -1,0 +1,3660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  Preferences</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> December  1st,  2022
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Evolve  Preferences</h1><p>
+ In  your  home  directory  is  stored  a  file <tt>~/.evolve5rc</tt>.  This  file  contains  all  the <b>Strain  Profiles</b> and  other  settings.
+</p>
+<p>
+ This  is  the  file  format:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+# PHOTON ASCII
+
+struct SIMULATION_OPTIONS {
+	MODE
+}
+
+struct STRAIN_OPTIONS[N] {
+	ENABLED
+	NAME
+	DIAGONAL
+	LOOK_MODE
+	EAT_MODE
+	MAKE_SPORE_MODE
+	STRAIN_VISIBILITY
+	CMOVE_MODE
+	OMOVE_MODE
+	GROW_MODE
+	ROTATE_MODE
+	CSHIFT_MODE
+	MAKE_ORGANIC_MODE
+	BONES_MODE
+	MAKE_BARRIER_MODE
+	EXUDE_MODE
+	SHOUT_MODE
+	SPAWN_MODE
+	LISTEN_MODE
+}
+
+struct KFMO[N] {
+	MAX_APPLY
+	PROB_MUTATE_CODEBLOCK
+	PROB_DUPLICATE
+	PROB_DELETE
+	PROB_INSERT
+	PROB_TRANSPOSE
+	PROB_MODIFY
+	MERGE_MODE
+	XLEN
+	PROTECTED_CODEBLOCKS
+	MAX_CODE_BLOCKS
+}
+
+struct STRAIN_OPCODES[N] {
+	NPROTECTED
+	TABLE[M] {
+		NAME
+	}
+}
+
+struct STRAIN_PROFILES[N] {
+	NAME
+	SEED_FILE
+	ENERGY
+	POPULATION
+	DESCRIPTION[M] {
+		TEXT_LINE
+	}
+}
+
+struct EVOLVE_PREFERENCES {
+	EVOLVE_BATCH
+	EVOLVE_3D
+	HELP
+	WIDTH
+	HEIGHT
+	WANT_BARRIER
+	TERRAIN
+	DFLT[N] {
+		STRAIN
+		ENERGY
+		POPULATION
+		SEED_FILE
+	}
+}
+
+EVOLVE_PREFERENCES
+	&quot;/tmp/EvolveBatch.app&quot;				# Evolve Batch Path
+	&quot;/tmp/Evolve3d.app&quot;				# Evolve 3d Path
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/Evolve4Help/output&quot;				# Help Path
+	700					# Default Width
+	400					# Default Height
+	0					# Default Want Barrier
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/TERRAIN/maze.txt&quot;				# Default Terrain File
+
+	8   # number of strains to follow:
+
+	# strain 0
+	10				# Default Strain Profile (-1 means this DFLT not set)
+	800000				# Default Energy
+	100				# Default Population
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/shoot3.kf&quot;			# Default Seed File
+
+	# strain 1
+	-1				# Default Strain Profile (-1 means this DFLT not set)
+	800000				# Default Energy
+	100				# Default Population
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/shoot3.kf&quot;			# Default Seed File
+
+	# strain 2
+	-1				# Default Strain Profile (-1 means this DFLT not set)
+	100000				# Default Energy
+	100				# Default Population
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/shoot5.kf&quot;			# Default Seed File
+
+	# strain 3
+	-1				# Default Strain Profile (-1 means this DFLT not set)
+	800000				# Default Energy
+	100				# Default Population
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/shoot3.kf&quot;			# Default Seed File
+
+	# strain 4
+	-1				# Default Strain Profile (-1 means this DFLT not set)
+	800000				# Default Energy
+	100				# Default Population
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/shoot3.kf&quot;			# Default Seed File
+
+	# strain 5
+	11				# Default Strain Profile (-1 means this DFLT not set)
+	1				# Default Energy
+	1				# Default Population
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/nullseed.kf&quot;			# Default Seed File
+
+	# strain 6
+	-1				# Default Strain Profile (-1 means this DFLT not set)
+	100000				# Default Energy
+	100				# Default Population
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/seed.kf&quot;			# Default Seed File
+
+	# strain 7
+	-1				# Default Strain Profile (-1 means this DFLT not set)
+	0				# Default Energy
+	0				# Default Population
+	&quot;&quot;			# Default Seed File
+
+
+SIMULATION_OPTIONS 0   # mode
+
+STRAIN_PROFILES {
+	# Strain Profile (Strain 0)
+	&quot;Default&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/seed.kf&quot;
+	100000      # default energy
+	10      # default population
+	{
+		&quot;Default. A Creature&quot;
+		&quot;That&quot;
+		&quot;Just Works.&quot;
+	}
+
+	# Strain Profile (Strain 1)
+	&quot;Evolve4.8e&quot;
+	&quot;/tmp/seed48.kf&quot;
+	100000      # default energy
+	10      # default population
+	{
+		&quot;Original Evolve4.8e behavior&quot;
+	}
+
+	# Strain Profile (Strain 2)
+	&quot;Basic&quot;
+	&quot;/tmp/basic.kf&quot;
+	100000      # default energy
+	1      # default population
+	{
+		&quot;Basic Creature.&quot;
+	}
+
+	# Strain Profile (Strain 3)
+	&quot;look&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/seed.kf&quot;
+	200000      # default energy
+	100      # default population
+	{
+		&quot;pure sim, no super power instrutctions&quot;
+	}
+
+	# Strain Profile (Strain 4)
+	&quot;look2&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/seed.kf&quot;
+	100000      # default energy
+	100      # default population
+	{
+		&quot;pure sim, no super power instrutctions&quot;
+	}
+
+	# Strain Profile (Strain 5)
+	&quot;terrain&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/rnd_drawer.kf&quot;
+	100000      # default energy
+	10      # default population
+	{
+		&quot;Terrain Strain. Un-eatable. Seed program responds to space key.&quot;
+	}
+
+	# Strain Profile (Strain 6)
+	&quot;voodoo&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/seed.kf&quot;
+	600000      # default energy
+	100      # default population
+	{
+		&quot;lots of energy required to grow&quot;
+		&quot;12&quot;
+	}
+
+	# Strain Profile (Strain 7)
+	&quot;energy4&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/seed.kf&quot;
+	100000      # default energy
+	100      # default population
+	{
+		&quot;for use with &quot;
+		&quot;cell based energy mode&quot;
+		&quot;&quot;
+	}
+
+	# Strain Profile (Strain 8)
+	&quot;prot1&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/protseed.kf&quot;
+	100000      # default energy
+	100      # default population
+	{
+		&quot;for use with &quot;
+		&quot;cell based energy mode&quot;
+		&quot;&quot;
+		&quot;Protected region.&quot;
+		&quot;EAT, OMOVE, MAKE-SPORE provided by traps.&quot;
+	}
+
+	# Strain Profile (Strain 9)
+	&quot;omega&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/ZOO/towers_of_hanoi.kf&quot;
+	100000      # default energy
+	1      # default population
+	{
+		&quot;omega race creature&quot;
+		&quot;contains brain that moves&quot;
+		&quot;protect OMOVE.&quot;
+	}
+
+	# Strain Profile (Strain 10)
+	&quot;bullet&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/shoot3.kf&quot;
+	800000      # default energy
+	100      # default population
+	{
+		&quot;bullet creature. trap1 shoots a bullet and returns any energy back.&quot;
+		&quot;uses strain 5 to be the bullet.&quot;
+		&quot;Configure strain5 to be un-eatable ‘8’&quot;
+		&quot;use nullseed.kf&quot;
+	}
+
+	# Strain Profile (Strain 11)
+	&quot;Uneatable&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/nullseed.kf&quot;
+	1      # default energy
+	1      # default population
+	{
+		&quot;uneatable for setting up bullets and stuff&quot;
+	}
+
+	# Strain Profile (Strain 12)
+	&quot;mass&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/mass_move_space.kf&quot;
+	1000000      # default energy
+	100      # default population
+	{
+		&quot;bullet creature. trap1 shoots a bullet and returns any energy back.&quot;
+		&quot;uses strain 5 to be the bullet.&quot;
+		&quot;Configure strain5 to be un-eatable ‘8’&quot;
+		&quot;use nullseed.kf&quot;
+	}
+
+	# Strain Profile (Strain 13)
+	&quot;shoot5&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/shoot5.kf&quot;
+	100000      # default energy
+	100      # default population
+	{
+		&quot;shoot5&quot;
+	}
+
+	# Strain Profile (Strain 14)
+	&quot;Simple&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/seed.kf&quot;
+	100000      # default energy
+	100      # default population
+	{
+		&quot;simple….&quot;
+	}
+
+	# Strain Profile (Strain 15)
+	&quot;e_bullet&quot;
+	&quot;/Users/kjs/DEVELOPMENT/EVOLVE/SEEDS/evolved_shooter_seed.kf&quot;
+	800000      # default energy
+	100      # default population
+	{
+		&quot;Evolve Bullet - the seed file is based on a creature that evolved over night.&quot;
+		&quot;&quot;
+		&quot;bullet creature. trap1 shoots a bullet and returns any energy back.&quot;
+		&quot;uses strain 5 to be the bullet.&quot;
+		&quot;Configure strain5 to be un-eatable ‘8’&quot;
+		&quot;use nullseed.kf&quot;
+	}
+
+}
+
+STRAIN_OPTIONS {
+	# Strain 0
+	1        # enabled
+	&quot;&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	1        # LOOK mode
+	0        # EAT mode
+	100        # MAKE-SPORE mode
+	0        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	1        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	0        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 1
+	1        # enabled
+	&quot;&quot;        # strain name these settings were based on
+	0        # diagonal connectivity rules apply
+	0        # LOOK mode
+	0        # EAT mode
+	1        # MAKE-SPORE mode
+	0        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	0        # GROW mode
+	0        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	0        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 2
+	1        # enabled
+	&quot;&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	1        # LOOK mode
+	1        # EAT mode
+	100        # MAKE-SPORE mode
+	0        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	1        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	0        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 3
+	1        # enabled
+	&quot;look&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	1        # LOOK mode
+	0        # EAT mode
+	100        # MAKE-SPORE mode
+	100        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	1        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	0        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 4
+	1        # enabled
+	&quot;look2&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	1        # LOOK mode
+	0        # EAT mode
+	100        # MAKE-SPORE mode
+	0        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	10        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	0        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 5
+	1        # enabled
+	&quot;terrain&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	1        # LOOK mode
+	8        # EAT mode
+	100        # MAKE-SPORE mode
+	0        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	1        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	0        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 6
+	1        # enabled
+	&quot;voodoo&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	0        # LOOK mode
+	0        # EAT mode
+	100        # MAKE-SPORE mode
+	0        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	33        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	0        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 7
+	1        # enabled
+	&quot;energy4&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	0        # LOOK mode
+	128        # EAT mode
+	100        # MAKE-SPORE mode
+	20        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	100        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	0        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 8
+	1        # enabled
+	&quot;prot1&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	0        # LOOK mode
+	256        # EAT mode
+	100        # MAKE-SPORE mode
+	20        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	100        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	0        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 9
+	1        # enabled
+	&quot;omega&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	0        # LOOK mode
+	0        # EAT mode
+	1        # MAKE-SPORE mode
+	20        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	1        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	0        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 10
+	1        # enabled
+	&quot;bullet&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	0        # LOOK mode
+	529        # EAT mode
+	100        # MAKE-SPORE mode
+	10        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	100        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	5        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 11
+	1        # enabled
+	&quot;Uneatable&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	0        # LOOK mode
+	8        # EAT mode
+	1        # MAKE-SPORE mode
+	0        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	1        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	0        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 12
+	1        # enabled
+	&quot;mass&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	0        # LOOK mode
+	0        # EAT mode
+	100        # MAKE-SPORE mode
+	100        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	110        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	5        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 13
+	1        # enabled
+	&quot;shoot5&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	0        # LOOK mode
+	0        # EAT mode
+	10        # MAKE-SPORE mode
+	0        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	12        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	5        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 14
+	1        # enabled
+	&quot;Simple&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	0        # LOOK mode
+	0        # EAT mode
+	1        # MAKE-SPORE mode
+	0        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	1        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	5        # SPAWN mode
+	0        # LISTEN mode
+
+	# Strain 15
+	1        # enabled
+	&quot;e_bullet&quot;        # strain name these settings were based on
+	1        # diagonal connectivity rules apply
+	0        # LOOK mode
+	640        # EAT mode
+	100        # MAKE-SPORE mode
+	10        # strain visibility
+	0        # CMOVE mode
+	0        # OMOVE mode
+	100        # GROW mode
+	1        # ROTATE mode
+	0        # CSHIFT mode
+	0        # MAKE-ORGANIC mode
+	1        # Bones Mode
+	0        # MAKE-BARRIER mode
+	0        # EXUDE mode
+	0        # SHOUT mode
+	5        # SPAWN mode
+	0        # LISTEN mode
+
+}
+
+KFMO {
+	# Strain 0
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	600		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	0		# protected_codeblocks
+	100		# max_code_blocks
+
+	# Strain 1
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	600		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	0		# protected_codeblocks
+	100		# max_code_blocks
+
+	# Strain 2
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	600		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	0		# protected_codeblocks
+	100		# max_code_blocks
+
+	# Strain 3
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	600		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	0		# protected_codeblocks
+	100		# max_code_blocks
+
+	# Strain 4
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	400		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	0		# protected_codeblocks
+	100		# max_code_blocks
+
+	# Strain 5
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	600		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	0		# protected_codeblocks
+	100		# max_code_blocks
+
+	# Strain 6
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	450		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	0		# protected_codeblocks
+	100		# max_code_blocks
+
+	# Strain 7
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	450		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	0		# protected_codeblocks
+	100		# max_code_blocks
+
+	# Strain 8
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	450		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	10		# protected_codeblocks
+	100		# max_code_blocks
+
+	# Strain 9
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	450		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	0		# protected_codeblocks
+	100		# max_code_blocks
+
+	# Strain 10
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	450		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	13		# protected_codeblocks
+	20		# max_code_blocks
+
+	# Strain 11
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	450		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	0		# protected_codeblocks
+	100		# max_code_blocks
+
+	# Strain 12
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	450		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	14		# protected_codeblocks
+	20		# max_code_blocks
+
+	# Strain 13
+	5		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	450		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	13		# protected_codeblocks
+	20		# max_code_blocks
+
+	# Strain 14
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	450		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	0		# protected_codeblocks
+	20		# max_code_blocks
+
+	# Strain 15
+	10		# max apply
+	2500		# prob. mutate codeblock
+	200		# prob_duplicate
+	450		# prob_delete
+	200		# prob_insert
+	200		# prob_transpose
+	200		# prob_modify
+	0		# merge_mode
+	10		# xlen
+	13		# protected_codeblocks
+	20		# max_code_blocks
+
+}
+
+STRAIN_OPCODES {
+
+	0  # number of protected instructions at start of table
+	# instruction table for strain 0
+	{
+		&quot;call&quot;              			# opcode 0
+		&quot;if&quot;                			# opcode 1
+		&quot;ifelse&quot;            			# opcode 2
+		&quot;?loop&quot;             			# opcode 3
+		&quot;?exit&quot;             			# opcode 4
+		&quot;pop&quot;               			# opcode 5
+		&quot;dup&quot;               			# opcode 6
+		&quot;swap&quot;              			# opcode 7
+		&quot;over&quot;              			# opcode 8
+		&quot;rot&quot;               			# opcode 9
+		&quot;?dup&quot;              			# opcode 10
+		&quot;-rot&quot;              			# opcode 11
+		&quot;2swap&quot;             			# opcode 12
+		&quot;2over&quot;             			# opcode 13
+		&quot;2dup&quot;              			# opcode 14
+		&quot;2pop&quot;              			# opcode 15
+		&quot;nip&quot;               			# opcode 16
+		&quot;tuck&quot;              			# opcode 17
+		&quot;1+&quot;                			# opcode 18
+		&quot;1-&quot;                			# opcode 19
+		&quot;2+&quot;                			# opcode 20
+		&quot;2-&quot;                			# opcode 21
+		&quot;2/&quot;                			# opcode 22
+		&quot;2*&quot;                			# opcode 23
+		&quot;abs&quot;               			# opcode 24
+		&quot;sqrt&quot;              			# opcode 25
+		&quot;+&quot;                 			# opcode 26
+		&quot;-&quot;                 			# opcode 27
+		&quot;*&quot;                 			# opcode 28
+		&quot;/&quot;                 			# opcode 29
+		&quot;mod&quot;               			# opcode 30
+		&quot;/mod&quot;              			# opcode 31
+		&quot;negate&quot;            			# opcode 32
+		&quot;2negate&quot;           			# opcode 33
+		&quot;&lt;&lt;&quot;                			# opcode 34
+		&quot;&gt;&gt;&quot;                			# opcode 35
+		&quot;=&quot;                 			# opcode 36
+		&quot;&lt;&gt;&quot;                			# opcode 37
+		&quot;&lt;&quot;                 			# opcode 38
+		&quot;&gt;&quot;                 			# opcode 39
+		&quot;&lt;=&quot;                			# opcode 40
+		&quot;&gt;=&quot;                			# opcode 41
+		&quot;0=&quot;                			# opcode 42
+		&quot;or&quot;                			# opcode 43
+		&quot;and&quot;               			# opcode 44
+		&quot;not&quot;               			# opcode 45
+		&quot;invert&quot;            			# opcode 46
+		&quot;xor&quot;               			# opcode 47
+		&quot;min&quot;               			# opcode 48
+		&quot;max&quot;               			# opcode 49
+		&quot;CB&quot;                			# opcode 50
+		&quot;CBLEN&quot;             			# opcode 51
+		&quot;CSLEN&quot;             			# opcode 52
+		&quot;DSLEN&quot;             			# opcode 53
+		&quot;R0&quot;                			# opcode 54
+		&quot;R1&quot;                			# opcode 55
+		&quot;R2&quot;                			# opcode 56
+		&quot;R3&quot;                			# opcode 57
+		&quot;R4&quot;                			# opcode 58
+		&quot;R5&quot;                			# opcode 59
+		&quot;R6&quot;                			# opcode 60
+		&quot;R7&quot;                			# opcode 61
+		&quot;R8&quot;                			# opcode 62
+		&quot;R9&quot;                			# opcode 63
+		&quot;R0!&quot;               			# opcode 64
+		&quot;R1!&quot;               			# opcode 65
+		&quot;R2!&quot;               			# opcode 66
+		&quot;R3!&quot;               			# opcode 67
+		&quot;R4!&quot;               			# opcode 68
+		&quot;R5!&quot;               			# opcode 69
+		&quot;R6!&quot;               			# opcode 70
+		&quot;R7!&quot;               			# opcode 71
+		&quot;R8!&quot;               			# opcode 72
+		&quot;R9!&quot;               			# opcode 73
+		&quot;R0++&quot;              			# opcode 74
+		&quot;R1++&quot;              			# opcode 75
+		&quot;R2++&quot;              			# opcode 76
+		&quot;R3++&quot;              			# opcode 77
+		&quot;R4++&quot;              			# opcode 78
+		&quot;R5++&quot;              			# opcode 79
+		&quot;R6++&quot;              			# opcode 80
+		&quot;R7++&quot;              			# opcode 81
+		&quot;R8++&quot;              			# opcode 82
+		&quot;R9++&quot;              			# opcode 83
+		&quot;--R0&quot;              			# opcode 84
+		&quot;--R1&quot;              			# opcode 85
+		&quot;--R2&quot;              			# opcode 86
+		&quot;--R3&quot;              			# opcode 87
+		&quot;--R4&quot;              			# opcode 88
+		&quot;--R5&quot;              			# opcode 89
+		&quot;--R6&quot;              			# opcode 90
+		&quot;--R7&quot;              			# opcode 91
+		&quot;--R8&quot;              			# opcode 92
+		&quot;--R9&quot;              			# opcode 93
+		&quot;PEEK&quot;              			# opcode 94
+		&quot;POKE&quot;              			# opcode 95
+		&quot;NUMBER&quot;            			# opcode 96
+		&quot;NUMBER!&quot;           			# opcode 97
+		&quot;?NUMBER!&quot;          			# opcode 98
+		&quot;OPCODE&quot;            			# opcode 99
+		&quot;OPCODE!&quot;           			# opcode 100
+		&quot;TRAP1&quot;             			# opcode 101
+		&quot;TRAP2&quot;             			# opcode 102
+		&quot;TRAP3&quot;             			# opcode 103
+		&quot;TRAP4&quot;             			# opcode 104
+		&quot;TRAP5&quot;             			# opcode 105
+		&quot;TRAP6&quot;             			# opcode 106
+		&quot;TRAP7&quot;             			# opcode 107
+		&quot;TRAP8&quot;             			# opcode 108
+		&quot;TRAP9&quot;             			# opcode 109
+		&quot;sign&quot;              			# opcode 110
+		&quot;pack2&quot;             			# opcode 111
+		&quot;unpack2&quot;           			# opcode 112
+		&quot;MAX_INT&quot;           			# opcode 113
+		&quot;MIN_INT&quot;           			# opcode 114
+		&quot;HALT&quot;              			# opcode 115
+		&quot;nop&quot;               			# opcode 116
+		&quot;CMOVE&quot;             			# opcode 117
+		&quot;OMOVE&quot;             			# opcode 118
+		&quot;ROTATE&quot;            			# opcode 119
+		&quot;EAT&quot;               			# opcode 120
+		&quot;MAKE-SPORE&quot;        			# opcode 121
+		&quot;MAKE-ORGANIC&quot;      			# opcode 122
+		&quot;MAKE-BARRIER&quot;      			# opcode 123
+		&quot;GROW&quot;              			# opcode 124
+		&quot;GROW.CB&quot;           			# opcode 125
+		&quot;CSHIFT&quot;            			# opcode 126
+		&quot;EXUDE&quot;             			# opcode 127
+		&quot;LOOK&quot;              			# opcode 128
+		&quot;NEAREST&quot;           			# opcode 129
+		&quot;FARTHEST&quot;          			# opcode 130
+		&quot;SIZE&quot;              			# opcode 131
+		&quot;BIGGEST&quot;           			# opcode 132
+		&quot;SMALLEST&quot;          			# opcode 133
+		&quot;TEMPERATURE&quot;       			# opcode 134
+		&quot;HOTTEST&quot;           			# opcode 135
+		&quot;COLDEST&quot;           			# opcode 136
+		&quot;SMELL&quot;             			# opcode 137
+		&quot;MOOD&quot;              			# opcode 138
+		&quot;MOOD!&quot;             			# opcode 139
+		&quot;BROADCAST&quot;         			# opcode 140
+		&quot;SEND&quot;              			# opcode 141
+		&quot;RECV&quot;              			# opcode 142
+		&quot;ENERGY&quot;            			# opcode 143
+		&quot;ENERGY.O&quot;          			# opcode 144
+		&quot;AGE&quot;               			# opcode 145
+		&quot;NUM-CELLS&quot;         			# opcode 146
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 147
+		&quot;DIST&quot;              			# opcode 148
+		&quot;CHOOSE&quot;            			# opcode 149
+		&quot;RND&quot;               			# opcode 150
+		&quot;SPREAD-ENERGY&quot;     			# opcode 151
+		&quot;SEND-ENERGY&quot;       			# opcode 152
+		&quot;POPULATION&quot;        			# opcode 153
+		&quot;POPULATION.S&quot;      			# opcode 154
+		&quot;GPS&quot;               			# opcode 155
+		&quot;NEIGHBORS&quot;         			# opcode 156
+		&quot;SHOUT&quot;             			# opcode 157
+		&quot;LISTEN&quot;            			# opcode 158
+		&quot;KEY-PRESS&quot;         			# opcode 159
+		&quot;MOUSE-POS&quot;         			# opcode 160
+		&quot;SPAWN&quot;             			# opcode 161
+		&quot;S0&quot;                			# opcode 162
+		&quot;S0!&quot;               			# opcode 163
+		&quot;G0&quot;                			# opcode 164
+		&quot;G0!&quot;               			# opcode 165
+	}
+
+	0  # number of protected instructions at start of table
+	# instruction table for strain 1
+	{
+		&quot;call&quot;              			# opcode 0
+		&quot;if&quot;                			# opcode 1
+		&quot;ifelse&quot;            			# opcode 2
+		&quot;?loop&quot;             			# opcode 3
+		&quot;?exit&quot;             			# opcode 4
+		&quot;pop&quot;               			# opcode 5
+		&quot;dup&quot;               			# opcode 6
+		&quot;swap&quot;              			# opcode 7
+		&quot;over&quot;              			# opcode 8
+		&quot;rot&quot;               			# opcode 9
+		&quot;?dup&quot;              			# opcode 10
+		&quot;-rot&quot;              			# opcode 11
+		&quot;2swap&quot;             			# opcode 12
+		&quot;2over&quot;             			# opcode 13
+		&quot;2dup&quot;              			# opcode 14
+		&quot;2pop&quot;              			# opcode 15
+		&quot;nip&quot;               			# opcode 16
+		&quot;tuck&quot;              			# opcode 17
+		&quot;1+&quot;                			# opcode 18
+		&quot;1-&quot;                			# opcode 19
+		&quot;2+&quot;                			# opcode 20
+		&quot;2-&quot;                			# opcode 21
+		&quot;2/&quot;                			# opcode 22
+		&quot;2*&quot;                			# opcode 23
+		&quot;abs&quot;               			# opcode 24
+		&quot;sqrt&quot;              			# opcode 25
+		&quot;+&quot;                 			# opcode 26
+		&quot;-&quot;                 			# opcode 27
+		&quot;*&quot;                 			# opcode 28
+		&quot;/&quot;                 			# opcode 29
+		&quot;mod&quot;               			# opcode 30
+		&quot;/mod&quot;              			# opcode 31
+		&quot;negate&quot;            			# opcode 32
+		&quot;2negate&quot;           			# opcode 33
+		&quot;&lt;&lt;&quot;                			# opcode 34
+		&quot;&gt;&gt;&quot;                			# opcode 35
+		&quot;=&quot;                 			# opcode 36
+		&quot;&lt;&gt;&quot;                			# opcode 37
+		&quot;&lt;&quot;                 			# opcode 38
+		&quot;&gt;&quot;                 			# opcode 39
+		&quot;&lt;=&quot;                			# opcode 40
+		&quot;&gt;=&quot;                			# opcode 41
+		&quot;0=&quot;                			# opcode 42
+		&quot;or&quot;                			# opcode 43
+		&quot;and&quot;               			# opcode 44
+		&quot;not&quot;               			# opcode 45
+		&quot;invert&quot;            			# opcode 46
+		&quot;xor&quot;               			# opcode 47
+		&quot;min&quot;               			# opcode 48
+		&quot;max&quot;               			# opcode 49
+		&quot;CB&quot;                			# opcode 50
+		&quot;CBLEN&quot;             			# opcode 51
+		&quot;CSLEN&quot;             			# opcode 52
+		&quot;DSLEN&quot;             			# opcode 53
+		&quot;R0&quot;                			# opcode 54
+		&quot;R1&quot;                			# opcode 55
+		&quot;R2&quot;                			# opcode 56
+		&quot;R3&quot;                			# opcode 57
+		&quot;R4&quot;                			# opcode 58
+		&quot;R5&quot;                			# opcode 59
+		&quot;R6&quot;                			# opcode 60
+		&quot;R7&quot;                			# opcode 61
+		&quot;R8&quot;                			# opcode 62
+		&quot;R9&quot;                			# opcode 63
+		&quot;R0!&quot;               			# opcode 64
+		&quot;R1!&quot;               			# opcode 65
+		&quot;R2!&quot;               			# opcode 66
+		&quot;R3!&quot;               			# opcode 67
+		&quot;R4!&quot;               			# opcode 68
+		&quot;R5!&quot;               			# opcode 69
+		&quot;R6!&quot;               			# opcode 70
+		&quot;R7!&quot;               			# opcode 71
+		&quot;R8!&quot;               			# opcode 72
+		&quot;R9!&quot;               			# opcode 73
+		&quot;R0++&quot;              			# opcode 74
+		&quot;R1++&quot;              			# opcode 75
+		&quot;R2++&quot;              			# opcode 76
+		&quot;R3++&quot;              			# opcode 77
+		&quot;R4++&quot;              			# opcode 78
+		&quot;R5++&quot;              			# opcode 79
+		&quot;R6++&quot;              			# opcode 80
+		&quot;R7++&quot;              			# opcode 81
+		&quot;R8++&quot;              			# opcode 82
+		&quot;R9++&quot;              			# opcode 83
+		&quot;--R0&quot;              			# opcode 84
+		&quot;--R1&quot;              			# opcode 85
+		&quot;--R2&quot;              			# opcode 86
+		&quot;--R3&quot;              			# opcode 87
+		&quot;--R4&quot;              			# opcode 88
+		&quot;--R5&quot;              			# opcode 89
+		&quot;--R6&quot;              			# opcode 90
+		&quot;--R7&quot;              			# opcode 91
+		&quot;--R8&quot;              			# opcode 92
+		&quot;--R9&quot;              			# opcode 93
+		&quot;PEEK&quot;              			# opcode 94
+		&quot;POKE&quot;              			# opcode 95
+		&quot;NUMBER&quot;            			# opcode 96
+		&quot;NUMBER!&quot;           			# opcode 97
+		&quot;?NUMBER!&quot;          			# opcode 98
+		&quot;OPCODE&quot;            			# opcode 99
+		&quot;OPCODE!&quot;           			# opcode 100
+		&quot;TRAP1&quot;             			# opcode 101
+		&quot;TRAP2&quot;             			# opcode 102
+		&quot;TRAP3&quot;             			# opcode 103
+		&quot;TRAP4&quot;             			# opcode 104
+		&quot;TRAP5&quot;             			# opcode 105
+		&quot;TRAP6&quot;             			# opcode 106
+		&quot;TRAP7&quot;             			# opcode 107
+		&quot;TRAP8&quot;             			# opcode 108
+		&quot;TRAP9&quot;             			# opcode 109
+		&quot;sign&quot;              			# opcode 110
+		&quot;pack2&quot;             			# opcode 111
+		&quot;unpack2&quot;           			# opcode 112
+		&quot;MAX_INT&quot;           			# opcode 113
+		&quot;MIN_INT&quot;           			# opcode 114
+		&quot;HALT&quot;              			# opcode 115
+		&quot;nop&quot;               			# opcode 116
+		&quot;CMOVE&quot;             			# opcode 117
+		&quot;OMOVE&quot;             			# opcode 118
+		&quot;ROTATE&quot;            			# opcode 119
+		&quot;EAT&quot;               			# opcode 120
+		&quot;MAKE-SPORE&quot;        			# opcode 121
+		&quot;MAKE-ORGANIC&quot;      			# opcode 122
+		&quot;MAKE-BARRIER&quot;      			# opcode 123
+		&quot;GROW&quot;              			# opcode 124
+		&quot;GROW.CB&quot;           			# opcode 125
+		&quot;CSHIFT&quot;            			# opcode 126
+		&quot;EXUDE&quot;             			# opcode 127
+		&quot;LOOK&quot;              			# opcode 128
+		&quot;NEAREST&quot;           			# opcode 129
+		&quot;FARTHEST&quot;          			# opcode 130
+		&quot;SIZE&quot;              			# opcode 131
+		&quot;BIGGEST&quot;           			# opcode 132
+		&quot;SMALLEST&quot;          			# opcode 133
+		&quot;TEMPERATURE&quot;       			# opcode 134
+		&quot;HOTTEST&quot;           			# opcode 135
+		&quot;COLDEST&quot;           			# opcode 136
+		&quot;SMELL&quot;             			# opcode 137
+		&quot;MOOD&quot;              			# opcode 138
+		&quot;MOOD!&quot;             			# opcode 139
+		&quot;BROADCAST&quot;         			# opcode 140
+		&quot;SEND&quot;              			# opcode 141
+		&quot;RECV&quot;              			# opcode 142
+		&quot;ENERGY&quot;            			# opcode 143
+		&quot;ENERGY.O&quot;          			# opcode 144
+		&quot;AGE&quot;               			# opcode 145
+		&quot;NUM-CELLS&quot;         			# opcode 146
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 147
+		&quot;DIST&quot;              			# opcode 148
+		&quot;CHOOSE&quot;            			# opcode 149
+		&quot;RND&quot;               			# opcode 150
+		&quot;SPREAD-ENERGY&quot;     			# opcode 151
+		&quot;SEND-ENERGY&quot;       			# opcode 152
+		&quot;POPULATION&quot;        			# opcode 153
+		&quot;POPULATION.S&quot;      			# opcode 154
+		&quot;GPS&quot;               			# opcode 155
+		&quot;NEIGHBORS&quot;         			# opcode 156
+		&quot;SHOUT&quot;             			# opcode 157
+		&quot;LISTEN&quot;            			# opcode 158
+		&quot;KEY-PRESS&quot;         			# opcode 159
+		&quot;MOUSE-POS&quot;         			# opcode 160
+		&quot;SPAWN&quot;             			# opcode 161
+		&quot;S0&quot;                			# opcode 162
+		&quot;S0!&quot;               			# opcode 163
+		&quot;G0&quot;                			# opcode 164
+		&quot;G0!&quot;               			# opcode 165
+	}
+
+	0  # number of protected instructions at start of table
+	# instruction table for strain 2
+	{
+		&quot;call&quot;              			# opcode 0
+		&quot;if&quot;                			# opcode 1
+		&quot;ifelse&quot;            			# opcode 2
+		&quot;?loop&quot;             			# opcode 3
+		&quot;?exit&quot;             			# opcode 4
+		&quot;pop&quot;               			# opcode 5
+		&quot;dup&quot;               			# opcode 6
+		&quot;swap&quot;              			# opcode 7
+		&quot;over&quot;              			# opcode 8
+		&quot;rot&quot;               			# opcode 9
+		&quot;?dup&quot;              			# opcode 10
+		&quot;-rot&quot;              			# opcode 11
+		&quot;2swap&quot;             			# opcode 12
+		&quot;2over&quot;             			# opcode 13
+		&quot;2dup&quot;              			# opcode 14
+		&quot;2pop&quot;              			# opcode 15
+		&quot;nip&quot;               			# opcode 16
+		&quot;tuck&quot;              			# opcode 17
+		&quot;1+&quot;                			# opcode 18
+		&quot;1-&quot;                			# opcode 19
+		&quot;2+&quot;                			# opcode 20
+		&quot;2-&quot;                			# opcode 21
+		&quot;2/&quot;                			# opcode 22
+		&quot;2*&quot;                			# opcode 23
+		&quot;abs&quot;               			# opcode 24
+		&quot;sqrt&quot;              			# opcode 25
+		&quot;+&quot;                 			# opcode 26
+		&quot;-&quot;                 			# opcode 27
+		&quot;*&quot;                 			# opcode 28
+		&quot;/&quot;                 			# opcode 29
+		&quot;mod&quot;               			# opcode 30
+		&quot;/mod&quot;              			# opcode 31
+		&quot;negate&quot;            			# opcode 32
+		&quot;2negate&quot;           			# opcode 33
+		&quot;&lt;&lt;&quot;                			# opcode 34
+		&quot;&gt;&gt;&quot;                			# opcode 35
+		&quot;=&quot;                 			# opcode 36
+		&quot;&lt;&gt;&quot;                			# opcode 37
+		&quot;&lt;&quot;                 			# opcode 38
+		&quot;&gt;&quot;                 			# opcode 39
+		&quot;&lt;=&quot;                			# opcode 40
+		&quot;&gt;=&quot;                			# opcode 41
+		&quot;0=&quot;                			# opcode 42
+		&quot;or&quot;                			# opcode 43
+		&quot;and&quot;               			# opcode 44
+		&quot;not&quot;               			# opcode 45
+		&quot;invert&quot;            			# opcode 46
+		&quot;xor&quot;               			# opcode 47
+		&quot;min&quot;               			# opcode 48
+		&quot;max&quot;               			# opcode 49
+		&quot;CB&quot;                			# opcode 50
+		&quot;CBLEN&quot;             			# opcode 51
+		&quot;CSLEN&quot;             			# opcode 52
+		&quot;DSLEN&quot;             			# opcode 53
+		&quot;R0&quot;                			# opcode 54
+		&quot;R1&quot;                			# opcode 55
+		&quot;R2&quot;                			# opcode 56
+		&quot;R3&quot;                			# opcode 57
+		&quot;R4&quot;                			# opcode 58
+		&quot;R5&quot;                			# opcode 59
+		&quot;R6&quot;                			# opcode 60
+		&quot;R7&quot;                			# opcode 61
+		&quot;R8&quot;                			# opcode 62
+		&quot;R9&quot;                			# opcode 63
+		&quot;R0!&quot;               			# opcode 64
+		&quot;R1!&quot;               			# opcode 65
+		&quot;R2!&quot;               			# opcode 66
+		&quot;R3!&quot;               			# opcode 67
+		&quot;R4!&quot;               			# opcode 68
+		&quot;R5!&quot;               			# opcode 69
+		&quot;R6!&quot;               			# opcode 70
+		&quot;R7!&quot;               			# opcode 71
+		&quot;R8!&quot;               			# opcode 72
+		&quot;R9!&quot;               			# opcode 73
+		&quot;R0++&quot;              			# opcode 74
+		&quot;R1++&quot;              			# opcode 75
+		&quot;R2++&quot;              			# opcode 76
+		&quot;R3++&quot;              			# opcode 77
+		&quot;R4++&quot;              			# opcode 78
+		&quot;R5++&quot;              			# opcode 79
+		&quot;R6++&quot;              			# opcode 80
+		&quot;R7++&quot;              			# opcode 81
+		&quot;R8++&quot;              			# opcode 82
+		&quot;R9++&quot;              			# opcode 83
+		&quot;--R0&quot;              			# opcode 84
+		&quot;--R1&quot;              			# opcode 85
+		&quot;--R2&quot;              			# opcode 86
+		&quot;--R3&quot;              			# opcode 87
+		&quot;--R4&quot;              			# opcode 88
+		&quot;--R5&quot;              			# opcode 89
+		&quot;--R6&quot;              			# opcode 90
+		&quot;--R7&quot;              			# opcode 91
+		&quot;--R8&quot;              			# opcode 92
+		&quot;--R9&quot;              			# opcode 93
+		&quot;PEEK&quot;              			# opcode 94
+		&quot;POKE&quot;              			# opcode 95
+		&quot;NUMBER&quot;            			# opcode 96
+		&quot;NUMBER!&quot;           			# opcode 97
+		&quot;?NUMBER!&quot;          			# opcode 98
+		&quot;OPCODE&quot;            			# opcode 99
+		&quot;OPCODE!&quot;           			# opcode 100
+		&quot;TRAP1&quot;             			# opcode 101
+		&quot;TRAP2&quot;             			# opcode 102
+		&quot;TRAP3&quot;             			# opcode 103
+		&quot;TRAP4&quot;             			# opcode 104
+		&quot;TRAP5&quot;             			# opcode 105
+		&quot;TRAP6&quot;             			# opcode 106
+		&quot;TRAP7&quot;             			# opcode 107
+		&quot;TRAP8&quot;             			# opcode 108
+		&quot;TRAP9&quot;             			# opcode 109
+		&quot;sign&quot;              			# opcode 110
+		&quot;pack2&quot;             			# opcode 111
+		&quot;unpack2&quot;           			# opcode 112
+		&quot;MAX_INT&quot;           			# opcode 113
+		&quot;MIN_INT&quot;           			# opcode 114
+		&quot;HALT&quot;              			# opcode 115
+		&quot;nop&quot;               			# opcode 116
+		&quot;CMOVE&quot;             			# opcode 117
+		&quot;OMOVE&quot;             			# opcode 118
+		&quot;ROTATE&quot;            			# opcode 119
+		&quot;EAT&quot;               			# opcode 120
+		&quot;MAKE-SPORE&quot;        			# opcode 121
+		&quot;MAKE-ORGANIC&quot;      			# opcode 122
+		&quot;MAKE-BARRIER&quot;      			# opcode 123
+		&quot;GROW&quot;              			# opcode 124
+		&quot;GROW.CB&quot;           			# opcode 125
+		&quot;CSHIFT&quot;            			# opcode 126
+		&quot;EXUDE&quot;             			# opcode 127
+		&quot;LOOK&quot;              			# opcode 128
+		&quot;NEAREST&quot;           			# opcode 129
+		&quot;FARTHEST&quot;          			# opcode 130
+		&quot;SIZE&quot;              			# opcode 131
+		&quot;BIGGEST&quot;           			# opcode 132
+		&quot;SMALLEST&quot;          			# opcode 133
+		&quot;TEMPERATURE&quot;       			# opcode 134
+		&quot;HOTTEST&quot;           			# opcode 135
+		&quot;COLDEST&quot;           			# opcode 136
+		&quot;SMELL&quot;             			# opcode 137
+		&quot;MOOD&quot;              			# opcode 138
+		&quot;MOOD!&quot;             			# opcode 139
+		&quot;BROADCAST&quot;         			# opcode 140
+		&quot;SEND&quot;              			# opcode 141
+		&quot;RECV&quot;              			# opcode 142
+		&quot;ENERGY&quot;            			# opcode 143
+		&quot;ENERGY.O&quot;          			# opcode 144
+		&quot;AGE&quot;               			# opcode 145
+		&quot;NUM-CELLS&quot;         			# opcode 146
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 147
+		&quot;DIST&quot;              			# opcode 148
+		&quot;CHOOSE&quot;            			# opcode 149
+		&quot;RND&quot;               			# opcode 150
+		&quot;SPREAD-ENERGY&quot;     			# opcode 151
+		&quot;SEND-ENERGY&quot;       			# opcode 152
+		&quot;POPULATION&quot;        			# opcode 153
+		&quot;POPULATION.S&quot;      			# opcode 154
+		&quot;GPS&quot;               			# opcode 155
+		&quot;NEIGHBORS&quot;         			# opcode 156
+		&quot;SHOUT&quot;             			# opcode 157
+		&quot;LISTEN&quot;            			# opcode 158
+		&quot;KEY-PRESS&quot;         			# opcode 159
+		&quot;MOUSE-POS&quot;         			# opcode 160
+		&quot;SPAWN&quot;             			# opcode 161
+		&quot;S0&quot;                			# opcode 162
+		&quot;S0!&quot;               			# opcode 163
+		&quot;G0&quot;                			# opcode 164
+		&quot;G0!&quot;               			# opcode 165
+	}
+
+	0  # number of protected instructions at start of table
+	# instruction table for strain 3
+	{
+		&quot;call&quot;              			# opcode 0
+		&quot;if&quot;                			# opcode 1
+		&quot;ifelse&quot;            			# opcode 2
+		&quot;?loop&quot;             			# opcode 3
+		&quot;?exit&quot;             			# opcode 4
+		&quot;pop&quot;               			# opcode 5
+		&quot;dup&quot;               			# opcode 6
+		&quot;swap&quot;              			# opcode 7
+		&quot;over&quot;              			# opcode 8
+		&quot;rot&quot;               			# opcode 9
+		&quot;?dup&quot;              			# opcode 10
+		&quot;-rot&quot;              			# opcode 11
+		&quot;2swap&quot;             			# opcode 12
+		&quot;2over&quot;             			# opcode 13
+		&quot;2dup&quot;              			# opcode 14
+		&quot;2pop&quot;              			# opcode 15
+		&quot;nip&quot;               			# opcode 16
+		&quot;tuck&quot;              			# opcode 17
+		&quot;1+&quot;                			# opcode 18
+		&quot;1-&quot;                			# opcode 19
+		&quot;2+&quot;                			# opcode 20
+		&quot;2-&quot;                			# opcode 21
+		&quot;2/&quot;                			# opcode 22
+		&quot;2*&quot;                			# opcode 23
+		&quot;abs&quot;               			# opcode 24
+		&quot;sqrt&quot;              			# opcode 25
+		&quot;+&quot;                 			# opcode 26
+		&quot;-&quot;                 			# opcode 27
+		&quot;*&quot;                 			# opcode 28
+		&quot;/&quot;                 			# opcode 29
+		&quot;mod&quot;               			# opcode 30
+		&quot;/mod&quot;              			# opcode 31
+		&quot;negate&quot;            			# opcode 32
+		&quot;2negate&quot;           			# opcode 33
+		&quot;&lt;&lt;&quot;                			# opcode 34
+		&quot;&gt;&gt;&quot;                			# opcode 35
+		&quot;=&quot;                 			# opcode 36
+		&quot;&lt;&gt;&quot;                			# opcode 37
+		&quot;&lt;&quot;                 			# opcode 38
+		&quot;&gt;&quot;                 			# opcode 39
+		&quot;&lt;=&quot;                			# opcode 40
+		&quot;&gt;=&quot;                			# opcode 41
+		&quot;0=&quot;                			# opcode 42
+		&quot;or&quot;                			# opcode 43
+		&quot;and&quot;               			# opcode 44
+		&quot;not&quot;               			# opcode 45
+		&quot;invert&quot;            			# opcode 46
+		&quot;xor&quot;               			# opcode 47
+		&quot;min&quot;               			# opcode 48
+		&quot;max&quot;               			# opcode 49
+		&quot;CB&quot;                			# opcode 50
+		&quot;CBLEN&quot;             			# opcode 51
+		&quot;CSLEN&quot;             			# opcode 52
+		&quot;DSLEN&quot;             			# opcode 53
+		&quot;R0&quot;                			# opcode 54
+		&quot;R1&quot;                			# opcode 55
+		&quot;R2&quot;                			# opcode 56
+		&quot;R3&quot;                			# opcode 57
+		&quot;R4&quot;                			# opcode 58
+		&quot;R5&quot;                			# opcode 59
+		&quot;R6&quot;                			# opcode 60
+		&quot;R7&quot;                			# opcode 61
+		&quot;R8&quot;                			# opcode 62
+		&quot;R9&quot;                			# opcode 63
+		&quot;R0!&quot;               			# opcode 64
+		&quot;R1!&quot;               			# opcode 65
+		&quot;R2!&quot;               			# opcode 66
+		&quot;R3!&quot;               			# opcode 67
+		&quot;R4!&quot;               			# opcode 68
+		&quot;R5!&quot;               			# opcode 69
+		&quot;R6!&quot;               			# opcode 70
+		&quot;R7!&quot;               			# opcode 71
+		&quot;R8!&quot;               			# opcode 72
+		&quot;R9!&quot;               			# opcode 73
+		&quot;R0++&quot;              			# opcode 74
+		&quot;R1++&quot;              			# opcode 75
+		&quot;R2++&quot;              			# opcode 76
+		&quot;R3++&quot;              			# opcode 77
+		&quot;R4++&quot;              			# opcode 78
+		&quot;R5++&quot;              			# opcode 79
+		&quot;R6++&quot;              			# opcode 80
+		&quot;R7++&quot;              			# opcode 81
+		&quot;R8++&quot;              			# opcode 82
+		&quot;R9++&quot;              			# opcode 83
+		&quot;--R0&quot;              			# opcode 84
+		&quot;--R1&quot;              			# opcode 85
+		&quot;--R2&quot;              			# opcode 86
+		&quot;--R3&quot;              			# opcode 87
+		&quot;--R4&quot;              			# opcode 88
+		&quot;--R5&quot;              			# opcode 89
+		&quot;--R6&quot;              			# opcode 90
+		&quot;--R7&quot;              			# opcode 91
+		&quot;--R8&quot;              			# opcode 92
+		&quot;--R9&quot;              			# opcode 93
+		&quot;PEEK&quot;              			# opcode 94
+		&quot;POKE&quot;              			# opcode 95
+		&quot;NUMBER&quot;            			# opcode 96
+		&quot;NUMBER!&quot;           			# opcode 97
+		&quot;?NUMBER!&quot;          			# opcode 98
+		&quot;OPCODE&quot;            			# opcode 99
+		&quot;OPCODE!&quot;           			# opcode 100
+		&quot;TRAP1&quot;             			# opcode 101
+		&quot;TRAP2&quot;             			# opcode 102
+		&quot;TRAP3&quot;             			# opcode 103
+		&quot;TRAP4&quot;             			# opcode 104
+		&quot;TRAP5&quot;             			# opcode 105
+		&quot;TRAP6&quot;             			# opcode 106
+		&quot;TRAP7&quot;             			# opcode 107
+		&quot;TRAP8&quot;             			# opcode 108
+		&quot;TRAP9&quot;             			# opcode 109
+		&quot;sign&quot;              			# opcode 110
+		&quot;pack2&quot;             			# opcode 111
+		&quot;unpack2&quot;           			# opcode 112
+		&quot;MAX_INT&quot;           			# opcode 113
+		&quot;MIN_INT&quot;           			# opcode 114
+		&quot;HALT&quot;              			# opcode 115
+		&quot;nop&quot;               			# opcode 116
+		&quot;CMOVE&quot;             			# opcode 117
+		&quot;OMOVE&quot;             			# opcode 118
+		&quot;ROTATE&quot;            			# opcode 119
+		&quot;EAT&quot;               			# opcode 120
+		&quot;MAKE-SPORE&quot;        			# opcode 121
+		&quot;MAKE-ORGANIC&quot;      			# opcode 122
+		&quot;GROW&quot;              			# opcode 123
+		&quot;GROW.CB&quot;           			# opcode 124
+		&quot;CSHIFT&quot;            			# opcode 125
+		&quot;EXUDE&quot;             			# opcode 126
+		&quot;LOOK&quot;              			# opcode 127
+		&quot;NEAREST&quot;           			# opcode 128
+		&quot;FARTHEST&quot;          			# opcode 129
+		&quot;SIZE&quot;              			# opcode 130
+		&quot;BIGGEST&quot;           			# opcode 131
+		&quot;SMALLEST&quot;          			# opcode 132
+		&quot;TEMPERATURE&quot;       			# opcode 133
+		&quot;HOTTEST&quot;           			# opcode 134
+		&quot;COLDEST&quot;           			# opcode 135
+		&quot;SMELL&quot;             			# opcode 136
+		&quot;MOOD&quot;              			# opcode 137
+		&quot;MOOD!&quot;             			# opcode 138
+		&quot;BROADCAST&quot;         			# opcode 139
+		&quot;SEND&quot;              			# opcode 140
+		&quot;RECV&quot;              			# opcode 141
+		&quot;ENERGY&quot;            			# opcode 142
+		&quot;ENERGY.O&quot;          			# opcode 143
+		&quot;AGE&quot;               			# opcode 144
+		&quot;NUM-CELLS&quot;         			# opcode 145
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 146
+		&quot;DIST&quot;              			# opcode 147
+		&quot;CHOOSE&quot;            			# opcode 148
+		&quot;RND&quot;               			# opcode 149
+		&quot;SPREAD-ENERGY&quot;     			# opcode 150
+		&quot;SEND-ENERGY&quot;       			# opcode 151
+		&quot;NEIGHBORS&quot;         			# opcode 152
+		&quot;SHOUT&quot;             			# opcode 153
+		&quot;LISTEN&quot;            			# opcode 154
+	}
+
+	0  # number of protected instructions at start of table
+	# instruction table for strain 4
+	{
+		&quot;call&quot;              			# opcode 0
+		&quot;if&quot;                			# opcode 1
+		&quot;ifelse&quot;            			# opcode 2
+		&quot;?loop&quot;             			# opcode 3
+		&quot;?exit&quot;             			# opcode 4
+		&quot;pop&quot;               			# opcode 5
+		&quot;dup&quot;               			# opcode 6
+		&quot;swap&quot;              			# opcode 7
+		&quot;over&quot;              			# opcode 8
+		&quot;rot&quot;               			# opcode 9
+		&quot;?dup&quot;              			# opcode 10
+		&quot;-rot&quot;              			# opcode 11
+		&quot;2swap&quot;             			# opcode 12
+		&quot;2over&quot;             			# opcode 13
+		&quot;2dup&quot;              			# opcode 14
+		&quot;2pop&quot;              			# opcode 15
+		&quot;nip&quot;               			# opcode 16
+		&quot;tuck&quot;              			# opcode 17
+		&quot;1+&quot;                			# opcode 18
+		&quot;1-&quot;                			# opcode 19
+		&quot;2+&quot;                			# opcode 20
+		&quot;2-&quot;                			# opcode 21
+		&quot;2/&quot;                			# opcode 22
+		&quot;2*&quot;                			# opcode 23
+		&quot;abs&quot;               			# opcode 24
+		&quot;sqrt&quot;              			# opcode 25
+		&quot;+&quot;                 			# opcode 26
+		&quot;-&quot;                 			# opcode 27
+		&quot;*&quot;                 			# opcode 28
+		&quot;/&quot;                 			# opcode 29
+		&quot;mod&quot;               			# opcode 30
+		&quot;/mod&quot;              			# opcode 31
+		&quot;negate&quot;            			# opcode 32
+		&quot;2negate&quot;           			# opcode 33
+		&quot;&lt;&lt;&quot;                			# opcode 34
+		&quot;&gt;&gt;&quot;                			# opcode 35
+		&quot;=&quot;                 			# opcode 36
+		&quot;&lt;&gt;&quot;                			# opcode 37
+		&quot;&lt;&quot;                 			# opcode 38
+		&quot;&gt;&quot;                 			# opcode 39
+		&quot;&lt;=&quot;                			# opcode 40
+		&quot;&gt;=&quot;                			# opcode 41
+		&quot;0=&quot;                			# opcode 42
+		&quot;or&quot;                			# opcode 43
+		&quot;and&quot;               			# opcode 44
+		&quot;not&quot;               			# opcode 45
+		&quot;invert&quot;            			# opcode 46
+		&quot;xor&quot;               			# opcode 47
+		&quot;min&quot;               			# opcode 48
+		&quot;max&quot;               			# opcode 49
+		&quot;CB&quot;                			# opcode 50
+		&quot;CBLEN&quot;             			# opcode 51
+		&quot;CSLEN&quot;             			# opcode 52
+		&quot;DSLEN&quot;             			# opcode 53
+		&quot;R0&quot;                			# opcode 54
+		&quot;R1&quot;                			# opcode 55
+		&quot;R2&quot;                			# opcode 56
+		&quot;R3&quot;                			# opcode 57
+		&quot;R4&quot;                			# opcode 58
+		&quot;R5&quot;                			# opcode 59
+		&quot;R6&quot;                			# opcode 60
+		&quot;R7&quot;                			# opcode 61
+		&quot;R8&quot;                			# opcode 62
+		&quot;R9&quot;                			# opcode 63
+		&quot;R0!&quot;               			# opcode 64
+		&quot;R1!&quot;               			# opcode 65
+		&quot;R2!&quot;               			# opcode 66
+		&quot;R3!&quot;               			# opcode 67
+		&quot;R4!&quot;               			# opcode 68
+		&quot;R5!&quot;               			# opcode 69
+		&quot;R6!&quot;               			# opcode 70
+		&quot;R7!&quot;               			# opcode 71
+		&quot;R8!&quot;               			# opcode 72
+		&quot;R9!&quot;               			# opcode 73
+		&quot;R0++&quot;              			# opcode 74
+		&quot;R1++&quot;              			# opcode 75
+		&quot;R2++&quot;              			# opcode 76
+		&quot;R3++&quot;              			# opcode 77
+		&quot;R4++&quot;              			# opcode 78
+		&quot;R5++&quot;              			# opcode 79
+		&quot;R6++&quot;              			# opcode 80
+		&quot;R7++&quot;              			# opcode 81
+		&quot;R8++&quot;              			# opcode 82
+		&quot;R9++&quot;              			# opcode 83
+		&quot;--R0&quot;              			# opcode 84
+		&quot;--R1&quot;              			# opcode 85
+		&quot;--R2&quot;              			# opcode 86
+		&quot;--R3&quot;              			# opcode 87
+		&quot;--R4&quot;              			# opcode 88
+		&quot;--R5&quot;              			# opcode 89
+		&quot;--R6&quot;              			# opcode 90
+		&quot;--R7&quot;              			# opcode 91
+		&quot;--R8&quot;              			# opcode 92
+		&quot;--R9&quot;              			# opcode 93
+		&quot;PEEK&quot;              			# opcode 94
+		&quot;POKE&quot;              			# opcode 95
+		&quot;NUMBER&quot;            			# opcode 96
+		&quot;NUMBER!&quot;           			# opcode 97
+		&quot;?NUMBER!&quot;          			# opcode 98
+		&quot;OPCODE&quot;            			# opcode 99
+		&quot;OPCODE!&quot;           			# opcode 100
+		&quot;TRAP1&quot;             			# opcode 101
+		&quot;TRAP2&quot;             			# opcode 102
+		&quot;TRAP3&quot;             			# opcode 103
+		&quot;TRAP4&quot;             			# opcode 104
+		&quot;TRAP5&quot;             			# opcode 105
+		&quot;TRAP6&quot;             			# opcode 106
+		&quot;TRAP7&quot;             			# opcode 107
+		&quot;TRAP8&quot;             			# opcode 108
+		&quot;TRAP9&quot;             			# opcode 109
+		&quot;sign&quot;              			# opcode 110
+		&quot;pack2&quot;             			# opcode 111
+		&quot;unpack2&quot;           			# opcode 112
+		&quot;MAX_INT&quot;           			# opcode 113
+		&quot;MIN_INT&quot;           			# opcode 114
+		&quot;HALT&quot;              			# opcode 115
+		&quot;nop&quot;               			# opcode 116
+		&quot;CMOVE&quot;             			# opcode 117
+		&quot;OMOVE&quot;             			# opcode 118
+		&quot;ROTATE&quot;            			# opcode 119
+		&quot;EAT&quot;               			# opcode 120
+		&quot;MAKE-SPORE&quot;        			# opcode 121
+		&quot;MAKE-ORGANIC&quot;      			# opcode 122
+		&quot;GROW&quot;              			# opcode 123
+		&quot;GROW.CB&quot;           			# opcode 124
+		&quot;CSHIFT&quot;            			# opcode 125
+		&quot;EXUDE&quot;             			# opcode 126
+		&quot;LOOK&quot;              			# opcode 127
+		&quot;NEAREST&quot;           			# opcode 128
+		&quot;FARTHEST&quot;          			# opcode 129
+		&quot;SIZE&quot;              			# opcode 130
+		&quot;BIGGEST&quot;           			# opcode 131
+		&quot;SMALLEST&quot;          			# opcode 132
+		&quot;TEMPERATURE&quot;       			# opcode 133
+		&quot;HOTTEST&quot;           			# opcode 134
+		&quot;COLDEST&quot;           			# opcode 135
+		&quot;SMELL&quot;             			# opcode 136
+		&quot;MOOD&quot;              			# opcode 137
+		&quot;MOOD!&quot;             			# opcode 138
+		&quot;BROADCAST&quot;         			# opcode 139
+		&quot;SEND&quot;              			# opcode 140
+		&quot;RECV&quot;              			# opcode 141
+		&quot;ENERGY&quot;            			# opcode 142
+		&quot;ENERGY.O&quot;          			# opcode 143
+		&quot;AGE&quot;               			# opcode 144
+		&quot;NUM-CELLS&quot;         			# opcode 145
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 146
+		&quot;DIST&quot;              			# opcode 147
+		&quot;CHOOSE&quot;            			# opcode 148
+		&quot;RND&quot;               			# opcode 149
+		&quot;SPREAD-ENERGY&quot;     			# opcode 150
+		&quot;SEND-ENERGY&quot;       			# opcode 151
+		&quot;NEIGHBORS&quot;         			# opcode 152
+		&quot;SHOUT&quot;             			# opcode 153
+		&quot;LISTEN&quot;            			# opcode 154
+	}
+
+	0  # number of protected instructions at start of table
+	# instruction table for strain 5
+	{
+		&quot;call&quot;              			# opcode 0
+		&quot;if&quot;                			# opcode 1
+		&quot;ifelse&quot;            			# opcode 2
+		&quot;?loop&quot;             			# opcode 3
+		&quot;?exit&quot;             			# opcode 4
+		&quot;pop&quot;               			# opcode 5
+		&quot;dup&quot;               			# opcode 6
+		&quot;swap&quot;              			# opcode 7
+		&quot;over&quot;              			# opcode 8
+		&quot;rot&quot;               			# opcode 9
+		&quot;?dup&quot;              			# opcode 10
+		&quot;-rot&quot;              			# opcode 11
+		&quot;2swap&quot;             			# opcode 12
+		&quot;2over&quot;             			# opcode 13
+		&quot;2dup&quot;              			# opcode 14
+		&quot;2pop&quot;              			# opcode 15
+		&quot;nip&quot;               			# opcode 16
+		&quot;tuck&quot;              			# opcode 17
+		&quot;1+&quot;                			# opcode 18
+		&quot;1-&quot;                			# opcode 19
+		&quot;2+&quot;                			# opcode 20
+		&quot;2-&quot;                			# opcode 21
+		&quot;2/&quot;                			# opcode 22
+		&quot;2*&quot;                			# opcode 23
+		&quot;abs&quot;               			# opcode 24
+		&quot;sqrt&quot;              			# opcode 25
+		&quot;+&quot;                 			# opcode 26
+		&quot;-&quot;                 			# opcode 27
+		&quot;*&quot;                 			# opcode 28
+		&quot;/&quot;                 			# opcode 29
+		&quot;mod&quot;               			# opcode 30
+		&quot;/mod&quot;              			# opcode 31
+		&quot;negate&quot;            			# opcode 32
+		&quot;2negate&quot;           			# opcode 33
+		&quot;&lt;&lt;&quot;                			# opcode 34
+		&quot;&gt;&gt;&quot;                			# opcode 35
+		&quot;=&quot;                 			# opcode 36
+		&quot;&lt;&gt;&quot;                			# opcode 37
+		&quot;&lt;&quot;                 			# opcode 38
+		&quot;&gt;&quot;                 			# opcode 39
+		&quot;&lt;=&quot;                			# opcode 40
+		&quot;&gt;=&quot;                			# opcode 41
+		&quot;0=&quot;                			# opcode 42
+		&quot;or&quot;                			# opcode 43
+		&quot;and&quot;               			# opcode 44
+		&quot;not&quot;               			# opcode 45
+		&quot;invert&quot;            			# opcode 46
+		&quot;xor&quot;               			# opcode 47
+		&quot;min&quot;               			# opcode 48
+		&quot;max&quot;               			# opcode 49
+		&quot;CB&quot;                			# opcode 50
+		&quot;CBLEN&quot;             			# opcode 51
+		&quot;CSLEN&quot;             			# opcode 52
+		&quot;DSLEN&quot;             			# opcode 53
+		&quot;R0&quot;                			# opcode 54
+		&quot;R1&quot;                			# opcode 55
+		&quot;R2&quot;                			# opcode 56
+		&quot;R3&quot;                			# opcode 57
+		&quot;R4&quot;                			# opcode 58
+		&quot;R5&quot;                			# opcode 59
+		&quot;R6&quot;                			# opcode 60
+		&quot;R7&quot;                			# opcode 61
+		&quot;R8&quot;                			# opcode 62
+		&quot;R9&quot;                			# opcode 63
+		&quot;R0!&quot;               			# opcode 64
+		&quot;R1!&quot;               			# opcode 65
+		&quot;R2!&quot;               			# opcode 66
+		&quot;R3!&quot;               			# opcode 67
+		&quot;R4!&quot;               			# opcode 68
+		&quot;R5!&quot;               			# opcode 69
+		&quot;R6!&quot;               			# opcode 70
+		&quot;R7!&quot;               			# opcode 71
+		&quot;R8!&quot;               			# opcode 72
+		&quot;R9!&quot;               			# opcode 73
+		&quot;R0++&quot;              			# opcode 74
+		&quot;R1++&quot;              			# opcode 75
+		&quot;R2++&quot;              			# opcode 76
+		&quot;R3++&quot;              			# opcode 77
+		&quot;R4++&quot;              			# opcode 78
+		&quot;R5++&quot;              			# opcode 79
+		&quot;R6++&quot;              			# opcode 80
+		&quot;R7++&quot;              			# opcode 81
+		&quot;R8++&quot;              			# opcode 82
+		&quot;R9++&quot;              			# opcode 83
+		&quot;--R0&quot;              			# opcode 84
+		&quot;--R1&quot;              			# opcode 85
+		&quot;--R2&quot;              			# opcode 86
+		&quot;--R3&quot;              			# opcode 87
+		&quot;--R4&quot;              			# opcode 88
+		&quot;--R5&quot;              			# opcode 89
+		&quot;--R6&quot;              			# opcode 90
+		&quot;--R7&quot;              			# opcode 91
+		&quot;--R8&quot;              			# opcode 92
+		&quot;--R9&quot;              			# opcode 93
+		&quot;PEEK&quot;              			# opcode 94
+		&quot;POKE&quot;              			# opcode 95
+		&quot;NUMBER&quot;            			# opcode 96
+		&quot;NUMBER!&quot;           			# opcode 97
+		&quot;?NUMBER!&quot;          			# opcode 98
+		&quot;OPCODE&quot;            			# opcode 99
+		&quot;OPCODE!&quot;           			# opcode 100
+		&quot;TRAP1&quot;             			# opcode 101
+		&quot;TRAP2&quot;             			# opcode 102
+		&quot;TRAP3&quot;             			# opcode 103
+		&quot;TRAP4&quot;             			# opcode 104
+		&quot;TRAP5&quot;             			# opcode 105
+		&quot;TRAP6&quot;             			# opcode 106
+		&quot;TRAP7&quot;             			# opcode 107
+		&quot;TRAP8&quot;             			# opcode 108
+		&quot;TRAP9&quot;             			# opcode 109
+		&quot;sign&quot;              			# opcode 110
+		&quot;pack2&quot;             			# opcode 111
+		&quot;unpack2&quot;           			# opcode 112
+		&quot;MAX_INT&quot;           			# opcode 113
+		&quot;MIN_INT&quot;           			# opcode 114
+		&quot;HALT&quot;              			# opcode 115
+		&quot;nop&quot;               			# opcode 116
+		&quot;CMOVE&quot;             			# opcode 117
+		&quot;OMOVE&quot;             			# opcode 118
+		&quot;ROTATE&quot;            			# opcode 119
+		&quot;EAT&quot;               			# opcode 120
+		&quot;MAKE-SPORE&quot;        			# opcode 121
+		&quot;MAKE-ORGANIC&quot;      			# opcode 122
+		&quot;MAKE-BARRIER&quot;      			# opcode 123
+		&quot;GROW&quot;              			# opcode 124
+		&quot;GROW.CB&quot;           			# opcode 125
+		&quot;CSHIFT&quot;            			# opcode 126
+		&quot;EXUDE&quot;             			# opcode 127
+		&quot;LOOK&quot;              			# opcode 128
+		&quot;NEAREST&quot;           			# opcode 129
+		&quot;FARTHEST&quot;          			# opcode 130
+		&quot;SIZE&quot;              			# opcode 131
+		&quot;BIGGEST&quot;           			# opcode 132
+		&quot;SMALLEST&quot;          			# opcode 133
+		&quot;TEMPERATURE&quot;       			# opcode 134
+		&quot;HOTTEST&quot;           			# opcode 135
+		&quot;COLDEST&quot;           			# opcode 136
+		&quot;SMELL&quot;             			# opcode 137
+		&quot;MOOD&quot;              			# opcode 138
+		&quot;MOOD!&quot;             			# opcode 139
+		&quot;BROADCAST&quot;         			# opcode 140
+		&quot;SEND&quot;              			# opcode 141
+		&quot;RECV&quot;              			# opcode 142
+		&quot;ENERGY&quot;            			# opcode 143
+		&quot;ENERGY.O&quot;          			# opcode 144
+		&quot;AGE&quot;               			# opcode 145
+		&quot;NUM-CELLS&quot;         			# opcode 146
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 147
+		&quot;DIST&quot;              			# opcode 148
+		&quot;CHOOSE&quot;            			# opcode 149
+		&quot;RND&quot;               			# opcode 150
+		&quot;SPREAD-ENERGY&quot;     			# opcode 151
+		&quot;SEND-ENERGY&quot;       			# opcode 152
+		&quot;POPULATION&quot;        			# opcode 153
+		&quot;POPULATION.S&quot;      			# opcode 154
+		&quot;GPS&quot;               			# opcode 155
+		&quot;NEIGHBORS&quot;         			# opcode 156
+		&quot;SHOUT&quot;             			# opcode 157
+		&quot;LISTEN&quot;            			# opcode 158
+		&quot;KEY-PRESS&quot;         			# opcode 159
+		&quot;MOUSE-POS&quot;         			# opcode 160
+		&quot;SPAWN&quot;             			# opcode 161
+		&quot;S0&quot;                			# opcode 162
+		&quot;S0!&quot;               			# opcode 163
+		&quot;G0&quot;                			# opcode 164
+		&quot;G0!&quot;               			# opcode 165
+	}
+
+	0  # number of protected instructions at start of table
+	# instruction table for strain 6
+	{
+		&quot;call&quot;              			# opcode 0
+		&quot;if&quot;                			# opcode 1
+		&quot;ifelse&quot;            			# opcode 2
+		&quot;?loop&quot;             			# opcode 3
+		&quot;?exit&quot;             			# opcode 4
+		&quot;pop&quot;               			# opcode 5
+		&quot;dup&quot;               			# opcode 6
+		&quot;swap&quot;              			# opcode 7
+		&quot;over&quot;              			# opcode 8
+		&quot;rot&quot;               			# opcode 9
+		&quot;?dup&quot;              			# opcode 10
+		&quot;-rot&quot;              			# opcode 11
+		&quot;2swap&quot;             			# opcode 12
+		&quot;2over&quot;             			# opcode 13
+		&quot;2dup&quot;              			# opcode 14
+		&quot;2pop&quot;              			# opcode 15
+		&quot;nip&quot;               			# opcode 16
+		&quot;tuck&quot;              			# opcode 17
+		&quot;1+&quot;                			# opcode 18
+		&quot;1-&quot;                			# opcode 19
+		&quot;2+&quot;                			# opcode 20
+		&quot;2-&quot;                			# opcode 21
+		&quot;2/&quot;                			# opcode 22
+		&quot;2*&quot;                			# opcode 23
+		&quot;abs&quot;               			# opcode 24
+		&quot;sqrt&quot;              			# opcode 25
+		&quot;+&quot;                 			# opcode 26
+		&quot;-&quot;                 			# opcode 27
+		&quot;*&quot;                 			# opcode 28
+		&quot;/&quot;                 			# opcode 29
+		&quot;mod&quot;               			# opcode 30
+		&quot;/mod&quot;              			# opcode 31
+		&quot;negate&quot;            			# opcode 32
+		&quot;2negate&quot;           			# opcode 33
+		&quot;&lt;&lt;&quot;                			# opcode 34
+		&quot;&gt;&gt;&quot;                			# opcode 35
+		&quot;=&quot;                 			# opcode 36
+		&quot;&lt;&gt;&quot;                			# opcode 37
+		&quot;&lt;&quot;                 			# opcode 38
+		&quot;&gt;&quot;                 			# opcode 39
+		&quot;&lt;=&quot;                			# opcode 40
+		&quot;&gt;=&quot;                			# opcode 41
+		&quot;0=&quot;                			# opcode 42
+		&quot;or&quot;                			# opcode 43
+		&quot;and&quot;               			# opcode 44
+		&quot;not&quot;               			# opcode 45
+		&quot;invert&quot;            			# opcode 46
+		&quot;xor&quot;               			# opcode 47
+		&quot;min&quot;               			# opcode 48
+		&quot;max&quot;               			# opcode 49
+		&quot;CB&quot;                			# opcode 50
+		&quot;CBLEN&quot;             			# opcode 51
+		&quot;CSLEN&quot;             			# opcode 52
+		&quot;DSLEN&quot;             			# opcode 53
+		&quot;R0&quot;                			# opcode 54
+		&quot;R1&quot;                			# opcode 55
+		&quot;R2&quot;                			# opcode 56
+		&quot;R3&quot;                			# opcode 57
+		&quot;R4&quot;                			# opcode 58
+		&quot;R5&quot;                			# opcode 59
+		&quot;R6&quot;                			# opcode 60
+		&quot;R7&quot;                			# opcode 61
+		&quot;R8&quot;                			# opcode 62
+		&quot;R9&quot;                			# opcode 63
+		&quot;R0!&quot;               			# opcode 64
+		&quot;R1!&quot;               			# opcode 65
+		&quot;R2!&quot;               			# opcode 66
+		&quot;R3!&quot;               			# opcode 67
+		&quot;R4!&quot;               			# opcode 68
+		&quot;R5!&quot;               			# opcode 69
+		&quot;R6!&quot;               			# opcode 70
+		&quot;R7!&quot;               			# opcode 71
+		&quot;R8!&quot;               			# opcode 72
+		&quot;R9!&quot;               			# opcode 73
+		&quot;R0++&quot;              			# opcode 74
+		&quot;R1++&quot;              			# opcode 75
+		&quot;R2++&quot;              			# opcode 76
+		&quot;R3++&quot;              			# opcode 77
+		&quot;R4++&quot;              			# opcode 78
+		&quot;R5++&quot;              			# opcode 79
+		&quot;R6++&quot;              			# opcode 80
+		&quot;R7++&quot;              			# opcode 81
+		&quot;R8++&quot;              			# opcode 82
+		&quot;R9++&quot;              			# opcode 83
+		&quot;--R0&quot;              			# opcode 84
+		&quot;--R1&quot;              			# opcode 85
+		&quot;--R2&quot;              			# opcode 86
+		&quot;--R3&quot;              			# opcode 87
+		&quot;--R4&quot;              			# opcode 88
+		&quot;--R5&quot;              			# opcode 89
+		&quot;--R6&quot;              			# opcode 90
+		&quot;--R7&quot;              			# opcode 91
+		&quot;--R8&quot;              			# opcode 92
+		&quot;--R9&quot;              			# opcode 93
+		&quot;PEEK&quot;              			# opcode 94
+		&quot;POKE&quot;              			# opcode 95
+		&quot;NUMBER&quot;            			# opcode 96
+		&quot;NUMBER!&quot;           			# opcode 97
+		&quot;?NUMBER!&quot;          			# opcode 98
+		&quot;OPCODE&quot;            			# opcode 99
+		&quot;OPCODE!&quot;           			# opcode 100
+		&quot;TRAP1&quot;             			# opcode 101
+		&quot;TRAP2&quot;             			# opcode 102
+		&quot;TRAP3&quot;             			# opcode 103
+		&quot;TRAP4&quot;             			# opcode 104
+		&quot;TRAP5&quot;             			# opcode 105
+		&quot;TRAP6&quot;             			# opcode 106
+		&quot;TRAP7&quot;             			# opcode 107
+		&quot;TRAP8&quot;             			# opcode 108
+		&quot;TRAP9&quot;             			# opcode 109
+		&quot;sign&quot;              			# opcode 110
+		&quot;pack2&quot;             			# opcode 111
+		&quot;unpack2&quot;           			# opcode 112
+		&quot;MAX_INT&quot;           			# opcode 113
+		&quot;MIN_INT&quot;           			# opcode 114
+		&quot;HALT&quot;              			# opcode 115
+		&quot;nop&quot;               			# opcode 116
+		&quot;CMOVE&quot;             			# opcode 117
+		&quot;OMOVE&quot;             			# opcode 118
+		&quot;ROTATE&quot;            			# opcode 119
+		&quot;EAT&quot;               			# opcode 120
+		&quot;MAKE-SPORE&quot;        			# opcode 121
+		&quot;MAKE-ORGANIC&quot;      			# opcode 122
+		&quot;GROW&quot;              			# opcode 123
+		&quot;GROW.CB&quot;           			# opcode 124
+		&quot;CSHIFT&quot;            			# opcode 125
+		&quot;EXUDE&quot;             			# opcode 126
+		&quot;LOOK&quot;              			# opcode 127
+		&quot;NEAREST&quot;           			# opcode 128
+		&quot;FARTHEST&quot;          			# opcode 129
+		&quot;SIZE&quot;              			# opcode 130
+		&quot;BIGGEST&quot;           			# opcode 131
+		&quot;SMALLEST&quot;          			# opcode 132
+		&quot;TEMPERATURE&quot;       			# opcode 133
+		&quot;HOTTEST&quot;           			# opcode 134
+		&quot;COLDEST&quot;           			# opcode 135
+		&quot;SMELL&quot;             			# opcode 136
+		&quot;MOOD&quot;              			# opcode 137
+		&quot;MOOD!&quot;             			# opcode 138
+		&quot;BROADCAST&quot;         			# opcode 139
+		&quot;SEND&quot;              			# opcode 140
+		&quot;RECV&quot;              			# opcode 141
+		&quot;ENERGY&quot;            			# opcode 142
+		&quot;ENERGY.O&quot;          			# opcode 143
+		&quot;AGE&quot;               			# opcode 144
+		&quot;NUM-CELLS&quot;         			# opcode 145
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 146
+		&quot;DIST&quot;              			# opcode 147
+		&quot;CHOOSE&quot;            			# opcode 148
+		&quot;RND&quot;               			# opcode 149
+		&quot;SPREAD-ENERGY&quot;     			# opcode 150
+		&quot;SEND-ENERGY&quot;       			# opcode 151
+		&quot;NEIGHBORS&quot;         			# opcode 152
+		&quot;SHOUT&quot;             			# opcode 153
+		&quot;LISTEN&quot;            			# opcode 154
+	}
+
+	11  # number of protected instructions at start of table
+	# instruction table for strain 7
+	{
+		&quot;MAKE-BARRIER&quot;      			# opcode 0
+		&quot;POPULATION&quot;        			# opcode 1
+		&quot;POPULATION.S&quot;      			# opcode 2
+		&quot;GPS&quot;               			# opcode 3
+		&quot;KEY-PRESS&quot;         			# opcode 4
+		&quot;MOUSE-POS&quot;         			# opcode 5
+		&quot;SPAWN&quot;             			# opcode 6
+		&quot;S0&quot;                			# opcode 7
+		&quot;S0!&quot;               			# opcode 8
+		&quot;G0&quot;                			# opcode 9
+		&quot;G0!&quot;               			# opcode 10
+		&quot;call&quot;              			# opcode 11
+		&quot;if&quot;                			# opcode 12
+		&quot;ifelse&quot;            			# opcode 13
+		&quot;?loop&quot;             			# opcode 14
+		&quot;?exit&quot;             			# opcode 15
+		&quot;pop&quot;               			# opcode 16
+		&quot;dup&quot;               			# opcode 17
+		&quot;swap&quot;              			# opcode 18
+		&quot;over&quot;              			# opcode 19
+		&quot;rot&quot;               			# opcode 20
+		&quot;?dup&quot;              			# opcode 21
+		&quot;-rot&quot;              			# opcode 22
+		&quot;2swap&quot;             			# opcode 23
+		&quot;2over&quot;             			# opcode 24
+		&quot;2dup&quot;              			# opcode 25
+		&quot;2pop&quot;              			# opcode 26
+		&quot;nip&quot;               			# opcode 27
+		&quot;tuck&quot;              			# opcode 28
+		&quot;1+&quot;                			# opcode 29
+		&quot;1-&quot;                			# opcode 30
+		&quot;2+&quot;                			# opcode 31
+		&quot;2-&quot;                			# opcode 32
+		&quot;2/&quot;                			# opcode 33
+		&quot;2*&quot;                			# opcode 34
+		&quot;abs&quot;               			# opcode 35
+		&quot;sqrt&quot;              			# opcode 36
+		&quot;+&quot;                 			# opcode 37
+		&quot;-&quot;                 			# opcode 38
+		&quot;*&quot;                 			# opcode 39
+		&quot;/&quot;                 			# opcode 40
+		&quot;mod&quot;               			# opcode 41
+		&quot;/mod&quot;              			# opcode 42
+		&quot;negate&quot;            			# opcode 43
+		&quot;2negate&quot;           			# opcode 44
+		&quot;&lt;&lt;&quot;                			# opcode 45
+		&quot;&gt;&gt;&quot;                			# opcode 46
+		&quot;=&quot;                 			# opcode 47
+		&quot;&lt;&gt;&quot;                			# opcode 48
+		&quot;&lt;&quot;                 			# opcode 49
+		&quot;&gt;&quot;                 			# opcode 50
+		&quot;&lt;=&quot;                			# opcode 51
+		&quot;&gt;=&quot;                			# opcode 52
+		&quot;0=&quot;                			# opcode 53
+		&quot;or&quot;                			# opcode 54
+		&quot;and&quot;               			# opcode 55
+		&quot;not&quot;               			# opcode 56
+		&quot;invert&quot;            			# opcode 57
+		&quot;xor&quot;               			# opcode 58
+		&quot;min&quot;               			# opcode 59
+		&quot;max&quot;               			# opcode 60
+		&quot;CB&quot;                			# opcode 61
+		&quot;CBLEN&quot;             			# opcode 62
+		&quot;CSLEN&quot;             			# opcode 63
+		&quot;DSLEN&quot;             			# opcode 64
+		&quot;R0&quot;                			# opcode 65
+		&quot;R1&quot;                			# opcode 66
+		&quot;R2&quot;                			# opcode 67
+		&quot;R3&quot;                			# opcode 68
+		&quot;R4&quot;                			# opcode 69
+		&quot;R5&quot;                			# opcode 70
+		&quot;R6&quot;                			# opcode 71
+		&quot;R7&quot;                			# opcode 72
+		&quot;R8&quot;                			# opcode 73
+		&quot;R9&quot;                			# opcode 74
+		&quot;R0!&quot;               			# opcode 75
+		&quot;R1!&quot;               			# opcode 76
+		&quot;R2!&quot;               			# opcode 77
+		&quot;R3!&quot;               			# opcode 78
+		&quot;R4!&quot;               			# opcode 79
+		&quot;R5!&quot;               			# opcode 80
+		&quot;R6!&quot;               			# opcode 81
+		&quot;R7!&quot;               			# opcode 82
+		&quot;R8!&quot;               			# opcode 83
+		&quot;R9!&quot;               			# opcode 84
+		&quot;R0++&quot;              			# opcode 85
+		&quot;R1++&quot;              			# opcode 86
+		&quot;R2++&quot;              			# opcode 87
+		&quot;R3++&quot;              			# opcode 88
+		&quot;R4++&quot;              			# opcode 89
+		&quot;R5++&quot;              			# opcode 90
+		&quot;R6++&quot;              			# opcode 91
+		&quot;R7++&quot;              			# opcode 92
+		&quot;R8++&quot;              			# opcode 93
+		&quot;R9++&quot;              			# opcode 94
+		&quot;--R0&quot;              			# opcode 95
+		&quot;--R1&quot;              			# opcode 96
+		&quot;--R2&quot;              			# opcode 97
+		&quot;--R3&quot;              			# opcode 98
+		&quot;--R4&quot;              			# opcode 99
+		&quot;--R5&quot;              			# opcode 100
+		&quot;--R6&quot;              			# opcode 101
+		&quot;--R7&quot;              			# opcode 102
+		&quot;--R8&quot;              			# opcode 103
+		&quot;--R9&quot;              			# opcode 104
+		&quot;PEEK&quot;              			# opcode 105
+		&quot;POKE&quot;              			# opcode 106
+		&quot;NUMBER&quot;            			# opcode 107
+		&quot;NUMBER!&quot;           			# opcode 108
+		&quot;?NUMBER!&quot;          			# opcode 109
+		&quot;OPCODE&quot;            			# opcode 110
+		&quot;OPCODE!&quot;           			# opcode 111
+		&quot;TRAP1&quot;             			# opcode 112
+		&quot;TRAP2&quot;             			# opcode 113
+		&quot;TRAP3&quot;             			# opcode 114
+		&quot;TRAP4&quot;             			# opcode 115
+		&quot;TRAP5&quot;             			# opcode 116
+		&quot;TRAP6&quot;             			# opcode 117
+		&quot;TRAP7&quot;             			# opcode 118
+		&quot;TRAP8&quot;             			# opcode 119
+		&quot;TRAP9&quot;             			# opcode 120
+		&quot;sign&quot;              			# opcode 121
+		&quot;pack2&quot;             			# opcode 122
+		&quot;unpack2&quot;           			# opcode 123
+		&quot;MAX_INT&quot;           			# opcode 124
+		&quot;MIN_INT&quot;           			# opcode 125
+		&quot;HALT&quot;              			# opcode 126
+		&quot;nop&quot;               			# opcode 127
+		&quot;CMOVE&quot;             			# opcode 128
+		&quot;OMOVE&quot;             			# opcode 129
+		&quot;ROTATE&quot;            			# opcode 130
+		&quot;EAT&quot;               			# opcode 131
+		&quot;MAKE-SPORE&quot;        			# opcode 132
+		&quot;MAKE-ORGANIC&quot;      			# opcode 133
+		&quot;GROW&quot;              			# opcode 134
+		&quot;GROW.CB&quot;           			# opcode 135
+		&quot;CSHIFT&quot;            			# opcode 136
+		&quot;EXUDE&quot;             			# opcode 137
+		&quot;LOOK&quot;              			# opcode 138
+		&quot;NEAREST&quot;           			# opcode 139
+		&quot;FARTHEST&quot;          			# opcode 140
+		&quot;SIZE&quot;              			# opcode 141
+		&quot;BIGGEST&quot;           			# opcode 142
+		&quot;SMALLEST&quot;          			# opcode 143
+		&quot;TEMPERATURE&quot;       			# opcode 144
+		&quot;HOTTEST&quot;           			# opcode 145
+		&quot;COLDEST&quot;           			# opcode 146
+		&quot;SMELL&quot;             			# opcode 147
+		&quot;MOOD&quot;              			# opcode 148
+		&quot;MOOD!&quot;             			# opcode 149
+		&quot;BROADCAST&quot;         			# opcode 150
+		&quot;SEND&quot;              			# opcode 151
+		&quot;RECV&quot;              			# opcode 152
+		&quot;ENERGY&quot;            			# opcode 153
+		&quot;ENERGY.O&quot;          			# opcode 154
+		&quot;AGE&quot;               			# opcode 155
+		&quot;NUM-CELLS&quot;         			# opcode 156
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 157
+		&quot;DIST&quot;              			# opcode 158
+		&quot;CHOOSE&quot;            			# opcode 159
+		&quot;RND&quot;               			# opcode 160
+		&quot;SPREAD-ENERGY&quot;     			# opcode 161
+		&quot;SEND-ENERGY&quot;       			# opcode 162
+		&quot;NEIGHBORS&quot;         			# opcode 163
+		&quot;SHOUT&quot;             			# opcode 164
+		&quot;LISTEN&quot;            			# opcode 165
+	}
+
+	14  # number of protected instructions at start of table
+	# instruction table for strain 8
+	{
+		&quot;OMOVE&quot;             			# opcode 0
+		&quot;EAT&quot;               			# opcode 1
+		&quot;MAKE-SPORE&quot;        			# opcode 2
+		&quot;MAKE-BARRIER&quot;      			# opcode 3
+		&quot;POPULATION&quot;        			# opcode 4
+		&quot;POPULATION.S&quot;      			# opcode 5
+		&quot;GPS&quot;               			# opcode 6
+		&quot;KEY-PRESS&quot;         			# opcode 7
+		&quot;MOUSE-POS&quot;         			# opcode 8
+		&quot;SPAWN&quot;             			# opcode 9
+		&quot;S0&quot;                			# opcode 10
+		&quot;S0!&quot;               			# opcode 11
+		&quot;G0&quot;                			# opcode 12
+		&quot;G0!&quot;               			# opcode 13
+		&quot;call&quot;              			# opcode 14
+		&quot;if&quot;                			# opcode 15
+		&quot;ifelse&quot;            			# opcode 16
+		&quot;?loop&quot;             			# opcode 17
+		&quot;?exit&quot;             			# opcode 18
+		&quot;pop&quot;               			# opcode 19
+		&quot;dup&quot;               			# opcode 20
+		&quot;swap&quot;              			# opcode 21
+		&quot;over&quot;              			# opcode 22
+		&quot;rot&quot;               			# opcode 23
+		&quot;?dup&quot;              			# opcode 24
+		&quot;-rot&quot;              			# opcode 25
+		&quot;2swap&quot;             			# opcode 26
+		&quot;2over&quot;             			# opcode 27
+		&quot;2dup&quot;              			# opcode 28
+		&quot;2pop&quot;              			# opcode 29
+		&quot;nip&quot;               			# opcode 30
+		&quot;tuck&quot;              			# opcode 31
+		&quot;1+&quot;                			# opcode 32
+		&quot;1-&quot;                			# opcode 33
+		&quot;2+&quot;                			# opcode 34
+		&quot;2-&quot;                			# opcode 35
+		&quot;2/&quot;                			# opcode 36
+		&quot;2*&quot;                			# opcode 37
+		&quot;abs&quot;               			# opcode 38
+		&quot;sqrt&quot;              			# opcode 39
+		&quot;+&quot;                 			# opcode 40
+		&quot;-&quot;                 			# opcode 41
+		&quot;*&quot;                 			# opcode 42
+		&quot;/&quot;                 			# opcode 43
+		&quot;mod&quot;               			# opcode 44
+		&quot;/mod&quot;              			# opcode 45
+		&quot;negate&quot;            			# opcode 46
+		&quot;2negate&quot;           			# opcode 47
+		&quot;&lt;&lt;&quot;                			# opcode 48
+		&quot;&gt;&gt;&quot;                			# opcode 49
+		&quot;=&quot;                 			# opcode 50
+		&quot;&lt;&gt;&quot;                			# opcode 51
+		&quot;&lt;&quot;                 			# opcode 52
+		&quot;&gt;&quot;                 			# opcode 53
+		&quot;&lt;=&quot;                			# opcode 54
+		&quot;&gt;=&quot;                			# opcode 55
+		&quot;0=&quot;                			# opcode 56
+		&quot;or&quot;                			# opcode 57
+		&quot;and&quot;               			# opcode 58
+		&quot;not&quot;               			# opcode 59
+		&quot;invert&quot;            			# opcode 60
+		&quot;xor&quot;               			# opcode 61
+		&quot;min&quot;               			# opcode 62
+		&quot;max&quot;               			# opcode 63
+		&quot;CB&quot;                			# opcode 64
+		&quot;CBLEN&quot;             			# opcode 65
+		&quot;CSLEN&quot;             			# opcode 66
+		&quot;DSLEN&quot;             			# opcode 67
+		&quot;R0&quot;                			# opcode 68
+		&quot;R1&quot;                			# opcode 69
+		&quot;R2&quot;                			# opcode 70
+		&quot;R3&quot;                			# opcode 71
+		&quot;R4&quot;                			# opcode 72
+		&quot;R5&quot;                			# opcode 73
+		&quot;R6&quot;                			# opcode 74
+		&quot;R7&quot;                			# opcode 75
+		&quot;R8&quot;                			# opcode 76
+		&quot;R9&quot;                			# opcode 77
+		&quot;R0!&quot;               			# opcode 78
+		&quot;R1!&quot;               			# opcode 79
+		&quot;R2!&quot;               			# opcode 80
+		&quot;R3!&quot;               			# opcode 81
+		&quot;R4!&quot;               			# opcode 82
+		&quot;R5!&quot;               			# opcode 83
+		&quot;R6!&quot;               			# opcode 84
+		&quot;R7!&quot;               			# opcode 85
+		&quot;R8!&quot;               			# opcode 86
+		&quot;R9!&quot;               			# opcode 87
+		&quot;R0++&quot;              			# opcode 88
+		&quot;R1++&quot;              			# opcode 89
+		&quot;R2++&quot;              			# opcode 90
+		&quot;R3++&quot;              			# opcode 91
+		&quot;R4++&quot;              			# opcode 92
+		&quot;R5++&quot;              			# opcode 93
+		&quot;R6++&quot;              			# opcode 94
+		&quot;R7++&quot;              			# opcode 95
+		&quot;R8++&quot;              			# opcode 96
+		&quot;R9++&quot;              			# opcode 97
+		&quot;--R0&quot;              			# opcode 98
+		&quot;--R1&quot;              			# opcode 99
+		&quot;--R2&quot;              			# opcode 100
+		&quot;--R3&quot;              			# opcode 101
+		&quot;--R4&quot;              			# opcode 102
+		&quot;--R5&quot;              			# opcode 103
+		&quot;--R6&quot;              			# opcode 104
+		&quot;--R7&quot;              			# opcode 105
+		&quot;--R8&quot;              			# opcode 106
+		&quot;--R9&quot;              			# opcode 107
+		&quot;PEEK&quot;              			# opcode 108
+		&quot;POKE&quot;              			# opcode 109
+		&quot;NUMBER&quot;            			# opcode 110
+		&quot;NUMBER!&quot;           			# opcode 111
+		&quot;?NUMBER!&quot;          			# opcode 112
+		&quot;OPCODE&quot;            			# opcode 113
+		&quot;OPCODE!&quot;           			# opcode 114
+		&quot;TRAP1&quot;             			# opcode 115
+		&quot;TRAP2&quot;             			# opcode 116
+		&quot;TRAP3&quot;             			# opcode 117
+		&quot;TRAP4&quot;             			# opcode 118
+		&quot;TRAP5&quot;             			# opcode 119
+		&quot;TRAP6&quot;             			# opcode 120
+		&quot;TRAP7&quot;             			# opcode 121
+		&quot;TRAP8&quot;             			# opcode 122
+		&quot;TRAP9&quot;             			# opcode 123
+		&quot;sign&quot;              			# opcode 124
+		&quot;pack2&quot;             			# opcode 125
+		&quot;unpack2&quot;           			# opcode 126
+		&quot;MAX_INT&quot;           			# opcode 127
+		&quot;MIN_INT&quot;           			# opcode 128
+		&quot;HALT&quot;              			# opcode 129
+		&quot;nop&quot;               			# opcode 130
+		&quot;CMOVE&quot;             			# opcode 131
+		&quot;ROTATE&quot;            			# opcode 132
+		&quot;MAKE-ORGANIC&quot;      			# opcode 133
+		&quot;GROW&quot;              			# opcode 134
+		&quot;GROW.CB&quot;           			# opcode 135
+		&quot;CSHIFT&quot;            			# opcode 136
+		&quot;EXUDE&quot;             			# opcode 137
+		&quot;LOOK&quot;              			# opcode 138
+		&quot;NEAREST&quot;           			# opcode 139
+		&quot;FARTHEST&quot;          			# opcode 140
+		&quot;SIZE&quot;              			# opcode 141
+		&quot;BIGGEST&quot;           			# opcode 142
+		&quot;SMALLEST&quot;          			# opcode 143
+		&quot;TEMPERATURE&quot;       			# opcode 144
+		&quot;HOTTEST&quot;           			# opcode 145
+		&quot;COLDEST&quot;           			# opcode 146
+		&quot;SMELL&quot;             			# opcode 147
+		&quot;MOOD&quot;              			# opcode 148
+		&quot;MOOD!&quot;             			# opcode 149
+		&quot;BROADCAST&quot;         			# opcode 150
+		&quot;SEND&quot;              			# opcode 151
+		&quot;RECV&quot;              			# opcode 152
+		&quot;ENERGY&quot;            			# opcode 153
+		&quot;ENERGY.O&quot;          			# opcode 154
+		&quot;AGE&quot;               			# opcode 155
+		&quot;NUM-CELLS&quot;         			# opcode 156
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 157
+		&quot;DIST&quot;              			# opcode 158
+		&quot;CHOOSE&quot;            			# opcode 159
+		&quot;RND&quot;               			# opcode 160
+		&quot;SPREAD-ENERGY&quot;     			# opcode 161
+		&quot;SEND-ENERGY&quot;       			# opcode 162
+		&quot;NEIGHBORS&quot;         			# opcode 163
+		&quot;SHOUT&quot;             			# opcode 164
+		&quot;LISTEN&quot;            			# opcode 165
+	}
+
+	0  # number of protected instructions at start of table
+	# instruction table for strain 9
+	{
+		&quot;call&quot;              			# opcode 0
+		&quot;if&quot;                			# opcode 1
+		&quot;ifelse&quot;            			# opcode 2
+		&quot;?loop&quot;             			# opcode 3
+		&quot;?exit&quot;             			# opcode 4
+		&quot;pop&quot;               			# opcode 5
+		&quot;dup&quot;               			# opcode 6
+		&quot;swap&quot;              			# opcode 7
+		&quot;over&quot;              			# opcode 8
+		&quot;rot&quot;               			# opcode 9
+		&quot;?dup&quot;              			# opcode 10
+		&quot;-rot&quot;              			# opcode 11
+		&quot;2swap&quot;             			# opcode 12
+		&quot;2over&quot;             			# opcode 13
+		&quot;2dup&quot;              			# opcode 14
+		&quot;2pop&quot;              			# opcode 15
+		&quot;nip&quot;               			# opcode 16
+		&quot;tuck&quot;              			# opcode 17
+		&quot;1+&quot;                			# opcode 18
+		&quot;1-&quot;                			# opcode 19
+		&quot;2+&quot;                			# opcode 20
+		&quot;2-&quot;                			# opcode 21
+		&quot;2/&quot;                			# opcode 22
+		&quot;2*&quot;                			# opcode 23
+		&quot;abs&quot;               			# opcode 24
+		&quot;sqrt&quot;              			# opcode 25
+		&quot;+&quot;                 			# opcode 26
+		&quot;-&quot;                 			# opcode 27
+		&quot;*&quot;                 			# opcode 28
+		&quot;/&quot;                 			# opcode 29
+		&quot;mod&quot;               			# opcode 30
+		&quot;/mod&quot;              			# opcode 31
+		&quot;negate&quot;            			# opcode 32
+		&quot;2negate&quot;           			# opcode 33
+		&quot;&lt;&lt;&quot;                			# opcode 34
+		&quot;&gt;&gt;&quot;                			# opcode 35
+		&quot;=&quot;                 			# opcode 36
+		&quot;&lt;&gt;&quot;                			# opcode 37
+		&quot;&lt;&quot;                 			# opcode 38
+		&quot;&gt;&quot;                 			# opcode 39
+		&quot;&lt;=&quot;                			# opcode 40
+		&quot;&gt;=&quot;                			# opcode 41
+		&quot;0=&quot;                			# opcode 42
+		&quot;or&quot;                			# opcode 43
+		&quot;and&quot;               			# opcode 44
+		&quot;not&quot;               			# opcode 45
+		&quot;invert&quot;            			# opcode 46
+		&quot;xor&quot;               			# opcode 47
+		&quot;min&quot;               			# opcode 48
+		&quot;max&quot;               			# opcode 49
+		&quot;CB&quot;                			# opcode 50
+		&quot;CBLEN&quot;             			# opcode 51
+		&quot;CSLEN&quot;             			# opcode 52
+		&quot;DSLEN&quot;             			# opcode 53
+		&quot;R0&quot;                			# opcode 54
+		&quot;R1&quot;                			# opcode 55
+		&quot;R2&quot;                			# opcode 56
+		&quot;R3&quot;                			# opcode 57
+		&quot;R4&quot;                			# opcode 58
+		&quot;R5&quot;                			# opcode 59
+		&quot;R6&quot;                			# opcode 60
+		&quot;R7&quot;                			# opcode 61
+		&quot;R8&quot;                			# opcode 62
+		&quot;R9&quot;                			# opcode 63
+		&quot;R0!&quot;               			# opcode 64
+		&quot;R1!&quot;               			# opcode 65
+		&quot;R2!&quot;               			# opcode 66
+		&quot;R3!&quot;               			# opcode 67
+		&quot;R4!&quot;               			# opcode 68
+		&quot;R5!&quot;               			# opcode 69
+		&quot;R6!&quot;               			# opcode 70
+		&quot;R7!&quot;               			# opcode 71
+		&quot;R8!&quot;               			# opcode 72
+		&quot;R9!&quot;               			# opcode 73
+		&quot;R0++&quot;              			# opcode 74
+		&quot;R1++&quot;              			# opcode 75
+		&quot;R2++&quot;              			# opcode 76
+		&quot;R3++&quot;              			# opcode 77
+		&quot;R4++&quot;              			# opcode 78
+		&quot;R5++&quot;              			# opcode 79
+		&quot;R6++&quot;              			# opcode 80
+		&quot;R7++&quot;              			# opcode 81
+		&quot;R8++&quot;              			# opcode 82
+		&quot;R9++&quot;              			# opcode 83
+		&quot;--R0&quot;              			# opcode 84
+		&quot;--R1&quot;              			# opcode 85
+		&quot;--R2&quot;              			# opcode 86
+		&quot;--R3&quot;              			# opcode 87
+		&quot;--R4&quot;              			# opcode 88
+		&quot;--R5&quot;              			# opcode 89
+		&quot;--R6&quot;              			# opcode 90
+		&quot;--R7&quot;              			# opcode 91
+		&quot;--R8&quot;              			# opcode 92
+		&quot;--R9&quot;              			# opcode 93
+		&quot;PEEK&quot;              			# opcode 94
+		&quot;POKE&quot;              			# opcode 95
+		&quot;NUMBER&quot;            			# opcode 96
+		&quot;NUMBER!&quot;           			# opcode 97
+		&quot;?NUMBER!&quot;          			# opcode 98
+		&quot;OPCODE&quot;            			# opcode 99
+		&quot;OPCODE!&quot;           			# opcode 100
+		&quot;TRAP1&quot;             			# opcode 101
+		&quot;TRAP2&quot;             			# opcode 102
+		&quot;TRAP3&quot;             			# opcode 103
+		&quot;TRAP4&quot;             			# opcode 104
+		&quot;TRAP5&quot;             			# opcode 105
+		&quot;TRAP6&quot;             			# opcode 106
+		&quot;TRAP7&quot;             			# opcode 107
+		&quot;TRAP8&quot;             			# opcode 108
+		&quot;TRAP9&quot;             			# opcode 109
+		&quot;sign&quot;              			# opcode 110
+		&quot;pack2&quot;             			# opcode 111
+		&quot;unpack2&quot;           			# opcode 112
+		&quot;MAX_INT&quot;           			# opcode 113
+		&quot;MIN_INT&quot;           			# opcode 114
+		&quot;HALT&quot;              			# opcode 115
+		&quot;nop&quot;               			# opcode 116
+		&quot;CMOVE&quot;             			# opcode 117
+		&quot;OMOVE&quot;             			# opcode 118
+		&quot;ROTATE&quot;            			# opcode 119
+		&quot;EAT&quot;               			# opcode 120
+		&quot;MAKE-SPORE&quot;        			# opcode 121
+		&quot;MAKE-ORGANIC&quot;      			# opcode 122
+		&quot;MAKE-BARRIER&quot;      			# opcode 123
+		&quot;GROW&quot;              			# opcode 124
+		&quot;GROW.CB&quot;           			# opcode 125
+		&quot;CSHIFT&quot;            			# opcode 126
+		&quot;EXUDE&quot;             			# opcode 127
+		&quot;LOOK&quot;              			# opcode 128
+		&quot;NEAREST&quot;           			# opcode 129
+		&quot;FARTHEST&quot;          			# opcode 130
+		&quot;SIZE&quot;              			# opcode 131
+		&quot;BIGGEST&quot;           			# opcode 132
+		&quot;SMALLEST&quot;          			# opcode 133
+		&quot;TEMPERATURE&quot;       			# opcode 134
+		&quot;HOTTEST&quot;           			# opcode 135
+		&quot;COLDEST&quot;           			# opcode 136
+		&quot;SMELL&quot;             			# opcode 137
+		&quot;MOOD&quot;              			# opcode 138
+		&quot;MOOD!&quot;             			# opcode 139
+		&quot;BROADCAST&quot;         			# opcode 140
+		&quot;SEND&quot;              			# opcode 141
+		&quot;RECV&quot;              			# opcode 142
+		&quot;ENERGY&quot;            			# opcode 143
+		&quot;ENERGY.O&quot;          			# opcode 144
+		&quot;AGE&quot;               			# opcode 145
+		&quot;NUM-CELLS&quot;         			# opcode 146
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 147
+		&quot;DIST&quot;              			# opcode 148
+		&quot;CHOOSE&quot;            			# opcode 149
+		&quot;RND&quot;               			# opcode 150
+		&quot;SPREAD-ENERGY&quot;     			# opcode 151
+		&quot;SEND-ENERGY&quot;       			# opcode 152
+		&quot;POPULATION&quot;        			# opcode 153
+		&quot;POPULATION.S&quot;      			# opcode 154
+		&quot;GPS&quot;               			# opcode 155
+		&quot;NEIGHBORS&quot;         			# opcode 156
+		&quot;SHOUT&quot;             			# opcode 157
+		&quot;LISTEN&quot;            			# opcode 158
+		&quot;KEY-PRESS&quot;         			# opcode 159
+		&quot;MOUSE-POS&quot;         			# opcode 160
+		&quot;SPAWN&quot;             			# opcode 161
+		&quot;S0&quot;                			# opcode 162
+		&quot;S0!&quot;               			# opcode 163
+		&quot;G0&quot;                			# opcode 164
+		&quot;G0!&quot;               			# opcode 165
+	}
+
+	11  # number of protected instructions at start of table
+	# instruction table for strain 10
+	{
+		&quot;MAKE-BARRIER&quot;      			# opcode 0
+		&quot;POPULATION&quot;        			# opcode 1
+		&quot;POPULATION.S&quot;      			# opcode 2
+		&quot;GPS&quot;               			# opcode 3
+		&quot;KEY-PRESS&quot;         			# opcode 4
+		&quot;MOUSE-POS&quot;         			# opcode 5
+		&quot;SPAWN&quot;             			# opcode 6
+		&quot;S0&quot;                			# opcode 7
+		&quot;S0!&quot;               			# opcode 8
+		&quot;G0&quot;                			# opcode 9
+		&quot;G0!&quot;               			# opcode 10
+		&quot;call&quot;              			# opcode 11
+		&quot;if&quot;                			# opcode 12
+		&quot;ifelse&quot;            			# opcode 13
+		&quot;?loop&quot;             			# opcode 14
+		&quot;?exit&quot;             			# opcode 15
+		&quot;pop&quot;               			# opcode 16
+		&quot;dup&quot;               			# opcode 17
+		&quot;swap&quot;              			# opcode 18
+		&quot;over&quot;              			# opcode 19
+		&quot;rot&quot;               			# opcode 20
+		&quot;?dup&quot;              			# opcode 21
+		&quot;-rot&quot;              			# opcode 22
+		&quot;2swap&quot;             			# opcode 23
+		&quot;2over&quot;             			# opcode 24
+		&quot;2dup&quot;              			# opcode 25
+		&quot;2pop&quot;              			# opcode 26
+		&quot;nip&quot;               			# opcode 27
+		&quot;tuck&quot;              			# opcode 28
+		&quot;1+&quot;                			# opcode 29
+		&quot;1-&quot;                			# opcode 30
+		&quot;2+&quot;                			# opcode 31
+		&quot;2-&quot;                			# opcode 32
+		&quot;2/&quot;                			# opcode 33
+		&quot;2*&quot;                			# opcode 34
+		&quot;abs&quot;               			# opcode 35
+		&quot;sqrt&quot;              			# opcode 36
+		&quot;+&quot;                 			# opcode 37
+		&quot;-&quot;                 			# opcode 38
+		&quot;*&quot;                 			# opcode 39
+		&quot;/&quot;                 			# opcode 40
+		&quot;mod&quot;               			# opcode 41
+		&quot;/mod&quot;              			# opcode 42
+		&quot;negate&quot;            			# opcode 43
+		&quot;2negate&quot;           			# opcode 44
+		&quot;&lt;&lt;&quot;                			# opcode 45
+		&quot;&gt;&gt;&quot;                			# opcode 46
+		&quot;=&quot;                 			# opcode 47
+		&quot;&lt;&gt;&quot;                			# opcode 48
+		&quot;&lt;&quot;                 			# opcode 49
+		&quot;&gt;&quot;                 			# opcode 50
+		&quot;&lt;=&quot;                			# opcode 51
+		&quot;&gt;=&quot;                			# opcode 52
+		&quot;0=&quot;                			# opcode 53
+		&quot;or&quot;                			# opcode 54
+		&quot;and&quot;               			# opcode 55
+		&quot;not&quot;               			# opcode 56
+		&quot;invert&quot;            			# opcode 57
+		&quot;xor&quot;               			# opcode 58
+		&quot;min&quot;               			# opcode 59
+		&quot;max&quot;               			# opcode 60
+		&quot;CB&quot;                			# opcode 61
+		&quot;CBLEN&quot;             			# opcode 62
+		&quot;CSLEN&quot;             			# opcode 63
+		&quot;DSLEN&quot;             			# opcode 64
+		&quot;R0&quot;                			# opcode 65
+		&quot;R1&quot;                			# opcode 66
+		&quot;R2&quot;                			# opcode 67
+		&quot;R3&quot;                			# opcode 68
+		&quot;R4&quot;                			# opcode 69
+		&quot;R5&quot;                			# opcode 70
+		&quot;R6&quot;                			# opcode 71
+		&quot;R7&quot;                			# opcode 72
+		&quot;R8&quot;                			# opcode 73
+		&quot;R9&quot;                			# opcode 74
+		&quot;R0!&quot;               			# opcode 75
+		&quot;R1!&quot;               			# opcode 76
+		&quot;R2!&quot;               			# opcode 77
+		&quot;R3!&quot;               			# opcode 78
+		&quot;R4!&quot;               			# opcode 79
+		&quot;R5!&quot;               			# opcode 80
+		&quot;R6!&quot;               			# opcode 81
+		&quot;R7!&quot;               			# opcode 82
+		&quot;R8!&quot;               			# opcode 83
+		&quot;R9!&quot;               			# opcode 84
+		&quot;R0++&quot;              			# opcode 85
+		&quot;R1++&quot;              			# opcode 86
+		&quot;R2++&quot;              			# opcode 87
+		&quot;R3++&quot;              			# opcode 88
+		&quot;R4++&quot;              			# opcode 89
+		&quot;R5++&quot;              			# opcode 90
+		&quot;R6++&quot;              			# opcode 91
+		&quot;R7++&quot;              			# opcode 92
+		&quot;R8++&quot;              			# opcode 93
+		&quot;R9++&quot;              			# opcode 94
+		&quot;--R0&quot;              			# opcode 95
+		&quot;--R1&quot;              			# opcode 96
+		&quot;--R2&quot;              			# opcode 97
+		&quot;--R3&quot;              			# opcode 98
+		&quot;--R4&quot;              			# opcode 99
+		&quot;--R5&quot;              			# opcode 100
+		&quot;--R6&quot;              			# opcode 101
+		&quot;--R7&quot;              			# opcode 102
+		&quot;--R8&quot;              			# opcode 103
+		&quot;--R9&quot;              			# opcode 104
+		&quot;PEEK&quot;              			# opcode 105
+		&quot;POKE&quot;              			# opcode 106
+		&quot;NUMBER&quot;            			# opcode 107
+		&quot;NUMBER!&quot;           			# opcode 108
+		&quot;?NUMBER!&quot;          			# opcode 109
+		&quot;OPCODE&quot;            			# opcode 110
+		&quot;OPCODE!&quot;           			# opcode 111
+		&quot;TRAP1&quot;             			# opcode 112
+		&quot;TRAP2&quot;             			# opcode 113
+		&quot;TRAP3&quot;             			# opcode 114
+		&quot;TRAP4&quot;             			# opcode 115
+		&quot;TRAP5&quot;             			# opcode 116
+		&quot;TRAP6&quot;             			# opcode 117
+		&quot;TRAP7&quot;             			# opcode 118
+		&quot;TRAP8&quot;             			# opcode 119
+		&quot;TRAP9&quot;             			# opcode 120
+		&quot;sign&quot;              			# opcode 121
+		&quot;pack2&quot;             			# opcode 122
+		&quot;unpack2&quot;           			# opcode 123
+		&quot;MAX_INT&quot;           			# opcode 124
+		&quot;MIN_INT&quot;           			# opcode 125
+		&quot;HALT&quot;              			# opcode 126
+		&quot;nop&quot;               			# opcode 127
+		&quot;CMOVE&quot;             			# opcode 128
+		&quot;OMOVE&quot;             			# opcode 129
+		&quot;ROTATE&quot;            			# opcode 130
+		&quot;EAT&quot;               			# opcode 131
+		&quot;MAKE-SPORE&quot;        			# opcode 132
+		&quot;MAKE-ORGANIC&quot;      			# opcode 133
+		&quot;GROW&quot;              			# opcode 134
+		&quot;GROW.CB&quot;           			# opcode 135
+		&quot;CSHIFT&quot;            			# opcode 136
+		&quot;EXUDE&quot;             			# opcode 137
+		&quot;LOOK&quot;              			# opcode 138
+		&quot;NEAREST&quot;           			# opcode 139
+		&quot;FARTHEST&quot;          			# opcode 140
+		&quot;SIZE&quot;              			# opcode 141
+		&quot;BIGGEST&quot;           			# opcode 142
+		&quot;SMALLEST&quot;          			# opcode 143
+		&quot;TEMPERATURE&quot;       			# opcode 144
+		&quot;HOTTEST&quot;           			# opcode 145
+		&quot;COLDEST&quot;           			# opcode 146
+		&quot;SMELL&quot;             			# opcode 147
+		&quot;MOOD&quot;              			# opcode 148
+		&quot;MOOD!&quot;             			# opcode 149
+		&quot;BROADCAST&quot;         			# opcode 150
+		&quot;SEND&quot;              			# opcode 151
+		&quot;RECV&quot;              			# opcode 152
+		&quot;ENERGY&quot;            			# opcode 153
+		&quot;ENERGY.O&quot;          			# opcode 154
+		&quot;AGE&quot;               			# opcode 155
+		&quot;NUM-CELLS&quot;         			# opcode 156
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 157
+		&quot;DIST&quot;              			# opcode 158
+		&quot;CHOOSE&quot;            			# opcode 159
+		&quot;RND&quot;               			# opcode 160
+		&quot;SPREAD-ENERGY&quot;     			# opcode 161
+		&quot;SEND-ENERGY&quot;       			# opcode 162
+		&quot;NEIGHBORS&quot;         			# opcode 163
+		&quot;SHOUT&quot;             			# opcode 164
+		&quot;LISTEN&quot;            			# opcode 165
+	}
+
+	0  # number of protected instructions at start of table
+	# instruction table for strain 11
+	{
+		&quot;call&quot;              			# opcode 0
+		&quot;if&quot;                			# opcode 1
+		&quot;ifelse&quot;            			# opcode 2
+		&quot;?loop&quot;             			# opcode 3
+		&quot;?exit&quot;             			# opcode 4
+		&quot;pop&quot;               			# opcode 5
+		&quot;dup&quot;               			# opcode 6
+		&quot;swap&quot;              			# opcode 7
+		&quot;over&quot;              			# opcode 8
+		&quot;rot&quot;               			# opcode 9
+		&quot;?dup&quot;              			# opcode 10
+		&quot;-rot&quot;              			# opcode 11
+		&quot;2swap&quot;             			# opcode 12
+		&quot;2over&quot;             			# opcode 13
+		&quot;2dup&quot;              			# opcode 14
+		&quot;2pop&quot;              			# opcode 15
+		&quot;nip&quot;               			# opcode 16
+		&quot;tuck&quot;              			# opcode 17
+		&quot;1+&quot;                			# opcode 18
+		&quot;1-&quot;                			# opcode 19
+		&quot;2+&quot;                			# opcode 20
+		&quot;2-&quot;                			# opcode 21
+		&quot;2/&quot;                			# opcode 22
+		&quot;2*&quot;                			# opcode 23
+		&quot;abs&quot;               			# opcode 24
+		&quot;sqrt&quot;              			# opcode 25
+		&quot;+&quot;                 			# opcode 26
+		&quot;-&quot;                 			# opcode 27
+		&quot;*&quot;                 			# opcode 28
+		&quot;/&quot;                 			# opcode 29
+		&quot;mod&quot;               			# opcode 30
+		&quot;/mod&quot;              			# opcode 31
+		&quot;negate&quot;            			# opcode 32
+		&quot;2negate&quot;           			# opcode 33
+		&quot;&lt;&lt;&quot;                			# opcode 34
+		&quot;&gt;&gt;&quot;                			# opcode 35
+		&quot;=&quot;                 			# opcode 36
+		&quot;&lt;&gt;&quot;                			# opcode 37
+		&quot;&lt;&quot;                 			# opcode 38
+		&quot;&gt;&quot;                 			# opcode 39
+		&quot;&lt;=&quot;                			# opcode 40
+		&quot;&gt;=&quot;                			# opcode 41
+		&quot;0=&quot;                			# opcode 42
+		&quot;or&quot;                			# opcode 43
+		&quot;and&quot;               			# opcode 44
+		&quot;not&quot;               			# opcode 45
+		&quot;invert&quot;            			# opcode 46
+		&quot;xor&quot;               			# opcode 47
+		&quot;min&quot;               			# opcode 48
+		&quot;max&quot;               			# opcode 49
+		&quot;CB&quot;                			# opcode 50
+		&quot;CBLEN&quot;             			# opcode 51
+		&quot;CSLEN&quot;             			# opcode 52
+		&quot;DSLEN&quot;             			# opcode 53
+		&quot;R0&quot;                			# opcode 54
+		&quot;R1&quot;                			# opcode 55
+		&quot;R2&quot;                			# opcode 56
+		&quot;R3&quot;                			# opcode 57
+		&quot;R4&quot;                			# opcode 58
+		&quot;R5&quot;                			# opcode 59
+		&quot;R6&quot;                			# opcode 60
+		&quot;R7&quot;                			# opcode 61
+		&quot;R8&quot;                			# opcode 62
+		&quot;R9&quot;                			# opcode 63
+		&quot;R0!&quot;               			# opcode 64
+		&quot;R1!&quot;               			# opcode 65
+		&quot;R2!&quot;               			# opcode 66
+		&quot;R3!&quot;               			# opcode 67
+		&quot;R4!&quot;               			# opcode 68
+		&quot;R5!&quot;               			# opcode 69
+		&quot;R6!&quot;               			# opcode 70
+		&quot;R7!&quot;               			# opcode 71
+		&quot;R8!&quot;               			# opcode 72
+		&quot;R9!&quot;               			# opcode 73
+		&quot;R0++&quot;              			# opcode 74
+		&quot;R1++&quot;              			# opcode 75
+		&quot;R2++&quot;              			# opcode 76
+		&quot;R3++&quot;              			# opcode 77
+		&quot;R4++&quot;              			# opcode 78
+		&quot;R5++&quot;              			# opcode 79
+		&quot;R6++&quot;              			# opcode 80
+		&quot;R7++&quot;              			# opcode 81
+		&quot;R8++&quot;              			# opcode 82
+		&quot;R9++&quot;              			# opcode 83
+		&quot;--R0&quot;              			# opcode 84
+		&quot;--R1&quot;              			# opcode 85
+		&quot;--R2&quot;              			# opcode 86
+		&quot;--R3&quot;              			# opcode 87
+		&quot;--R4&quot;              			# opcode 88
+		&quot;--R5&quot;              			# opcode 89
+		&quot;--R6&quot;              			# opcode 90
+		&quot;--R7&quot;              			# opcode 91
+		&quot;--R8&quot;              			# opcode 92
+		&quot;--R9&quot;              			# opcode 93
+		&quot;PEEK&quot;              			# opcode 94
+		&quot;POKE&quot;              			# opcode 95
+		&quot;NUMBER&quot;            			# opcode 96
+		&quot;NUMBER!&quot;           			# opcode 97
+		&quot;?NUMBER!&quot;          			# opcode 98
+		&quot;OPCODE&quot;            			# opcode 99
+		&quot;OPCODE!&quot;           			# opcode 100
+		&quot;TRAP1&quot;             			# opcode 101
+		&quot;TRAP2&quot;             			# opcode 102
+		&quot;TRAP3&quot;             			# opcode 103
+		&quot;TRAP4&quot;             			# opcode 104
+		&quot;TRAP5&quot;             			# opcode 105
+		&quot;TRAP6&quot;             			# opcode 106
+		&quot;TRAP7&quot;             			# opcode 107
+		&quot;TRAP8&quot;             			# opcode 108
+		&quot;TRAP9&quot;             			# opcode 109
+		&quot;sign&quot;              			# opcode 110
+		&quot;pack2&quot;             			# opcode 111
+		&quot;unpack2&quot;           			# opcode 112
+		&quot;MAX_INT&quot;           			# opcode 113
+		&quot;MIN_INT&quot;           			# opcode 114
+		&quot;HALT&quot;              			# opcode 115
+		&quot;nop&quot;               			# opcode 116
+		&quot;CMOVE&quot;             			# opcode 117
+		&quot;OMOVE&quot;             			# opcode 118
+		&quot;ROTATE&quot;            			# opcode 119
+		&quot;EAT&quot;               			# opcode 120
+		&quot;MAKE-SPORE&quot;        			# opcode 121
+		&quot;MAKE-ORGANIC&quot;      			# opcode 122
+		&quot;MAKE-BARRIER&quot;      			# opcode 123
+		&quot;GROW&quot;              			# opcode 124
+		&quot;GROW.CB&quot;           			# opcode 125
+		&quot;CSHIFT&quot;            			# opcode 126
+		&quot;EXUDE&quot;             			# opcode 127
+		&quot;LOOK&quot;              			# opcode 128
+		&quot;NEAREST&quot;           			# opcode 129
+		&quot;FARTHEST&quot;          			# opcode 130
+		&quot;SIZE&quot;              			# opcode 131
+		&quot;BIGGEST&quot;           			# opcode 132
+		&quot;SMALLEST&quot;          			# opcode 133
+		&quot;TEMPERATURE&quot;       			# opcode 134
+		&quot;HOTTEST&quot;           			# opcode 135
+		&quot;COLDEST&quot;           			# opcode 136
+		&quot;SMELL&quot;             			# opcode 137
+		&quot;MOOD&quot;              			# opcode 138
+		&quot;MOOD!&quot;             			# opcode 139
+		&quot;BROADCAST&quot;         			# opcode 140
+		&quot;SEND&quot;              			# opcode 141
+		&quot;RECV&quot;              			# opcode 142
+		&quot;ENERGY&quot;            			# opcode 143
+		&quot;ENERGY.O&quot;          			# opcode 144
+		&quot;AGE&quot;               			# opcode 145
+		&quot;NUM-CELLS&quot;         			# opcode 146
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 147
+		&quot;DIST&quot;              			# opcode 148
+		&quot;CHOOSE&quot;            			# opcode 149
+		&quot;RND&quot;               			# opcode 150
+		&quot;SPREAD-ENERGY&quot;     			# opcode 151
+		&quot;SEND-ENERGY&quot;       			# opcode 152
+		&quot;POPULATION&quot;        			# opcode 153
+		&quot;POPULATION.S&quot;      			# opcode 154
+		&quot;GPS&quot;               			# opcode 155
+		&quot;NEIGHBORS&quot;         			# opcode 156
+		&quot;SHOUT&quot;             			# opcode 157
+		&quot;LISTEN&quot;            			# opcode 158
+		&quot;KEY-PRESS&quot;         			# opcode 159
+		&quot;MOUSE-POS&quot;         			# opcode 160
+		&quot;SPAWN&quot;             			# opcode 161
+		&quot;S0&quot;                			# opcode 162
+		&quot;S0!&quot;               			# opcode 163
+		&quot;G0&quot;                			# opcode 164
+		&quot;G0!&quot;               			# opcode 165
+	}
+
+	12  # number of protected instructions at start of table
+	# instruction table for strain 12
+	{
+		&quot;OMOVE&quot;             			# opcode 0
+		&quot;MAKE-BARRIER&quot;      			# opcode 1
+		&quot;POPULATION&quot;        			# opcode 2
+		&quot;POPULATION.S&quot;      			# opcode 3
+		&quot;GPS&quot;               			# opcode 4
+		&quot;KEY-PRESS&quot;         			# opcode 5
+		&quot;MOUSE-POS&quot;         			# opcode 6
+		&quot;SPAWN&quot;             			# opcode 7
+		&quot;S0&quot;                			# opcode 8
+		&quot;S0!&quot;               			# opcode 9
+		&quot;G0&quot;                			# opcode 10
+		&quot;G0!&quot;               			# opcode 11
+		&quot;call&quot;              			# opcode 12
+		&quot;if&quot;                			# opcode 13
+		&quot;ifelse&quot;            			# opcode 14
+		&quot;?loop&quot;             			# opcode 15
+		&quot;?exit&quot;             			# opcode 16
+		&quot;pop&quot;               			# opcode 17
+		&quot;dup&quot;               			# opcode 18
+		&quot;swap&quot;              			# opcode 19
+		&quot;over&quot;              			# opcode 20
+		&quot;rot&quot;               			# opcode 21
+		&quot;?dup&quot;              			# opcode 22
+		&quot;-rot&quot;              			# opcode 23
+		&quot;2swap&quot;             			# opcode 24
+		&quot;2over&quot;             			# opcode 25
+		&quot;2dup&quot;              			# opcode 26
+		&quot;2pop&quot;              			# opcode 27
+		&quot;nip&quot;               			# opcode 28
+		&quot;tuck&quot;              			# opcode 29
+		&quot;1+&quot;                			# opcode 30
+		&quot;1-&quot;                			# opcode 31
+		&quot;2+&quot;                			# opcode 32
+		&quot;2-&quot;                			# opcode 33
+		&quot;2/&quot;                			# opcode 34
+		&quot;2*&quot;                			# opcode 35
+		&quot;abs&quot;               			# opcode 36
+		&quot;sqrt&quot;              			# opcode 37
+		&quot;+&quot;                 			# opcode 38
+		&quot;-&quot;                 			# opcode 39
+		&quot;*&quot;                 			# opcode 40
+		&quot;/&quot;                 			# opcode 41
+		&quot;mod&quot;               			# opcode 42
+		&quot;/mod&quot;              			# opcode 43
+		&quot;negate&quot;            			# opcode 44
+		&quot;2negate&quot;           			# opcode 45
+		&quot;&lt;&lt;&quot;                			# opcode 46
+		&quot;&gt;&gt;&quot;                			# opcode 47
+		&quot;=&quot;                 			# opcode 48
+		&quot;&lt;&gt;&quot;                			# opcode 49
+		&quot;&lt;&quot;                 			# opcode 50
+		&quot;&gt;&quot;                 			# opcode 51
+		&quot;&lt;=&quot;                			# opcode 52
+		&quot;&gt;=&quot;                			# opcode 53
+		&quot;0=&quot;                			# opcode 54
+		&quot;or&quot;                			# opcode 55
+		&quot;and&quot;               			# opcode 56
+		&quot;not&quot;               			# opcode 57
+		&quot;invert&quot;            			# opcode 58
+		&quot;xor&quot;               			# opcode 59
+		&quot;min&quot;               			# opcode 60
+		&quot;max&quot;               			# opcode 61
+		&quot;CB&quot;                			# opcode 62
+		&quot;CBLEN&quot;             			# opcode 63
+		&quot;CSLEN&quot;             			# opcode 64
+		&quot;DSLEN&quot;             			# opcode 65
+		&quot;R0&quot;                			# opcode 66
+		&quot;R1&quot;                			# opcode 67
+		&quot;R2&quot;                			# opcode 68
+		&quot;R3&quot;                			# opcode 69
+		&quot;R4&quot;                			# opcode 70
+		&quot;R5&quot;                			# opcode 71
+		&quot;R6&quot;                			# opcode 72
+		&quot;R7&quot;                			# opcode 73
+		&quot;R8&quot;                			# opcode 74
+		&quot;R9&quot;                			# opcode 75
+		&quot;R0!&quot;               			# opcode 76
+		&quot;R1!&quot;               			# opcode 77
+		&quot;R2!&quot;               			# opcode 78
+		&quot;R3!&quot;               			# opcode 79
+		&quot;R4!&quot;               			# opcode 80
+		&quot;R5!&quot;               			# opcode 81
+		&quot;R6!&quot;               			# opcode 82
+		&quot;R7!&quot;               			# opcode 83
+		&quot;R8!&quot;               			# opcode 84
+		&quot;R9!&quot;               			# opcode 85
+		&quot;R0++&quot;              			# opcode 86
+		&quot;R1++&quot;              			# opcode 87
+		&quot;R2++&quot;              			# opcode 88
+		&quot;R3++&quot;              			# opcode 89
+		&quot;R4++&quot;              			# opcode 90
+		&quot;R5++&quot;              			# opcode 91
+		&quot;R6++&quot;              			# opcode 92
+		&quot;R7++&quot;              			# opcode 93
+		&quot;R8++&quot;              			# opcode 94
+		&quot;R9++&quot;              			# opcode 95
+		&quot;--R0&quot;              			# opcode 96
+		&quot;--R1&quot;              			# opcode 97
+		&quot;--R2&quot;              			# opcode 98
+		&quot;--R3&quot;              			# opcode 99
+		&quot;--R4&quot;              			# opcode 100
+		&quot;--R5&quot;              			# opcode 101
+		&quot;--R6&quot;              			# opcode 102
+		&quot;--R7&quot;              			# opcode 103
+		&quot;--R8&quot;              			# opcode 104
+		&quot;--R9&quot;              			# opcode 105
+		&quot;PEEK&quot;              			# opcode 106
+		&quot;POKE&quot;              			# opcode 107
+		&quot;NUMBER&quot;            			# opcode 108
+		&quot;NUMBER!&quot;           			# opcode 109
+		&quot;?NUMBER!&quot;          			# opcode 110
+		&quot;OPCODE&quot;            			# opcode 111
+		&quot;OPCODE!&quot;           			# opcode 112
+		&quot;TRAP1&quot;             			# opcode 113
+		&quot;TRAP2&quot;             			# opcode 114
+		&quot;TRAP3&quot;             			# opcode 115
+		&quot;TRAP4&quot;             			# opcode 116
+		&quot;TRAP5&quot;             			# opcode 117
+		&quot;TRAP6&quot;             			# opcode 118
+		&quot;TRAP7&quot;             			# opcode 119
+		&quot;TRAP8&quot;             			# opcode 120
+		&quot;TRAP9&quot;             			# opcode 121
+		&quot;sign&quot;              			# opcode 122
+		&quot;pack2&quot;             			# opcode 123
+		&quot;unpack2&quot;           			# opcode 124
+		&quot;MAX_INT&quot;           			# opcode 125
+		&quot;MIN_INT&quot;           			# opcode 126
+		&quot;HALT&quot;              			# opcode 127
+		&quot;nop&quot;               			# opcode 128
+		&quot;CMOVE&quot;             			# opcode 129
+		&quot;ROTATE&quot;            			# opcode 130
+		&quot;EAT&quot;               			# opcode 131
+		&quot;MAKE-SPORE&quot;        			# opcode 132
+		&quot;MAKE-ORGANIC&quot;      			# opcode 133
+		&quot;GROW&quot;              			# opcode 134
+		&quot;GROW.CB&quot;           			# opcode 135
+		&quot;CSHIFT&quot;            			# opcode 136
+		&quot;EXUDE&quot;             			# opcode 137
+		&quot;LOOK&quot;              			# opcode 138
+		&quot;NEAREST&quot;           			# opcode 139
+		&quot;FARTHEST&quot;          			# opcode 140
+		&quot;SIZE&quot;              			# opcode 141
+		&quot;BIGGEST&quot;           			# opcode 142
+		&quot;SMALLEST&quot;          			# opcode 143
+		&quot;TEMPERATURE&quot;       			# opcode 144
+		&quot;HOTTEST&quot;           			# opcode 145
+		&quot;COLDEST&quot;           			# opcode 146
+		&quot;SMELL&quot;             			# opcode 147
+		&quot;MOOD&quot;              			# opcode 148
+		&quot;MOOD!&quot;             			# opcode 149
+		&quot;BROADCAST&quot;         			# opcode 150
+		&quot;SEND&quot;              			# opcode 151
+		&quot;RECV&quot;              			# opcode 152
+		&quot;ENERGY&quot;            			# opcode 153
+		&quot;ENERGY.O&quot;          			# opcode 154
+		&quot;AGE&quot;               			# opcode 155
+		&quot;NUM-CELLS&quot;         			# opcode 156
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 157
+		&quot;DIST&quot;              			# opcode 158
+		&quot;CHOOSE&quot;            			# opcode 159
+		&quot;RND&quot;               			# opcode 160
+		&quot;SPREAD-ENERGY&quot;     			# opcode 161
+		&quot;SEND-ENERGY&quot;       			# opcode 162
+		&quot;NEIGHBORS&quot;         			# opcode 163
+		&quot;SHOUT&quot;             			# opcode 164
+		&quot;LISTEN&quot;            			# opcode 165
+	}
+
+	11  # number of protected instructions at start of table
+	# instruction table for strain 13
+	{
+		&quot;MAKE-BARRIER&quot;      			# opcode 0
+		&quot;POPULATION&quot;        			# opcode 1
+		&quot;POPULATION.S&quot;      			# opcode 2
+		&quot;GPS&quot;               			# opcode 3
+		&quot;KEY-PRESS&quot;         			# opcode 4
+		&quot;MOUSE-POS&quot;         			# opcode 5
+		&quot;SPAWN&quot;             			# opcode 6
+		&quot;S0&quot;                			# opcode 7
+		&quot;S0!&quot;               			# opcode 8
+		&quot;G0&quot;                			# opcode 9
+		&quot;G0!&quot;               			# opcode 10
+		&quot;call&quot;              			# opcode 11
+		&quot;if&quot;                			# opcode 12
+		&quot;ifelse&quot;            			# opcode 13
+		&quot;?loop&quot;             			# opcode 14
+		&quot;?exit&quot;             			# opcode 15
+		&quot;pop&quot;               			# opcode 16
+		&quot;dup&quot;               			# opcode 17
+		&quot;swap&quot;              			# opcode 18
+		&quot;over&quot;              			# opcode 19
+		&quot;rot&quot;               			# opcode 20
+		&quot;?dup&quot;              			# opcode 21
+		&quot;-rot&quot;              			# opcode 22
+		&quot;2swap&quot;             			# opcode 23
+		&quot;2over&quot;             			# opcode 24
+		&quot;2dup&quot;              			# opcode 25
+		&quot;2pop&quot;              			# opcode 26
+		&quot;nip&quot;               			# opcode 27
+		&quot;tuck&quot;              			# opcode 28
+		&quot;1+&quot;                			# opcode 29
+		&quot;1-&quot;                			# opcode 30
+		&quot;2+&quot;                			# opcode 31
+		&quot;2-&quot;                			# opcode 32
+		&quot;2/&quot;                			# opcode 33
+		&quot;2*&quot;                			# opcode 34
+		&quot;abs&quot;               			# opcode 35
+		&quot;sqrt&quot;              			# opcode 36
+		&quot;+&quot;                 			# opcode 37
+		&quot;-&quot;                 			# opcode 38
+		&quot;*&quot;                 			# opcode 39
+		&quot;/&quot;                 			# opcode 40
+		&quot;mod&quot;               			# opcode 41
+		&quot;/mod&quot;              			# opcode 42
+		&quot;negate&quot;            			# opcode 43
+		&quot;2negate&quot;           			# opcode 44
+		&quot;&lt;&lt;&quot;                			# opcode 45
+		&quot;&gt;&gt;&quot;                			# opcode 46
+		&quot;=&quot;                 			# opcode 47
+		&quot;&lt;&gt;&quot;                			# opcode 48
+		&quot;&lt;&quot;                 			# opcode 49
+		&quot;&gt;&quot;                 			# opcode 50
+		&quot;&lt;=&quot;                			# opcode 51
+		&quot;&gt;=&quot;                			# opcode 52
+		&quot;0=&quot;                			# opcode 53
+		&quot;or&quot;                			# opcode 54
+		&quot;and&quot;               			# opcode 55
+		&quot;not&quot;               			# opcode 56
+		&quot;invert&quot;            			# opcode 57
+		&quot;xor&quot;               			# opcode 58
+		&quot;min&quot;               			# opcode 59
+		&quot;max&quot;               			# opcode 60
+		&quot;CB&quot;                			# opcode 61
+		&quot;CBLEN&quot;             			# opcode 62
+		&quot;CSLEN&quot;             			# opcode 63
+		&quot;DSLEN&quot;             			# opcode 64
+		&quot;R0&quot;                			# opcode 65
+		&quot;R1&quot;                			# opcode 66
+		&quot;R2&quot;                			# opcode 67
+		&quot;R3&quot;                			# opcode 68
+		&quot;R4&quot;                			# opcode 69
+		&quot;R5&quot;                			# opcode 70
+		&quot;R6&quot;                			# opcode 71
+		&quot;R7&quot;                			# opcode 72
+		&quot;R8&quot;                			# opcode 73
+		&quot;R9&quot;                			# opcode 74
+		&quot;R0!&quot;               			# opcode 75
+		&quot;R1!&quot;               			# opcode 76
+		&quot;R2!&quot;               			# opcode 77
+		&quot;R3!&quot;               			# opcode 78
+		&quot;R4!&quot;               			# opcode 79
+		&quot;R5!&quot;               			# opcode 80
+		&quot;R6!&quot;               			# opcode 81
+		&quot;R7!&quot;               			# opcode 82
+		&quot;R8!&quot;               			# opcode 83
+		&quot;R9!&quot;               			# opcode 84
+		&quot;R0++&quot;              			# opcode 85
+		&quot;R1++&quot;              			# opcode 86
+		&quot;R2++&quot;              			# opcode 87
+		&quot;R3++&quot;              			# opcode 88
+		&quot;R4++&quot;              			# opcode 89
+		&quot;R5++&quot;              			# opcode 90
+		&quot;R6++&quot;              			# opcode 91
+		&quot;R7++&quot;              			# opcode 92
+		&quot;R8++&quot;              			# opcode 93
+		&quot;R9++&quot;              			# opcode 94
+		&quot;--R0&quot;              			# opcode 95
+		&quot;--R1&quot;              			# opcode 96
+		&quot;--R2&quot;              			# opcode 97
+		&quot;--R3&quot;              			# opcode 98
+		&quot;--R4&quot;              			# opcode 99
+		&quot;--R5&quot;              			# opcode 100
+		&quot;--R6&quot;              			# opcode 101
+		&quot;--R7&quot;              			# opcode 102
+		&quot;--R8&quot;              			# opcode 103
+		&quot;--R9&quot;              			# opcode 104
+		&quot;PEEK&quot;              			# opcode 105
+		&quot;POKE&quot;              			# opcode 106
+		&quot;NUMBER&quot;            			# opcode 107
+		&quot;NUMBER!&quot;           			# opcode 108
+		&quot;?NUMBER!&quot;          			# opcode 109
+		&quot;OPCODE&quot;            			# opcode 110
+		&quot;OPCODE!&quot;           			# opcode 111
+		&quot;TRAP1&quot;             			# opcode 112
+		&quot;TRAP2&quot;             			# opcode 113
+		&quot;TRAP3&quot;             			# opcode 114
+		&quot;TRAP4&quot;             			# opcode 115
+		&quot;TRAP5&quot;             			# opcode 116
+		&quot;TRAP6&quot;             			# opcode 117
+		&quot;TRAP7&quot;             			# opcode 118
+		&quot;TRAP8&quot;             			# opcode 119
+		&quot;TRAP9&quot;             			# opcode 120
+		&quot;sign&quot;              			# opcode 121
+		&quot;pack2&quot;             			# opcode 122
+		&quot;unpack2&quot;           			# opcode 123
+		&quot;MAX_INT&quot;           			# opcode 124
+		&quot;MIN_INT&quot;           			# opcode 125
+		&quot;HALT&quot;              			# opcode 126
+		&quot;nop&quot;               			# opcode 127
+		&quot;CMOVE&quot;             			# opcode 128
+		&quot;OMOVE&quot;             			# opcode 129
+		&quot;ROTATE&quot;            			# opcode 130
+		&quot;EAT&quot;               			# opcode 131
+		&quot;MAKE-SPORE&quot;        			# opcode 132
+		&quot;MAKE-ORGANIC&quot;      			# opcode 133
+		&quot;GROW&quot;              			# opcode 134
+		&quot;GROW.CB&quot;           			# opcode 135
+		&quot;CSHIFT&quot;            			# opcode 136
+		&quot;EXUDE&quot;             			# opcode 137
+		&quot;LOOK&quot;              			# opcode 138
+		&quot;NEAREST&quot;           			# opcode 139
+		&quot;FARTHEST&quot;          			# opcode 140
+		&quot;SIZE&quot;              			# opcode 141
+		&quot;BIGGEST&quot;           			# opcode 142
+		&quot;SMALLEST&quot;          			# opcode 143
+		&quot;TEMPERATURE&quot;       			# opcode 144
+		&quot;HOTTEST&quot;           			# opcode 145
+		&quot;COLDEST&quot;           			# opcode 146
+		&quot;SMELL&quot;             			# opcode 147
+		&quot;MOOD&quot;              			# opcode 148
+		&quot;MOOD!&quot;             			# opcode 149
+		&quot;BROADCAST&quot;         			# opcode 150
+		&quot;SEND&quot;              			# opcode 151
+		&quot;RECV&quot;              			# opcode 152
+		&quot;ENERGY&quot;            			# opcode 153
+		&quot;ENERGY.O&quot;          			# opcode 154
+		&quot;AGE&quot;               			# opcode 155
+		&quot;NUM-CELLS&quot;         			# opcode 156
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 157
+		&quot;DIST&quot;              			# opcode 158
+		&quot;CHOOSE&quot;            			# opcode 159
+		&quot;RND&quot;               			# opcode 160
+		&quot;SPREAD-ENERGY&quot;     			# opcode 161
+		&quot;SEND-ENERGY&quot;       			# opcode 162
+		&quot;NEIGHBORS&quot;         			# opcode 163
+		&quot;SHOUT&quot;             			# opcode 164
+		&quot;LISTEN&quot;            			# opcode 165
+	}
+
+	11  # number of protected instructions at start of table
+	# instruction table for strain 14
+	{
+		&quot;MAKE-BARRIER&quot;      			# opcode 0
+		&quot;POPULATION&quot;        			# opcode 1
+		&quot;POPULATION.S&quot;      			# opcode 2
+		&quot;GPS&quot;               			# opcode 3
+		&quot;KEY-PRESS&quot;         			# opcode 4
+		&quot;MOUSE-POS&quot;         			# opcode 5
+		&quot;SPAWN&quot;             			# opcode 6
+		&quot;S0&quot;                			# opcode 7
+		&quot;S0!&quot;               			# opcode 8
+		&quot;G0&quot;                			# opcode 9
+		&quot;G0!&quot;               			# opcode 10
+		&quot;call&quot;              			# opcode 11
+		&quot;if&quot;                			# opcode 12
+		&quot;ifelse&quot;            			# opcode 13
+		&quot;?loop&quot;             			# opcode 14
+		&quot;?exit&quot;             			# opcode 15
+		&quot;pop&quot;               			# opcode 16
+		&quot;dup&quot;               			# opcode 17
+		&quot;swap&quot;              			# opcode 18
+		&quot;over&quot;              			# opcode 19
+		&quot;rot&quot;               			# opcode 20
+		&quot;?dup&quot;              			# opcode 21
+		&quot;-rot&quot;              			# opcode 22
+		&quot;2swap&quot;             			# opcode 23
+		&quot;2over&quot;             			# opcode 24
+		&quot;2dup&quot;              			# opcode 25
+		&quot;2pop&quot;              			# opcode 26
+		&quot;nip&quot;               			# opcode 27
+		&quot;tuck&quot;              			# opcode 28
+		&quot;1+&quot;                			# opcode 29
+		&quot;1-&quot;                			# opcode 30
+		&quot;2+&quot;                			# opcode 31
+		&quot;2-&quot;                			# opcode 32
+		&quot;2/&quot;                			# opcode 33
+		&quot;2*&quot;                			# opcode 34
+		&quot;abs&quot;               			# opcode 35
+		&quot;sqrt&quot;              			# opcode 36
+		&quot;+&quot;                 			# opcode 37
+		&quot;-&quot;                 			# opcode 38
+		&quot;*&quot;                 			# opcode 39
+		&quot;/&quot;                 			# opcode 40
+		&quot;mod&quot;               			# opcode 41
+		&quot;/mod&quot;              			# opcode 42
+		&quot;negate&quot;            			# opcode 43
+		&quot;2negate&quot;           			# opcode 44
+		&quot;&lt;&lt;&quot;                			# opcode 45
+		&quot;&gt;&gt;&quot;                			# opcode 46
+		&quot;=&quot;                 			# opcode 47
+		&quot;&lt;&gt;&quot;                			# opcode 48
+		&quot;&lt;&quot;                 			# opcode 49
+		&quot;&gt;&quot;                 			# opcode 50
+		&quot;&lt;=&quot;                			# opcode 51
+		&quot;&gt;=&quot;                			# opcode 52
+		&quot;0=&quot;                			# opcode 53
+		&quot;or&quot;                			# opcode 54
+		&quot;and&quot;               			# opcode 55
+		&quot;not&quot;               			# opcode 56
+		&quot;invert&quot;            			# opcode 57
+		&quot;xor&quot;               			# opcode 58
+		&quot;min&quot;               			# opcode 59
+		&quot;max&quot;               			# opcode 60
+		&quot;CB&quot;                			# opcode 61
+		&quot;CBLEN&quot;             			# opcode 62
+		&quot;CSLEN&quot;             			# opcode 63
+		&quot;DSLEN&quot;             			# opcode 64
+		&quot;R0&quot;                			# opcode 65
+		&quot;R1&quot;                			# opcode 66
+		&quot;R2&quot;                			# opcode 67
+		&quot;R3&quot;                			# opcode 68
+		&quot;R4&quot;                			# opcode 69
+		&quot;R5&quot;                			# opcode 70
+		&quot;R6&quot;                			# opcode 71
+		&quot;R7&quot;                			# opcode 72
+		&quot;R8&quot;                			# opcode 73
+		&quot;R9&quot;                			# opcode 74
+		&quot;R0!&quot;               			# opcode 75
+		&quot;R1!&quot;               			# opcode 76
+		&quot;R2!&quot;               			# opcode 77
+		&quot;R3!&quot;               			# opcode 78
+		&quot;R4!&quot;               			# opcode 79
+		&quot;R5!&quot;               			# opcode 80
+		&quot;R6!&quot;               			# opcode 81
+		&quot;R7!&quot;               			# opcode 82
+		&quot;R8!&quot;               			# opcode 83
+		&quot;R9!&quot;               			# opcode 84
+		&quot;R0++&quot;              			# opcode 85
+		&quot;R1++&quot;              			# opcode 86
+		&quot;R2++&quot;              			# opcode 87
+		&quot;R3++&quot;              			# opcode 88
+		&quot;R4++&quot;              			# opcode 89
+		&quot;R5++&quot;              			# opcode 90
+		&quot;R6++&quot;              			# opcode 91
+		&quot;R7++&quot;              			# opcode 92
+		&quot;R8++&quot;              			# opcode 93
+		&quot;R9++&quot;              			# opcode 94
+		&quot;--R0&quot;              			# opcode 95
+		&quot;--R1&quot;              			# opcode 96
+		&quot;--R2&quot;              			# opcode 97
+		&quot;--R3&quot;              			# opcode 98
+		&quot;--R4&quot;              			# opcode 99
+		&quot;--R5&quot;              			# opcode 100
+		&quot;--R6&quot;              			# opcode 101
+		&quot;--R7&quot;              			# opcode 102
+		&quot;--R8&quot;              			# opcode 103
+		&quot;--R9&quot;              			# opcode 104
+		&quot;PEEK&quot;              			# opcode 105
+		&quot;POKE&quot;              			# opcode 106
+		&quot;NUMBER&quot;            			# opcode 107
+		&quot;NUMBER!&quot;           			# opcode 108
+		&quot;?NUMBER!&quot;          			# opcode 109
+		&quot;OPCODE&quot;            			# opcode 110
+		&quot;OPCODE!&quot;           			# opcode 111
+		&quot;TRAP1&quot;             			# opcode 112
+		&quot;TRAP2&quot;             			# opcode 113
+		&quot;TRAP3&quot;             			# opcode 114
+		&quot;TRAP4&quot;             			# opcode 115
+		&quot;TRAP5&quot;             			# opcode 116
+		&quot;TRAP6&quot;             			# opcode 117
+		&quot;TRAP7&quot;             			# opcode 118
+		&quot;TRAP8&quot;             			# opcode 119
+		&quot;TRAP9&quot;             			# opcode 120
+		&quot;sign&quot;              			# opcode 121
+		&quot;pack2&quot;             			# opcode 122
+		&quot;unpack2&quot;           			# opcode 123
+		&quot;MAX_INT&quot;           			# opcode 124
+		&quot;MIN_INT&quot;           			# opcode 125
+		&quot;HALT&quot;              			# opcode 126
+		&quot;nop&quot;               			# opcode 127
+		&quot;CMOVE&quot;             			# opcode 128
+		&quot;OMOVE&quot;             			# opcode 129
+		&quot;ROTATE&quot;            			# opcode 130
+		&quot;EAT&quot;               			# opcode 131
+		&quot;MAKE-SPORE&quot;        			# opcode 132
+		&quot;MAKE-ORGANIC&quot;      			# opcode 133
+		&quot;GROW&quot;              			# opcode 134
+		&quot;GROW.CB&quot;           			# opcode 135
+		&quot;CSHIFT&quot;            			# opcode 136
+		&quot;EXUDE&quot;             			# opcode 137
+		&quot;LOOK&quot;              			# opcode 138
+		&quot;NEAREST&quot;           			# opcode 139
+		&quot;FARTHEST&quot;          			# opcode 140
+		&quot;SIZE&quot;              			# opcode 141
+		&quot;BIGGEST&quot;           			# opcode 142
+		&quot;SMALLEST&quot;          			# opcode 143
+		&quot;TEMPERATURE&quot;       			# opcode 144
+		&quot;HOTTEST&quot;           			# opcode 145
+		&quot;COLDEST&quot;           			# opcode 146
+		&quot;SMELL&quot;             			# opcode 147
+		&quot;MOOD&quot;              			# opcode 148
+		&quot;MOOD!&quot;             			# opcode 149
+		&quot;BROADCAST&quot;         			# opcode 150
+		&quot;SEND&quot;              			# opcode 151
+		&quot;RECV&quot;              			# opcode 152
+		&quot;ENERGY&quot;            			# opcode 153
+		&quot;ENERGY.O&quot;          			# opcode 154
+		&quot;AGE&quot;               			# opcode 155
+		&quot;NUM-CELLS&quot;         			# opcode 156
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 157
+		&quot;DIST&quot;              			# opcode 158
+		&quot;CHOOSE&quot;            			# opcode 159
+		&quot;RND&quot;               			# opcode 160
+		&quot;SPREAD-ENERGY&quot;     			# opcode 161
+		&quot;SEND-ENERGY&quot;       			# opcode 162
+		&quot;NEIGHBORS&quot;         			# opcode 163
+		&quot;SHOUT&quot;             			# opcode 164
+		&quot;LISTEN&quot;            			# opcode 165
+	}
+
+	11  # number of protected instructions at start of table
+	# instruction table for strain 15
+	{
+		&quot;MAKE-BARRIER&quot;      			# opcode 0
+		&quot;POPULATION&quot;        			# opcode 1
+		&quot;POPULATION.S&quot;      			# opcode 2
+		&quot;GPS&quot;               			# opcode 3
+		&quot;KEY-PRESS&quot;         			# opcode 4
+		&quot;MOUSE-POS&quot;         			# opcode 5
+		&quot;SPAWN&quot;             			# opcode 6
+		&quot;S0&quot;                			# opcode 7
+		&quot;S0!&quot;               			# opcode 8
+		&quot;G0&quot;                			# opcode 9
+		&quot;G0!&quot;               			# opcode 10
+		&quot;call&quot;              			# opcode 11
+		&quot;if&quot;                			# opcode 12
+		&quot;ifelse&quot;            			# opcode 13
+		&quot;?loop&quot;             			# opcode 14
+		&quot;?exit&quot;             			# opcode 15
+		&quot;pop&quot;               			# opcode 16
+		&quot;dup&quot;               			# opcode 17
+		&quot;swap&quot;              			# opcode 18
+		&quot;over&quot;              			# opcode 19
+		&quot;rot&quot;               			# opcode 20
+		&quot;?dup&quot;              			# opcode 21
+		&quot;-rot&quot;              			# opcode 22
+		&quot;2swap&quot;             			# opcode 23
+		&quot;2over&quot;             			# opcode 24
+		&quot;2dup&quot;              			# opcode 25
+		&quot;2pop&quot;              			# opcode 26
+		&quot;nip&quot;               			# opcode 27
+		&quot;tuck&quot;              			# opcode 28
+		&quot;1+&quot;                			# opcode 29
+		&quot;1-&quot;                			# opcode 30
+		&quot;2+&quot;                			# opcode 31
+		&quot;2-&quot;                			# opcode 32
+		&quot;2/&quot;                			# opcode 33
+		&quot;2*&quot;                			# opcode 34
+		&quot;abs&quot;               			# opcode 35
+		&quot;sqrt&quot;              			# opcode 36
+		&quot;+&quot;                 			# opcode 37
+		&quot;-&quot;                 			# opcode 38
+		&quot;*&quot;                 			# opcode 39
+		&quot;/&quot;                 			# opcode 40
+		&quot;mod&quot;               			# opcode 41
+		&quot;/mod&quot;              			# opcode 42
+		&quot;negate&quot;            			# opcode 43
+		&quot;2negate&quot;           			# opcode 44
+		&quot;&lt;&lt;&quot;                			# opcode 45
+		&quot;&gt;&gt;&quot;                			# opcode 46
+		&quot;=&quot;                 			# opcode 47
+		&quot;&lt;&gt;&quot;                			# opcode 48
+		&quot;&lt;&quot;                 			# opcode 49
+		&quot;&gt;&quot;                 			# opcode 50
+		&quot;&lt;=&quot;                			# opcode 51
+		&quot;&gt;=&quot;                			# opcode 52
+		&quot;0=&quot;                			# opcode 53
+		&quot;or&quot;                			# opcode 54
+		&quot;and&quot;               			# opcode 55
+		&quot;not&quot;               			# opcode 56
+		&quot;invert&quot;            			# opcode 57
+		&quot;xor&quot;               			# opcode 58
+		&quot;min&quot;               			# opcode 59
+		&quot;max&quot;               			# opcode 60
+		&quot;CB&quot;                			# opcode 61
+		&quot;CBLEN&quot;             			# opcode 62
+		&quot;CSLEN&quot;             			# opcode 63
+		&quot;DSLEN&quot;             			# opcode 64
+		&quot;R0&quot;                			# opcode 65
+		&quot;R1&quot;                			# opcode 66
+		&quot;R2&quot;                			# opcode 67
+		&quot;R3&quot;                			# opcode 68
+		&quot;R4&quot;                			# opcode 69
+		&quot;R5&quot;                			# opcode 70
+		&quot;R6&quot;                			# opcode 71
+		&quot;R7&quot;                			# opcode 72
+		&quot;R8&quot;                			# opcode 73
+		&quot;R9&quot;                			# opcode 74
+		&quot;R0!&quot;               			# opcode 75
+		&quot;R1!&quot;               			# opcode 76
+		&quot;R2!&quot;               			# opcode 77
+		&quot;R3!&quot;               			# opcode 78
+		&quot;R4!&quot;               			# opcode 79
+		&quot;R5!&quot;               			# opcode 80
+		&quot;R6!&quot;               			# opcode 81
+		&quot;R7!&quot;               			# opcode 82
+		&quot;R8!&quot;               			# opcode 83
+		&quot;R9!&quot;               			# opcode 84
+		&quot;R0++&quot;              			# opcode 85
+		&quot;R1++&quot;              			# opcode 86
+		&quot;R2++&quot;              			# opcode 87
+		&quot;R3++&quot;              			# opcode 88
+		&quot;R4++&quot;              			# opcode 89
+		&quot;R5++&quot;              			# opcode 90
+		&quot;R6++&quot;              			# opcode 91
+		&quot;R7++&quot;              			# opcode 92
+		&quot;R8++&quot;              			# opcode 93
+		&quot;R9++&quot;              			# opcode 94
+		&quot;--R0&quot;              			# opcode 95
+		&quot;--R1&quot;              			# opcode 96
+		&quot;--R2&quot;              			# opcode 97
+		&quot;--R3&quot;              			# opcode 98
+		&quot;--R4&quot;              			# opcode 99
+		&quot;--R5&quot;              			# opcode 100
+		&quot;--R6&quot;              			# opcode 101
+		&quot;--R7&quot;              			# opcode 102
+		&quot;--R8&quot;              			# opcode 103
+		&quot;--R9&quot;              			# opcode 104
+		&quot;PEEK&quot;              			# opcode 105
+		&quot;POKE&quot;              			# opcode 106
+		&quot;NUMBER&quot;            			# opcode 107
+		&quot;NUMBER!&quot;           			# opcode 108
+		&quot;?NUMBER!&quot;          			# opcode 109
+		&quot;OPCODE&quot;            			# opcode 110
+		&quot;OPCODE!&quot;           			# opcode 111
+		&quot;TRAP1&quot;             			# opcode 112
+		&quot;TRAP2&quot;             			# opcode 113
+		&quot;TRAP3&quot;             			# opcode 114
+		&quot;TRAP4&quot;             			# opcode 115
+		&quot;TRAP5&quot;             			# opcode 116
+		&quot;TRAP6&quot;             			# opcode 117
+		&quot;TRAP7&quot;             			# opcode 118
+		&quot;TRAP8&quot;             			# opcode 119
+		&quot;TRAP9&quot;             			# opcode 120
+		&quot;sign&quot;              			# opcode 121
+		&quot;pack2&quot;             			# opcode 122
+		&quot;unpack2&quot;           			# opcode 123
+		&quot;MAX_INT&quot;           			# opcode 124
+		&quot;MIN_INT&quot;           			# opcode 125
+		&quot;HALT&quot;              			# opcode 126
+		&quot;nop&quot;               			# opcode 127
+		&quot;CMOVE&quot;             			# opcode 128
+		&quot;OMOVE&quot;             			# opcode 129
+		&quot;ROTATE&quot;            			# opcode 130
+		&quot;EAT&quot;               			# opcode 131
+		&quot;MAKE-SPORE&quot;        			# opcode 132
+		&quot;MAKE-ORGANIC&quot;      			# opcode 133
+		&quot;GROW&quot;              			# opcode 134
+		&quot;GROW.CB&quot;           			# opcode 135
+		&quot;CSHIFT&quot;            			# opcode 136
+		&quot;EXUDE&quot;             			# opcode 137
+		&quot;LOOK&quot;              			# opcode 138
+		&quot;NEAREST&quot;           			# opcode 139
+		&quot;FARTHEST&quot;          			# opcode 140
+		&quot;SIZE&quot;              			# opcode 141
+		&quot;BIGGEST&quot;           			# opcode 142
+		&quot;SMALLEST&quot;          			# opcode 143
+		&quot;TEMPERATURE&quot;       			# opcode 144
+		&quot;HOTTEST&quot;           			# opcode 145
+		&quot;COLDEST&quot;           			# opcode 146
+		&quot;SMELL&quot;             			# opcode 147
+		&quot;MOOD&quot;              			# opcode 148
+		&quot;MOOD!&quot;             			# opcode 149
+		&quot;BROADCAST&quot;         			# opcode 150
+		&quot;SEND&quot;              			# opcode 151
+		&quot;RECV&quot;              			# opcode 152
+		&quot;ENERGY&quot;            			# opcode 153
+		&quot;ENERGY.O&quot;          			# opcode 154
+		&quot;AGE&quot;               			# opcode 155
+		&quot;NUM-CELLS&quot;         			# opcode 156
+		&quot;HAS-NEIGHBOR&quot;      			# opcode 157
+		&quot;DIST&quot;              			# opcode 158
+		&quot;CHOOSE&quot;            			# opcode 159
+		&quot;RND&quot;               			# opcode 160
+		&quot;SPREAD-ENERGY&quot;     			# opcode 161
+		&quot;SEND-ENERGY&quot;       			# opcode 162
+		&quot;NEIGHBORS&quot;         			# opcode 163
+		&quot;SHOUT&quot;             			# opcode 164
+		&quot;LISTEN&quot;            			# opcode 165
+	}
+}
+</PRE></TD></TABLE></CENTER>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:09  EST  2023
+</div>
+</body>
+</html>

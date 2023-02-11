@@ -1,0 +1,23 @@
+{ foobar mycall call }
+
+{}
+{}
+{}
+
+mycall:
+{
+   call
+}
+
+jism: {}
+{}
+{}
+
+foobar:
+{
+   666
+}
+
+
+{}
+{}

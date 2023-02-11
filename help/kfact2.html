@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Kforth  Activity  2:  Me  Thinks  it  is  a  Function</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> December  21th,  2022
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Kforth  Activity  2:  Me  Thinks  it  is  a  Function</h1><p>
+ These  three  sample  KFORTH  programs  can  be  used  with  the  [MUTATE!]  button  to  see  simple  evolution  occur.  The  first  example
+ evolves  a  prorgam  which  returns  the  largest  number.
+</p>
+<p>
+ The  second  program  uses  tricks  to  see  evolution  attempt  to  find  a  number.
+</p>
+<p>
+ The  third  program  continues  this  idea  and  shows  how  you  could  have  evolution  find  a  function.
+</p>
+<p>
+ This  functionality  is  available  on  the  Mutations  tab.  The  MUTATE!  button  and  associated  fields  can  be  configured  to  run  simplistic
+ evolution  on  mutating  kforth.
+</p>
+<ul>
+<li>
+<b> Times:</b> How  many  times  to  repeat  the  whole  process  when  MUTATE!  clicked.
+</li><br>
+
+<li>
+<b> Population:</b> How  many  competing  algorithms  will  be  in  the  pool  each  test.
+</li><br>
+
+<li>
+<b> Trials:</b> Only  when  this  field  greater  than  zero  will  the  selection  algorithm  kick  in.  This  is  how  many  times  each
+ program  is  run.  the  average  score  is  used  to  pick  the  best.
+</li><br>
+</ul><A NAME="TOC2"></A><h1> Me  Thinks  it  is  MAX_INT</h1>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+; protect these instructions: R0!, R1!, R2!, R0++, R1++, R2++, --R0, --R1, --R2, traps 1-9, HALT
+; protected code blocks: 1
+main: {
+    evolve call
+}
+
+evolve: { }
+</PRE></TD></TABLE></CENTER>
+<A NAME="TOC3"></A><h1> Me  Thinks  it  is  a  number</h1>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+; protect these instructions: R0!, R1!, R2!, R0++, R1++, R2++, --R0, --R1, --R2, traps 1-9, HALT
+; protected code blocks: 3
+main: {
+    evolve call
+    R2!
+    { pop DSLEN ?loop } call
+    goal call
+    R3!
+    max_int
+    R2 R3 - abs     ; diff = abs(evolve - goal)
+    -               ; score = max_int - difference_from_goal
+}
+
+; compute f() = 123
+goal: { 123 }
+
+evolve: { }
+</PRE></TD></TABLE></CENTER>
+<A NAME="TOC4"></A><h1> Me  Thinks  it  is  a  Function</h1>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+; protect these instructions: R0!, R1!, R2!, R0++, R1++, R2++,--R0, --R1, --R2, traps 1-9, HALT
+; protected code blocks: 3
+main: {
+    RND R0!
+    0   R2!
+    R0 evolve call
+    R2!
+    { pop DSLEN ?loop } call
+    R0 goal call
+    R3!
+    max_int
+    R2 R3 - abs     ; diff = abs(evolve(x,y) - goal(x,y))
+     -              ; score = max_int - difference_from_goal
+}
+
+; compute f(x) = 2 * x^2 - 32*x + 222
+goal: { dup dup * 2 *   swap 32 * -    222 + }
+
+evolve: { }
+</PRE></TD></TABLE></CENTER>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:10  EST  2023
+</div>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>History  of  Evolve  5.0</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> December  14th,  2022
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h2>History  of  Evolve</h2><A NAME="TOC2"></A><h2> Timeline:</h2><ul>
+<li>
+<b> 1996  -  Evolve  1.0</b><br> Written  in  C  on  a  sun3  workstation.  No  visualization.  I  had  to  use  a  perl  script  to  convert  the
+ simulation  to  Post  Script  and  then  use  GNU  GhostScript  (gs)  to  view  snapshots  of  the  universe.
+</li><br>
+
+<li>
+<b> 1998  -  Evolve  2.0</b><br> Ported  the  original  code  to  Borland  Builder  C/C++  on  a  PC.  Implemented  a  decent  GUI  to  visualize  the  universe.
+ Added  new  instructions,  and  tweaked  the  simulation.
+</li><br>
+
+<li>
+<b> 2001  -  Evolve  3.0</b><br> Rewritten  in  Eiffel  as  a  learning  exercise.  Many  concepts  added  to  the  simulator  (like &quot;energy&quot; and &quot;barriers&quot;).  A  decent
+ GUI  to  visualize  the  universe.  Added  new  instructions,  and  tweaked  the  simulation.
+</li><br>
+
+<li>
+<b> 2006  -  Evolve  4.0</b><br> For  performance  reasons  Eiffel  was  dropped  as  the  implementation  and  another  complete  rewrite  in  C/C++.  This  time  the  genetic
+ language  was  massively  improved,  and  SEX  was  added!!!!  None  of  the  original  code  was  reused  for  this  version.
+</li><br>
+
+<li>
+<b> 2022  -  Evolve  5.0</b><br> This  version.  For  performance  reasons  64-bit  kforth  was  changed  to  16-bit.  New  UI.  Strain  Profiles.  another  complete  rewrite  in
+ C  and  Swift.  More  ways  to  change  the  simulator  without  recompiling  the  simulator.
+</li><br>
+</ul><A NAME="TOC3"></A><h2> Version  1.0</h2><p>
+ In  1996  I  read  a  wonderful  book  by  Richard  Dawkins, <i>The  Blind  Watchmaker</i> that  in  addition  to  providing  a  clear  description  of
+ the  workings  of  evolution  it  also  described  some  interesting  computer  software  called <i>biomorphs</i>.  His  biomorphs  would  evolve  by  mutating
+ a  small  set  of  genes  through  successive  generations.  However  the  selection  process  was  user  controlled.  The  user  selected  organisms  based
+ on  whatever  criteria  they  wished.
+</p>
+<p>
+ I  got  to  thinking  that  it  would  be  more  interesting  to  have  a  complete  simulation  of  evolution,  including  a  selection
+ process  that  was  based  on  only  one  criteria: <b>Survival</b>.  I  also  wanted  a  more  sophisticated  mechanism  for  genes.  In
+ biomprphs  the  genetics  were  limited  to  four  of  five  genes  (which  were  just  integers).
+</p>
+<p>
+ Richard  Dawkins&#x27; description  of  the  power  of  cummulative  selection  was  so  convincing  that  I  imagined  that  a  sufficiently  good  simulation
+ of  this  process  would  eventually  evolve  some  very &quot;smart&quot; creatures.  And  this  was  the  inspiration  for  this  software.
+</p>
+<p>
+ My  idea  was  to  create  a  simple  2-dimensional  universe  using  finite  elements.  Conceptually  the  universe  would  consist  of  discrete  locations
+ (Such  as  (0,0),  (5,4),  etc...).  There  would  not  be  any  bounds  to  this  universe  (a  feature  that  has  since  been
+ dropped  in  version  4.0),  and  creatures  could  roam  in  virtually  unlimited  directions  North,  South,  East  and  West.  The  entities  that
+ would  inhabit  this  simple  world  consisted  of  organisms.  Every  organism  would  occupy  one  or  more  locations.  The  organism  would  be
+ a  series  of  cells  that  all  had  to  be  physically  located  next  to  each  other.
+</p>
+<p>
+ Each  organism  would  consist  of  a  genetic  program.  Each  instruction  would  encapsulate  a  very  simple  operation.  For  example  the  instruction
+<b>&quot;REPRODUCE  NORTH(#10)&quot;</b> would  cause  the  organism  to  spawn  a  copy  (with  possible  mutations)  10  units  north  of  the  cell  that  executed
+ the  instruction.  Other  operations  included: <b>MOVE</b>, <b>CONSUME</b>, <b>NEW</b>, <b>DIE</b>.  To  make  the  range  of  behaviors  that
+ could  evolve  more  interesting  I  included  GOTO  and  a  few  other  instructions  that  were  purely  programmatic  in  nature.
+</p>
+<p>
+ In  1996,  I  had  a  spare  Sun3  workstation  that  I  hoped  to  run  this  simulator  for  months  at  a  time,
+ and  periodically  I  would  examine  the  current  universe  to  see  what &quot;smart&quot; creatures  had  evolved.
+</p>
+<A NAME="TOC4"></A><h2> Version  2.0</h2><p>
+ The  initial  version  was  not  very  good.  For  one  thing  I  didn&#x27;t  have  any  GUI.  The  only  way  to  examine
+ the  universe  was  to  dump  the  state  of  the  universe  to  a  text  file.  I  had  to  use  a  perl
+ script  that  converted  my  simulation  files  into  postscript  (which  I  could  then  view  using  Ghostscript).  But  the  results  and  interactivity
+ was  lacking.
+</p>
+<p>
+ So  two  years  later  in  1998  I  pulled  to  orginal  code  off  of  my  Sun  workstation  (which  was  headed  for
+ a  Sunnyvale  landfill)  and  decided  to  port  it  to  Borland  Builder  C++.  It  was  very  easy  to  get  a  simple
+ GUI  going  and  I  was  very  excited  to  run  a  simulation  and  be  able  to  see  the  simulation  results.
+</p>
+<p>
+ During  this  time  I  enhanced  the  instruction  set.  I  realized  that  in  real-life  organisms,  each  cell  has  a  state  seperate
+ from  the  other  cells.  You  nerve  cells  are  different  from  your  skin  cells.  I  added  registers  and  flags  and  a
+ stack  to  each  cell.  The  genetic  program  was  shared  by  all  cells  in  the  organism  (just  like  our  DNA  is
+ common  to  cells,  but  each  cell  does  different  things  based  on  state).
+</p>
+<p>
+ I  continued  to  enhance  this  version.  I  added  many  nice  GUI  features  like  zoom,  cut/paste.  I  would  periodically  revisit  this
+ program  and  run  simulations  for  a  couple  of  days  but  I  never  seemed  to  evolve  anything  very  interesting.
+</p>
+<p>
+ One  of  the  problems  was  the  unbounded  universe.  The  creatures  would  just  move  in  a  single  direction  and  go  off
+ into  inifinity.  My  model  for  rewarding  organisms  with  energy  if  they  consume  other  organisms  had  problems.  It  was  unstable.  Depending
+ on  the  parameters  I  used,  I  either  got  an  exponential  growth  of  organisms  (and  the  machine  would  run  out  of
+ memory).  Or  the  creatures  would  die  off  quickly.
+</p>
+<p>
+ I  continued  to  tweak  my  universe  model.  I  added  a &quot;crowded  cells&quot; parameter  so  that  if  the  carrying  capacity  of
+ the  simulation  reached  a  certain  level,  then  it  would  become  harder  and  harder  for  organisms  to  reproduce.  The  amount  of
+ energy  needed  to  reproduce  would  dynamically  change  based  on  the  total  number  of  cells  in  the  universe.
+</p>
+<p>
+ Anyway,  after  sufficient  tweaking  the  simulation  began  to  exhibit  the  characteristics  of  cummulative  selection,  and  I  was  happy.
+</p>
+<A NAME="TOC5"></A><h2> Version  3.0</h2><p>
+ In  2001,  I  decided  to  re-implement  the  entire  simulator  application  in  Eiffel.  The  main  goal  was  to  learn  eiffel.  But
+ I  made  several  improvements  to  the  program  during  this  time.  One  improvment  was  adding &quot;barriers&quot; to  the  universe.  A  BARRIER
+ is  a  way  to  limit  the  universe  to  a  enclosed  region.  When  I  ran  the  simulator  with  an  enclosure,  I
+ began  to  see  much  more  evolution  of  smart  creatures.  They  moved  around  more,  and  they  would  change  their  direction  and
+ interact  strangely  with  other  creatures.
+</p>
+<p>
+ Unfortunately  the  Eiffel  implementation  was  my  first  large  scale  Eiffel  program.  It  suffered  from  many  problems.  Mostly  it  couldn&#x27;t  handle
+ the  constant  creation/destruction  of  objects  during  the  simulation.  I  love  Eiffel,  but  damn  if  this  app.  was  just  too  slow
+ for  my  needs.
+</p>
+<A NAME="TOC6"></A><h2> Version  4.0</h2><p>
+ In  2006,  I  rewrote  the  whole  thing  in  C/C++.  I  hate  C++,  but  I  guess  over  the  years  I  have
+ warmed  up  to  it  enough  to  use  it.  I  do  appreciate  C++&#x27;s  performance  advantage  over  Eiffel.  And  with  lots  and
+ lots  of  ASSERT()&#x27;s  you  can  protect  yourself  from  endless  hours  of  debugging.
+</p>
+<p>
+ Version  4.0  is  much  improved:
+</p>
+<ul>
+<li>
+ Uses  a  Forth-like  genetic  language.
+</li>
+
+<li>
+ Each  cell  can  execute  in  a  virtual  machine  with  unlimited  data/call  stack
+</li>
+
+<li>
+ Made  replication  a  2-step  process  involving  spores,  and  supports  both  sexual  and  asexual  reproduction.
+</li>
+
+<li>
+ Cleaner  GUI.
+</li>
+
+<li>
+ Simulation  files  are  platform  independent.
+</li>
+
+<li>
+ The  command  line  simulator  can  run  on  Linux  (or  any  unix)  as  well  as  windows.
+</li>
+
+<li>
+ More  accessable  source  code  for  better  hacking.  (Eiffel  is  still  kind  of  a  niche  language  for  most  hackers).
+</li>
+
+<li>
+ More  flexible  instructions  for  controlling  the  organism
+</li>
+
+<li>
+ A  better  LOOK  primitive  which  is  not  limited  to  up/down/left/right  directions.
+</li>
+
+<li>
+ Grid  movement  is  extended  to  include  diagonals.  (not  limited  to  up,  down,  left  and  right  anymore)
+</li>
+
+<li>
+ Much  faster  than  previous  implementations.
+</li>
+</ul><A NAME="TOC7"></A><h2> Version  5.0</h2><p>
+ In  2022,  I  was  motivated  to  re-release  this  again.  I  was  reminded  that  this  software  exists.  I  had  no  way
+ to  run  this  software  anymore.  I  didn&#x27;t  have  a  windows  machine.  I  couldn&#x27;t  even  run  the  old  executables.  But  I
+ really  wanted  to  play  with  this  software  again!  So  I  decided  to  port  it  to  MacOS,  and  learn  a  new
+ platform  /  langugae  /  IDE.
+</p>
+<p>
+ Version  5.0  is  much  improved  again:
+</p>
+<ul>
+<li>
+ Uses  modern  native  GUI  on  the  Mac
+</li>
+
+<li>
+ Higher  Performance  due  to  improved  simulator  code  using  data  driven  design  principles
+</li>
+
+<li>
+ More  instructions,  especially  LOOK&#x27;ing
+</li>
+
+<li>
+ More  capabilities  to  perform  on  the  2d  grid:  SHOUT,  LISTEN,  SMELL,  EXUDE,  ROTATE
+</li>
+
+<li>
+ Relaxed  connectivity  contraints  such  that  diagonal  creatures  are  allowed
+</li>
+
+<li>
+ More  modes  for  configuring  the  behavior  of  instructions
+</li>
+
+<li>
+ Ability  to  create  strain  profiles
+</li>
+
+<li>
+ Ability  to  enable/disable  kforth  instructions
+</li>
+
+<li>
+ Unmutable  code  regions  -  specify  that  certain  regions  of  your  kforth  program  will  not  be  mutated
+</li>
+
+<li>
+ Much  faster  than  previous  implementations.
+</li>
+
+<li>
+ interactivity  via  MOUSE-POS  and  KEY-PRESS  instructions
+</li>
+
+<li>
+ much  improved  internal  organization  for  code  maintainence
+</li>
+</ul><HR>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:10  EST  2023
+</div>
+</body>
+</html>

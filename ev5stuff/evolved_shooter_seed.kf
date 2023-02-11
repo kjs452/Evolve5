@@ -1,0 +1,148 @@
+;
+;
+; The parameters:
+;	- Bullet + Uneatable
+;	- NOT cell based energy mode
+;	- 100/100 grow/make-spore
+;	- 10 strain visibility
+;	- 512 + 128 eat_mode		<<<<<---- this is eat 1/2 energy + remainder
+;
+; The protected code is from shooter.kf
+;
+;
+main:
+{
+      13  call 
+}
+
+row1:
+{
+      DSLEN  50  >=  ?exit  DSLEN  2  <  ?exit
+      R0  R1  2swap  R1!  R0!  R0  R1  1  5  10
+      SPAWN  pop  R1!  R0! 
+}
+
+row2:
+{
+     
+}
+
+row3:
+{
+     
+}
+
+row4:
+{
+     
+}
+
+row5:
+{
+     
+}
+
+row6:
+{
+      DSLEN  60  >=  ?exit  R1!  R0!  R0  R1  1
+      5  10  SPAWN  pop 
+}
+
+row7:
+{
+     
+}
+
+row8:
+{
+     
+}
+
+row9:
+{
+     
+}
+
+row10:
+{
+      R0  R1  2dup  11  call  12  call  HALT 
+}
+
+row11:
+{
+      2dup  OMOVE  ?loop 
+}
+
+row12:
+{
+      2dup  EAT  pop  2dup  OMOVE  pop  255  NEAREST
+      EAT  ?loop 
+}
+
+evolve:
+{
+      -1  call  22  call  2dup  EAT  EAT  14  call
+      22  call  15  call  22  call  16  call  22
+      call  17  call  22  call  21  0  22  18
+      call  call  22  call  20  2  OMOVE  -1  2
+      -41  call  22  call  call  call  1  ?loop 
+}
+
+row14:
+{
+      1  GROW  -3  64  34  2swap  -1  2dup  2dup
+      EAT  pop  2dup  GROW  OMOVE  ?loop 
+}
+
+row15:
+{
+      0  NUM-CELLS  --R6  73  GROW  OMOVE  pop
+      GROW  R9++  --R2  EAT  pop  R3!  96  15
+      17  -  -1  2dup  EAT  pop  OMOVE 
+}
+
+row16:
+{
+      57  NUM-CELLS  5  0  2dup  pop  OMOVE  R3!
+      mod  >=  58  invert 
+}
+
+row17:
+{
+      -1  5  R7++  GROW  2  OMOVE  MIN_INT  LOOK
+      2swap  68  NEAREST  pop  OMOVE  7  -69  86
+      27 
+}
+
+row18:
+{
+      ENERGY  4  /  R0!  -1  0  R0  MAKE-SPORE
+      pop  -1  0  R0  MAKE-SPORE  -88  LOOK  pop
+      xor  -2  OMOVE  16  AGE  pop  2dup  56  TRAP7
+      -20  -16  EAT  -1  R9++  --R2  0  -1  OMOVE
+      pop  0=  0  -2  DSLEN  =  1  pop  OMOVE
+      pop 
+}
+
+row19:
+{
+      COLDEST  13  22  >  <=  74  -47  -37  OMOVE
+      MIN_INT 
+}
+
+row20:
+{
+     
+}
+
+row21:
+{
+      54  NUM-CELLS 
+}
+
+row22:
+{
+      2dup  EAT  ?loop  ?loop  54  NUM-CELLS  -1
+      2  -41  -31  PEEK  64 
+}
+

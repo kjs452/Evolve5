@@ -1,0 +1,140 @@
+;
+;
+;
+; This creature demonstrates CMOVE. It is based on the documentation for the CMOVE instruction.
+; This creature will morph from the shape shown in STEP 1, to the creature shown in STEP 4.
+;
+; To syncronize activities between cells, the MOOD register in Cell 1 will be used.
+;
+;
+; STEP 1: Firstly, build the creature to look like this:
+;
+;	+---+---+
+;	| 1 | 2 |
+;	+---+---+---+
+;	    | 3 | 4 |
+;	    +---+---+
+;	    | 5 |
+;	    +---+
+;
+; STEP 2: cell 1 executes:
+;
+;	0 1 CMOVE
+;
+; Giving,
+;
+;	    +---+
+;	    | 2 |
+;	+---+---+---+
+;	| 1 | 3 | 4 |
+;	+---+---+---+
+;	    | 5 |
+;	    +---+
+;
+; STEP 3: cell 4 waits for the MOOD of cell 1 to become the value '4', then executes:
+;
+;	0 1 CMOVE
+;
+; Giving,
+;
+;	    +---+
+;	    | 2 |
+;	+---+---+
+;	| 1 | 3 |
+;	+---+---+---+
+;	    | 5 | 4 |
+;	    +---+---+
+;
+; STEP 4: cell 5 waits for the MOOD of cell 1 to become the value '5', then executes:
+;
+;	1 -1 CMOVE
+;
+; Giving,
+;
+;	    +---+
+;	    | 2 |
+;	+---+---+---+
+;	| 1 | 3 | 5 |
+;	+---+---+---+
+;	        | 4 |
+;	        +---+
+;
+;
+; Finally, the the creature spins forever (using ROTATE).
+;
+;
+
+Cell1:
+{
+	0 MOOD!
+
+	1 0 GROW -1 = Cell2 if
+
+	wait call
+
+	0 1 CMOVE
+
+	wait call
+
+	4 MOOD!		; cell 4 looks for this mood
+
+	wait call
+
+	5 MOOD!		; cell 5 looks for this mood
+
+	wait call
+
+	;
+	; spin around to signal end
+	;
+	{
+		short_wait call
+		1 ROTATE
+		?loop
+	} call
+}
+
+Cell2:
+{
+	0 1 GROW -1 = Cell3 if
+	forever call
+}
+
+Cell3:
+{
+	1 0 GROW -1 = Cell4 if
+	forever call
+}
+
+;
+; Make cell 5, then wait for mood of cell 1 to be set to '4'
+; when that happens perform the CMOVE instruction.
+;
+Cell4:
+{
+	-1 1 GROW -1 = Cell5 if
+	{ -2 0 MOOD 4 <> ?loop } call
+	0 1 CMOVE
+	forever call
+}
+
+Cell5:
+{
+	{ -1 -1 MOOD 5 <> ?loop } call
+	1 -1 CMOVE
+	forever call
+}
+
+forever: { 1 ?loop }
+
+;
+; Wait Loop
+;
+; This is the template for looping n number of times
+; (using ?dup and ?loop in conjuntion)
+;
+wait: { 500 { 1- ?dup ?loop } call }
+
+short_wait: { 50 { 1- ?dup ?loop } call }
+
+

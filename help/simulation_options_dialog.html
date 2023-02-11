@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Mutation  Settings  Dialog</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> February  7th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h2> Mutation  Settings  Dialog</h2><p>
+ This  dialog  lets  you  change  the  mutation  rates.  The  defaults  should  be  fine  though.  But  knock  yourself  out.
+</p>
+<IMG  SRC="SimulationOptions.jpg"><p>
+ You  can  control  the  probability  that  a  mutation  will  occur  by  going  to  the  simulation  options  dialog.  The  mutation  algorithm
+ first  decides  if  it  will  act  at  the <b>instructon-level</b>,  or <b>code  block-level</b>.
+</p>
+<TABLE BORDER=1 WIDTH="80%""><TR BGCOLOR=#10f050><TD ALIGN=LEFT WIDTH="50%">
+<b> Mutation  Type</b></TD>
+<TD ALIGN=LEFT><b> Instruction-level</b></TD>
+<TD ALIGN=LEFT><b> Code  Block-level</b></TD>
+<TR>
+<TD ALIGN=LEFT  >
+<b> Duplication</b></TD>
+<TD ALIGN=LEFT  >
+ Pick  a  random  strand  of  instructions  and  repeat  it  at  the  same  spot</TD>
+<TD ALIGN=LEFT  >
+ Pick  a  random  code  block  and  add  a  copy  to  end  of  program</TD>
+<TR>
+<TD ALIGN=LEFT  >
+<b> Deletion</b></TD>
+<TD ALIGN=LEFT  >
+ Pick  a  random  strand  of  instructions  and  remove  it</TD>
+<TD ALIGN=LEFT  >
+ Pick  a  random  code  block  and  remove  it.</TD>
+<TR>
+<TD ALIGN=LEFT  >
+<b> Insertion</b></TD>
+<TD ALIGN=LEFT  >
+ Pick  a  random  strand  of  instructions  and  insert  it  into  a  random  spot.</TD>
+<TD ALIGN=LEFT  >
+ insert  a  new  code  block  and  fill  with  random  instructions.</TD>
+<TR>
+<TD ALIGN=LEFT  >
+<b> Transposition</b></TD>
+<TD ALIGN=LEFT  >
+ Swap  2  random  instruction  strands</TD>
+<TD ALIGN=LEFT  >
+ Swap  2  random  code  blocks</TD>
+<TR>
+<TD ALIGN=LEFT  >
+<b> Modification</b></TD>
+<TD ALIGN=LEFT  >
+ Pick  a  random  strand  of  instruction  and  modify  it.</TD>
+<TD ALIGN=LEFT  >
+ Pick  a  random  code  block  and  modify  every  single  instruction  or  number</TD>
+</TABLE><p>
+ The  setting <b>Mutate  Code  Block</b> controls  the  probability  of  performing  a  code  block-level  mutation  versus  an  instruction-level  mutation.  The  default  is <b>25%</b>,  which  means  1  out  of  4  mutations  will  be  code  block-level  mutations.
+</p>
+<p>
+ The  setting <b>Max.  Code  Blocks</b> limits  the  size  of  mutated  programs  to  never  exceed  this  maximum  number  of  code  blocks.  The  default
+ is <b>100</b>.
+</p>
+<p>
+ The  setting <b>Max.  Apply</b> controls  the  number  of  time  the  mutation  algorithm  is  applied  before  a  new  organism  is  born.  The
+ default  is <b>10</b>.  This  means  that  a  random  number  from  1  to  10  is  chosen  before  mutating  a  KFORTH
+ program.  The  mutation  algorithm  is  then  applied  this  many  times.  To  disable  mutations  you  can  set  this  to  0.  This
+ setting  can  be  any  number  from  0  to  20.
+</p>
+<p>
+<b> Merge  Mode:</b> Select  between  different  ways  of  merging  programs  when  MAKE-SPORE  fertilizes  a  spore  from  different  parents.
+</p>
+<ul>
+<li>
+<b> 0</b> -  interlace  code  blocks  between  parents  randomly.
+</li>
+
+<li>
+<b> 1</b> -  alternate  code  blocks  between  parents,  starting  with  parent  1.
+</li>
+
+<li>
+<b> 2</b> -  alternate  code  blocks  between  parents,  starting  with  parent  2.
+</li>
+</ul><p>
+<b> Strand  Length:</b> Defines  the  average  strand  length  used  during  mutations.  When  a  short  sequence  of  instructions  are  to  be  mutated,  this
+ parameter  is  used  to  define  the  size.  A  random  value  between <b>1</b>... <b>Strand  Length</b> is  chosen.  The  default  is <b>4</b>,  but  can  be <b>1</b> to <b>20</b>.
+</p>
+<p>
+ See  the  section, <A HREF="mutations.html#mutations">Mutations/Replication</A> for  more  information  on  how  these  probabilities  control  the  mutation  algorithm.
+</p>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:11  EST  2023
+</div>
+</body>
+</html>

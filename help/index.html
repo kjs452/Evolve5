@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  5.0</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> January  28th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1>About  this  Software</h1><p>
+<b> Evolve  5.0</b> is  a  simulator  of  evolution  using  cells  on  a  2-dimensional  universe.  Each  cell  is  a  computer  CPU  running  a
+ program.  These  programs  can  replicate,  move  and  struggle  for  resources.  This  software  lets  you  create  new  simulations,  run  them,  and
+ visualize  the  behavior  of  the  evolving  creatures.
+</p>
+<p>
+ This  is  a  simulator  with  a  heavy  emphasis  on <b>programming</b>.  The  USER  is  responsible  for  writing  serious  16-bit  forth
+ programs  in  a  large  compute  space  with  thousands  of  replicating  programs.  This  software  provides  a  robust  development  environment  for  creating
+ such  programs.
+</p>
+<p>
+ The  first  version  of  this  software  was  created  in  1996.  Fortunately,  it  has  evolved  (just  like  the  creatures  that  live
+ in  the  simulator)  into  an  awsome  piece  of  software.  The  most  recent  version  is  a  complete  MacOS  application  with  a
+ well  designed  GUI  and  lots  of  features  for  examining  the  evolved  creatures.
+</p>
+<p>
+ I  have  prepared  a  quick  overview  of  the  software <A HREF="overview.html">here</A>.
+</p>
+<p>
+<A HREF="executable.html"><b> Get  the  Application.</b></A>
+</p>
+<p>
+<A HREF="sourcecode.html"><b> Get  the  Source  Code.</b></A>
+</p>
+<p>
+<CENTER><IMG  SRC="xxx3.png"></CENTER>
+</p>
+<HR>
+<A NAME="TOC2"></A><h2> Videos  of  Evolve  5.0</h2><p>
+<A HREF="https://youtu.be/st_YJPlqE9U">Video  1</A>
+</p>
+<p>
+<A HREF="https://www.youtube.com/watch?v=vl2sgB8_AfY"> Video  2</A>
+</p>
+<p>
+<A HREF="https://youtu.be/xiOEojRVj9k"> Video  3</A>
+</p>
+<p>
+<A HREF="https://youtu.be/DuqVwQhu1Ew"> Video  4  Close  Up</A>
+</p>
+<p>
+<A HREF="https://youtu.be/92tqivMWfBY"> Video  5  Fight</A>
+</p>
+<p>
+<A HREF="https://youtu.be/xcSppwxgcyU"> Video  6  Step</A>
+</p>
+<p>
+<A HREF="https://youtu.be/5TMASks4fjk"> Video  7</A>
+</p>
+<p>
+<A HREF="https://youtu.be/iNkbUG9ggBM"> Video  8  Tank</A>
+</p>
+<p>
+<A HREF="https://youtu.be/Kk2bpMLwrTY"> Video  9  Circle  Maze</A>
+</p>
+<HR>
+<A NAME="TOC3"></A><h2> Requirements</h2> The  GUI  software  runs  on  MacOS.  The  command  line  utility  (no  graphics)  runs  on  MacOS,  Windows  and  Linux.  This  application
+ is  written  in  C  &amp;  Swift  using  Xcode.  It  was  written  as  an <b>NSDocument</b> style  application.<p>
+ Oh  yeah,  one  more  requirement:  You  will  need  a  complete  Bio  Hazard  Level  4  facility  to  run  this  software.
+</p>
+<HR>
+<A NAME="TOC4"></A><h2> Description</h2><p>
+ This  program  is  a  simulator  of  artificial  life.  A  virtual  universe  is  created  that  supports  the  basics  of  evolution:  Replicators
+ and  cummulative  selection.  On  the  Internet,  the  ALIFE  community  includes  a  lot  of  software  all  trying  to  do  related  things.
+ There  are  two  main  categories  of  ALIFE  software:
+</p>
+<ol>
+<li>
+<b> Primordial  Soup  simulations:</b> These  simulators  begin  with  simple  rules  and  attempt  to  cause  the  emergence  of  replicators.  (I.e,  Conways  Life)
+</li><br>
+
+<li>
+<b> Artifical  life:</b> The  machinery  for  replication  is  the  starting  point.  And  the  goal  is  to  evolve  better  and  better  replicators.
+</li><br>
+</ol><p>
+<b> Evolve  5.0</b> is  an  example  of  (2).  Replication  and  mutations  are  built  into  the  system.  There  is  a  loose  connection  between
+ real  world  biology  and  the  organisms  in  Evolve.  Cells  can  grow  into  multicellular  organism  in  Evolve.  A  cell  is  just
+ a  block  on  the  grid.  It  contains  a  CPU  core  running  a  shared  program.
+</p>
+<p>
+ This  simulator  is  a  union  of <i>Conway&#x27;s  Game  of  Life</i> and <i>Core  Wars</i>.  The  game  of  life  presents  a  simple  2-dimensional  universe,  with
+ some  basic  rules  that  cells  in  the  universe  follow  (Evolve  has  a  slightly  more  complex  set  of  rules).  Core  wars
+ is  a  virtual  computer  running  many  programs  (written  in  REDCODE)  in  a  shared  memory  space  (called  core).  Each  program  tries
+ to  copy  itself  and  crowd  out  other  programs.
+</p>
+<p>
+ Evolve  uses  a  sophisticated  forth-like  language  (called  KFORTH)  for  the  control  of  organisms  and  cells.  This  is  the  analog  of
+ our  DNA.  The  size  of  these  programs  is  unbounded  and  therefore  very  complex  behaviors  can  evolve.  KFORTH  programs  do  not
+ run  in  a  shared  memory  space  rather,  each  cell  has  its  own  virtual  computing  machine  that  includes  a  data  and
+ call  stack  plus  some  working  registers.  An  organism  can  have  many  cells  all  executing  different  parts  of  the  same  genetic
+ program.  It  is  therefore  possible  for  cells  to  specialize  their  function,  and  thus  achieve  even  more  complex  behaviors.
+</p>
+<A NAME="TOC5"></A><h3> Differences  from  other  ALife  software:</h3><p>
+ Most  artifical  life  simulators  use  a  very  restricted  genetic  layout.  One  program  for  example,  called &quot;Darwin  Pond&quot; has  about  8
+ or  9  genes  which  are  simple  floating  point  numbers.  All  the  logic  for  reproduction  and  consumption  and  movement  are  hard
+ coded  in  the  simulation.  There  is  very  little  genetic  variation  that  can  occur.  The  genetic  programming  language  for  Evolve  is
+ unlimited  in  size  and  therefore  extremely  advanced  behavior  for  organisms  can  emerge.
+</p>
+<p>
+ Biomorphs  also  have  a  limited  set  of  genes,  and  the  selection  process  is  through  user  interaction.  In  the  Evolve  program,
+ the  selection  process  is  part  of  the  simulation.
+</p>
+<p>
+ Other  ALife  simulators  run  short  scenarios  with  a  small  handful  of  organisms,  and  then  after  a  fixed  period  of  simulation
+ time,  the  best  organisms  are  retained  and  the  rest  are  eliminated.  Then  a  new  scenario  is  started.  The  Evolve  simulator
+ is  more  realistic.  In  Evolve  there  is  a  virtual  universe  in  which  thousands  of  organisms  live  and  reproduce.  The  simulations
+ you  will  run  are  intended  to  run  for  billions  of  simulations  steps,  with  billions  of  births  and  deaths.
+</p>
+<p>
+ Evolve  has  been  in  development  since  1996.  Read  about  the  history  of  Evolve  5.0, <A HREF="history.html">here</A>.
+</p>
+<BR><BR><IMG  SRC="logo.gif"><IMG  SRC="logo.gif"><IMG  SRC="logo.gif"><IMG  SRC="logo.gif"><BR><BR><BR><BR><BR><BR><BR><BR>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:10  EST  2023
+</div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+;
+; spawn3 - this version eats in the direction of motion until no more
+;
+; This creature uses SPAWN to make an uneat-able bullet
+; out of itself to kill a creature.
+;
+; assumes SPAWN changed to not copy stacks
+;
+main:
+{
+	evolve call
+}
+
+				; STRAIN 5 should be un-eatble eat_mode -> 8
+				; (x y energy strain cb -- rc)		SPAWN
+_trap1: { DSLEN 50 >= ?exit  DSLEN 2 < ?exit R0 R1 2swap R1! R0! R0 R1 1 5 bullet SPAWN pop R1! R0! }				; (x y -- rc) shoot
+_trap2: {  }
+_trap3: {  }
+_trap4: {  }
+_trap5: {  }
+_trap6: { DSLEN 60 >= ?exit  R1! R0! R0 R1 1 5 bullet SPAWN pop }				; (x y -- rc) shoot
+_trap7: {  }
+_trap8: {  }
+_trap9: {  }
+
+; go out and come back with energy
+bullet:
+{
+	R0 R1		; (x y -- )
+	
+	2dup		; (x y x y -- )
+
+	{ 2dup OMOVE ?loop } call		; bullet move
+
+	{
+		2dup EAT pop
+		2dup OMOVE pop		; ( x y -- x y rc)
+		255 NEAREST EAT
+		?loop
+	} call
+
+	HALT
+}
+
+evolve:
+{
+	-1 0 trap6
+
+	reproduce call
+	reproduce call
+
+	;
+	; go SOUTH-EAST until blocked (eat along the way)
+	;
+	{ 1 1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go WEST until blocked (eat along the way)
+	;
+	{ -1 0 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go SOUTH-WEST until blocked (eat along the way)
+	;
+	{ -1 1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go EAST until blocked (eat along the way)
+	;
+	{ 1 0 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go NORTH-EAST until blocked (eat along the way)
+	;
+	{ 1 -1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go SOUTH until blocked (eat along the way)
+	;
+	{ 0 1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go NORTH until blocked (eat along the way)
+	;
+	{ 0 -1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go NORTH-WEST until blocked (eat along the way)
+	;
+	{ -1 -1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; do it all over again
+	;
+	1 ?loop
+}
+
+reproduce:
+{
+	;
+	; compute 1/4 of our energy, and store in R0
+	;
+	energy 4 / R0!
+
+	;
+	; Make 1st spore to the square on our left.
+	;
+	-1 0 R0 make-spore pop
+
+	;
+	; Put 2nd spore at the same spot (fertilizing it)
+	;
+	-1 0 R0 make-spore pop
+
+	;
+	; get the hell out of the way so we don't eat our own
+	; babies, or they don't eat us.
+	;
+	1 1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+}
+

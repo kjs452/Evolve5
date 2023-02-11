@@ -1,0 +1,147 @@
+;
+; This creature uses SPAWN to make an uneat-able bullet
+; out of itself to kill a creature.
+;
+; Assumes interupts.
+;
+; Strain 5:
+;
+; say_mode must trip trap 7			111
+; broadcast_mode must trip trap 6	110
+;
+; Protected Instructions: SAY BRODCAST
+;
+;
+;
+;
+main:
+{
+	evolve call
+}
+
+_trap1: { DSLEN 55 >= ?exit     CSLEN 60 >= ?exit  DSLEN 2 < ?exit   doShoot call }				; (x y -- ) shoot
+_trap2: {  }
+_trap3: {  }
+_trap4: {  }
+_trap5: {  }
+_trap6: { HALT }				; die on broadcast
+_trap7: { 202 BROADCAST HALT }
+_trap8: {  }
+_trap9: {  }
+
+doShoot:
+{
+	2dup 1 5 bullet SPAWN		; STRAIN 5 should be un-eatble eat_mode -> 8
+	-rot		; (x y rc -- rc x y)
+	2pop
+}
+
+; go out and come back with energy
+bullet:
+{
+	2dup
+	101 -rot		; x y 101 x y
+
+	{ 2dup OMOVE ?loop } call
+
+	SAY pop		; x y 101 x y
+
+	HALT
+}
+
+evolve:
+{
+	reproduce call
+	reproduce call
+
+	;
+	; go SOUTH-EAST until blocked (eat along the way)
+	;
+	{ 1 1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go WEST until blocked (eat along the way)
+	;
+	{ -1 0 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go SOUTH-WEST until blocked (eat along the way)
+	;
+	{ -1 1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go EAST until blocked (eat along the way)
+	;
+	{ 1 0 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go NORTH-EAST until blocked (eat along the way)
+	;
+	{ 1 -1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go SOUTH until blocked (eat along the way)
+	;
+	{ 0 1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go NORTH until blocked (eat along the way)
+	;
+	{ 0 -1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; go NORTH-WEST until blocked (eat along the way)
+	;
+	{ -1 -1 2dup eat pop omove ?loop } call
+
+	reproduce call
+
+	;
+	; do it all over again
+	;
+	1 ?loop
+}
+
+reproduce:
+{
+	;
+	; compute 1/4 of our energy, and store in R0
+	;
+	energy 4 / R0!
+
+	;
+	; Make 1st spore to the square on our left.
+	;
+	-1 0 R0 make-spore pop
+
+	;
+	; Put 2nd spore at the same spot (fertilizing it)
+	;
+	-1 0 R0 make-spore pop
+
+	;
+	; get the hell out of the way so we don't eat our own
+	; babies, or they don't eat us.
+	;
+	1 1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+}
+

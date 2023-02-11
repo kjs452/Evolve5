@@ -1,0 +1,23 @@
+main:
+{
+	20 fact call
+}
+
+;
+; non-recursive factorial algorithm:
+; ( n -- factorial(n) )
+;
+fact:
+{
+    1 swap
+    {
+        dup 0 = ?exit
+        dup 1- -rot
+        * swap
+        1 ?loop
+    } call
+
+   pop
+}
+
+

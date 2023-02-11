@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  5.0 -  Evolved  KFORTH  samples</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> December  14th,  2022
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Evolved  KFORTH  Programs</h1>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+      13  call
+}
+
+row1:
+{
+      DSLEN  50  &gt;=  ?exit  DSLEN  2  &lt;  ?exit
+      R0  R1  2swap  R1!  R0!  R0  R1  1  5  10
+      SPAWN  pop  R1!  R0!
+}
+
+row2:
+{
+
+}
+
+row3:
+{
+
+}
+
+row4:
+{
+
+}
+
+row5:
+{
+
+}
+
+row6:
+{
+      DSLEN  60  &gt;=  ?exit  R1!  R0!  R0  R1  1
+      5  10  SPAWN  pop
+}
+
+row7:
+{
+
+}
+
+row8:
+{
+
+}
+
+row9:
+{
+
+}
+
+row10:
+{
+      R0  R1  2dup  11  call  12  call  HALT
+}
+
+row11:
+{
+      2dup  OMOVE  ?loop
+}
+
+row12:
+{
+      2dup  EAT  pop  2dup  OMOVE  pop  255  NEAREST
+      EAT  ?loop
+}
+
+; ----- protected / unprotected -----
+
+row13:
+{
+      2  OMOVE  22  call  2dup  14  call  22  call
+      15  call  22  call  16  call  22  call  17
+      22  call  22  0  30  18  call  call  44
+      R6  22  call  20  2dup  pop  OMOVE  and
+      R2!  2dup  EAT  GROW  OMOVE  1+  29  BIGGEST
+      -95  13  -41  R4++  -1  pop  OMOVE  2  ?loop
+      R8!  30  R6++
+}
+
+row14:
+{
+      2dup  EAT  0  GROW  4  GROW  OMOVE  -85
+      GROW  EAT  pop  -85  HOTTEST  2dup  EAT
+      ?loop  OMOVE  1+  -38  R0  OMOVE  ?loop
+      -87  -50
+}
+
+row15:
+{
+      HOTTEST  OMOVE  GROW  54  GROW  -26  OMOVE
+      -26  GROW  54  GROW  GROW  -4  -51  nop
+      R8++  51  -16  -74
+}
+
+row16:
+{
+      -48  0  NUM-CELLS  --R6  73  GROW  OMOVE
+      invert  GROW  2dup  9  GROW  OMOVE  pop
+      /  ?loop  pack2  94  --R4  -1  2dup  EAT
+      pop  OMOVE
+}
+
+row17:
+{
+      2+  55  -7  SIZE  86  16  call  2  OMOVE
+      -12  37  2+  63  R5!  61  -1  R4!  -41  53
+      SPREAD-ENERGY  58
+}
+
+row18:
+{
+      ENERGY  3  /  R0!  -2  -3  R0  MAKE-SPORE
+      -5  -51  R0  MAKE-SPORE  -85  LOOK  -6  CB
+      15  52  OMOVE
+}
+
+row19:
+{
+      -48  GROW  54  99  COLDEST  31  1-  -44
+      R0  79  -71  AGE  79  -71  -28  -24  R5++
+      -50  MAKE-SPORE  29  PEEK  --R8  -22  max
+      0  NUM-CELLS
+}
+
+row20:
+{
+      GROW
+}
+
+row21:
+{
+      /mod
+}
+
+row22:
+{
+      2dup  EAT  ?loop  ?loop  62  -48  -51
+}
+
+row23:
+{
+      R5!  63  +  or
+}
+
+row24:
+{
+      MAKE-ORGANIC  not  78  R2++  -22
+}
+
+row25:
+{
+      -93
+}
+
+row26:
+{
+      MAKE-SPORE  -26  *  -22  not  -38  R2++
+      POKE  rot  -52
+}
+
+row27:
+{
+      87  -26  unpack2  TRAP5  ?exit  0  R8++
+      51  R8++  51  54  --R4  &gt;
+}
+
+row28:
+{
+      -87  MAKE-SPORE  &lt;=  74  22  call  2dup
+      14  call  15  call  22  call  16  call  22
+      call  17  22  call  22  0  call  /mod  -59
+      R9!  85  call  44  R6  -11  41  22  call
+      20  2dup  pop  OMOVE  and  -3  R3  LOOK
+      R6++  OMOVE  1+  29  BIGGEST  -95  13  2+
+      63  R5!  -38  R4++  -1  pop  OMOVE  2  ?loop
+      R8!  30  R6++
+}
+</PRE></TD></TABLE></CENTER>
+<BR><BR>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:09  EST  2023
+</div>
+</body>
+</html>

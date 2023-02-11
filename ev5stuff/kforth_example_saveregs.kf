@@ -1,0 +1,161 @@
+; SAVING AND RESTORING REGISTERS
+; (for easier programming)
+;
+; This file demonstrates some handy routines for saving/restoring
+; all registers. At the start of your function call one of these:
+;
+;	save_shit0	(       -- r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 )
+;	save_shit1	( x     -- r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 x )
+;	save_shit2	( x y   -- r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 x y )
+;	save_shit3	( x y z -- r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 x y z )
+;
+; Now perform a calculation on the arguments (x, y, z), and when you
+; have your answer 'n', call one of these at the end of your function:
+;
+;	restore_shit0    ( r0 r1 r2 r3 r4 r5 r6 r7 r8 r9   -- )
+;	restore_shit1    ( r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 n -- n )
+;
+; Once a 'save_shit' call has been performed the registers can
+; be used as local variables for your calculation.
+;
+; Before returning to the caller, you can use 'restore_shit' to
+; restore all the registers to their previous state.
+;
+
+;
+; Call my_complex_function() with various arguments
+; and save results into R0, R1, and R2.
+;
+main:
+{
+	1 2 3    my_complex_function call  R0!
+	99 99 99 my_complex_function call  R1!
+	-1 10 23 my_complex_function call  R2!
+}
+
+;
+; my_complex_function(R0, R1, R2)
+;
+;	R3 := 90 * R0^2 - 180 * R1 + R2
+;
+my_complex_function:
+{
+	save_shit3 call
+
+	R2! R1! R0!
+
+	90 R0 dup * * -180 R1 * + R2 + R3!
+
+	R3
+
+	restore_shit1 call
+}
+
+;
+; ( -- r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 )
+;
+save_shit0:
+{
+	R0 R1
+	R2 R3
+	R4 R5
+	R6 R7
+	R8 R9
+}
+
+;
+; ( x -- r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 x )
+;
+save_shit1:
+{
+	R0 R1
+	rot
+	R2 R3
+	rot
+	R4 R5
+	rot
+	R6 R7
+	rot
+	R8 R9
+	rot
+}
+
+;
+; (x y -- r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 x y)
+;
+save_shit2:
+{
+	R0 R1
+	2swap
+	R2 R3
+	2swap
+	R4 R5
+	2swap
+	R6 R7
+	2swap
+	R8 R9
+	2swap
+}
+
+;
+; (a b c -- r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 a b c)
+;
+; destroys R0 and R1
+;
+save_shit3:
+{
+	R0 -rot
+	R0!		; R0=c
+
+	R1 swap
+	R1!		; R1=b
+
+	rot
+	R2
+	swap
+	R2!		; R2=a
+
+	R3 R4 R5 R6 R7 R8 R9
+	R2 R1 R0
+}
+
+;
+; (r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 -- )
+;
+restore_shit0:
+{
+	R9!
+	R8!
+	R7!
+	R6!
+	R5!
+	R4!
+	R3!
+	R2!
+	R1!
+	R0!
+}
+
+;
+; (r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 n -- n)
+;
+restore_shit1:
+{
+	-rot
+	R9!
+	R8!
+	-rot
+	R7!
+	R6!
+	-rot
+	R5!
+	R4!
+	-rot
+	R3!
+	R2!
+	-rot
+	R1!
+	R0!
+}
+
+

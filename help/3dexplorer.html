@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>3D  Explorer</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> October  11th,  2022
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> 3D  Explorer</h1><IMG  SRC="ss3d_3.jpg"><p>
+ Clicking  on  the  the <A HREF="tb_3d.jpg">tb_3d.jpg</A> button  will  display  this  first  person  perspective  of  your  simulaton.  You  can  even  watch  the
+ simulation  in  real-time.
+</p>
+<A NAME="TOC2"></A><h1> Keys:</h1><ul>
+<li>
+<b> F1</b> toggle  simulator  on/off
+</li><br>
+
+<li>
+<b> ESC</b> quit  (or  Ctrl-C)
+</li><br>
+
+<li>
+<b> w</b> move  forward
+</li><br>
+
+<li>
+<b> s</b> move  backward
+</li><br>
+
+<li>
+<b> a</b> strafe  left
+</li><br>
+
+<li>
+<b> d</b> strafe  right
+</li><br>
+
+<li>
+<b> space  bar</b> climb
+</li><br>
+
+<li>
+<b> c</b> descend
+</li><br>
+
+<li>
+<b> g</b> enter/exit  game  mode  (see  below)
+</li><br>
+</ul><p>
+ Arrow  keys  can  also  be  used  in  place  of  w,  s,  a,  d  keys.
+</p>
+<A NAME="TOC3"></A><h1> Mouse:</h1><p>
+ Use  your  mouse  to  look  around.  Left  click  and  move  the  mouse  pointer  will  move  where  you  are  looking.
+</p>
+<A NAME="TOC4"></A><h1> Simulation  speed</h1><p>
+ To  alter  the  number  of  simulation  steps  computed  between  redrawing,  press  the <b>1,  2,  3,  4,  5,  6,  7,  8,  9</b> keys.
+</p>
+<p>
+<b> 1</b> is  the  default.  This  sets  the  number  of  simulation  steps  between  redrawing  to  1.  It  provides  the  smoothest  animation
+ (but  might  be  slow).  Pressing &#x27;9&#x27; is  good  when  viewing  the  simulation  from  far  away.
+</p>
+<p>
+ To  speed  up  the  simulation  press  a  larger  digit.
+</p>
+<A NAME="TOC5"></A><h1> NOTES:</h1><ol>
+<li>
+ The  3d  explorer  is  a  seperate  program  from  the  main  Evolve  application.
+</li>
+
+<li>
+ This  program  operates  on  a <b>copy</b> of  the  simulation
+</li>
+
+<li>
+ any  simulation  steps  that  elapse  from  pressing  F1,  will  not  be  reflected  in  the  riginal  Evolve  program.
+</li>
+
+<li>
+ This  program  uses  OpenGL,  if  your  graphics  card  lacks  3d  drivers,  microsoft  has  software  emulation  which  automatically  be  used,  but
+ this  will  be  VERY  slow.  Check  your  graphics  card  manufacturer  for  the  latest  opengl  drivers.
+</li>
+
+<li>
+ when  toggling  simulation  on/off  the  number  of  simulation  steps  is  reverted  back  to &#x27;1&#x27;.
+</li>
+</ol><HR>
+<A NAME="TOC6"></A><h1> Game  Mode</h1><p>
+ Press <b>&#x27;g&#x27;</b> to  enter  game  mode.  You  appear  at  location  (0,0).  You  can  run  around  and  EAT  stuff  using  the
+ left  mouse  button.
+</p>
+<CENTER><IMG  SRC="game_mode.jpg"></CENTER><p>
+ The &quot;kenny  mccormick&quot; avatar  is  your  character.  You  move  him  around  trying  to  eat  and  kill  stuff.
+</p>
+<p>
+ Game  mode  is  a  highly &quot;beta&quot; feature.  Eventually  it  will  display  score,  number  of  lives,  and  have  more  game-like  behavior.
+ For  now  you  must  create  levels  by  making  sure  the  player  avatar  can  get  from  (0,0)  to  the  rest  of
+ the  simulation.  You&#x27;ll  need  to  draw/remove  barriers  to  make  this  happen.
+</p>
+<p>
+ The &#x27;c&#x27; and &#x27;space  bar&#x27; keys  will  adjust  the  height  of  the  camera  behind  your  player  character.
+</p>
+<p>
+ Moving  your  mouse  will  rotate  your  view  (horizontally).  Pressing  the  left  mouse  button  causes  your  character  to  eat  all  material
+ immediately  touching  you.
+</p>
+<p>
+ If  you  die,  you  will  see  the  sky/mountains.  It  is  a  sudden  transition.  Again,  not  very  game-like  behavior  right  now.
+ Pressing &#x27;g&#x27; will  go  back  to  3d  explorer  mode,  pressing &#x27;g&#x27; a  2nd  time  will  restart  you  in  game  mode.
+</p>
+<p>
+ You  can  press  F1  in  game  mode  to  pause  the  game.
+</p>
+<p>
+ When  you  are  killed  the  organisms  that  ate  you  gets  all  your  accumulated  energy.  (expect  to  see  a  sudden  spike
+ in  births  around  the  location  of  your  death).
+</p>
+<p>
+ The  window  title  bar  displays  your  energy,  when  in  game  mode.
+</p>
+<p>
+ Energy  is  conserved.  Adding/removing  the  player  never  alters  the  total  energy  in  a  simulation.  If  you  exit  game  mode  (without
+ first  being  killed)  organic  material  is  placed  where  your  character  was.
+</p>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:08  EST  2023
+</div>
+</body>
+</html>

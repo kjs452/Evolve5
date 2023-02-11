@@ -1,0 +1,269 @@
+;
+; a Tower of Hanoi creature
+; =========================
+; (c) 2007 - 2022, Ken Stauffer
+;
+; This is revised to work with Evolve 5.0
+; 1. PICK instruction changed
+; 2. inverted cooridinates to match new coordinate system. (0,0) lower-left
+; 3. New kforth is limited to 16-bit ints and a smaller
+;	stack size (64 elements) so 14 disks is max for this version
+;
+; Add this creature to a blank universe (no barriers)
+; It will create a bunch of disks and then move them from
+; one side of the screen to the other side.
+;
+; NOTE: These routines refer to three piles for storing disk.
+; Piles are encoded as follows:
+;
+;	-1 =	Left pile
+;	 0 =	Middle pile
+;	 1 =	Right pile
+;
+; THIS WORKS!
+;
+
+main:
+{
+	14	; <=== number of disks to play with (14 is max)
+
+	R8!
+	measure_universe call
+	pop R9!
+	R8 make_disks call
+	R8 -1 0 1 play_towers_of_hanoi call
+
+	{ 1 ?loop } call
+
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; ( -- width height)
+;
+; Measure the universe, return the width and height.
+;
+; Assumes:
+;	* Universe is empty, except for itself.
+;	* No "oval barrier" was used to create the universe.
+;
+measure_universe:
+{
+	{ -1 0 OMOVE ?loop } call
+	{  0 1 OMOVE ?loop } call
+
+	0 { 1+ 1 0 OMOVE ?loop } call
+	0 { 1+ 0 -1 OMOVE ?loop } call
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; ( disks -- )
+;
+; Create the initial pile of disk on left-hand side of
+; the universe.
+;
+make_disks:
+{
+	{ -1 0 OMOVE ?loop } call
+	{  0 -1 OMOVE ?loop } call
+
+	jj: {
+		?dup {
+			dup make_disk call
+			1-
+			0 1 OMOVE pop
+			{ -1 0 OMOVE ?loop } call
+			jj call
+		} if
+	    } call
+	
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; ( size -- )
+;
+; Make a single disk. 'size' is how big the disk is.
+;
+make_disk:
+{
+	1 0 OMOVE pop
+	-1 0 1 MAKE-SPORE pop
+	1- ?dup
+	?loop
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; (pile size -- )
+;
+; Put a disk down on 'pile'.
+;
+; 'pile' is where to put the disk.
+; 'size' is the size of the disk we are putting.
+;
+put_disk:
+{
+	swap
+	dup
+	goto_pile call
+
+	dup
+	0 = { pop 1 } { negate } ifelse
+
+	swap
+	{					; (dir cursize)
+		swap				; (cursize dir)
+		dup 0 OMOVE pop
+		dup negate 0 1 MAKE-SPORE pop
+		swap				; (dir cursize)
+
+		1-				; (dir cursize-1)
+
+		?dup ?loop
+	} call
+
+	pop
+
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; (pile -- size )
+;
+; Pick up a disk from 'pile'
+;
+; 'pile' is where we will pick up a disk
+; 'size' is how big of a disk we picked up.
+;
+take_disk:
+{
+	dup
+	goto_pile call
+
+	dup
+	0 = { pop 1 } { negate } ifelse
+
+	0
+	{				; (dir cursize)
+		0 -1 EAT
+
+		0 > {
+			1+		; (dir cursize+1)
+			swap		; (cursize+1 dir)
+			dup 0 OMOVE pop	; (cursize+1 dir dir 0 -- cursize+1 dir)
+			swap		; (dir cursize+1)
+			1		; (dir cursize+1 1)
+		} {
+			0		; (dir cursize 0)
+		} ifelse
+
+		?loop
+	} call
+	swap pop
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; (pile -- )
+;
+; Go to 'pile'.
+;
+goto_pile:
+{
+	;
+	; go up a little (above any disks)
+	;
+	R8 10 + { 0  1 OMOVE pop 1- ?dup ?loop } call
+
+	dup
+	0 = {
+		; go to left
+		{ -1 0 OMOVE ?loop } call
+
+		; go to middle
+		R9 2 /
+		{
+			1 0 OMOVE pop
+			1-
+			?dup ?loop
+		} call
+	} {
+		dup 0 OMOVE ?loop
+	} ifelse
+
+	pop
+
+	; go all the way down
+;	{ 0 1 OMOVE ?loop } call
+	{ 0 -1 OMOVE ?loop } call
+
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; ( from-pile to-pile -- )
+;
+; Move whatever disk is on top of 'from-pile' and
+; place it on top of 'to-pile'.
+;
+move_disk:
+{
+	swap
+	take_disk call
+	put_disk call
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; (n src aux dst -- )
+;
+; Solve Tower Hanoi problem.
+;
+; Implements this algorithm:
+;
+;	Solve(N, Src, Aux, Dst)
+;	{
+;		if N is 0 exit
+;		Solve(N-1, Src, Dst, Aux)
+;		Move from Src to Dst
+;		Solve(N-1, Aux, Src, Dst)
+;	}
+;
+;
+; The first invocation of this routine should be:
+;
+;	N -1 0 1 play_towers_of_hanoi call
+;
+;	(where N is the number of disks)
+;
+play_towers_of_hanoi:
+{
+
+	-4 peek				; (n src aux dst n)
+	0 >
+	{
+		-4 peek 1-		; (n src aux dst  n-1)
+		-4 peek			; (n src aux dst  n-1 src)
+		-3 peek			; (n src aux dst  n-1 src dst)
+		-5 peek			; (n src aux dst  n-1 src dst aux)
+		
+		play_towers_of_hanoi call
+
+		-3 peek			; (n src aux dst  src)
+		-2 peek			; (n src aux dst  src dst)
+		move_disk call
+
+		-4 peek 1-		; (n src aux dst  n-1)
+		-3 peek			; (n src aux dst  n-1 aux)
+		-5 peek			; (n src aux dst  n-1 aux src)
+		-4 peek         ; (n src aux dst  n-1 aux src dst)
+
+		play_towers_of_hanoi call
+
+	} if
+
+	pop pop pop pop
+}

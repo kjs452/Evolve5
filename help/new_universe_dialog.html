@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>New  Universe  Dialog</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> December  15th,  2022
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h2> New  Universe  Dialog</h2><p>
+ This  dialog  is  for  creating  a  new  universe/simulation.
+</p>
+<IMG  SRC="NewUniverse.jpg"><p>
+ Pick  any  old  random  value  for  the  seed.  By  default  the  a  new  seed  is  selected  by  calling  GetTickCount()  from
+ the  operating  system.  But  you  can  enter  a  value  here.  The  seed  can  be  used  to  reproduce  a  simulation  (of
+ course  the  other  settings  must  also  be  the  same).
+</p>
+<p>
+ You  can  select  any  width  and  height  you  wish  (up  to  a  maximum  of  3000  units).  You  can  leave  the
+ defaults  500  x  500  or,  as  shown  here,  use  700  x  500.  The  Oval  Barrier  option  will  create  a  pleasant
+ enclosure  for  your  universe  (instead  of  a  bare  rectangle).  This  enclosure  may  be  erased  later  and  you  can  draw  new
+ barriers  when  the  simulation  window  appears.
+</p>
+<A NAME="TOC2"></A><h2> Terrain  File</h2><p>
+ The  terrain  file  is  another  simulation  file  which  has <b>barriers</b>.  Those  barriers  will  be  used  to  initialize  the  new
+ universe  created  with  this  dialog.  For  example  an  hand  drawn  barrier  pattern  which  you  want  to  re-use  can  be  saved
+ as  its  own  file,  and  supplied  here.
+</p>
+<p>
+ The  barriers  in  the  terrain  file  will  be  scaled  to  fit  the  dimensions  of  the  new  universe  (width  x  height).
+</p>
+<p>
+ The <A HREF="evolve_batch.html">Evolve  Batch</A> utility  can  generate  terrain  from  an  image  file  using  the  pixel  data  to  map  to  barriers.  It  will
+ generate  a  minimal  simulation  file  that  can  be  supplied  here  for  the  terrain.
+</p>
+<A NAME="TOC3"></A><h2> Starting  Population</h2><p>
+ Here  you  specify  the  starting  population.  This  consists  of  up  to  8 &quot;strains&quot;.  Each  strain  is  a  starting  organism  which
+ will  not  interbreed  with  the  other  strains.  Its  color  and  strain  value  will  follow  the  creature,  and  its  offspring  for
+ the  lifetime  of  the  simulation.
+</p>
+<p>
+ Unless  you  know  how  to  write  KFORTH  programs,  it  will  be  best  to  select &#x27;seed.kf&#x27; which  is  the  starting  program
+ I  use  for  all  my  simulations.  This  is  text  file  which  you  can  look  at  using  the &quot;KFORTH  Interpreter&quot;.
+</p>
+<p>
+ Energy  is  an  important  value  for  controlling  the  population  of  your  universe.  The  default  (1,000,000)  is  kind  of  high,  man.
+ Values  between  100,000  to  300,000  will  give  you  a  population  of  about  1,000  -  5,000  organisms.  Here  we  have  entered
+ 150,000.
+</p>
+<p>
+ You  can  clear  a  strain  row  by  selecting <b>--blank--</b> from  the  strain  profile  combo  box.
+</p>
+<p>
+ Oh,  please  note  that  commas  are  allowed  inside  of  these  edit  controls.  (Cool  eh?)
+</p>
+<p>
+<A NAME="TOC4"></A><h2> Mutation  Settings</h2> Clicking  on  this  button  will  bring  up  the  Mutation  Settings  Dialog.  This  will  allow  you  to  configure  the  mutation
+ probabilities.  The  defaults  should  be  sufficient.  This  is  the  dialog  that  will  appear:
+</p>
+<IMG  SRC="SimulationOptions.jpg"><A NAME="TOC5"></A><h2> Starting  Locations</h2><p>
+ If  your  simulation  consists  of  only  1  strain,  then  that  organism  will  be  placed  in  the  center  of  the  simulation
+ grid.  If  2  or  more  starting  organisms  are  selected,  they  will  be  placed  uniformly  around  the  simulation  grid.
+</p>
+<CENTER><IMG  SRC="placement.gif"></CENTER><CENTER><I> placement  of  starting  organism</I></CENTER><BR><p>
+ This  diagram  shows  8  locations.  This  shows  the  placement  when  more  than  one  strain  has  been  specified.  The  first  strain
+ you  specify  will  be  placed  in  square  1.  The  second  strain  you  specify  will  be  placed  in  square  2.  And
+ so  on...  These  numbers  ARE  not  strain  numbers.  The  placement  is  based  on  how  many  strains  have  been  specified.  The
+ order  is  the  to  to  bottom  order  in  the  dialog.
+</p>
+<A NAME="TOC6"></A><h2> Competition  Modes</h2><p>
+ Strains  allow  Evolve  to  be  used  for  games.  Three  variants  can  be  played  are:
+</p>
+<ol>
+<li>
+<b> Arena  Bot  Battle:</b> Each  strain  is  one  of  the  competing  bots  (robots).  One  of  the  rules  is  that  no  bot  can  have
+ MAKE-SPORE  in  its  genetic  code.  This  means  bots  will  not  be  able  to  reproduce.  The  goal  is  to  see  which
+ bot  can  kill  the  other  bots.  You  run  this  kind  of  simulation  until  only  one  competitor  remains.
+</li>
+
+<li>
+<b> Army  Hoard  Bot  Battle:</b> Similar  to  regular  bot  battles,  but  the  robots  can  multiply  using  the  MAKE-SPORE  instruction.  Mutations  are  set  to &quot;0%&quot;,
+ however.  This  means  no  evolution  takes  place.  This  allows  you  to  design  a  genetic  program  which  includes  group  behaviors  and
+ swarming  tactics.
+</li>
+
+<li>
+<b> Survival  of  the  fittest:</b> In  this  game  mode,  you  run  a  simulation  to  see  if  your  strain  can  outcompete  other  strains.  You  permit
+ MAKE-SPORE,  and  mutations  are  enabled.
+</li>
+
+<li>
+<b> Arcade  Games:</b> You  can  build  simple  2D  arcade  games.  By  using  the <tt>KEY-PRESS</tt> and <tt>MOUSE-POS</tt> instructions,  you  can  craft  programs  and
+ cells  which  respond  to  keyboard  and  mouse  information.  With  this  a  primitive  game  can  be  written  in  which  you  roam
+ around  and  shoot  things.
+</li>
+</ol><A NAME="TOC7"></A><h2> Starting  Populations</h2><p>
+ To  create  a  strain  with  more  than  one  organism,  you  can  specify  a  number  between  1  and  100  in  the
+ Population  field  (<b>Pop.</b>).  Here  is  how  the  population  will  be  initialized:
+</p>
+<IMG  SRC="xy_spiral.jpg">
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:10  EST  2023
+</div>
+</body>
+</html>

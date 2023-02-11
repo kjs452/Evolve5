@@ -1,0 +1,189 @@
+;
+; a seed organism with room for interrupt handlers
+;
+; Bloat:
+; Also a bunch of dummy code blocks inserted as an experiment.
+;
+; BEHAVIOR:
+; This creature forever moves in various directions until
+; its forward movement is blocked. As it moves it eats.
+; Before moving in a new direction it will try to reproduce.
+;
+;
+
+main:
+{
+	evolve call
+}
+
+_trap1: { }
+_trap2: { }
+_trap3: { }
+_trap4: { }
+_trap5: { }
+_trap6: { }
+_trap7: { }
+_trap8: { }
+_trap9: { }
+
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+
+evolve:
+{
+	reproduce call
+	reproduce call
+
+	;
+	; go SOUTH-EAST until blocked (eat along the way)
+	;
+	go_se call
+
+	reproduce call
+
+	;
+	; go WEST until blocked (eat along the way)
+	;
+	go_w call
+
+	reproduce call
+
+	;
+	; go SOUTH-WEST until blocked (eat along the way)
+	;
+	go_sw call
+
+	reproduce call
+
+	;
+	; go EAST until blocked (eat along the way)
+	;
+	go_e call
+
+	reproduce call
+
+	;
+	; go NORTH-EAST until blocked (eat along the way)
+	;
+	go_ne call
+
+	reproduce call
+
+	;
+	; go SOUTH until blocked (eat along the way)
+	;
+	go_s call
+
+	reproduce call
+
+	;
+	; go NORTH until blocked (eat along the way)
+	;
+	go_n call
+
+	reproduce call
+
+	;
+	; go NORTH-WEST until blocked (eat along the way)
+	;
+	go_nw call
+
+	reproduce call
+
+	1 ?loop
+}
+
+go_se: { 1 1 2dup eat pop omove ?loop }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+
+go_w: { -1 0 2dup eat pop omove ?loop }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+
+go_sw: { -1 1 2dup eat pop omove ?loop }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+
+go_e: { 1 0 2dup eat pop omove ?loop }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+
+go_ne: { 1 -1 2dup eat pop omove ?loop }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+
+go_s: { 0 1 2dup eat pop omove ?loop }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+
+go_n: { 0 -1 2dup eat pop omove ?loop }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+
+go_nw: { -1 -1 2dup eat pop omove ?loop }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+
+reproduce:
+{
+	;
+	; compute 1/4 of our energy, and store in R0
+	;
+	energy 4 / R0!
+
+	;
+	; Make 1st spore to the square on our left.
+	;
+	-1 0 R0 make-spore pop
+
+	;
+	; Put 2nd spore at the same spot (fertilizing it)
+	;
+	-1 0 R0 make-spore pop
+
+	;
+	; get the hell out of the way so we don't eat our own
+	; babies, or they don't eat us.
+	;
+	1 1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+	0 -1 omove pop
+}
+
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+{ nop nop nop nop nop nop  }
+

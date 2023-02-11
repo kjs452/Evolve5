@@ -1,0 +1,17 @@
+main:
+{
+	20 fact call
+}
+
+;
+; Recursive factorial algorithm:
+; ( n -- factorial(n) )
+;
+fact:
+{
+	dup 0 =
+		{ pop 1 }
+		{ dup 1 - fact call * } ifelse
+}
+
+

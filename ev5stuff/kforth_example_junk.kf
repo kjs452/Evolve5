@@ -1,0 +1,17 @@
+;
+; Recursive factorial algorithm:
+; JUNK.kf is the filename
+;
+main:
+{
+	20 fact call
+}
+
+fact: {			; compute factorial
+			; ( n -- factorial(n) )
+	dup 0 =
+		{ pop 1 }
+		{ dup 1 - fact call * } ifelse
+}
+
+

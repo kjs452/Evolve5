@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  Batch  Utility</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> December  15th,  2022
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Evolve  Batch  Utility</h1><p>
+<tt> evolve_batch</tt> is  a  command  line  utility.  It  runs  on  both  linux  and  windows.  The  primary  purpose  is  to  run  a
+ simulation  from  a  shell  or  console  window  (without  the  GUI).
+</p>
+<A NAME="TOC2"></A><h1> Command  line  modes</h1><ul>
+<li>
+ s --  simulate
+</li>
+
+<li>
+ sf --  simulate  forever
+</li>
+
+<li>
+ t --  generate  terrain  from  image  file
+</li>
+
+<li>
+ p --  print  information
+</li>
+
+<li>
+ k --  execute  kforth  program  and  print  top  of  data  stack.
+</li>
+
+<li>
+ = --  compare  two .evolve  files
+</li>
+
+<li>
+ 1s --  simulate  until  1  strain  left
+</li>
+
+<li>
+ rc --  pick  random  creature  and  display  its  KFORTH.
+</li>
+</ul><HR>
+<A NAME="TOC3"></A><h1> s</h1>
+<pre>
+C:\&gt; evolve_batch s 24h input.evolve output.evole
+
+C:\&gt; evolve_batch s 60m input.evolve output.evole
+
+C:\&gt; evolve_batch s 3600s input.evolve output.evole
+
+C:\&gt; evolve_batch s 1000u input.evolve output.evole
+</pre>
+<A NAME="TOC4"></A><h1> sf</h1><p>
+ Runs  forever  writing  to  the  output  file  every  interval.
+</p>
+<p>
+ All  4  of  these  commands  will  read <tt>input.evolve</tt> and  when  finished  the  output  is  written  to <tt>output.evolve</tt>.  The  input
+ will  not  be  changed  by  these  commands.
+</p>
+<p>
+ The  first  commmand  runs  the  simulation  for  24  hours.  The  second  command  runs  the  simulation  for  60  minutes.  The  third
+ command  runs  the  simulation  for  3600  seconds.
+</p>
+<p>
+ The  last  command  runs  the  simulation  for  1000 <b>steps</b>.  This  last  variation  is  not  timer  based.  It  simply  runs
+ the  simulation  for  that  many  steps.
+</p>
+<HR>
+<A NAME="TOC5"></A><h1> t</h1><p>
+ Generate  terrain  from  an  image  file:
+</p>
+
+<pre>
+       evolve_batch t &lt;infile.png&gt; min max &lt;outfile.txt&gt;
+            (generate terrain file from image. min/max form the greyscale pixel inclusion range)
+
+		evolve_batch t foobar.jpg 128 140 foobar.txt
+
+		evolve_batch t group_face.png 120 140 terrain_file.txt
+</pre>
+<HR>
+<A NAME="TOC6"></A><h1> p</h1><p>
+<b> Evolve_batch</b> will  also  dump  statistics  about  a  simulation  file.
+</p>
+
+<pre>
+	C:\&gt; evolve_batch p some_file.evolve
+
+filename         some_file.evolve
+step             35627500
+nborn            713951387
+ndie             713949271
+width            500
+height           400
+seed             12410
+norganism        2117
+energy           150000
+num_cells        4063
+num_instructions 185693
+call_stack_nodes 4019
+data_stack_nodes 11671
+num_organic      1499
+num_spores       644
+num_sexual       0
+grid_memory      1600000
+cstack_memory    64304
+dstack_memory    186736
+program_memory   2226401
+organism_memory  801136
+spore_memory     15456
+check_sum        5711437
+</pre>
+<HR>
+<A NAME="TOC7"></A><h1> k</h1><HR>
+<A NAME="TOC8"></A><h1> =</h1><HR>
+<A NAME="TOC9"></A><h1> 1s</h1> (not  implemented) <HR>
+<A NAME="TOC10"></A><h1>rc</h1> (not  implemented)
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:09  EST  2023
+</div>
+</body>
+</html>

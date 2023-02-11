@@ -1,0 +1,1682 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  5.0 -  Organism  Instruction  Reference</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> January  16th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> ORGANISM  INSTRUCTION  REFERENCE</h1><p>
+ The  core  KFORTH  instruction  (like  dup,  pop,  +,  *,  /,  etc..)  are  covered  in  the  section  entitled <A HREF="kforth.html#reference">the  KFORTH  Language</A>.  What
+ follows  is  a  detailed  reference  guide  for  the  instructions  that  control  organisms  and  cells:
+</p>
+<A NAME="TOC2"></A><h2> Interacting  with  the  universe:</h2><UL><LI><A HREF="#ref_CMOVE"><B>CMOVE</B></A></LI><LI><A HREF="#ref_OMOVE"><B>OMOVE</B></A></LI><LI><A HREF="#ref_ROTATE"><B>ROTATE</B></A></LI><LI><A HREF="#ref_EAT"><B>EAT</B></A></LI><LI><A HREF="#ref_SEND-ENERGY"><B>SEND-ENERGY</B></A></LI><LI><A HREF="#ref_MAKE-SPORE"><B>MAKE-SPORE</B></A></LI><LI><A HREF="#ref_GROW"><B>GROW</B></A></LI><LI><A HREF="#ref_MAKE-ORGANIC"><B>MAKE-ORGANIC</B></A></LI><LI><A HREF="#ref_GROW.CB"><B>GROW.CB</B></A></LI><LI><A HREF="#ref_CSHIFT"><B>CSHIFT</B></A></LI><LI><A HREF="#ref_SPAWN"><B>SPAWN</B></A></LI><LI><A HREF="#ref_MAKE-BARRIER"><B>MAKE-BARRIER</B></A></LI><LI><A HREF="#ref_EXUDE"><B>EXUDE</B></A></LI><LI><A HREF="#ref_SMELL"><B>SMELL</B></A></LI></UL><A NAME="TOC3"></A><h2> Vision:</h2><UL><LI><A HREF="#ref_LOOK"><B>LOOK</B></A></LI><LI><A HREF="#ref_NEAREST"><B>NEAREST</B></A></LI><LI><A HREF="#ref_FARTHEST"><B>FARTHEST</B></A></LI><LI><A HREF="#ref_SIZE"><B>SIZE</B></A></LI><LI><A HREF="#ref_BIGGEST"><B>BIGGEST</B></A></LI><LI><A HREF="#ref_SMALLEST"><B>SMALLEST</B></A></LI><LI><A HREF="#ref_TEMPERATURE"><B>TEMPERATURE</B></A></LI><LI><A HREF="#ref_HOTTEST"><B>HOTTEST</B></A></LI><LI><A HREF="#ref_COLDEST"><B>COLDEST</B></A></LI></UL><A NAME="TOC4"></A><h2> Communicating  between  cells:</h2><UL><LI><A HREF="#ref_MOOD"><B>MOOD</B></A></LI><LI><A HREF="#ref_MOOD!"><B>MOOD!</B></A></LI><LI><A HREF="#ref_BROADCAST"><B>BROADCAST</B></A></LI><LI><A HREF="#ref_SEND"><B>SEND</B></A></LI><LI><A HREF="#ref_RECV"><B>RECV</B></A></LI><LI><A HREF="#ref_SHOUT"><B>SHOUT</B></A></LI><LI><A HREF="#ref_SAY"><B>SAY</B></A></LI><LI><A HREF="#ref_LISTEN"><B>LISTEN</B></A></LI><LI><A HREF="#ref_READ"><B>READ</B></A></LI><LI><A HREF="#ref_WRITE"><B>WRITE</B></A></LI></UL><A NAME="TOC5"></A><h2> Query  information  about  ourselves:</h2><UL><LI><A HREF="#ref_ENERGY"><B>ENERGY</B></A></LI><LI><A HREF="#ref_AGE"><B>AGE</B></A></LI><LI><A HREF="#ref_NUM-CELLS"><B>NUM-CELLS</B></A></LI><LI><A HREF="#ref_HAS-NEIGHBOR"><B>HAS-NEIGHBOR</B></A></LI><LI><A HREF="#ref_NEIGHBORS"><B>NEIGHBORS</B></A></LI><LI><A HREF="#ref_GPS"><B>GPS</B></A></LI></UL><A NAME="TOC6"></A><h2> Universe  Instructions:</h2><UL><LI><A HREF="#ref_G0"><B>G0</B></A></LI><LI><A HREF="#ref_G0!"><B>G0!</B></A></LI><LI><A HREF="#ref_S0"><B>S0</B></A></LI><LI><A HREF="#ref_S0!"><B>S0!</B></A></LI><LI><A HREF="#ref_POPULATION"><B>POPULATION</B></A></LI><LI><A HREF="#ref_POPULATION.S"><B>POPULATION.S</B></A></LI><LI><A HREF="#ref_KEY-PRESS"><B>KEY-PRESS</B></A></LI><LI><A HREF="#ref_MOUSE-POS"><B>MOUSE-POS</B></A></LI></UL><A NAME="TOC7"></A><h2> Misc.  instructions:</h2><UL><LI><A HREF="#ref_DIST"><B>DIST</B></A></LI><LI><A HREF="#ref_CHOOSE"><B>CHOOSE</B></A></LI><LI><A HREF="#ref_RND"><B>RND</B></A></LI></UL><A NAME="TOC8"></A><h2> Interacting  with  the  universe:</h2><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>INSTRUCTION</B></TD><TD ALIGN=LEFT><B>USAGE</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>DESCRIPTION</B></TD><TR><TD ALIGN=LEFT><B>CMOVE</B></TD><TD ALIGN=LEFT>( x y -- r )</TD><TD ALIGN=LEFT> Move  the  cell  that  executes  this  instruction  relative  to  the  organism.<P></TD><TR><TD ALIGN=LEFT><B>OMOVE</B></TD><TD ALIGN=LEFT>( x y -- n )</TD><TD ALIGN=LEFT> Move  entire  organism  by  one  square  in  the  up,  down,  left,  right,  or  diagonal  direction.<P></TD><TR><TD ALIGN=LEFT><B>ROTATE</B></TD><TD ALIGN=LEFT>( n -- r )</TD><TD ALIGN=LEFT> Rotate  the  organism  by  45  degree  units  around  the  cell  that  executes  this  instruction.  The  rotate  direction  is  given  by
+&#x27;n&#x27;.  A  positive &#x27;n&#x27; rotates  the  organism  is  a  clock-wise  direction.  A  negative &#x27;n&#x27; rotates  the  organism  by  45  degrees
+ counter-clockwise. <p>
+If &#x27;n&#x27; is  zero  don&#x27;t  rotate  the  organism  and  return  0.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>EAT</B></TD><TD ALIGN=LEFT>( x y -- n )</TD><TD ALIGN=LEFT> Eat  stuff  at  (x,  y)  from  this  cell.  Return &#x27;n&#x27; the  amount  of  energy  eaten.<P></TD><TR><TD ALIGN=LEFT><B>SEND-ENERGY</B></TD><TD ALIGN=LEFT>(e x y -- rc)</TD><TD ALIGN=LEFT> send  the  energy  to  the  cell  at  normalized  coordinate  (x,y).  negative &#x27;e&#x27; values  take  from  that  cell.  If  there  isn&#x27;t
+ enough  energy  to  perform  the  transfer  (too  little  energy  compared  to &#x27;e&#x27;))  then  don&#x27;t  do  anything.<P></TD><TR><TD ALIGN=LEFT><B>MAKE-SPORE</B></TD><TD ALIGN=LEFT>( x y e -- r )</TD><TD ALIGN=LEFT> Create  new  spore  (or  fertilize  an  existing  spore). <p>
+When  a  spore  is  fertilized,  the  original  genetic  program  used  to  create  the  spore,  and  the  genetic  program  from  the
+ organism  that  fertilized  the  spore  will  be  first  merged.  Then  the  resulting  genetic  program  is  MUTATED.  Then  a  new  organism
+ is  born.  It  will  begin  execution  at  the  first  instruction  of  code  block  0  (main).  It  will  be  given &#x27;e&#x27; units  of  energy,  which  is  the  sum  of  the  energy  specified  with  the  first  and  second  MAKE-SPORE  instructions.
+</p>
+<p>
+<b> MAKE-SPORE  Energy:</b> This  setting  is  available  on  the  Strain  Modes  tab.  The  value  represents  the  minimum  amount  of  energy  required  to
+ create  a  spore.  If &#x27;e&#x27; is  not  big  enough,  then  this  instruction  will  return  0.  A  minimum  of &#x27;1&#x27; units
+ of  energy  is  always  required  to  create  the  initial  spore.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>GROW</B></TD><TD ALIGN=LEFT>( x y -- r )</TD><TD ALIGN=LEFT><p>
+ Add  a  new  cell  to  this  organism.  The  new  cell  inherits  the  data  stack,  call  stack  and  registers  of  the
+ parent  cell.  The  parent  and  child  can  check  the  return  value  to  determine  which  one  they  are.
+</p>
+<p>
+<b> GROW  Energy:</b> This  field  is  available  on  the  Strain  Modes  tab.  It  sets  the  minimum  amount  of  energy  required  to  grow
+ a  cell.  Each  organism  has  a  total  amount  of  energy.  If  total  energy  divided  by  the  number  of  cells  isn&#x27;t
+ equal  or  greater  to  this  value,  then  the  GROW  operation  will  fail.
+</p>
+<p>
+<b> GROW  Max  Size:</b> This  field  is  available  on  the  Strain  Modes  tab.  It  sets  the  maximum  number  of  cells  that  an  organism
+ can  be.  If  this  value  is  0,  then  there  is  no  maximum.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>MAKE-ORGANIC</B></TD><TD ALIGN=LEFT>(x y e -- s)</TD><TD ALIGN=LEFT> Create  organic  block  at  (x,y)  offset  with  energy  e.<P></TD><TR><TD ALIGN=LEFT><B>GROW.CB</B></TD><TD ALIGN=LEFT>(x y cb -- r)</TD><TD ALIGN=LEFT> Grow  a  new  cell  at  (x,y)  normalized  offset.  The  new  cell  inherits  the  context  of  the  cell  which  executed  the
+ GROW.CB  instruction.  However,  it  will  begin  execution  at  code  block &#x27;cb&#x27;.  Respects  the <b>Grow  Max  Size</b> setting.  If  the  number  of  cells
+ is  already  at  the  max  size,  then  GROW.CB  will  not  succeed.  Unprotected  code  cannot  specify  a  protected  code  block  number
+ for <b>cb</b>.<P></TD><TR><TD ALIGN=LEFT><B>CSHIFT</B></TD><TD ALIGN=LEFT>(x y -- r)</TD><TD ALIGN=LEFT> This  instruction  is  similar  to  CMOVE  except  a  group  of  cells  move  (or  shift  position  in  space)  along  a  vector.
+ If  the  shape  of  the  organism  after  the  CSHIFT  operation  would  violate  the  connectivity  of  the  organism  then  this  instruction
+ fails.<P></TD><TR><TD ALIGN=LEFT><B>SPAWN</B></TD><TD ALIGN=LEFT>(x y e strain cb -- r)</TD><TD ALIGN=LEFT> Spawn  a  new  organism  at  the  (x,y)  normalized  offset.  Give  it &#x27;e&#x27; units  of  energy.  Start  running  at  code  block
+&#x27;cb.  The  identity  of  the  new  organism  will  be  strain &#x27;strain&#x27;.  The  cellular  state  of  the  spawned  organism  will  inherit
+ the  cell  executing  this  instruction.  Unprotected  code  cannot  specify  a  protected  code  block  number  for <b>cb</b>.<P></TD><TR><TD ALIGN=LEFT><B>MAKE-BARRIER</B></TD><TD ALIGN=LEFT>(x y -- r)</TD><TD ALIGN=LEFT> Creates  a  barrier  block  at  the  x  y  normalized  offet.  If  the  location  already  contains  a  barrier  block,  then  this
+ instruction  will  clear  the  barrier.<P></TD><TR><TD ALIGN=LEFT><B>EXUDE</B></TD><TD ALIGN=LEFT>(value x y -- )</TD><TD ALIGN=LEFT> excrete  a  value  onto  the  grid<P></TD><TR><TD ALIGN=LEFT><B>SMELL</B></TD><TD ALIGN=LEFT>(x y -- value)</TD><TD ALIGN=LEFT> read  a  value  from  the  grid  that  was  previously <b>EXUDE&#x27;d</b>.<P></TD></TABLE></CENTER><BR><BR><A NAME="TOC9"></A><h2> Vision:</h2><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>INSTRUCTION</B></TD><TD ALIGN=LEFT><B>USAGE</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>DESCRIPTION</B></TD><TR><TD ALIGN=LEFT><B>LOOK</B></TD><TD ALIGN=LEFT>( x y -- what dist )</TD><TD ALIGN=LEFT> Look  along  a  normalized  (x,  y)  direction  vector.  Return  the  thing  it  found,  and  the  distance. <p>
+NOTE:  The <b>LOOK  Mode</b> settings  apply  to  all  the  vision  instructions  such  as  NEAREST  /  FARTHEST,  HOTTEST  /  COLDEST,  and  SMALLEST
+ /  BIGGEST.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>NEAREST</B></TD><TD ALIGN=LEFT>( mask -- x y )</TD><TD ALIGN=LEFT>Looks  in  all  8  directions  and  return  the  (x,  y)  direction  vector  that  corresponds  to  the  thing  with  the  smallest
+ distance  (and  matches  a &#x27;mask&#x27; value).  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of
+ (-1,1). <p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><P></TD><TR><TD ALIGN=LEFT><B>FARTHEST</B></TD><TD ALIGN=LEFT>( mask -- x y )</TD><TD ALIGN=LEFT>Looks  in  all  8  directions  and  return  the  (x,  y)  direction  vector  that  corresponds  to  the  thing  with  the  largest
+ distance  (and  matches  a &#x27;mask&#x27; value).  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of
+ (-1,1). <p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><P></TD><TR><TD ALIGN=LEFT><B>SIZE</B></TD><TD ALIGN=LEFT>(x y -- size dist)</TD><TD ALIGN=LEFT> Report  the  size  (number  of  cells)  of  the  object  seen  along  the  normalized  vector  (x,y)  from  this  cell.<P></TD><TR><TD ALIGN=LEFT><B>BIGGEST</B></TD><TD ALIGN=LEFT>(mask -- x y)</TD><TD ALIGN=LEFT>Look  in  all  8  directions.  Return  a <b>non-normalized</b> (x,y)  vector  to  the  biggest  thing.  This  is  the  organism  consisting  of
+ the  most  number  of  cells.  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of  (-1,1).
+<p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><p>
+ This  instruction  also  uses  the <A HREF="#ref_LOOK">LOOK  Mode  bits</A>.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>SMALLEST</B></TD><TD ALIGN=LEFT>(mask -- x y)</TD><TD ALIGN=LEFT>Look  in  all  8  directions.  Return  a <b>non-normalized</b> (x,y)  vector  to  the  smallest  thing.  This  is  the  organism  with  the
+ least  number  of  cells.  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of  (-1,1). <p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><p>
+ This  instruction  also  uses  the <A HREF="#ref_LOOK">LOOK  Mode  bits</A>.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>TEMPERATURE</B></TD><TD ALIGN=LEFT>(x y -- energy dist)</TD><TD ALIGN=LEFT> Get  the  energy  of  cell  seen  along  (x,y).  This  is <b>per  cell</b>.  For  organisms  we  divide  the  total  energy  the
+ organism  has  by  the  number  of  cells  the  organism  has.<P></TD><TR><TD ALIGN=LEFT><B>HOTTEST</B></TD><TD ALIGN=LEFT>(mask -- x y)</TD><TD ALIGN=LEFT>Look  in  all  8  directions.  Return  a <b>non-normalized</b> (x,y)  vector  to  the  hottest  thing.  This  is  the  organism  with  the
+ most  energy  per  cell.  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of  (-1,1). <p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><p>
+ This  instruction  also  uses  the <A HREF="#ref_LOOK">LOOK  Mode  bits</A>.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>COLDEST</B></TD><TD ALIGN=LEFT>(mask -- x y)</TD><TD ALIGN=LEFT>Look  in  all  8  directions.  Return  a <b>non-normalized</b> (x,y)  vector  to  the  coldest  thing.  This  is  the  organism  with  the
+ least  energy  per  cell.  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of  (-1,1). <p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><p>
+ This  instruction  also  uses  the <A HREF="#ref_LOOK">LOOK  Mode  bits</A>.
+</p>
+<P></TD></TABLE></CENTER><BR><BR><A NAME="TOC10"></A><h2> Communicating  between  cells:</h2><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>INSTRUCTION</B></TD><TD ALIGN=LEFT><B>USAGE</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>DESCRIPTION</B></TD><TR><TD ALIGN=LEFT><B>MOOD</B></TD><TD ALIGN=LEFT>( x y -- m )</TD><TD ALIGN=LEFT><p>
+ Every  cell  has  its  own &quot;MOOD&quot; register.  This  instruction  queries  another  cell  using  an  (x,  y)  vector.  This  vector <b>is  not  normalized</b> which  allows  the  cell  to  query  any  other  cell  within  its  own  organism  (not  just  adjacent  cells).  For  example,  if
+ cell  2  executed  the  following  instructions:
+</p>
+
+<pre>
+0 0 MOOD   ; returns -23
+-1 0 MOOD   ; returns 123
+-1 1 MOOD   ; returns 33
+99 99 MOOD   ; returns 0
+</pre>
+<p>
+ If  a  bogus  (x,  y)  is  specified  then  0  is  pushed  on  the  data  stack.  We  can  query  our  own
+ mood  by  specifying  (0,  0).
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>MOOD!</B></TD><TD ALIGN=LEFT>( m -- )</TD><TD ALIGN=LEFT><p>
+ The  cell  executing  this  instruction  will  set  its  own <b>mood</b> register.  It  is  not  possible  to  set  others.  The  purpose
+ of  the <b>mood</b> register  is  for  a  cell  it  advertise  its &quot;mood&quot; to  other  cells  in  the  organism.  For  example,
+ if  cell  3  executed  these  instructions:
+</p>
+
+<pre>
+0 0 MOOD 1 + MOOD!
+</pre>
+<p>
+ Then  cell  3&#x27;s  mood  would  be  increased  by  1.  So  it  would  be  set  to  34.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>BROADCAST</B></TD><TD ALIGN=LEFT>( m -- )</TD><TD ALIGN=LEFT> This  instruction  takes  the  value  off  of  the  top  of  the  data  stack  and  sets  the <b>message</b> register  for  every
+ cell  in  our  organism.  If  interrupts  are  enabled  every  cell,  except  the  cell  executing  this  instruction,  will  be  interrupted.<P></TD><TR><TD ALIGN=LEFT><B>SEND</B></TD><TD ALIGN=LEFT>( m x y -- )</TD><TD ALIGN=LEFT><p>
+ This  instruction  takes  3  arguments.  An  (x,  y)  vector  and  a  value &#x27;m&#x27;.  The  vector <b>is  NOT  normalized</b> so  that  the  cell
+ can  send  a  message &#x27;m&#x27; to  any  other  cell  in  the  same  organism  (not  just  adjacent  cells).  For  example,  if
+ cell  1  exectuted  this  these  two  instructions:
+</p>
+
+<pre>
+100     1 0 SEND   ; set cell 2&#x27;s message register to 100
+-46812  0 1 SEND   ; set cell 3&#x27;s message register to -46812
+0       0 0 SEND   ; set out message register to 0.
+12   -99 99 SEND   ; does nothing because (-99, 99) is bogus
+</pre>
+<p>
+ A  SEND  operation  using  bogus  coordinates  will  be  ignored.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>RECV</B></TD><TD ALIGN=LEFT>( -- m )</TD><TD ALIGN=LEFT> The  RECV  instruction  just  pushes  a  copy  of  our  message  register  on  top  of  the  data  stack.<P></TD><TR><TD ALIGN=LEFT><B>SHOUT</B></TD><TD ALIGN=LEFT>(m -- r)</TD><TD ALIGN=LEFT> Broadcast  a  message  to  another  organism.  Send  the  message &#x27;m&#x27; outward  in  all  8  directions.  If  a  cell  is  reached,
+ then  set  it&#x27;s  MESSAGE  register  to  be &#x27;m&#x27;.<P></TD><TR><TD ALIGN=LEFT><B>SAY</B></TD><TD ALIGN=LEFT>(m x y -- dist)</TD><TD ALIGN=LEFT> The  (x,y)  normalized  direction  vector  will  be  used  to  send  the  message &#x27;m&#x27;.  If  a  cell  is  reached,  then  set
+ it&#x27;s  MESSAGE  register  to  be &#x27;m&#x27;.<P></TD><TR><TD ALIGN=LEFT><B>LISTEN</B></TD><TD ALIGN=LEFT>(x y -- mood dist)</TD><TD ALIGN=LEFT> Listen  along  the  normalized  vector  (x,y).  If  another  cell  was  found  return  its  MOOD  register  and  distance.<P></TD><TR><TD ALIGN=LEFT><B>READ</B></TD><TD ALIGN=LEFT>(x y cb cbme -- rc)</TD><TD ALIGN=LEFT> Read  code  block &#x27;cb&#x27; from  the  cell  or  spore  located  at  the  normalized  (x,y)  coordinates.  Place  the  result  into &#x27;cbme&#x27;.
+ It  is  not  possible  to  grow  the  number  of  code  blocks  of  a  program  with  this  instruction.  The  destination  code
+ block &#x27;cbme&#x27; must  already  exist. <p>
+Unprotected  code  cannot  READ  if &#x27;cb&#x27; or &#x27;cbme&#x27; is  protected.  Unprotected  code  cannot  read  a  protected  instruction.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>WRITE</B></TD><TD ALIGN=LEFT>(x y cb cbme -- rc)</TD><TD ALIGN=LEFT> Write  code  block &#x27;cbme&#x27; to  another  cell  or  spore.  The  cell  is  located  at  the  normalized  (x,  y)  offset  from
+ this  cell.  The  destination  code  block  number  is  given  by &#x27;cb&#x27;.  It  is  not  possible  to  grow  the  number  of
+ code  blocks  of  a  program.  The  destination  code  block &#x27;cb&#x27; must  already  exist. <p>
+Unprotected  code  cannot  WRITE  if &#x27;cb&#x27; or &#x27;cbme&#x27; is  protected.  Unprotected  code  cannot  write  a  protected  instruction.
+</p>
+<P></TD></TABLE></CENTER><BR><BR><A NAME="TOC11"></A><h2> Query  information  about  ourselves:</h2><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>INSTRUCTION</B></TD><TD ALIGN=LEFT><B>USAGE</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>DESCRIPTION</B></TD><TR><TD ALIGN=LEFT><B>ENERGY</B></TD><TD ALIGN=LEFT>( -- e )</TD><TD ALIGN=LEFT> Get  our  organisms  overall  energy.<P></TD><TR><TD ALIGN=LEFT><B>AGE</B></TD><TD ALIGN=LEFT>( -- a )</TD><TD ALIGN=LEFT> Fetch  the  organisms &quot;age&quot; field  (which  is  the  number  of  elapsed  simulation  step)  and  push  this  value  on  our  data
+ stack.<P></TD><TR><TD ALIGN=LEFT><B>NUM-CELLS</B></TD><TD ALIGN=LEFT>( -- n )</TD><TD ALIGN=LEFT> Push  the  number  of  cells  that  comprise  this  organism  on  our  data  stack.<P></TD><TR><TD ALIGN=LEFT><B>HAS-NEIGHBOR</B></TD><TD ALIGN=LEFT>( x y -- r )</TD><TD ALIGN=LEFT> Determine  if  a  neighboring  cell  location  contains  our  cell  or  not.<P></TD><TR><TD ALIGN=LEFT><B>NEIGHBORS</B></TD><TD ALIGN=LEFT>( -- mask)</TD><TD ALIGN=LEFT> Returns  a  bitmask  with  a &#x27;1&#x27; bit  set  for  a  neighor  in  that  direction.<P></TD><TR><TD ALIGN=LEFT><B>GPS</B></TD><TD ALIGN=LEFT>( -- x y)</TD><TD ALIGN=LEFT> Returns  the  absolute  grid  coordinates  for  the  cell  executing  this  instruction.<P></TD></TABLE></CENTER><BR><BR><A NAME="TOC12"></A><h2> Universe  Instructions:</h2><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>INSTRUCTION</B></TD><TD ALIGN=LEFT><B>USAGE</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>DESCRIPTION</B></TD><TR><TD ALIGN=LEFT><B>G0</B></TD><TD ALIGN=LEFT>( -- value)</TD><TD ALIGN=LEFT> Get  universe-wide  global  variable.  This  is  a  common  global  that  all  CELL&#x27;s  can  query  with  this  instruction.<P></TD><TR><TD ALIGN=LEFT><B>G0!</B></TD><TD ALIGN=LEFT>(value -- )</TD><TD ALIGN=LEFT> Set  universe-wide  global  variable.  This  is  a  common  global  that  all  CELL&#x27;s  can  write  to  with  this  instruction.<P></TD><TR><TD ALIGN=LEFT><B>S0</B></TD><TD ALIGN=LEFT>( -- value)</TD><TD ALIGN=LEFT> Get  strain-wide  global  variable.  Each  strain  has  its  own <b>S0</b> global  variable.  This  instruction  allows  the  strain  specific  variable  to
+ be  queried. <p>
+This  variable  can  be  used  by  a  swarm  of  organisms,  from  the  same  strain,  to  coordinate  their  activies.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>S0!</B></TD><TD ALIGN=LEFT>(value -- )</TD><TD ALIGN=LEFT> Set  strain-wide  global  variable.  Each  strain  has  its  own <b>S0</b> global  variable.  This  instruction  allows  the  strain  specific  variable  to
+ be  written  to. <p>
+This  variable  can  be  used  by  a  swarm  of  organisms,  from  the  same  strain,  to  coordinate  their  activies.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>POPULATION</B></TD><TD ALIGN=LEFT>( -- pop)</TD><TD ALIGN=LEFT> Return  the  current  population.<P></TD><TR><TD ALIGN=LEFT><B>POPULATION.S</B></TD><TD ALIGN=LEFT>( -- pop)</TD><TD ALIGN=LEFT> Return  the  current  population  of  my  strain.<P></TD><TR><TD ALIGN=LEFT><B>KEY-PRESS</B></TD><TD ALIGN=LEFT>( -- key)</TD><TD ALIGN=LEFT> Get  the  keyboard  character  being  pressed.  Or  0  if  nothing  is  being  pressed.<P></TD><TR><TD ALIGN=LEFT><B>MOUSE-POS</B></TD><TD ALIGN=LEFT>( -- x y)</TD><TD ALIGN=LEFT> Query  the  mouse  position.  The  mouse  position  is  a  coordinate  in  the  universe  coordinate  space.  This  position  was  set  externally
+ by  the  user  right  clicking  on  a  grid  location  when  in &#x27;MOUSE-POS&#x27; mode.  See  the  KEY-PRESS  instruction  modes  to  configure
+ interrupts  for  the  mouse  position.<P></TD></TABLE></CENTER><BR><BR><A NAME="TOC13"></A><h2> Misc.  instructions:</h2><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>INSTRUCTION</B></TD><TD ALIGN=LEFT><B>USAGE</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>DESCRIPTION</B></TD><TR><TD ALIGN=LEFT><B>DIST</B></TD><TD ALIGN=LEFT>(x y -- dist)</TD><TD ALIGN=LEFT> Computes  the  maximum  of  ABS(x)  and  ABS(y).<P></TD><TR><TD ALIGN=LEFT><B>CHOOSE</B></TD><TD ALIGN=LEFT>(min max -- rnd)</TD><TD ALIGN=LEFT> pick  random  value  between  two  values<P></TD><TR><TD ALIGN=LEFT><B>RND</B></TD><TD ALIGN=LEFT>( -- rnd)</TD><TD ALIGN=LEFT> return  random  value  between  MIN_INT  and  MAX_INT.<P></TD></TABLE></CENTER><BR><BR><HR>
+<A NAME="ref_CMOVE"><H2>CMOVE</H2><B>Usage:</B> ( x y -- r )<P> move  a  cell  relative  to  the  organism<P> Move  the  cell  that  executes  this  instruction  relative  to  the  organism.<P><ol>
+<li>
+ If  there  are  not  2  elements  on  the  data  stack,  then  skip  this  instruction.
+</li>
+
+<li>
+ Remove  the  (x,  y)  coordinates  from  the  stack.
+</li>
+
+<li>
+ Normalize  the  coordinates.
+</li>
+
+<li>
+ Examine  the  destination  square  (as  indicated  by  the  offsets)  and  see  if  it  is  vacant.  If  not,  return  0.
+</li>
+
+<li>
+ Check  that  the  organism  is  propery  connected  after  the  move.  If  not  return  0.
+</li>
+
+<li>
+ Else,  Move  the  cell  to  the  new  location  and  return  1.
+</li>
+
+<li>
+ A  CMOVE  of  (0,0)  always  fails  and  returns <b>0</b>.
+</li>
+</ol><P><B>RETURNS:</B><ul>
+<li>
+<b> 0</b> -  cell  could  not  be  moved.
+</li>
+
+<li>
+<b> 1</b> -  success.
+</li>
+</ul><P><B>ENERGY:</B> Does  not  require  any  energy.<P><B>CMOVE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> NOT  USED<P></TD><TD ALIGN=LEFT> NOT  USED<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_OMOVE"><H2>OMOVE</H2><B>Usage:</B> ( x y -- n )<P> move  entire  organism<P> Move  entire  organism  by  one  square  in  the  up,  down,  left,  right,  or  diagonal  direction.<P><ol>
+<li>
+ If  there  are  not  2  elements  on  the  data  stack,  then  skip  this  instruction.
+</li>
+
+<li>
+ Remove  the  (x,  y)  coordinates  from  the  stack.
+</li>
+
+<li>
+ Normalize  the  coordinates.
+</li>
+
+<li>
+ Examine  every  square  that  we  may  be  moving  to  to  make  sure  it  is  empty,  or  contains  one  of  our
+ cells.
+</li>
+
+<li>
+ If  the  move  is  possible,  reposition  every  cell  in  our  organism  by  the  (x,  y)  offset.
+</li>
+
+<li>
+ A  move  using  vector  (0,  0)  always  fails,  and  returns  0.
+</li>
+</ol><P><B>RETURNS:</B><ul>
+<li>
+<b> 0</b> -  move  failed.
+</li>
+
+<li>
+<b> n</b> -  success.  where  n  is  the  number  of  cells  moved  was  successful.
+</li>
+</ul><P><B>ENERGY:</B> Does  not  require  any  energy.<P><B>OMOVE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> NOT  USED<P></TD><TD ALIGN=LEFT> NOT  USED<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_ROTATE"><H2>ROTATE</H2><B>Usage:</B> ( n -- r )<P> rotate  organism<P> Rotate  the  organism  by  45  degree  units  around  the  cell  that  executes  this  instruction.  The  rotate  direction  is  given  by
+&#x27;n&#x27;.  A  positive &#x27;n&#x27; rotates  the  organism  is  a  clock-wise  direction.  A  negative &#x27;n&#x27; rotates  the  organism  by  45  degrees
+ counter-clockwise. <p>
+If &#x27;n&#x27; is  zero  don&#x27;t  rotate  the  organism  and  return  0.
+</p>
+<P><ol>
+<li>
+ If  there  is  not  1  element  on  the  data  stack,  then  skip  this  instruction.
+</li>
+
+<li>
+ Remove  the  rotation  amount  n  from  the  stack.
+</li>
+
+<li>
+ Translate  all  cells  in  the  organism  to  the  new  location,  and  check  that  the  spot  is  vacant  (or  contains  cells
+ from  this  organism).  If  not,  return  0.
+</li>
+
+<li>
+ Else,  rotate  organism  and  return  1.
+</li>
+
+<li>
+ A  rotation  value  of <b>0</b> always  fails,  and  returns  0.
+</li>
+</ol><P><B>RETURNS:</B><ul>
+<li>
+<b> 0</b> -  organism  could  not  be  rotated.
+</li>
+
+<li>
+<b> r</b> - &#x27;r&#x27; is  the  number  of  cells  that  were  rotated.
+</li>
+</ul><P><B>ENERGY:</B> Does  not  require  any  energy.<P><B>ROTATE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> use  my  location  as  the  orgin  of  rotation<P></TD><TD ALIGN=LEFT> use  the  organism  center  as  the  origin  of  rotation<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> rotate  in  45  degree  units<P></TD><TD ALIGN=LEFT> rotate  in  90  degree  units<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_EAT"><H2>EAT</H2><B>Usage:</B> ( x y -- n )<P> eat  energy  from  surrounding  cells<P> Eat  stuff  at  (x,  y)  from  this  cell.  Return &#x27;n&#x27; the  amount  of  energy  eaten.<P><ol>
+<li>
+ Normalize  the  (x,  y)  coordinates.
+</li>
+
+<li>
+ Try  to  eat  whatever  is  at  this  location:
+</li>
+
+<li>
+ Organic  material  (white  squares)  will  be  eaten  and  all  its  energy  transferred  to  this  organism.
+</li>
+
+<li>
+ Spores  (blue  squares)  will  be  eaten  and  all  their  energy  transferred  to  this  organism.  Even  spores  created  by  this  organism
+ will  be  eaten  (so  be  careful!).
+</li>
+
+<li>
+ Depending  on  the  modes,  living  tissue  from  other  creatures  will  be  eaten  like  this:
+</li>
+</ol><ul>
+<li>
+ The  living  tissue  must  be  from  ANOTHER  organism,  not  itself.  The  cell  cannot  eat  itself!
+</li>
+
+<li>
+ The  cell  being  eaten  must  not  already  be  flagged  as  dead  (not  already  red).
+</li>
+
+<li>
+ The  cell  being  eaten  is  then  flagged  as  dead  (red  square).
+</li>
+
+<li>
+ 1/x  units  of  energy  (where  x  is  the  number  of  cells  in  the  organism  being  eaten)  will  be  removed  from
+ the  organism  we  ate,  and  transferred  to  this  organism.
+</li>
+
+<li>
+ any  remainder  from  the  integer &quot;1/x&quot; calculation  is  also  removed  from  the  organism  we  ate  and  transferred  to  us.
+</li>
+</ul><P><B>RETURNS:</B><ul>
+<li>
+<b> 0</b> -  nothing  was  eaten
+</li>
+
+<li>
+<b> n</b> -  the  amount  of  energy  we  were  able  to  eat.
+</li>
+</ul><P><B>ENERGY:</B> Does  not  require  any  energy.<P><B>EAT MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> I  cannot  eat  myself<P></TD><TD ALIGN=LEFT> I  can  eat  myself<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> I  can  eat  cells  from  other  strains<P></TD><TD ALIGN=LEFT> I  cannot  eat  cells  from  other  strains<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> I  can  eat  my  own  strain<P></TD><TD ALIGN=LEFT> I  cannot  eat  my  own  strain<P></TD><TR><TD ALIGN=LEFT><B>3</B></TD><TD ALIGN=LEFT>8</TD><TD ALIGN=LEFT> I  can  be  eaten<P></TD><TD ALIGN=LEFT> I  cannot  be  eaten<P></TD><TR><TD ALIGN=LEFT><B>4</B></TD><TD ALIGN=LEFT>16</TD><TD ALIGN=LEFT> when  calculating  energy  eaten,  include  remainder:  ENERGY_EATEN  =  ENERGY  /  NCELLS  +  ENERGY %  NCELLS<P></TD><TD ALIGN=LEFT> when  calculating  energy  eaten,  don&#x27;t  include  remainder:  ENERGY_EATEN  =  ENERGY  /  NCELLS<P></TD><TR><TD ALIGN=LEFT><B>5</B></TD><TD ALIGN=LEFT>32</TD><TD ALIGN=LEFT> off<P></TD><TD ALIGN=LEFT> use  make-spore  energy  for  maximum  energy  eaten<P></TD><TR><TD ALIGN=LEFT><B>6</B></TD><TD ALIGN=LEFT>64</TD><TD ALIGN=LEFT> off<P></TD><TD ALIGN=LEFT> use  grow  energy  for  maximum  energy  eaten<P></TD><TR><TD ALIGN=LEFT><B>7</B></TD><TD ALIGN=LEFT>128</TD><TD ALIGN=LEFT> off<P></TD><TD ALIGN=LEFT> use  cell  energy/2  +  remainder<P></TD><TR><TD ALIGN=LEFT><B>8</B></TD><TD ALIGN=LEFT>256</TD><TD ALIGN=LEFT> off<P></TD><TD ALIGN=LEFT> take  as  much  energy  as  possible  up  to  the  number  of  units  this  cell  has<P></TD><TR><TD ALIGN=LEFT><B>9</B></TD><TD ALIGN=LEFT>512</TD><TD ALIGN=LEFT> terminate  cell  eaten<P></TD><TD ALIGN=LEFT> don&#x27;t  terminate  cell  eaten,  unless  energy  per  cell  ==  0<P></TD><TR><TD ALIGN=LEFT><B>10</B></TD><TD ALIGN=LEFT>1024</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  EATS  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  0  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>11</B></TD><TD ALIGN=LEFT>2048</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  EATS  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  1  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>12</B></TD><TD ALIGN=LEFT>4096</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  EATS  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  2  of  the  trap  number  shall  be  1<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_SEND-ENERGY"><H2>SEND-ENERGY</H2><B>Usage:</B> (e x y -- rc)<P> give/take  energy  to  neighboring  cell<P> send  the  energy  to  the  cell  at  normalized  coordinate  (x,y).  negative &#x27;e&#x27; values  take  from  that  cell.  If  there  isn&#x27;t
+ enough  energy  to  perform  the  transfer  (too  little  energy  compared  to &#x27;e&#x27;))  then  don&#x27;t  do  anything.<P><P><B>RETURNS:</B> Returns  the  number  of  units  of  energy  given/taken.  0  is  returned  if  the  operation  failed.<P><B>ENERGY:</B><P><B>SEND-ENERGY MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> i  can  give  energy  to  other  strains<P></TD><TD ALIGN=LEFT> i  cannot  give  energy  to  other  strains<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> i  can  take  energy  from  other  strains<P></TD><TD ALIGN=LEFT> i  cannot  take  energy  from  other  strains<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> i  can  give  energy  to  spores<P></TD><TD ALIGN=LEFT> i  cannot  give  energy  to  spores<P></TD><TR><TD ALIGN=LEFT><B>3</B></TD><TD ALIGN=LEFT>8</TD><TD ALIGN=LEFT> i  can  take  energy  from  spores<P></TD><TD ALIGN=LEFT> i  cannot  take  energy  from  spores<P></TD><TR><TD ALIGN=LEFT><B>4</B></TD><TD ALIGN=LEFT>16</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  gives  energy  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  0  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>5</B></TD><TD ALIGN=LEFT>32</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  gives  energy  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  1  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>6</B></TD><TD ALIGN=LEFT>64</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  gives  energy  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  2  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>7</B></TD><TD ALIGN=LEFT>128</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  takes  energy  from  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  0  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>8</B></TD><TD ALIGN=LEFT>256</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  takes  energy  from  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  1  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>9</B></TD><TD ALIGN=LEFT>512</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  take  energy  from  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  2  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>10</B></TD><TD ALIGN=LEFT>1024</TD><TD ALIGN=LEFT> can  give  energy  only  to  adjacent  neighbors<P></TD><TD ALIGN=LEFT> can  give  energy  across  distances  along  normalized  vector<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_MAKE-SPORE"><H2>MAKE-SPORE</H2><B>Usage:</B> ( x y e -- r )<P> create  spore  and  reproduce<P> Create  new  spore  (or  fertilize  an  existing  spore). <p>
+When  a  spore  is  fertilized,  the  original  genetic  program  used  to  create  the  spore,  and  the  genetic  program  from  the
+ organism  that  fertilized  the  spore  will  be  first  merged.  Then  the  resulting  genetic  program  is  MUTATED.  Then  a  new  organism
+ is  born.  It  will  begin  execution  at  the  first  instruction  of  code  block  0  (main).  It  will  be  given &#x27;e&#x27; units  of  energy,  which  is  the  sum  of  the  energy  specified  with  the  first  and  second  MAKE-SPORE  instructions.
+</p>
+<p>
+<b> MAKE-SPORE  Energy:</b> This  setting  is  available  on  the  Strain  Modes  tab.  The  value  represents  the  minimum  amount  of  energy  required  to
+ create  a  spore.  If &#x27;e&#x27; is  not  big  enough,  then  this  instruction  will  return  0.  A  minimum  of &#x27;1&#x27; units
+ of  energy  is  always  required  to  create  the  initial  spore.
+</p>
+<P><ol>
+<li>
+ If  there  are  not  3  elements  on  the  data  stack,  then  skip  this  instruction.
+</li>
+
+<li>
+ Remove  energy &#x27;e&#x27; from  the  stack.  (this  is  the  amount  of  energy  that  this  organism  will  give  up  and  transfer
+ to  the  new  spore).
+</li>
+
+<li>
+ Remove  the  (x,  y)  coordinates  from  the  stack.
+</li>
+
+<li>
+ Normalize  the  coordinates.
+</li>
+
+<li>
+ For  new  spores,  if  energy &#x27;e&#x27; is  less  than  or  equal  to  0,  then  return  0.
+</li>
+
+<li>
+ For  fertilizing  an  existing  spore,  if  energy &#x27;e&#x27; is  less  than  0,  then  return  0.
+</li>
+
+<li>
+ If  energy &#x27;e&#x27; is  more  than  the  amount  of  energy  this  organism  has,  then  return  0.
+</li>
+
+<li>
+ If  the  location  indicated  by  the  normalized  (x,  y)  coordinates  is  not  vacant  or  is  not  a  spore,  then  return
+ 0.
+</li>
+
+<li>
+ If  the  location  is  blank,  then  create  the  first  spore.  Transfer &#x27;e&#x27; units  of  energy  from  this  organism  and  give
+ it  to  the  new  spore.  Return  1.
+</li>
+
+<li>
+ If  the  location  is  a  spore  then  fertilize  the  existing  spore.  Transfer &#x27;e&#x27; units  of  energy  from  this  organism  to
+ the  fertilized  spore.  Return  -1.
+</li>
+</ol><P><B>RETURNS:</B><ul>
+<li>
+<b> 0</b> -  could  not  make  spore.
+</li>
+
+<li>
+<b> 1</b> -  created  spore.
+</li>
+
+<li>
+<b> -1</b> -  fertilized  existing  spore.
+</li>
+</ul><P><B>ENERGY:</B> Requires &#x27;e&#x27; units  of  energy.<P><B>MAKE-SPORE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> NOT  USED<P></TD><TD ALIGN=LEFT> NOT  USED<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> i  can  fertilize  a  spore  i  created<P></TD><TD ALIGN=LEFT> i  cannot  fertilize  a  spore  i  created<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> i  can  fertilize  a  spore  created  by  others<P></TD><TD ALIGN=LEFT> i  cannot  fertilize  a  spore  created  by  others<P></TD><TR><TD ALIGN=LEFT><B>3</B></TD><TD ALIGN=LEFT>8</TD><TD ALIGN=LEFT> i  can  create  a  spore<P></TD><TD ALIGN=LEFT> i  cannot  create  a  spore<P></TD><TR><TD ALIGN=LEFT><B>4</B></TD><TD ALIGN=LEFT>16</TD><TD ALIGN=LEFT> i  can  fertilize  a  spore<P></TD><TD ALIGN=LEFT> i  cannot  fertilize  a  spore<P></TD><TR><TD ALIGN=LEFT><B>5</B></TD><TD ALIGN=LEFT>32</TD><TD ALIGN=LEFT> no  energy  is  required  to  fertilize  a  spore<P></TD><TD ALIGN=LEFT> minimum  MAKE-SPORE  Energy  is  required  to  fertilize  a  spore<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_GROW"><H2>GROW</H2><B>Usage:</B> ( x y -- r )<P> add  a  new  cell  to  the  organism<P><p>
+ Add  a  new  cell  to  this  organism.  The  new  cell  inherits  the  data  stack,  call  stack  and  registers  of  the
+ parent  cell.  The  parent  and  child  can  check  the  return  value  to  determine  which  one  they  are.
+</p>
+<p>
+<b> GROW  Energy:</b> This  field  is  available  on  the  Strain  Modes  tab.  It  sets  the  minimum  amount  of  energy  required  to  grow
+ a  cell.  Each  organism  has  a  total  amount  of  energy.  If  total  energy  divided  by  the  number  of  cells  isn&#x27;t
+ equal  or  greater  to  this  value,  then  the  GROW  operation  will  fail.
+</p>
+<p>
+<b> GROW  Max  Size:</b> This  field  is  available  on  the  Strain  Modes  tab.  It  sets  the  maximum  number  of  cells  that  an  organism
+ can  be.  If  this  value  is  0,  then  there  is  no  maximum.
+</p>
+<P><ol>
+<li>
+ If  there  are  not  2  elements  on  the  data  stack,  then  skip  this  instruction.
+</li>
+
+<li>
+ Remove  the  (x,  y)  coordinates  from  the  stack.
+</li>
+
+<li>
+ Normalize  the  coordinates.
+</li>
+
+<li>
+ If  the  location  specified  by  the  coordinates  is  not  blank,  then  return  0.
+</li>
+
+<li>
+ Compute  the  amount  of  energy  needed  to  grow  (this  is  the  sum  of  the  data  stack  size  and  the  call
+ stack  size).
+</li>
+
+<li>
+ If  organims  does  not  have  enough  energy  to  GROW  a  new  cell,  then  return  0.
+</li>
+
+<li>
+ Create  new  cell  at  location  specified.  Clone  this  cells  data  and  call  stack  (as  well  as  registers,  and  so  on).
+</li>
+
+<li>
+ For  the  cell  executing  the  GROW  instruction  return  1.
+</li>
+
+<li>
+ For  the  new  cell,  just  created,  make  it  appear  as  if  it  returned  -1.
+</li>
+</ol><P><B>RETURNS:</B><ul>
+<li>
+<b> 0</b> -  could  not  grow
+</li>
+
+<li>
+<b> 1</b> -  grow  succeeded  (the  cell  that  executed  the  GROW  instruction)
+</li>
+
+<li>
+<b> -1</b> -  grow  succeeded  (the  new  cell)
+</li>
+</ul><P><B>ENERGY:</B> Requires <b>GROW  Energy</b> units  of  energy.<P><B>GROW MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> NOT  USED<P></TD><TD ALIGN=LEFT> NOT  USED<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_MAKE-ORGANIC"><H2>MAKE-ORGANIC</H2><B>Usage:</B> (x y e -- s)<P> create  organic  block<P> Create  organic  block  at  (x,y)  offset  with  energy  e.<P><ol>
+<li>
+ Normalize  the  (x,  y)  ccoordinated,  if  the  offset  if  not  vacant  return  s=0.
+</li>
+
+<li>
+ If  organism  doesn&#x27;t  have  enough  energy  return  s=0.
+</li>
+
+<li>
+ If  organic  already  exists,  append &#x27;e&#x27; energy  to  it  and  return  s=e
+</li>
+
+<li>
+ If  blank  exists  then  create  new  organic  block  with  energy &#x27;e&#x27;.  return  s=e
+</li>
+</ol><P><B>RETURNS:</B> 0  Returns  the  amount  of  energy  that  was  d<P><B>ENERGY:</B> The  energy &#x27;e&#x27; is  deducted  from  the  organisms  (or  cells)  energy.<P><B>MAKE-ORGANIC MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> NOT  USED<P></TD><TD ALIGN=LEFT> NOT  USED<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_GROW.CB"><H2>GROW.CB</H2><B>Usage:</B> (x y cb -- r)<P> grow  another  cell<P> Grow  a  new  cell  at  (x,y)  normalized  offset.  The  new  cell  inherits  the  context  of  the  cell  which  executed  the
+ GROW.CB  instruction.  However,  it  will  begin  execution  at  code  block &#x27;cb&#x27;.  Respects  the <b>Grow  Max  Size</b> setting.  If  the  number  of  cells
+ is  already  at  the  max  size,  then  GROW.CB  will  not  succeed.  Unprotected  code  cannot  specify  a  protected  code  block  number
+ for <b>cb</b>.<P><P><B>RETURNS:</B><ul>
+<li>
+<b> 0</b> -  could  not  create  cell
+</li>
+
+<li>
+<b> 1</b> -  new  cell  created
+</li>
+</ul><P><B>ENERGY:</B> Respects  the <b>Grow  Energy</b> setting.  If  adding  this  cell  would  cause  the  total  amount  of  energy  per  cell  to  drop  below
+ the <b>Grow  Energy</b> amount,  then  GROW.CB  fails.<P><P><HR><P><A NAME="ref_CSHIFT"><H2>CSHIFT</H2><B>Usage:</B> (x y -- r)<P> shift  a  line  of  cells  relative  to  the  organism<P> This  instruction  is  similar  to  CMOVE  except  a  group  of  cells  move  (or  shift  position  in  space)  along  a  vector.
+ If  the  shape  of  the  organism  after  the  CSHIFT  operation  would  violate  the  connectivity  of  the  organism  then  this  instruction
+ fails.<P><P><B>RETURNS:</B> Returns  the  number  of  cells  that  shifted.<P><B>ENERGY:</B> Does  not  require  energy.<P><B>CSHIFT MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> NOT  USED<P></TD><TD ALIGN=LEFT> NOT  USED<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_SPAWN"><H2>SPAWN</H2><B>Usage:</B> (x y e strain cb -- r)<P> spawn  a  new  organism  of  a  particular  strain<P> Spawn  a  new  organism  at  the  (x,y)  normalized  offset.  Give  it &#x27;e&#x27; units  of  energy.  Start  running  at  code  block
+&#x27;cb.  The  identity  of  the  new  organism  will  be  strain &#x27;strain&#x27;.  The  cellular  state  of  the  spawned  organism  will  inherit
+ the  cell  executing  this  instruction.  Unprotected  code  cannot  specify  a  protected  code  block  number  for <b>cb</b>.<P><P><B>RETURNS:</B> returns  1  if  the  spawn  was  successful,  else  0.<P><B>ENERGY:</B>&#x27;e&#x27; units  of  energy  are  required.<P><B>SPAWN MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> do  not  inherit  cell  register  values<P></TD><TD ALIGN=LEFT> inherit  register  values<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> num.  protected  code  blocks  follows  new  strain<P></TD><TD ALIGN=LEFT> num.  protected  code  blocks  follows  old  strain<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> cannot  spawn  to  a  different  strain<P></TD><TD ALIGN=LEFT> can  spawn  to  a  different  strain<P></TD><TR><TD ALIGN=LEFT><B>3</B></TD><TD ALIGN=LEFT>8</TD><TD ALIGN=LEFT> mutate  the  program  using  my  strain&#x27;s  mutations  settings<P></TD><TD ALIGN=LEFT> do  not  mutate  the  program<P></TD><TR><TD ALIGN=LEFT><B>4</B></TD><TD ALIGN=LEFT>16</TD><TD ALIGN=LEFT> do  not  inherit  data  stack<P></TD><TD ALIGN=LEFT> inherit  N  data  stack  items  from  top  and  bit-0  of  N  is  1<P></TD><TR><TD ALIGN=LEFT><B>5</B></TD><TD ALIGN=LEFT>32</TD><TD ALIGN=LEFT> do  not  inherit  data  stack<P></TD><TD ALIGN=LEFT> inherit  N  data  stack  items  from  top  and  bit-1  of  N  is  1<P></TD><TR><TD ALIGN=LEFT><B>6</B></TD><TD ALIGN=LEFT>64</TD><TD ALIGN=LEFT> do  not  inherit  data  stack<P></TD><TD ALIGN=LEFT> inherit  N  data  stack  items  from  top  and  bit-2  of  N  is  1<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_MAKE-BARRIER"><H2>MAKE-BARRIER</H2><B>Usage:</B> (x y -- r)<P> create  (or  clear)  a  barrier  block<P> Creates  a  barrier  block  at  the  x  y  normalized  offet.  If  the  location  already  contains  a  barrier  block,  then  this
+ instruction  will  clear  the  barrier.<P><P><B>RETURNS:</B><ul>
+<li>
+<b> 0</b> -  could  not  create  barrier
+</li>
+
+<li>
+<b> 1</b> -  could  create  barrier
+</li>
+</ul><P><B>ENERGY:</B><P><B>MAKE-BARRIER MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> allowed  to  create  a  barrier<P></TD><TD ALIGN=LEFT> not  allowed  to  create  a  barrier<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> allowed  to  clear  a  barrier<P></TD><TD ALIGN=LEFT> not  allowed  to  clear  a  barrier<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_EXUDE"><H2>EXUDE</H2><B>Usage:</B> (value x y -- )<P> excrete  a  value  onto  the  grid<P> excrete  a  value  onto  the  grid<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><B>EXUDE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> i  can  exude  on  any  surrounding  square<P></TD><TD ALIGN=LEFT> i  cannot  exude  on  any  surrounding  square,  if  it&#x27;s  occupied  by  anything<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> i  can  exude  on  any  surrounding  square<P></TD><TD ALIGN=LEFT> i  cannot  exude  on  any  surrounding  square,  if  it&#x27;s  occupied  by  barrier<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> i  can  exude  on  any  surrounding  square,  if  it&#x27;s  occupied  by  cells  from  another  organism<P></TD><TD ALIGN=LEFT> i  cannot  exude  on  any  surrounding  square,  if  it&#x27;s  occupied  by  cell  from  another  organism<P></TD><TR><TD ALIGN=LEFT><B>3</B></TD><TD ALIGN=LEFT>8</TD><TD ALIGN=LEFT> i  can  exude  on  any  surrounding  square,  if  it&#x27;s  occupied  by  cell  from  another  strain<P></TD><TD ALIGN=LEFT> i  cannot  exude  on  any  surrounding  square,  if  it&#x27;s  occupied  by  cell  from  another  strain<P></TD><TR><TD ALIGN=LEFT><B>4</B></TD><TD ALIGN=LEFT>16</TD><TD ALIGN=LEFT> i  can  exude  on  a  spore<P></TD><TD ALIGN=LEFT> i  cannot  exude  on  a  spore<P></TD><TR><TD ALIGN=LEFT><B>5</B></TD><TD ALIGN=LEFT>32</TD><TD ALIGN=LEFT> i  can  exude  on  an  organic  block<P></TD><TD ALIGN=LEFT> i  cannot  exude  an  an  organic  block<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_SMELL"><H2>SMELL</H2><B>Usage:</B> (x y -- value)<P> read  a  value  from  the  grid<P> read  a  value  from  the  grid  that  was  previously <b>EXUDE&#x27;d</b>.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_LOOK"><H2>LOOK</H2><B>Usage:</B> ( x y -- what dist )<P> look  along  a  line<P> Look  along  a  normalized  (x,  y)  direction  vector.  Return  the  thing  it  found,  and  the  distance. <p>
+NOTE:  The <b>LOOK  Mode</b> settings  apply  to  all  the  vision  instructions  such  as  NEAREST  /  FARTHEST,  HOTTEST  /  COLDEST,  and  SMALLEST
+ /  BIGGEST.
+</p>
+<P><ol>
+<li>
+ If  there  are  not  2  elements  on  the  data  stack,  then  skip  this  instruction.
+</li>
+
+<li>
+ Remove  the  (x,  y)  coordinates  from  the  stack  and  normalize  the  coordinate.
+</li>
+
+<li>
+ Look  along  the  direction  vector  until  something  is  found  (or  the  edge  of  the  universe  is  reached).
+</li>
+
+<li>
+ Ignore  any  cell  that  happens  to  be  from  the  same  organism  as  us.
+</li>
+
+<li>
+ Push  the  type  of  thing  (&#x27;what&#x27; value)  on  the  data  stack.  (WHAT  value  Key:  1=cell,  2=spore,  4=organic  material,  8=barrier).
+</li>
+
+<li>
+ Push  the  distance  (&#x27;dist&#x27; value)  on  the  data  stack.  A  distance  of  1  means  the  thing  seen  is  touching  this
+ cell.
+</li>
+</ol><P><B>RETURNS:</B><ul>
+<li>
+<b> what  dist</b> -  before  reaching  the  end  of  the  vector  something  was  found. &quot;something&quot; is  one  of  ORGANIC  MATERIAL,  SPORE,  or
+ living  cell.
+</li>
+
+<li>
+<b> 0  0</b> -  when  then  (x,  y)  vector  was  (0,  0).
+</li>
+</ul><p>
+<b> What  values:</b>
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><P><B>ENERGY:</B> Does  not  use  energy.<P><B>LOOK MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> when  looking  along  a  line  any  cells  that  belong  to  my  organism  are  ignored<P></TD><TD ALIGN=LEFT> when  looking  along  a  line  any  cells  that  belong  to  my  organism  stop  the  looking  and  report  nothing<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> NOT  USED<P></TD><TD ALIGN=LEFT> NOT  USED<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> when  reporting  a &#x27;what&#x27; bit  mask,  don&#x27;t  include  strain  bits<P></TD><TD ALIGN=LEFT> when  reporting  a &#x27;what&#x27; bit  mask,  include  strain  bits<P></TD><TR><TD ALIGN=LEFT><B>3</B></TD><TD ALIGN=LEFT>8</TD><TD ALIGN=LEFT> i  am  not  invisible<P></TD><TD ALIGN=LEFT> i  am  invisible<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_NEAREST"><H2>NEAREST</H2><B>Usage:</B> ( mask -- x y )<P> find  nearest  object<P>Looks  in  all  8  directions  and  return  the  (x,  y)  direction  vector  that  corresponds  to  the  thing  with  the  smallest
+ distance  (and  matches  a &#x27;mask&#x27; value).  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of
+ (-1,1). <p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><P><ol>
+<li>
+ If  there  is  not  1  element  on  the  data  stack,  then  skip  this  instruction.
+</li>
+
+<li>
+ remove &#x27;mask&#x27; value  from  data  stack.
+</li>
+
+<li>
+ strip  all  bits  from  the  mask,  except  first  4  bits  (e.g.  000001111)
+</li>
+
+<li>
+ if  mask  bits  are  all  0,  then  return  the  vector  (0,  0)
+</li>
+
+<li>
+ Look  in  all  8  directions,  beginning  with  a  RANDOM  direction  and  proceeding  in  a  clock-wise  direction.
+</li>
+
+<li>
+ Keep  track  of  the  closest  thing  seen  (whose &#x27;what&#x27; value  is  set  in  the  bit-mask)
+</li>
+
+<li>
+ Return  the  (x,  y)  direction  vector.
+</li>
+
+<li>
+ If  nothing  matched  the  bit-mask,  then  (0,  0)  is  returned.
+</li>
+</ol><P><B>RETURNS:</B><ul>
+<li>
+<b> x  y</b> -  the  direction  vector  that  is  nearest  and  matches  the &#x27;mask&#x27;
+</li>
+
+<li>
+<b>0  0</b> -  nothing  matched  the &#x27;mask&#x27;
+</li>
+</ul><P><B>ENERGY:</B> Does  not  use  energy.<P><P><HR><P><A NAME="ref_FARTHEST"><H2>FARTHEST</H2><B>Usage:</B> ( mask -- x y )<P> find  farthest  object<P>Looks  in  all  8  directions  and  return  the  (x,  y)  direction  vector  that  corresponds  to  the  thing  with  the  largest
+ distance  (and  matches  a &#x27;mask&#x27; value).  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of
+ (-1,1). <p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><P><ol>
+<li>
+ If  there  is  not  1  element  on  the  data  stack,  then  skip  this  instruction.
+</li>
+
+<li>
+ remove &#x27;mask&#x27; value  from  data  stack.
+</li>
+
+<li>
+ strip  all  bits  from  the  mask,  except  first  4  bits  (e.g.  000001111)
+</li>
+
+<li>
+ if  mask  bits  are  all  0,  then  return  the  vector  (0,  0)
+</li>
+
+<li>
+ Look  in  all  8  directions,  beginning  with  a  RANDOM  direction  and  proceeding  in  a  clock-wise  direction.
+</li>
+
+<li>
+ Keep  track  of  the  farthest  thing  seen  (whose &#x27;what&#x27; value  is  set  in  the  bit-mask)
+</li>
+
+<li>
+ Return  the  (x,  y)  direction  vector.
+</li>
+
+<li>
+ If  nothing  matched  the  bit-mask,  then  (0,  0)  is  returned.
+</li>
+</ol><P><B>RETURNS:</B><ul>
+<li>
+<b> x  y</b> -  the  direction  vector  that  is  farthest  and  matches  the &#x27;mask&#x27;
+</li>
+
+<li>
+<b>0  0</b> -  nothing  matched  the &#x27;mask&#x27;
+</li>
+</ul><P><B>ENERGY:</B> Does  not  use  energy.<P><P><HR><P><A NAME="ref_SIZE"><H2>SIZE</H2><B>Usage:</B> (x y -- size dist)<P> see  the  size  of  something<P> Report  the  size  (number  of  cells)  of  the  object  seen  along  the  normalized  vector  (x,y)  from  this  cell.<P><P><B>RETURNS:</B> The  number  of  cells  (the &#x27;size&#x27;)  in  the  organism  seen  along  (x,y).  Also  returns  the  distance.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_BIGGEST"><H2>BIGGEST</H2><B>Usage:</B> (mask -- x y)<P> find  the  biggest  thing  in  view<P>Look  in  all  8  directions.  Return  a <b>non-normalized</b> (x,y)  vector  to  the  biggest  thing.  This  is  the  organism  consisting  of
+ the  most  number  of  cells.  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of  (-1,1).
+<p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><p>
+ This  instruction  also  uses  the <A HREF="#ref_LOOK">LOOK  Mode  bits</A>.
+</p>
+<P><P><B>RETURNS:</B><ul>
+<li>
+<b> x  y</b> -  the  direction  vector  that  is  biggest  and  matches  the &#x27;mask&#x27;
+</li>
+
+<li>
+<b>0  0</b> -  nothing  matched  the &#x27;mask&#x27;
+</li>
+</ul><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_SMALLEST"><H2>SMALLEST</H2><B>Usage:</B> (mask -- x y)<P> find  the  smallest  thing  in  view<P>Look  in  all  8  directions.  Return  a <b>non-normalized</b> (x,y)  vector  to  the  smallest  thing.  This  is  the  organism  with  the
+ least  number  of  cells.  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of  (-1,1). <p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><p>
+ This  instruction  also  uses  the <A HREF="#ref_LOOK">LOOK  Mode  bits</A>.
+</p>
+<P><P><B>RETURNS:</B><ul>
+<li>
+<b> x  y</b> -  the  direction  vector  that  is  smallest  and  matches  the &#x27;mask&#x27;
+</li>
+
+<li>
+<b>0  0</b> -  nothing  matched  the &#x27;mask&#x27;
+</li>
+</ul><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_TEMPERATURE"><H2>TEMPERATURE</H2><B>Usage:</B> (x y -- energy dist)<P> get  the  energy  of  cell  seen  along  (x,y)<P> Get  the  energy  of  cell  seen  along  (x,y).  This  is <b>per  cell</b>.  For  organisms  we  divide  the  total  energy  the
+ organism  has  by  the  number  of  cells  the  organism  has.<P><P><B>RETURNS:</B><ul>
+<li>
+<b> energy  dist</b> -  the  energy  and  distance
+</li>
+
+<li>
+<b> 0  0</b> -  nothing  with  energy  found
+</li>
+</ul><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_HOTTEST"><H2>HOTTEST</H2><B>Usage:</B> (mask -- x y)<P> find  the  most  energetic  cell  in  view<P>Look  in  all  8  directions.  Return  a <b>non-normalized</b> (x,y)  vector  to  the  hottest  thing.  This  is  the  organism  with  the
+ most  energy  per  cell.  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of  (-1,1). <p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><p>
+ This  instruction  also  uses  the <A HREF="#ref_LOOK">LOOK  Mode  bits</A>.
+</p>
+<P><P><B>RETURNS:</B><ul>
+<li>
+<b> x  y</b> -  the  direction  vector  that  is  hottest  and  matches  the &#x27;mask&#x27;
+</li>
+
+<li>
+<b>0  0</b> -  nothing  matched  the &#x27;mask&#x27;
+</li>
+</ul><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_COLDEST"><H2>COLDEST</H2><B>Usage:</B> (mask -- x y)<P> find  the  least  energetic  cell  in  view<P>Look  in  all  8  directions.  Return  a <b>non-normalized</b> (x,y)  vector  to  the  coldest  thing.  This  is  the  organism  with  the
+ least  energy  per  cell.  The  returned  (x,y)  vector  is  not  normalized,  so  it  might  return  (-6,6)  instead  of  (-1,1). <p>
+<b>mask</b> values  are  the  same  as <b>what</b> values.  If  any  bit  matches  the <b>what</b> from  LOOK&#x27;ing  along  that  vector  then
+ we  match.
+</p>
+<ul>
+<li>
+ 1  =  Cell
+</li>
+
+<li>
+ 2  =  Spore
+</li>
+
+<li>
+ 4  =  Organic  Material
+</li>
+
+<li>
+ 8  =  Barrier
+</li>
+
+<li>
+ 16  =  Self
+</li>
+
+<li>
+ 32  =  Strain  0
+</li>
+
+<li>
+ 64  =  Strain  1
+</li>
+
+<li>
+ 128  =  Strain  2
+</li>
+
+<li>
+ 256  =  Strain  3
+</li>
+
+<li>
+ 512  =  Strain  4
+</li>
+
+<li>
+ 1024  =  Strain  5
+</li>
+
+<li>
+ 2048  =  Strain  6
+</li>
+
+<li>
+ 4096  =  Strain  7
+</li>
+</ul><p>
+ This  instruction  also  uses  the <A HREF="#ref_LOOK">LOOK  Mode  bits</A>.
+</p>
+<P><P><B>RETURNS:</B><ul>
+<li>
+<b> x  y</b> -  the  direction  vector  that  is  coldest  and  matches  the &#x27;mask&#x27;
+</li>
+
+<li>
+<b>0  0</b> -  nothing  matched  the &#x27;mask&#x27;
+</li>
+</ul><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_MOOD"><H2>MOOD</H2><B>Usage:</B> ( x y -- m )<P> Query  the  MOOD  of  one  of  my  cells<P><p>
+ Every  cell  has  its  own &quot;MOOD&quot; register.  This  instruction  queries  another  cell  using  an  (x,  y)  vector.  This  vector <b>is  not  normalized</b> which  allows  the  cell  to  query  any  other  cell  within  its  own  organism  (not  just  adjacent  cells).  For  example,  if
+ cell  2  executed  the  following  instructions:
+</p>
+
+<pre>
+0 0 MOOD   ; returns -23
+-1 0 MOOD   ; returns 123
+-1 1 MOOD   ; returns 33
+99 99 MOOD   ; returns 0
+</pre>
+<p>
+ If  a  bogus  (x,  y)  is  specified  then  0  is  pushed  on  the  data  stack.  We  can  query  our  own
+ mood  by  specifying  (0,  0).
+</p>
+<P><P><B>RETURNS:</B><P><B>ENERGY:</B> Does  not  use  energy.<P><P><HR><P><A NAME="ref_MOOD!"><H2>MOOD!</H2><B>Usage:</B> ( m -- )<P> Set  MOOD  register  to  a  value<P><p>
+ The  cell  executing  this  instruction  will  set  its  own <b>mood</b> register.  It  is  not  possible  to  set  others.  The  purpose
+ of  the <b>mood</b> register  is  for  a  cell  it  advertise  its &quot;mood&quot; to  other  cells  in  the  organism.  For  example,
+ if  cell  3  executed  these  instructions:
+</p>
+
+<pre>
+0 0 MOOD 1 + MOOD!
+</pre>
+<p>
+ Then  cell  3&#x27;s  mood  would  be  increased  by  1.  So  it  would  be  set  to  34.
+</p>
+<P><P><B>RETURNS:</B><P><B>ENERGY:</B> Does  not  use  energy.<P><P><HR><P><A NAME="ref_BROADCAST"><H2>BROADCAST</H2><B>Usage:</B> ( m -- )<P> broadcast  a  message  to  our  cells<P> This  instruction  takes  the  value  off  of  the  top  of  the  data  stack  and  sets  the <b>message</b> register  for  every
+ cell  in  our  organism.  If  interrupts  are  enabled  every  cell,  except  the  cell  executing  this  instruction,  will  be  interrupted.<P><P><B>RETURNS:</B><P><B>ENERGY:</B> Does  not  use  energy.<P><B>BROADCAST MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  broadcasts  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  0  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  broadcasts  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  1  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  broadcasts  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  2  of  the  trap  number  shall  be  1<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_SEND"><H2>SEND</H2><B>Usage:</B> ( m x y -- )<P> Set  the  MESSAGE  register  of  one  of  my  cells<P><p>
+ This  instruction  takes  3  arguments.  An  (x,  y)  vector  and  a  value &#x27;m&#x27;.  The  vector <b>is  NOT  normalized</b> so  that  the  cell
+ can  send  a  message &#x27;m&#x27; to  any  other  cell  in  the  same  organism  (not  just  adjacent  cells).  For  example,  if
+ cell  1  exectuted  this  these  two  instructions:
+</p>
+
+<pre>
+100     1 0 SEND   ; set cell 2&#x27;s message register to 100
+-46812  0 1 SEND   ; set cell 3&#x27;s message register to -46812
+0       0 0 SEND   ; set out message register to 0.
+12   -99 99 SEND   ; does nothing because (-99, 99) is bogus
+</pre>
+<p>
+ A  SEND  operation  using  bogus  coordinates  will  be  ignored.
+</p>
+<P><P><B>RETURNS:</B><P><B>ENERGY:</B> Does  not  use  energy.<P><B>SEND MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  sends  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  0  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  sends  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  1  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  sends  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  2  of  the  trap  number  shall  be  1<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_RECV"><H2>RECV</H2><B>Usage:</B> ( -- m )<P> recieve  message<P> The  RECV  instruction  just  pushes  a  copy  of  our  message  register  on  top  of  the  data  stack.<P><P><B>RETURNS:</B><P><B>ENERGY:</B> Does  not  use  energy.<P><P><HR><P><A NAME="ref_SHOUT"><H2>SHOUT</H2><B>Usage:</B> (m -- r)<P> broadcast  a  message  to  another  organism<P> Broadcast  a  message  to  another  organism.  Send  the  message &#x27;m&#x27; outward  in  all  8  directions.  If  a  cell  is  reached,
+ then  set  it&#x27;s  MESSAGE  register  to  be &#x27;m&#x27;.<P><P><B>RETURNS:</B> The  number  of  cells  that  recieved  the  message.<P><B>ENERGY:</B><P><B>SHOUT MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> i  can  shout  thru  myself<P></TD><TD ALIGN=LEFT> i  cannot  shout  thru  myself<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> i  can  shout  at  cells  that  belong  to  my  strain<P></TD><TD ALIGN=LEFT> i  cannot  shout  at  cells  that  belong  to  my  strain<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> i  can  shout  at  cells  that  belong  to  OTHER  strains<P></TD><TD ALIGN=LEFT> i  cannot  shout  at  cells  that  belong  to  OTHER  strains<P></TD><TR><TD ALIGN=LEFT><B>3</B></TD><TD ALIGN=LEFT>8</TD><TD ALIGN=LEFT> other  strains  can  shout  at  me<P></TD><TD ALIGN=LEFT> other  strains  cannot  shout  at  me<P></TD><TR><TD ALIGN=LEFT><B>4</B></TD><TD ALIGN=LEFT>16</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  shouts  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  0  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>5</B></TD><TD ALIGN=LEFT>32</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  shouts  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  1  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>6</B></TD><TD ALIGN=LEFT>64</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  shouts  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  2  of  the  trap  number  shall  be  1<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_SAY"><H2>SAY</H2><B>Usage:</B> (m x y -- dist)<P> send  a  message  along  a  line  to  another  organism<P> The  (x,y)  normalized  direction  vector  will  be  used  to  send  the  message &#x27;m&#x27;.  If  a  cell  is  reached,  then  set
+ it&#x27;s  MESSAGE  register  to  be &#x27;m&#x27;.<P><P><B>RETURNS:</B> Returns  non-zero  on  success.  The  returned  value  is  the  distance  to  the  cell  that  successfully  recieved  the  message,  or  0
+ if  no  message  delivered.<P><B>ENERGY:</B><P><B>SAY MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> i  can  speak  thru  myself<P></TD><TD ALIGN=LEFT> i  cannot  speak  thru  myself<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> i  can  speak  at  cell  that  belong  to  my  organism<P></TD><TD ALIGN=LEFT> i  cannot  speak  at  cell  that  belong  to  my  organism<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> i  can  speak  at  cells  that  belong  to  my  strain<P></TD><TD ALIGN=LEFT> i  cannot  speak  at  cells  that  belong  to  my  strain<P></TD><TR><TD ALIGN=LEFT><B>3</B></TD><TD ALIGN=LEFT>8</TD><TD ALIGN=LEFT> i  can  speak  at  cell  that  belong  to  OTHER  strains<P></TD><TD ALIGN=LEFT> i  cannot  speak  at  cell  that  belong  to  OTHER  strains<P></TD><TR><TD ALIGN=LEFT><B>4</B></TD><TD ALIGN=LEFT>16</TD><TD ALIGN=LEFT> other  strains  can  speak  at  me<P></TD><TD ALIGN=LEFT> other  strains  cannot  speak  at  me<P></TD><TR><TD ALIGN=LEFT><B>5</B></TD><TD ALIGN=LEFT>32</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  speaks  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  0  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>6</B></TD><TD ALIGN=LEFT>64</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  speaks  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  1  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>7</B></TD><TD ALIGN=LEFT>128</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  speaks  a  message  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  2  of  the  trap  number  shall  be  1<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_LISTEN"><H2>LISTEN</H2><B>Usage:</B> (x y -- mood dist)<P> read  MOOD  register  from  a  cell  from  another  organism<P> Listen  along  the  normalized  vector  (x,y).  If  another  cell  was  found  return  its  MOOD  register  and  distance.<P><P><B>RETURNS:</B> Returns  the  mood  and  distance  value,  or  0  0  if  nothing  heard.<P><B>ENERGY:</B><P><B>LISTEN MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> when  listening  along  a  line  any  cells  that  belong  to  my  organism  are  ignored<P></TD><TD ALIGN=LEFT> when  listening  along  a  line  any  cells  that  belong  to  my  organism  stop  the  listing  process  and  report  nothing<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_READ"><H2>READ</H2><B>Usage:</B> (x y cb cbme -- rc)<P> read  an  entire  code  block  from  another  cell  or  spore<P> Read  code  block &#x27;cb&#x27; from  the  cell  or  spore  located  at  the  normalized  (x,y)  coordinates.  Place  the  result  into &#x27;cbme&#x27;.
+ It  is  not  possible  to  grow  the  number  of  code  blocks  of  a  program  with  this  instruction.  The  destination  code
+ block &#x27;cbme&#x27; must  already  exist. <p>
+Unprotected  code  cannot  READ  if &#x27;cb&#x27; or &#x27;cbme&#x27; is  protected.  Unprotected  code  cannot  read  a  protected  instruction.
+</p>
+<P><P><B>RETURNS:</B> On  success,  the  length  of  the  code  block  read  is  returned.  On  failure,  a  negative  error  code  is  returned. <ul>
+<li>
+<b>-1:</b> no  such  cb
+</li>
+
+<li>
+<b> -2:</b> no  such  cbme
+</li>
+
+<li>
+<b> -3:</b> invalid  coordinates
+</li>
+
+<li>
+<b> -4:</b> bad  protection  for  cb
+</li>
+
+<li>
+<b> -5:</b> bad  protection  for  cbme
+</li>
+
+<li>
+<b> -6:</b> bad  strains
+</li>
+
+<li>
+<b> -7:</b> spore  not  allowed
+</li>
+
+<li>
+<b> -8:</b> cell  not  allowed
+</li>
+
+<li>
+<b> -9:</b> self  not  allowed
+</li>
+
+<li>
+<b> -10:</b> target  cell  unreadable
+</li>
+
+<li>
+<b> -11:</b> bad  instruction  mapping
+</li>
+
+<li>
+<b> -12:</b> protected  instructions
+</li>
+</ul><P><B>ENERGY:</B><P><B>READ MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> i  cannot  read  from  myself<P></TD><TD ALIGN=LEFT> i  can  read  from  myself<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> i  can  read  from  cells/spores  that  belong  to  my  strain<P></TD><TD ALIGN=LEFT> i  cannot  read  from  cells/spores  that  belong  to  my  strain<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> i  cannot  read  from  cells/spores  that  belong  to  OTHER  strains<P></TD><TD ALIGN=LEFT> i  can  read  from  cells/spores  that  belong  to  OTHER  strains<P></TD><TR><TD ALIGN=LEFT><B>3</B></TD><TD ALIGN=LEFT>8</TD><TD ALIGN=LEFT> i  can  read  from  spores<P></TD><TD ALIGN=LEFT> i  cannot  read  from  spores<P></TD><TR><TD ALIGN=LEFT><B>4</B></TD><TD ALIGN=LEFT>16</TD><TD ALIGN=LEFT> i  can  read  from  cells<P></TD><TD ALIGN=LEFT> i  cannot  read  from  cells<P></TD><TR><TD ALIGN=LEFT><B>5</B></TD><TD ALIGN=LEFT>32</TD><TD ALIGN=LEFT> other  strains  can  read  from  me<P></TD><TD ALIGN=LEFT> other  strains  cannot  read  from  me<P></TD><TR><TD ALIGN=LEFT><B>6</B></TD><TD ALIGN=LEFT>64</TD><TD ALIGN=LEFT> mutate  the  code  block  being  read  with  my  strain&#x27;s  mutation  settings.<P></TD><TD ALIGN=LEFT> do  not  mutate  the  code  block  being  read<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_WRITE"><H2>WRITE</H2><B>Usage:</B> (x y cb cbme -- rc)<P> write  an  entire  code  block  to  another  cell  or  spore<P> Write  code  block &#x27;cbme&#x27; to  another  cell  or  spore.  The  cell  is  located  at  the  normalized  (x,  y)  offset  from
+ this  cell.  The  destination  code  block  number  is  given  by &#x27;cb&#x27;.  It  is  not  possible  to  grow  the  number  of
+ code  blocks  of  a  program.  The  destination  code  block &#x27;cb&#x27; must  already  exist. <p>
+Unprotected  code  cannot  WRITE  if &#x27;cb&#x27; or &#x27;cbme&#x27; is  protected.  Unprotected  code  cannot  write  a  protected  instruction.
+</p>
+<P><P><B>RETURNS:</B> On  success,  the  length  of  the  code  block  written  is  returned.  On  failure,  a  negative  error  code  is  returned. <ul>
+<li>
+<b>-1:</b> no  such  cb
+</li>
+
+<li>
+<b> -2:</b> no  such  cbme
+</li>
+
+<li>
+<b> -3:</b> invalid  coordinates
+</li>
+
+<li>
+<b> -4:</b> bad  protection  for  cb
+</li>
+
+<li>
+<b> -5:</b> bad  protection  for  cbme
+</li>
+
+<li>
+<b> -6:</b> bad  strains
+</li>
+
+<li>
+<b> -7:</b> spore  not  allowed
+</li>
+
+<li>
+<b> -8:</b> cell  not  allowed
+</li>
+
+<li>
+<b> -9:</b> self  not  allowed
+</li>
+
+<li>
+<b> -10:</b> target  cell  unwriteable
+</li>
+
+<li>
+<b> -11:</b> bad  instruction  mapping
+</li>
+
+<li>
+<b> -12:</b> protected  instructions
+</li>
+</ul><P><B>ENERGY:</B><P><B>WRITE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> i  cannot  write  to  myself<P></TD><TD ALIGN=LEFT> i  can  write  to  myself<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> i  can  write  to  cells/spores  that  belong  to  my  strain<P></TD><TD ALIGN=LEFT> i  cannot  write  to  cells/spores  that  belong  to  my  strain<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> i  cannot  write  to  cells/spores  that  belong  to  OTHER  strains<P></TD><TD ALIGN=LEFT> i  can  write  to  cells/spores  that  belong  to  OTHER  strains<P></TD><TR><TD ALIGN=LEFT><B>3</B></TD><TD ALIGN=LEFT>8</TD><TD ALIGN=LEFT> i  can  write  to  spores<P></TD><TD ALIGN=LEFT> i  cannot  write  to  spores<P></TD><TR><TD ALIGN=LEFT><B>4</B></TD><TD ALIGN=LEFT>16</TD><TD ALIGN=LEFT> i  can  write  to  cells<P></TD><TD ALIGN=LEFT> i  cannot  write  to  cells<P></TD><TR><TD ALIGN=LEFT><B>5</B></TD><TD ALIGN=LEFT>32</TD><TD ALIGN=LEFT> other  strains  can  write  to  me<P></TD><TD ALIGN=LEFT> other  strains  cannot  write  to  at  me<P></TD><TR><TD ALIGN=LEFT><B>6</B></TD><TD ALIGN=LEFT>64</TD><TD ALIGN=LEFT> mutate  the  code  block  being  written  with  my  strain&#x27;s  mutation  settings.<P></TD><TD ALIGN=LEFT> do  not  mutate  the  code  block  being  written<P></TD><TR><TD ALIGN=LEFT><B>7</B></TD><TD ALIGN=LEFT>128</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  writes  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  0  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>8</B></TD><TD ALIGN=LEFT>256</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  writes  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  1  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>9</B></TD><TD ALIGN=LEFT>512</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  somebody  writes  to  me<P></TD><TD ALIGN=LEFT> interrupt  me  and  bit  2  of  the  trap  number  shall  be  1<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_ENERGY"><H2>ENERGY</H2><B>Usage:</B> ( -- e )<P> get  energy  of  organism<P> Get  our  organisms  overall  energy.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_AGE"><H2>AGE</H2><B>Usage:</B> ( -- a )<P> return  age  of  organism<P> Fetch  the  organisms &quot;age&quot; field  (which  is  the  number  of  elapsed  simulation  step)  and  push  this  value  on  our  data
+ stack.<P><P><B>RETURNS:</B><p>
+ The  age  of  the  organism
+</p>
+<P><B>ENERGY:</B> Does  not  use  energy.<P><P><HR><P><A NAME="ref_NUM-CELLS"><H2>NUM-CELLS</H2><B>Usage:</B> ( -- n )<P> number  of  cells<P> Push  the  number  of  cells  that  comprise  this  organism  on  our  data  stack.<P><P><B>RETURNS:</B><p>
+ number  of  cells  in  this  organism
+</p>
+<P><B>ENERGY:</B> Does  not  use  energy.<P><P><HR><P><A NAME="ref_HAS-NEIGHBOR"><H2>HAS-NEIGHBOR</H2><B>Usage:</B> ( x y -- r )<P> check  for  our  cells<P> Determine  if  a  neighboring  cell  location  contains  our  cell  or  not.<P><ol>
+<li>
+ On  the  data  stack  should  be  two  values.  If  not,  we  ignore  this  instruction.
+</li>
+
+<li>
+ The  two  values  are  popped  off  the  stack  (they  are  NOT  normalized).  This  forms  an  (x,  y)  vector  that  refers
+ to  one  of  our  nearby  grid  locations.
+</li>
+
+<li>
+ If  we  have  a  cell  at  this  (x,  y)  offset,  then  this  instruction  returns  1.  Else  0  will  be  returned.
+</li>
+
+<li>
+ The  vector  (0,0)  is  allowed,  and  always  returns  1.
+</li>
+</ol><P><B>RETURNS:</B><ul>
+<li>
+<b> 1</b> -  at  offset  (x,  y)  is  one  of  our  cells.
+</li>
+
+<li>
+<b> 0</b> -  at  offset  (x,  y)  it  NOT  one  of  our  cells.
+</li>
+</ul><P><B>ENERGY:</B> Does  not  use  energy.<P><P><HR><P><A NAME="ref_NEIGHBORS"><H2>NEIGHBORS</H2><B>Usage:</B> ( -- mask)<P><P> Returns  a  bitmask  with  a &#x27;1&#x27; bit  set  for  a  neighor  in  that  direction.<P><P><B>RETURNS:</B> A  bit  mask  representing  the  surrounding  neighbors. <ul>
+<li>
+<b>bit-0</b> -  North  neighbor.  Offset  (0,  1)
+</li>
+
+<li>
+<b> bit-1</b> -  North  East  neighbor.  Offset  (1,  1)
+</li>
+
+<li>
+<b> bit-2</b> -  East  neighbor.  Offset  (1,  0)
+</li>
+
+<li>
+<b> bit-3</b> -  South  East  neighbor.  Offset  (1,  -1)
+</li>
+
+<li>
+<b> bit-4</b> -  South  neighbor.  Offset  (0,  -1)
+</li>
+
+<li>
+<b> bit-5</b> -  South  West  neighbor.  Offset  (-1,  -1)
+</li>
+
+<li>
+<b> bit-6</b> -  West  neighbor.  Offset  (-1,  0)
+</li>
+
+<li>
+<b> bit-7</b> -  North  West  neighbor.  Offset  (-1,  1)
+</li>
+</ul><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_GPS"><H2>GPS</H2><B>Usage:</B> ( -- x y)<P> get  current  position<P> Returns  the  absolute  grid  coordinates  for  the  cell  executing  this  instruction.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_G0"><H2>G0</H2><B>Usage:</B> ( -- value)<P> get  universe-wide  global  variable<P> Get  universe-wide  global  variable.  This  is  a  common  global  that  all  CELL&#x27;s  can  query  with  this  instruction.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_G0!"><H2>G0!</H2><B>Usage:</B> (value -- )<P> set  universe-wide  global  variable<P> Set  universe-wide  global  variable.  This  is  a  common  global  that  all  CELL&#x27;s  can  write  to  with  this  instruction.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_S0"><H2>S0</H2><B>Usage:</B> ( -- value)<P> get  strain-wide  global  variable<P> Get  strain-wide  global  variable.  Each  strain  has  its  own <b>S0</b> global  variable.  This  instruction  allows  the  strain  specific  variable  to
+ be  queried. <p>
+This  variable  can  be  used  by  a  swarm  of  organisms,  from  the  same  strain,  to  coordinate  their  activies.
+</p>
+<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_S0!"><H2>S0!</H2><B>Usage:</B> (value -- )<P> set  strain-wide  global  variable<P> Set  strain-wide  global  variable.  Each  strain  has  its  own <b>S0</b> global  variable.  This  instruction  allows  the  strain  specific  variable  to
+ be  written  to. <p>
+This  variable  can  be  used  by  a  swarm  of  organisms,  from  the  same  strain,  to  coordinate  their  activies.
+</p>
+<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_POPULATION"><H2>POPULATION</H2><B>Usage:</B> ( -- pop)<P> total  population<P> Return  the  current  population.<P><P><B>RETURNS:</B> The  total  population  of  the  universe.  This  is  the  total  number  or  organisms.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_POPULATION.S"><H2>POPULATION.S</H2><B>Usage:</B> ( -- pop)<P> strain  population<P> Return  the  current  population  of  my  strain.<P><P><B>RETURNS:</B> The  population  (number  of  organisms)  for  my  strain.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_KEY-PRESS"><H2>KEY-PRESS</H2><B>Usage:</B> ( -- key)<P> read  keyboard<P> Get  the  keyboard  character  being  pressed.  Or  0  if  nothing  is  being  pressed.<P><P><B>RETURNS:</B> Returns  the  ascii  character  code.  Returns  0  if  no  key  is  pressed.<P><B>ENERGY:</B><P><B>KEY-PRESS MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  KEY-PRESS  changes<P></TD><TD ALIGN=LEFT> interrupt  me  on  KEY-PRESS  change,  and  bit  0  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  KEY-PRESS  changes<P></TD><TD ALIGN=LEFT> interrupt  me  on  KEY-PRESS  change,  and  bit  1  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>2</B></TD><TD ALIGN=LEFT>4</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  KEY-PRESS  changes<P></TD><TD ALIGN=LEFT> interrupt  me  on  KEY-PRESS  change,  and  bit  2  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>3</B></TD><TD ALIGN=LEFT>8</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  MOUSE-POS  changes<P></TD><TD ALIGN=LEFT> interrupt  me  on  MOUSE-POS  change,  and  bit  0  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>4</B></TD><TD ALIGN=LEFT>16</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  MOUSE-POS  changes<P></TD><TD ALIGN=LEFT> interrupt  me  on  MOUSE-POS  change,  and  bit  1  of  the  trap  number  shall  be  1<P></TD><TR><TD ALIGN=LEFT><B>5</B></TD><TD ALIGN=LEFT>32</TD><TD ALIGN=LEFT> do  not  interrupt  me,  when  MOUSE-POS  changes<P></TD><TD ALIGN=LEFT> interrupt  me  on  MOUSE-POS  change,  and  bit  2  of  the  trap  number  shall  be  1<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_MOUSE-POS"><H2>MOUSE-POS</H2><B>Usage:</B> ( -- x y)<P> get  mouse  position<P> Query  the  mouse  position.  The  mouse  position  is  a  coordinate  in  the  universe  coordinate  space.  This  position  was  set  externally
+ by  the  user  right  clicking  on  a  grid  location  when  in &#x27;MOUSE-POS&#x27; mode.  See  the  KEY-PRESS  instruction  modes  to  configure
+ interrupts  for  the  mouse  position.<P><P><B>RETURNS:</B> Returns  a  coordinate  in  the  universe  which  was  set  by  the  user  clicking  in  the  grid  when  in  MOUSE-POS  mode.
+ Returns  (-1,-1)  if  no  position  set.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_DIST"><H2>DIST</H2><B>Usage:</B> (x y -- dist)<P> compute  vector  distance<P> Computes  the  maximum  of  ABS(x)  and  ABS(y).<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_CHOOSE"><H2>CHOOSE</H2><B>Usage:</B> (min max -- rnd)<P> pick  random  value  between  two  values<P> pick  random  value  between  two  values<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_RND"><H2>RND</H2><B>Usage:</B> ( -- rnd)<P> return  random  value  between  MIN_INT  and  MAX_INT<P> return  random  value  between  MIN_INT  and  MAX_INT.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><BR><BR><BR><BR><BR><BR><BR><BR>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:10  EST  2023
+</div>
+</body>
+</html>

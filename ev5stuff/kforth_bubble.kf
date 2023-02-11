@@ -1,0 +1,103 @@
+;
+; Bubble sort
+; Here is code to apply the bubble sort operation to a code block consisting of numbers.
+;
+main:
+{
+    MyData BubbleSort call
+    MoreData BubbleSort call
+}
+
+MyData: { 100 50 34 11 99 44 -9 }
+
+MoreData: {
+    0 0 0 0 1 0 0 0 0 1 1 1 1 1 0 0 909 0 10 10 10 -9 10 10 -9
+    0 107 1 0 1 0 0 0 0 1 1 -1 1 1 0 0 0 808 10 10 10 -9 10 10 -9
+    0 0 0 110 1 0 0 0 0 1 1 1 1 1 0 770 0 0 10 10 10 -9 10 10 -9
+    0 -107 0 0 3200 1 0 0 0 0 1 1 1 1 -991 0 0 0 0 10 10 10 -9 10 10 -9
+    0 0 0 0 1 0 0 0 0 1 1 1 1 1 0 0 0 0 10 10 10 -9 10 10 -9
+}
+
+;
+; (cb n m -- cmp)
+;
+; compare the nth and mth elements of code block 'cb'.
+;
+; return 1 if elements are out of order
+;
+CompareElements:
+{
+    -3 PEEK     ; -- cb n m cb
+    swap NUMBER ; -- cb n ARRAY[m]
+    rot rot     ; -- ARRAY[m] cb n
+    NUMBER      ; -- ARRAY[m] ARRAY[n]
+    <           ; -- (ARRAY[m] > ARRAY[n])
+}
+
+; (cb n m --)
+; swap the nth and mth elements of code block 'cb'
+;
+SwapElements: {
+    rot             ; cb n m -- n m cb
+    dup             ; cb n m -- n m cb cb
+    -4 PEEK         ; -- n m cb cb n
+    NUMBER          ; -- n m cb ARRAY[n]
+    over            ; -- n m cb ARRAY[n] cb
+    -4 PEEK         ; -- n m cb ARRAY[n] cb m
+    NUMBER          ; -- n m cb ARRAY[n] ARRAY[m]
+    -3 PEEK         ; -- n m cb ARRAY[n] ARRAY[m] cb
+    -6 PEEK         ; -- n m cb ARRAY[n] ARRAY[m] cb n
+    NUMBER!         ; -- n m cb ARRAY[n] (array[n] = array[m])
+    -rot            ; n m cb ARRAY[n] -- n ARRAY[n] m cb 
+    swap            ; -- n ARRAY[n] cb m
+    NUMBER!         ; -- n (array[m] = array[n])
+    pop             ; n --
+}
+
+;
+; (cb -- )
+; sort code block 'cb'
+;
+; implements this algorithm:
+;
+; bubble_sort(array, n) {
+;   do {
+;       s = 0;
+;       for(i=1; i < n; i++) {
+;           if( compare(array[i-1], array[i]) ) {
+;               swap(array, i-1, i)
+;               s = 1
+;           }
+;       }
+;   } while( s )
+; }
+;
+BubbleSort: {
+    {
+        0 swap                                  ; -- s cb (s=0)
+        1                                       ; -- s cb i (i=1)
+        {
+            over over swap                      ; s cb i -- s cb i i cb
+            CBLEN >= ?exit                      ; s cb i i cb -- s cb i
+            over over                           ; s cb i -- s cb i cb i
+            dup                                 ; s cb i -- s cb i cb i i
+            1- swap                             ; s cb i -- s cb i cb i-1 i
+            CompareElements call                ; -- s cb i r
+            {
+                over                            ; s cb i -- s cb i cb
+                over                            ; s cb i cb -- s cb i cb i
+                dup 1- swap                     ; s cb i cb i -- s cb i cb i-1 i
+                SwapElements call               ; -- s cb i
+                rot                             ; s cb i -- cb i s
+                pop 1 -rot                      ; cb i s -- s cb i  (s=1)
+            } if
+            1+                                  ; s cb i -- s cb i+1
+            1 ?loop
+        } call
+        pop                                     ; s cb i -- s cb
+        swap                                    ; -- cb s
+        ?loop                                   ; -- cb
+    } call
+
+    pop pop pop                                 ; s cb i --
+}

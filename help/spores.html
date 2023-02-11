@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  5.0 -  Spores</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> December  23rd,  2022
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Spores</h1><p>
+ This  is  your  spore,
+</p>
+<IMG  SRC="aspore.gif"><p>
+ This  is  your  spore  on  drugs,
+</p>
+<p>
+<IMG  SRC="asporedrugs.gif">
+</p>
+<A NAME="TOC2"></A><h2> What  is  a  spore?</h2><p>
+ When  you  explore  a  simulation  you&#x27;ll  notice  blue  squares.  These  are  spores.  Spores  are  created  when  an  organism  executes  the
+ instruction <b>MAKE-SPORE</b>.
+</p>
+<p>
+ A  spore  is  the  first  stage  in  reproducing  a  new  organism.  The  second  (and  last)  stage  is  when  a  second
+ spore  is  created  on  top  of  the  first  one.  At  this  point  the  spore  becomes  fertilized  and  a  new  organism
+ is  born.
+</p>
+<p>
+ A  spore,  as  the  name  implies,  is  like  an  egg  or  sperm.  When  first  created,  it  contains  an  exact  copy
+ of  the  genetic  program  from  the  organism  that  created  it  (no  mutations  have  been  applied  yet).  When  the  second  spore
+ is  created,  the  genetic  program  from  that  organism  is <b>merged</b> with  the  genetic  program  associated  with  the  spore.  If  this
+ happens  to  be  the  same  organism,  then  the  result  is  an  exact  copy  of  this  organisms  genetic  program  (asexual  reproduction).
+ However,  if  the  second  organism  is  different  then  the  two  programs  get  merged,  and  unique  variation  could  be  created.
+</p>
+<HR>
+<A NAME="TOC3"></A><h2> Asexual  Reproduction</h2><p>
+ Asexual  reproduction  occurs  when  the  same  organism  creates  a  spore  and  then  fertilizes  it.  Here  are  the  instructions  that  an
+ organism  might  execute  to  perform  asexual  reproduction:
+</p>
+
+<pre>
+-1 0 5 MAKE-SPORE	; create spore at relative offset (-1, 0)
+			; with an energy of &#x27;5&#x27;.
+-1 0 6 MAKE-SPORE	; create second spore at relative offset (-1, 0)
+			; with an energy of &#x27;6&#x27;.
+
+; (a new organism will be created, with energy of 11)
+</pre>
+<IMG BORDER=1 SRC="spore1.gif"><IMG BORDER=1 SRC="spore2.gif"><p>
+ That&#x27;s  about  all  there  is  to  know  about  asexual  reproduction.  You  may  be  wondering  how  genetic  variation  gets  generated  since
+ the  child  program  is  identical  to  the  parent?  Well,  in  creating  the  new  organism <A HREF="mutations.html#mutations">mutations</A> (a  seperate  process)  may  have
+ been  introduced,  so  the  child  genetic  program  may  be  slightly  different  than  it  parent.
+</p>
+<HR>
+<A NAME="TOC4"></A><h2> Sexual  Reproduction</h2><p>
+ Sexual  reproduction  occurs  when  two  organisms  donate  a  spore  toward  the  creation  of  a  new  organism.  What  happens  in  this
+ case  is  organism  A  creates  a  spore.  Then  organism  B  comes  along  and  creates  a  second  spore  on  top  of
+ the  first.
+</p>
+<p>
+ Sexual  reproduction  differs  from  asexual  reproduction  in  that  two  different  genetic  programs  must  be  merged  before  the  new  organism  is
+ created.
+</p>
+<HR>
+<A NAME="merge"></A><A NAME="TOC5"></A><h2> Merging  Genetic  Programs</h2><p>
+ In <i>sexual</i> reproduction  the  genetic  programs  from  the  first  and  second  spore  must  be  merged.  This  is  the  concept  of
+ recombination.  It  has  the  potential  to  create  a  gene  pool  in  the  universe.
+</p>
+<p>
+ Organism  A  creates  the  first  spore,  and  then  organism  B  comes  along  and  fertilizes  it.  In  this  example  we  have
+ two <i>different</i> genetic  programs  to  merge.  Here  is  how  it  happens:
+</p>
+<p>
+ First  a  random  bit  string  is  generated.  The  bit  string  consists  of  16-bits.  For  examples,  lets  assume  the  bit  string
+ is  0101010101010101.  This  bit  pattern  is  used  to  select  the  code  block  from  the  first  or  second  organism.  A &quot;0&quot; selects  organism  A  and &quot;1&quot; selects  the  code  block  from  organism  B.  The  bit  string  is  repeated  as  needed  to
+ cover  all  the  code  blocks.  If  one  of  the  organisms  has  more  code  blocks,  then  it  is  always  selected  and
+ added  to  the  offsprings  kforth  program.
+</p>
+<p>
+ Here  is  the  genetic  program  for  organism  A:
+</p>
+
+<pre>
+main: { X X Y Z }
+row1: { 1 2 3 }
+row2: { X0 Y0 }
+row3: { K 1 I 8 }
+row4: { R 1 2 J }
+row5: { B B 89 }
+</pre>
+<p>
+ Here  is  the  genetic  program  for  organism  B:
+</p>
+
+<pre>
+main: { A B C }
+row1: { JJ YY ZZ }
+row2: { W P Q
+row3: { RY RY Z }
+row4: { S X S 0 }
+</pre>
+<p>
+ Here&#x27;s  how  the  two  genetic  programs  are  merged:
+</p>
+<CENTER><TABLE BORDER=1 WIDTH="80%""><TR ><TD ALIGN=LEFT WIDTH="20%">
+</TD>
+<TD ALIGN=LEFT> Bit</TD>
+<TD ALIGN=LEFT><b> Organism  A</b></TD>
+<TD ALIGN=LEFT><b> Organism  B</b></TD>
+<TD ALIGN=LEFT><b> Offspring</b></TD>
+<TR>
+<TD ALIGN=LEFT  >
+<b> main:</b></TD>
+<TD ALIGN=LEFT  >
+ 0</TD>
+<TD ALIGN=LEFT BGCOLOR=#10f050 >
+ X  X  Y  Z</TD>
+<TD ALIGN=LEFT  >
+ A  B  C</TD>
+<TD ALIGN=LEFT  >
+ X  X  Y  Z</TD>
+<TR>
+<TD ALIGN=LEFT  >
+<b> row1:</b></TD>
+<TD ALIGN=LEFT  >
+ 1</TD>
+<TD ALIGN=LEFT  >
+ 1  2  3</TD>
+<TD ALIGN=LEFT BGCOLOR=#10f050 >
+ JJ  YY  ZZ</TD>
+<TD ALIGN=LEFT  >
+ JJ  YY  ZZ</TD>
+<TR>
+<TD ALIGN=LEFT  >
+<b> row2:</b></TD>
+<TD ALIGN=LEFT  >
+ 0</TD>
+<TD ALIGN=LEFT BGCOLOR=#10f050 >
+ X0  Y0</TD>
+<TD ALIGN=LEFT  >
+ W  P  Q</TD>
+<TD ALIGN=LEFT  >
+ X0  Y0</TD>
+<TR>
+<TD ALIGN=LEFT  >
+<b> row3:</b></TD>
+<TD ALIGN=LEFT  >
+ 1</TD>
+<TD ALIGN=LEFT  >
+ K  1  I  8</TD>
+<TD ALIGN=LEFT BGCOLOR=#10f050 >
+ RY  RY  Z</TD>
+<TD ALIGN=LEFT  >
+ RY  RY  Z</TD>
+<TR>
+<TD ALIGN=LEFT  >
+<b> row4:</b></TD>
+<TD ALIGN=LEFT  >
+ 0</TD>
+<TD ALIGN=LEFT BGCOLOR=#10f050 >
+ R  1  2  J</TD>
+<TD ALIGN=LEFT  >
+ S  X  S  0</TD>
+<TD ALIGN=LEFT  >
+ R  1  2  J</TD>
+<TR>
+<TD ALIGN=LEFT  >
+<b> row5:</b></TD>
+<TD ALIGN=LEFT  >
+ 1</TD>
+<TD ALIGN=LEFT BGCOLOR=#10f050 >
+ B  B  89</TD>
+<TD ALIGN=LEFT  >
+<i> empty</i></TD>
+<TD ALIGN=LEFT  >
+ B  B  89</TD>
+</TABLE></CENTER><p>
+ This  example  shows  a  new  variation  being  added  to  the  gene  pool. <b> Evolve  5.0</b> doesn&#x27;t  enforce  sexual  reproduction  it  just  offers
+ the  capability,  assuming  that  something  might  evolve  to  use  it.
+</p>
+<p>
+ Only  organism  A  has  a <b>row5</b> so  it  always  gets  tranferred  to  the  offsprings  genetic  program.
+</p>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:11  EST  2023
+</div>
+</body>
+</html>

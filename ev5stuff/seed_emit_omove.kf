@@ -1,0 +1,145 @@
+;
+; OMOVE overriden to TRAP2
+;
+; TRAP2 will do this:
+;	1) Do OMOVE with same interface
+;	2) If successful SEND-ENERGY 1 unit in opposite direction
+;
+; a seed organism with room for interrupt handlers
+;
+; BEHAVIOR:
+; This creature forever moves in various directions until
+; its forward movement is blocked. As it moves it eats.
+; Before moving in a new direction it will try to reproduce.
+;
+;
+
+main:
+{
+	evolve call
+}
+
+_trap1: { }
+
+;
+; OMOVE replacement
+;
+_trap2: {
+	DSLEN 55 > ?exit
+	CSLEN 60 > ?exit
+	DSLEN 2 < ?exit
+	do_omove call
+}
+
+_trap3: { }
+_trap4: { }
+_trap5: { }
+_trap6: { }
+_trap7: { }
+_trap8: { }
+_trap9: { }
+
+do_omove: {
+	2dup OMOVE
+	dup
+	{ -rot 2negate 1 -rot SEND-ENERGY pop }
+	{ -rot 2pop }
+	ifelse
+}
+
+evolve:
+{
+	reproduce call
+	reproduce call
+
+	;
+	; go SOUTH-EAST until blocked (eat along the way)
+	;
+	{ 1 1 2dup eat pop TRAP2 ?loop } call
+
+	reproduce call
+
+	;
+	; go WEST until blocked (eat along the way)
+	;
+	{ -1 0 2dup eat pop TRAP2 ?loop } call
+
+	reproduce call
+
+	;
+	; go SOUTH-WEST until blocked (eat along the way)
+	;
+	{ -1 1 2dup eat pop TRAP2 ?loop } call
+
+	reproduce call
+
+	;
+	; go EAST until blocked (eat along the way)
+	;
+	{ 1 0 2dup eat pop TRAP2 ?loop } call
+
+	reproduce call
+
+	;
+	; go NORTH-EAST until blocked (eat along the way)
+	;
+	{ 1 -1 2dup eat pop TRAP2 ?loop } call
+
+	reproduce call
+
+	;
+	; go SOUTH until blocked (eat along the way)
+	;
+	{ 0 1 2dup eat pop TRAP2 ?loop } call
+
+	reproduce call
+
+	;
+	; go NORTH until blocked (eat along the way)
+	;
+	{ 0 -1 2dup eat pop TRAP2 ?loop } call
+
+	reproduce call
+
+	;
+	; go NORTH-WEST until blocked (eat along the way)
+	;
+	{ -1 -1 2dup eat pop TRAP2 ?loop } call
+
+	reproduce call
+
+	;
+	; do it all over again
+	;
+	1 ?loop
+}
+
+reproduce:
+{
+	;
+	; compute 1/4 of our energy, and store in R0
+	;
+	energy 4 / R0!
+
+	;
+	; Make 1st spore to the square on our left.
+	;
+	-1 0 R0 make-spore pop
+
+	;
+	; Put 2nd spore at the same spot (fertilizing it)
+	;
+	-1 0 R0 make-spore pop
+
+	;
+	; get the hell out of the way so we don't eat our own
+	; babies, or they don't eat us.
+	;
+	1 1 TRAP2 pop
+	0 -1 TRAP2 pop
+	0 -1 TRAP2 pop
+	0 -1 TRAP2 pop
+	0 -1 TRAP2 pop
+	0 -1 TRAP2 pop
+}
+

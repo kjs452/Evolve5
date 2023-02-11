@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  5.0 Glossary</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> February  7th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Glossary</h1><p>
+ Some  terms  and  concepts  used  by  the  simulator  software.
+</p>
+<ul>
+<li>
+<b> Code  Block</b> -  Part  of  a  KFORTH  program.  Each  row  of  the  kforth  program  is  a  code  block.  The  first  code
+ block  is  labeled &#x27;main()&#x27;,  and  is  where  program  execution  begins.  Other  code  blocks  are  labeled  by  their  row  number.  I.e.,
+&#x27;row5&#x27;.  Learn  about  the  kforth  languge <A HREF="kforth.html">here</A>.
+</li><br>
+
+<li>
+<b> Program  Counter</b> -  (pc).  This  is  the  offset  into  the  code  block.  Taken  together  (cb,  pc)  forms  a  complete  address  referring
+ to  a  KFORTH  program  memory  location.
+</li><br>
+
+<li>
+<b> Universe</b> -  refers  to  the  overall  simulation.  But  it  can  also  refer  to  the  grid  in  which  all  the  cells
+ and  other  blocks  are  located.
+</li><br>
+
+<li>
+<b> Organism</b> -  The  simulator  manages  a  list  of  organisms.  The  organism  object  contains  a  KFORTH  genetic  program  and  a  list
+ of  cells  which  are  all  part  of  this  organism  and  running  the  same  program.
+</li><br>
+
+<li>
+<b> Cell</b> -  The  simulator  manages  a  list  of  cells.  Only  cells  run  programs  and  are  given  simulation  time.  Every  time
+ the  simulator  is  called  (See <b><tt>UNIVERSE_Simulate()</tt></b>)  it  executes <b>1</b> instruction  from  the  next  cell  in  the  list.  And  then
+ the  next  cell  and  so  on.  When  all  cells  are  simulated,  we  return  to  the  beginning.
+</li><br>
+
+<li>
+<b> Spore</b> -  Spores  are  special  cells  placed  on  the  grid.  They  are  shown  in  light  blue.  They  contain  the  genetic
+ KFORTH  program  of  the  cell  that  created  them.  Spores  can  be  fertilized  with  a  second  genetic  program.  After <A HREF="mutations.html">merging  and  mutating</A> a
+ new  organism  is  spawned  and  added  to  the  list  of  cells.
+</li><br>
+
+<li>
+<b> Organic  Material</b> -  This  is  the  name  given  to  a  simple  block  on  the  grid  that  just  contains  some  energy. <i>Organic  Material</i> blocks  appear  in  the  simulation  windows  as  white  blocks  with  a  black  border.  Organic  blocks  can  be  created  by  the
+ instruction <tt>MAKE-ORGANIC</tt>.  But  usually  an  organic  block  is  created  when  an  organism  dies  or  parts  of  the  orgasism  dies
+ and  the  disconnected  cells  are  converted  to  organic  material. <p>
+Organic  material  is  a  resource,  as  it  can  be  EAT&#x27;en  which  provides  energy.
+</p>
+
+</li><br>
+
+<li>
+<b> Barrier</b> -  The  simulation  universe  can  be  broken  up  into  regions  by  placing  barriers  around  the  grid.  The  barriers  are
+ simply  blocks  which  cannot  be  moved  through.  There  is  an  instruction  to  create  barriers, <tt>MAKE-BARRIER</tt>,  but  this  is  often
+ protected  because  during  evolution  is  ruins  the  simulation.  Too  many  barriers  get  created.  The  MAKE-BARRIER  instruction  should  be  protected  and
+ used  as  part  of  a  custom  simulation.
+</li><br>
+
+<li>
+<b> Energy</b> -  Many  cells  on  the  grid  have  energy.  All  energy  is  conserved  during  the  execution  of  the  simulator.  This
+ is  accomplished  by <b>always  moving</b> energy  from  one  cell  to  another,  never  creating  or  destroying  it. <p>
+Energy  is  required  to  exist  as  an  organism  with  cpu  cycles.  This  can  be  used  to  control  the  simulation  from
+ getting  too  many  organisms  and  grinding  to  a  halt.
+</p>
+<p>
+ Very  few  operations  require  energy.  The  GROW,  MAKE-SPORE,  and  SPAWN  instructions  do.  They  also  have  mode  settings  to  specify  how
+ much  energy  is  required.
+</p>
+<p>
+ The  instructions  which  take  energy  are <tt>EAT</tt> and <tt>SEND-ENERGY</tt>.  EAT  is  a  more  generic  and  friendly  interface  to  the
+ eating  operation.  It  has  tons  of  modes  to  control  how  much  eating  occurs.  Or  how  aggressive  it  is.  SEND-ENERGY  is
+ a  lower  level  operation.  It  just  moves  the  amount  of  energy  specified  between  cells.  This  instruction  can  be  used  to
+ implement  your  own  rules.
+</p>
+
+</li><br>
+
+<li>
+<b> KFORTH</b> -  Stands  for  Ken&#x27;s  Forth.  It  is  the  programming  language  used  by  this  simulator.  The  cell&#x27;s  are  controlled  by
+ KFORTH  programs  which  determine  the  behaviors  of  the  cells.  Kforth  derives  from  the  language  known  as <i>forth</i>.  It  is
+ a  16-bit  architecture  with  the  ability  to  address  256  MB  of  memory.  It  has  TRAP&#x27;s  for  implementing  system  calls.  It
+ has  interupts.  It  has  protected  mode  and  user  land  mode.
+</li><br>
+
+<li>
+<b> KFORTH  Program</b> -  A  program  written  in  KFORTH.  The  seed  file  provided  for  each  Strain  Profile  is  a  kforth  program.  Kforth
+ programs  are  stored  in  files  as  plain  text.  Usually  the  file  extension  is <b>.kf</b>.
+</li><br>
+
+<li>
+<b> Stack,  Data</b> -  A  data  structure  inside  of  each  cell  for  storing  the  results  of  the  program  execution.  The  stack  is
+ fixed  size,  with  a  length  of <b>64</b> elements.  When  full  the  cell  cannot  push  new  items  on  the  stack  and
+ all  instructions  behave  like  NO-OP&#x27;s
+</li><br>
+
+<li>
+<b> Stack,  Call</b> -  Another  data  structure  inside  of  each  cell.  This  stores  the  prior  program  location <b>(cb,  pc)</b> for  returning  from  subroutines.
+ This  stack  is  limited  to <b>64</b> elements.  When  full,  no  more  subroutines  can  be  called.
+</li><br>
+
+<li>
+<b> Radio  Active  Tracer</b> -  This  is  a  fancy  name  for  marking  things  in  the  simulation.  They  are  marked  with  a  green  outline
+ which  looks  radio-active.  It  is  analogous  to  tracer  chemicals/isotopes  used  in  real  medicine.  The  idea  is  to  see  where  an
+ organism  goes  and  observe  all  of  its  offspring.
+</li><br>
+
+<li>
+<b> Selected  Organism</b> -  This  is  the  organism  the  user  has  selected  in  the  simulation  window.
+</li><br>
+
+<li>
+<b> Instruction</b> -  A  KFORTH  program  consists  of  numbers  and  instructions.  An  instruction  is  one  of  about  160  built-in  primitives  of
+ the  simulator.  Examples  of  instructions  are, <tt>+  -  /  negate  dup  pop  ifelse,  TRAP9,  OMOVE</tt>.
+</li><br>
+
+<li>
+<b> Strain</b> -  Evolve  5.0 supports  8  strains  within  the  same  simulation.  These  strains  are  numbered  0  to  7.  A  strain
+ is  a  collection  of  customizations.
+</li><br>
+
+<li>
+<b> Strain  Profile</b> -  A  strain  that  has  been  saved  for  re-use.  It  is  given  a  name  and  is  stored  in  the
+ users <tt>~/.evolve5rc</tt> file.
+</li><br>
+
+<li>
+<b> Evolve  Preferences</b> -  A  file  to  hold  strain  profiles  and  other  application  data <b><tt>~/.evolve5rc</tt></b>
+</li><br>
+
+<li>
+<b> Mutate  Program</b> -  The  process  by  which  a  KFORTH  program  is  modifed  during  copying.  Mutations  are  one  or  more  small  random
+ modifications  to  the  program.
+</li><br>
+
+<li>
+<b> Merge  Program</b> -  Two  program  can  be  merged  by  merging  the  code  blocks.  Interlacing  them  or  randomly  interlacing  them  are  posible
+ modes.
+</li><br>
+
+<li>
+<b> Normalized  Coordinate</b> -  (x,y)  coordinate  which  refer  to  the  immediate  neighboring  cells.  These  are  coordinate  with  the  values  -1,  0,  and
+ 1.  Such  as  (-1,  0),  (0,  1),  (1,  1),  etc...
+</li><br>
+
+<li>
+<b> Normalized  Vector</b> -  Similar  to  a  Normalize  Coordinate  except  the  important  information  is  the  direction,  not  the  neighboring  square.  So  for
+ example  the  normalized  vector  (1,  1)  refers  to  the  direction  north  and  east  (up  and  to  the  left).
+</li><br>
+
+<li>
+<b> Seed</b> -  A  value  used  to  initialize  the  random  number  generator  at  the  creation  of  the  simulation.
+</li><br>
+
+<li>
+<b> Seed  Program</b> -  A  KFORTH  program  that  is  used  as  the  starting  program  for  an  initial  organism  in  a  new  simulation.
+</li><br>
+
+<li>
+<b> Starting  Population</b> -  Refers  to  how  many  organisms  you  want  to  start  the  simulation  with.
+</li><br>
+
+<li>
+<b> Simulation  Steps</b> -  Refers  to  how  many  times  the  C  API  routine <tt>UNIVERSE_Simulate()</tt> has  been  called.  This  API  will  simulate <b>1</b> cell  for <b>1</b> instruction.
+</li><br>
+
+<li>
+<b> Age,  of  Universe</b> -  Refers  to  the  number  of  times  the  universe  has  simulated  every  cell  in  the  cell  list.  This  increments
+ slower  than  the <b>Step</b> variable.
+</li><br>
+
+<li>
+<b> Age,  of  Organism</b> -  Refers  to  the  age  of  an  organism.  One  of  each  organisms  properties  is  how  many  steps  it  has
+ been  alive.  This  value  is  incremented  each  time  all  of  its  cells  have  been  simulated  for  1  step.
+</li><br>
+
+<li>
+<b> Register</b> -  Each  cell  has  10  registers  for  storing  temporary  values.  These  registers  hold  a  16-bit  signed  value.  There  are
+ instrutions  to  increment  and  decrement  registers.
+</li><br>
+
+<li>
+<b> Protected  Code  Block</b> -  A  code  block  in  the  protected  region  of  the  KFORTH  program.  A  protected  code  block  will  not  be
+ mutated.  Nor  will  information  leak  out  of  it  during  mutations.  And  other  properties  that  allow  for  sandboxing  custom  code  from
+ evolving  code.
+</li><br>
+
+<li>
+<b> Protected  Instruction</b> -  An  instruction  which  has  been  marked &quot;protected&quot; by  ther  user.  These  instructions  will  not  be  generated  by  the
+ mutation  algorithm.  They  can  be  used  in  the  protected  region  and  made  unavailable  to  the  evolving  code.
+</li><br>
+
+<li>
+<b> KFORTH  Program  Literal</b> -  A  number  stored  in  the  program  memory.  NOTE:  This  is  a <b>15-bit  signed  value</b>.  Program  Literals  are  15-bits...  Deal
+ with  it.  They  are  stored  in  the  same  space  as  the  instructions.
+</li><br>
+
+<li>
+<b> KFORTH  Opcode</b> -  An  instruction  stored  in  the  program  memory.  See  the  instructions <tt>OPCDOE</tt>, <tt>OPCODE!</tt>, <tt>OPCODE&#x27;</tt>.
+</li><br>
+
+<li>
+<b> KFORTH  Instruction</b> -  Same  term  as &quot;KFORTH  Opcode&quot;.
+</li><br>
+
+<li>
+<b> Trap</b> -  A  trap  is  a  way  for  un-protected  code  to  call  out  to  protected  code.  Traps  use  code  block
+ rows:  row1,  row2, ...  row9.  Instructions:  TRAP1  thru  TRAP9  call  the  code  blocks  row1  thru  row9.
+</li><br>
+
+<li>
+<b> Interrupt</b> -  Alters  the  execution  flow  control  for  a  cell  to  a  TRAP  handler.  The  condition  that  triggers  an  Interrupt
+ is  due  to  another  cell  execution  an  instruciton  which  affects  another  cell.  Interrupts  must  be  enabled  by  setting  mode  bits.
+</li><br>
+
+<li>
+<b> Instruction  Modes</b> -  Many  important  instructions,  such  a  EAT,  SEND,  MAKE-SPORE,  and  SPAWN,  can  have  their  behavior  altered.  You  use <i>Instruction  Modes</i> to  do  this.  They  consists  of  one  or  more  switched  which  can  be  independently  turned  on/off.  Each  strain  can  configure
+ these  mode  bits  independently  of  each  other.
+</li><br>
+</ul>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:09  EST  2023
+</div>
+</body>
+</html>

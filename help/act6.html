@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Activity  6:  Barrier  Bot</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> January  9th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Activity  6:  Barrier  Bot</h1><p>
+ Add  this  organism  to  a  simulation.  It  will  roam  around  randomly.  But  whenever  it  detects  the <b>SPACE</b> key,  it  draws
+ a  barrier  block.
+</p>
+<p>
+ This  is  file <b>rnd_drawer.kf</b> in  the  application  resource  folder  ev5stuff.
+</p>
+<BR><BR>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+;
+; rnd_drawer.kf
+;
+; Move around randomly, when user presses SPACE key, draw barrier blocks.
+;
+; Add this creature as any strain you want, with
+; whatever energy you want.
+; Make sure this strain is uneatable (EAT Mode = 5)
+; Make sure this strain can MAKE-BARRIER
+;
+
+main:
+{
+    0       ; 0: current x
+    0       ; 1: current y
+    0       ; 2: mode
+
+    {
+        pick_direction call
+
+        {
+            check_key call
+            2 PEEK { 0 PEEK 1 PEEK 2negate MAKE-BARRIER pop } if
+
+            0 PEEK 1 PEEK OMOVE
+
+            ?loop
+        } call
+
+        1 ?loop
+    } call
+}
+
+pick_direction:
+{
+    -1 1 CHOOSE 0 POKE
+    -1 1 CHOOSE 1 POKE
+}
+
+check_key:
+{
+    KEY-PRESS R0!
+    R0 0 = { 0 2 POKE } if
+    R0 32 = { 1 2 POKE } if
+    R0 65 = { pick_direction call } if
+}
+
+</PRE></TD></TABLE></CENTER>
+<BR><BR><BR><BR>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:09  EST  2023
+</div>
+</body>
+</html>

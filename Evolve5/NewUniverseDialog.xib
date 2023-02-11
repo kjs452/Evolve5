@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NewUniverseDialog" customModule="Evolve5" customModuleProvider="target">
+            <connections>
+                <outlet property="errorLabel" destination="ujr-XM-PbP" id="FB8-rx-dXP"/>
+                <outlet property="grid" destination="udw-hS-CCr" id="Gh3-tD-sRH"/>
+                <outlet property="heightControl" destination="6Vx-va-dOI" id="iDn-k5-60l"/>
+                <outlet property="ovalCheck" destination="342-D2-omT" id="FXp-un-F7u"/>
+                <outlet property="popTxt" destination="RIQ-Rl-Iz4" id="fTS-rW-wrp"/>
+                <outlet property="seedControl" destination="GiX-Wd-v16" id="fbx-Ud-2Ar"/>
+                <outlet property="terrainTxt" destination="ylB-0a-9gq" id="OWt-vq-7fo"/>
+                <outlet property="widthControl" destination="Q2t-0h-t3v" id="VV7-8L-dko"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="xjX-cE-XR2"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="New Universe" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <rect key="contentRect" x="196" y="240" width="865" height="495"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="865" height="495"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <box fixedFrame="YES" title="Universe" titlePosition="aboveTop" translatesAutoresizingMaskIntoConstraints="NO" id="yGy-7d-MLd">
+                        <rect key="frame" x="17" y="379" width="831" height="116"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView" id="iU0-0X-egy">
+                            <rect key="frame" x="3" y="3" width="825" height="82"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2t-0h-t3v">
+                                    <rect key="frame" x="83" y="23" width="80" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="AEK-jj-9hF">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <outlet property="delegate" destination="-2" id="tKV-XC-Jqb"/>
+                                    </connections>
+                                </textField>
+                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Vx-va-dOI">
+                                    <rect key="frame" x="313" y="23" width="80" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="WZQ-DG-9Jw">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <outlet property="delegate" destination="-2" id="loX-0q-YmN"/>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NHW-m2-L8b">
+                                    <rect key="frame" x="18" y="57" width="35" height="16"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Seed" id="3XS-Wm-eMd">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rtt-E0-e6n">
+                                    <rect key="frame" x="18" y="26" width="40" height="16"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Width" id="H3h-ul-NXT">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16C-W4-SsJ">
+                                    <rect key="frame" x="262" y="26" width="45" height="16"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Height" id="q4E-vm-sHD">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="342-D2-omT">
+                                    <rect key="frame" x="699" y="56" width="98" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Oval Barrier" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="s6p-Nn-idA">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="checkButs:" target="-2" id="atw-y1-0NG"/>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GiX-Wd-v16">
+                                    <rect key="frame" x="83" y="54" width="113" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="t4Q-5X-FoT">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <outlet property="delegate" destination="-2" id="XBe-fx-VyA"/>
+                                    </connections>
+                                </textField>
+                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ylB-0a-9gq">
+                                    <rect key="frame" x="313" y="54" width="290" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Odd-a9-QM4">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <outlet property="delegate" destination="-2" id="8iz-ph-hh5"/>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r2C-7Z-P36">
+                                    <rect key="frame" x="232" y="57" width="71" height="16"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Terrain File" id="xAV-Q4-Ub6">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bwK-hW-hBp">
+                                    <rect key="frame" x="604" y="48" width="80" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6HD-B6-DYo">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="browseTerrainBut:" target="-2" id="zqx-70-JSn"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                        <font key="titleFont" textStyle="title1" name=".SFNS-Regular"/>
+                    </box>
+                    <box fixedFrame="YES" title="Starting Population" titlePosition="aboveTop" translatesAutoresizingMaskIntoConstraints="NO" id="27e-cF-8vw">
+                        <rect key="frame" x="17" y="86" width="831" height="289"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView" id="Ftx-s3-BIx">
+                            <rect key="frame" x="3" y="3" width="825" height="255"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <gridView fixedFrame="YES" xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="udw-hS-CCr">
+                                    <rect key="frame" x="20" y="18" width="796" height="232"/>
+                                    <rows>
+                                        <gridRow id="lGh-o9-PpW"/>
+                                        <gridRow id="orz-wH-QDB"/>
+                                        <gridRow id="uBV-9i-YZ1"/>
+                                        <gridRow id="lOR-Lx-Jro"/>
+                                        <gridRow id="oI5-MA-Qif"/>
+                                        <gridRow id="UaL-UF-nBn"/>
+                                        <gridRow id="fT0-2h-FW2"/>
+                                        <gridRow id="hDc-gF-FIV"/>
+                                        <gridRow id="IYy-Ee-ak6"/>
+                                    </rows>
+                                    <columns>
+                                        <gridColumn xPlacement="fill" id="Ef9-16-45B"/>
+                                        <gridColumn xPlacement="fill" width="134" id="oWT-RP-hEW"/>
+                                        <gridColumn width="16" id="WSs-sa-Aw0"/>
+                                        <gridColumn xPlacement="fill" width="94" id="d2g-5n-RXP"/>
+                                        <gridColumn xPlacement="fill" width="38" id="Nr9-TM-OMS"/>
+                                        <gridColumn xPlacement="fill" width="290" id="UEA-Sh-jPz"/>
+                                        <gridColumn id="rFa-MG-zpN"/>
+                                        <gridColumn id="pWL-A1-8BX"/>
+                                    </columns>
+                                    <gridCells>
+                                        <gridCell row="lGh-o9-PpW" column="Ef9-16-45B" id="MEw-Nh-D7d"/>
+                                        <gridCell row="lGh-o9-PpW" column="oWT-RP-hEW" id="p8m-hG-SAp">
+                                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M6K-3h-AGv">
+                                                <rect key="frame" x="34" y="216" width="138" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Strain Profile" id="quW-SU-ETf">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="lGh-o9-PpW" column="WSs-sa-Aw0" id="ZG2-8R-56B"/>
+                                        <gridCell row="lGh-o9-PpW" column="d2g-5n-RXP" id="GWn-9a-S2H">
+                                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ksZ-nU-s1e">
+                                                <rect key="frame" x="196" y="216" width="98" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Energy" id="2eS-gK-xwE">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="lGh-o9-PpW" column="Nr9-TM-OMS" id="aT9-7o-BGw">
+                                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HrB-pO-V0h">
+                                                <rect key="frame" x="296" y="216" width="42" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Pop." id="RIQ-Rl-Iz4">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="lGh-o9-PpW" column="UEA-Sh-jPz" id="GK3-Fa-VyR">
+                                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CPb-2y-QaG">
+                                                <rect key="frame" x="340" y="216" width="294" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="KFORTH Program" id="dix-6o-pkQ">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="lGh-o9-PpW" column="rFa-MG-zpN" id="aUB-SU-exE"/>
+                                        <gridCell row="lGh-o9-PpW" column="pWL-A1-8BX" id="kzr-zV-IiX"/>
+                                        <gridCell row="orz-wH-QDB" column="Ef9-16-45B" id="sdJ-Km-AZe">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u5j-3U-dQp">
+                                                <rect key="frame" x="-7" y="182" width="44" height="32"/>
+                                                <buttonCell key="cell" type="push" title="0" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aug-Th-blX">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <color key="bezelColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="orz-wH-QDB" column="oWT-RP-hEW" id="We6-EX-cgi">
+                                            <comboBox key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wDa-Zs-6hJ">
+                                                <rect key="frame" x="36" y="185" width="137" height="25"/>
+                                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="11" id="enY-2v-DVJ">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </comboBoxCell>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="-2" id="O4P-Ce-Nb0"/>
+                                                    <outlet property="delegate" destination="-2" id="E2v-gB-zgL"/>
+                                                </connections>
+                                            </comboBox>
+                                        </gridCell>
+                                        <gridCell row="orz-wH-QDB" column="WSs-sa-Aw0" id="zqf-7d-nUf"/>
+                                        <gridCell row="orz-wH-QDB" column="d2g-5n-RXP" id="DXB-ha-MaI">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oQg-pN-04U">
+                                                <rect key="frame" x="198" y="189" width="94" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="emL-HA-NtY">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="hX9-HN-Gkk"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="orz-wH-QDB" column="Nr9-TM-OMS" xPlacement="fill" id="EyG-K5-cvu">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xdZ-w8-84I">
+                                                <rect key="frame" x="298" y="189" width="38" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="ZU0-8a-YZx">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="2dx-TX-aVV"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="orz-wH-QDB" column="UEA-Sh-jPz" id="ybA-eC-Jl3">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sHl-YL-V0S">
+                                                <rect key="frame" x="342" y="189" width="290" height="21"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Ikc-nY-X3l">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="CJU-qR-YBE"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="orz-wH-QDB" column="rFa-MG-zpN" id="KDZ-k5-j9B">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2z0-eT-mk1">
+                                                <rect key="frame" x="631" y="182" width="80" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YEs-GU-4Bp">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="browseBut:" target="-2" id="qyi-Iu-zfK"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="orz-wH-QDB" column="pWL-A1-8BX" id="Wlr-V4-w5Q">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8MM-2D-pJE">
+                                                <rect key="frame" x="703" y="182" width="100" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Edit Profile" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FTN-6p-BlN">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="customizeBut:" target="-2" id="gG2-gM-pRt"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="uBV-9i-YZ1" column="Ef9-16-45B" id="egi-Ox-d3f">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SsB-ap-fdx">
+                                                <rect key="frame" x="-7" y="155" width="44" height="32"/>
+                                                <buttonCell key="cell" type="push" title="1" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CZd-wl-9HU">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <color key="bezelColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="uBV-9i-YZ1" column="oWT-RP-hEW" id="fvq-R5-eVq">
+                                            <comboBox key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5cn-TV-qEt">
+                                                <rect key="frame" x="36" y="158" width="137" height="25"/>
+                                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="11" id="5IE-XN-oBr">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </comboBoxCell>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="-2" id="lj3-ax-dHQ"/>
+                                                    <outlet property="delegate" destination="-2" id="epf-Sf-0Af"/>
+                                                </connections>
+                                            </comboBox>
+                                        </gridCell>
+                                        <gridCell row="uBV-9i-YZ1" column="WSs-sa-Aw0" id="14O-KQ-0b6"/>
+                                        <gridCell row="uBV-9i-YZ1" column="d2g-5n-RXP" id="9RV-3P-pQA">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ePp-jc-jLj">
+                                                <rect key="frame" x="198" y="162" width="94" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="CH0-XG-9ao">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="K2S-cq-Rm6"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="uBV-9i-YZ1" column="Nr9-TM-OMS" id="GpB-wx-WR2">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7cc-EF-U3O">
+                                                <rect key="frame" x="298" y="162" width="38" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="wgf-He-DY4">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="sYb-b5-uAK"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="uBV-9i-YZ1" column="UEA-Sh-jPz" id="9Wr-EK-9l2">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IM1-eL-3Iv">
+                                                <rect key="frame" x="342" y="162" width="290" height="21"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="dI8-GH-bpg">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="eAK-1j-Ovk"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="uBV-9i-YZ1" column="rFa-MG-zpN" id="JSs-xf-Id4">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YKV-6h-egX">
+                                                <rect key="frame" x="631" y="155" width="80" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Ap-fG-c3w">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="browseBut:" target="-2" id="mAX-9b-Wg4"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="uBV-9i-YZ1" column="pWL-A1-8BX" id="WMD-uf-kJi">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3ci-32-pUR">
+                                                <rect key="frame" x="703" y="155" width="100" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Edit Profile" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nkb-l8-BCF">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="customizeBut:" target="-2" id="nua-jZ-g1c"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="lOR-Lx-Jro" column="Ef9-16-45B" id="ijJ-L8-61a">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UC9-MM-rIV">
+                                                <rect key="frame" x="-7" y="128" width="44" height="32"/>
+                                                <buttonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sWe-qM-A0e">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <color key="bezelColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="lOR-Lx-Jro" column="oWT-RP-hEW" id="c9E-78-WtL">
+                                            <comboBox key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pcw-PK-fOW">
+                                                <rect key="frame" x="36" y="131" width="137" height="25"/>
+                                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="11" id="Ymk-Jn-1oL">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </comboBoxCell>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="-2" id="wFW-K8-Ie6"/>
+                                                    <outlet property="delegate" destination="-2" id="dre-ui-i3V"/>
+                                                </connections>
+                                            </comboBox>
+                                        </gridCell>
+                                        <gridCell row="lOR-Lx-Jro" column="WSs-sa-Aw0" id="OPc-Oc-6hq"/>
+                                        <gridCell row="lOR-Lx-Jro" column="d2g-5n-RXP" id="J7G-ha-8CQ">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eYX-rr-ypx">
+                                                <rect key="frame" x="198" y="135" width="94" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="2UN-gT-cA2">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="XRH-cP-obG"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="lOR-Lx-Jro" column="Nr9-TM-OMS" id="4e2-dq-BN2">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NJB-gG-OgK">
+                                                <rect key="frame" x="298" y="135" width="38" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="9Bb-Gs-rux">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="OvT-xn-Vrn"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="lOR-Lx-Jro" column="UEA-Sh-jPz" id="PM0-H4-RIv">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="50p-uG-plY">
+                                                <rect key="frame" x="342" y="135" width="290" height="21"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="mzf-oR-MDy">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="YLG-Oc-IRk"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="lOR-Lx-Jro" column="rFa-MG-zpN" id="zQZ-Ge-xpq">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rW3-1g-mke">
+                                                <rect key="frame" x="631" y="128" width="80" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Cq-gm-l3R">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="browseBut:" target="-2" id="4u8-dx-2Xg"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="lOR-Lx-Jro" column="pWL-A1-8BX" id="YA0-ut-44O">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JEy-tc-WJq">
+                                                <rect key="frame" x="703" y="128" width="100" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Edit Profile" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CpB-EP-Rz3">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="customizeBut:" target="-2" id="PAD-i0-Wh7"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="oI5-MA-Qif" column="Ef9-16-45B" id="QTO-W7-jSd">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RA6-y0-GcE">
+                                                <rect key="frame" x="-7" y="101" width="44" height="32"/>
+                                                <buttonCell key="cell" type="push" title="3" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ipR-Sk-73f">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <color key="bezelColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="oI5-MA-Qif" column="oWT-RP-hEW" id="xg0-Vn-rHz">
+                                            <comboBox key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RIe-zY-8wS">
+                                                <rect key="frame" x="36" y="104" width="137" height="25"/>
+                                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="11" id="to0-ts-HJL">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </comboBoxCell>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="-2" id="5jI-Zc-a5f"/>
+                                                    <outlet property="delegate" destination="-2" id="WQt-IR-Mnd"/>
+                                                </connections>
+                                            </comboBox>
+                                        </gridCell>
+                                        <gridCell row="oI5-MA-Qif" column="WSs-sa-Aw0" id="QdY-57-Emr"/>
+                                        <gridCell row="oI5-MA-Qif" column="d2g-5n-RXP" id="9Ba-oE-gap">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RS0-Wr-iQU">
+                                                <rect key="frame" x="198" y="108" width="94" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="84r-xu-tNQ">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="4Ba-9e-6CP"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="oI5-MA-Qif" column="Nr9-TM-OMS" id="5zz-XW-S4M">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xQ0-cQ-ojQ">
+                                                <rect key="frame" x="298" y="108" width="38" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="jfS-yu-bvb">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="OTJ-eM-Fcf"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="oI5-MA-Qif" column="UEA-Sh-jPz" id="Itq-I1-b64">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="coh-cL-MnT">
+                                                <rect key="frame" x="342" y="108" width="290" height="21"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="m1b-n8-xvf">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="0IU-uf-qoE"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="oI5-MA-Qif" column="rFa-MG-zpN" id="bdv-JK-HoV">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ij2-KQ-nAq">
+                                                <rect key="frame" x="631" y="101" width="80" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UXJ-Iv-1UQ">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="browseBut:" target="-2" id="Azr-YT-3DA"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="oI5-MA-Qif" column="pWL-A1-8BX" id="RF9-BB-GBp">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JGb-no-XkM">
+                                                <rect key="frame" x="703" y="101" width="100" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Edit Profile" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EqT-66-QnP">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="customizeBut:" target="-2" id="z38-Oy-JVT"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="UaL-UF-nBn" column="Ef9-16-45B" id="MHb-tj-8Yj">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qDP-v4-W9A">
+                                                <rect key="frame" x="-7" y="74" width="44" height="32"/>
+                                                <buttonCell key="cell" type="push" title="4" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ra6-uE-X0h">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <color key="bezelColor" red="1" green="0.49803921568627452" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="UaL-UF-nBn" column="oWT-RP-hEW" id="7wo-9v-R9w">
+                                            <comboBox key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XV2-XD-FQa">
+                                                <rect key="frame" x="36" y="77" width="137" height="25"/>
+                                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="11" id="MyI-Ng-2g2">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </comboBoxCell>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="-2" id="Pzd-14-PSu"/>
+                                                    <outlet property="delegate" destination="-2" id="CkB-2m-Ku3"/>
+                                                </connections>
+                                            </comboBox>
+                                        </gridCell>
+                                        <gridCell row="UaL-UF-nBn" column="WSs-sa-Aw0" id="ebj-rs-E39"/>
+                                        <gridCell row="UaL-UF-nBn" column="d2g-5n-RXP" id="r6x-vY-rLx">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dGm-1a-Bf7">
+                                                <rect key="frame" x="198" y="81" width="94" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Xc4-lQ-HRy">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="jMk-Nd-T3l"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="UaL-UF-nBn" column="Nr9-TM-OMS" id="3uC-J1-kZR">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DMh-OF-BbO">
+                                                <rect key="frame" x="298" y="81" width="38" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="yCX-iH-udW">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="P23-9S-vpw"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="UaL-UF-nBn" column="UEA-Sh-jPz" id="Zdj-t4-IT0">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aGz-PA-5il">
+                                                <rect key="frame" x="342" y="81" width="290" height="21"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="rJl-7K-3q1">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="vti-IE-EQ7"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="UaL-UF-nBn" column="rFa-MG-zpN" id="JUy-w7-00P">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xJl-oM-sa4">
+                                                <rect key="frame" x="631" y="74" width="80" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MXO-bv-u9K">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="browseBut:" target="-2" id="vlI-hS-F3T"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="UaL-UF-nBn" column="pWL-A1-8BX" id="FhO-Jj-nE4">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="27B-JZ-bGO">
+                                                <rect key="frame" x="703" y="74" width="100" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Edit Profile" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nmI-rJ-5x7">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="customizeBut:" target="-2" id="Im7-M4-5ba"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="fT0-2h-FW2" column="Ef9-16-45B" id="ICQ-5k-tzq">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4xa-sI-5WH">
+                                                <rect key="frame" x="-7" y="47" width="44" height="32"/>
+                                                <buttonCell key="cell" type="push" title="5" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8sw-VC-w88">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <color key="bezelColor" red="1" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="fT0-2h-FW2" column="oWT-RP-hEW" id="rTb-Nk-qbG">
+                                            <comboBox key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5oh-Lm-LUf">
+                                                <rect key="frame" x="36" y="50" width="137" height="25"/>
+                                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="11" id="gFm-cj-ljR">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </comboBoxCell>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="-2" id="GTl-pV-FEM"/>
+                                                    <outlet property="delegate" destination="-2" id="Bgl-93-TbQ"/>
+                                                </connections>
+                                            </comboBox>
+                                        </gridCell>
+                                        <gridCell row="fT0-2h-FW2" column="WSs-sa-Aw0" id="WcR-S9-zBZ"/>
+                                        <gridCell row="fT0-2h-FW2" column="d2g-5n-RXP" id="BQe-TA-9GD">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6nB-hC-qFe">
+                                                <rect key="frame" x="198" y="54" width="94" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="kih-16-bYN">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="cfJ-7J-7X0"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="fT0-2h-FW2" column="Nr9-TM-OMS" id="0nC-rJ-4VC">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fqU-Ou-z9G">
+                                                <rect key="frame" x="298" y="54" width="38" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="foZ-mH-H4M">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="kiP-ia-AQy"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="fT0-2h-FW2" column="UEA-Sh-jPz" id="CDb-BV-1oy">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NTv-UM-k5P">
+                                                <rect key="frame" x="342" y="54" width="290" height="21"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="dE4-cO-tb4">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="oXb-FU-GSC"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="fT0-2h-FW2" column="rFa-MG-zpN" id="eq2-IN-ODS">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MqE-bf-8Py">
+                                                <rect key="frame" x="631" y="47" width="80" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="F1Z-Mb-iBM">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="browseBut:" target="-2" id="7Om-UU-d6C"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="fT0-2h-FW2" column="pWL-A1-8BX" id="mFr-mZ-I3G">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PPK-Ll-xYN">
+                                                <rect key="frame" x="703" y="47" width="100" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Edit Profile" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g5M-T8-HKe">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="customizeBut:" target="-2" id="KgO-cE-uLi"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="hDc-gF-FIV" column="Ef9-16-45B" id="h7H-TD-uet">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n3k-Gu-JBp">
+                                                <rect key="frame" x="-7" y="20" width="44" height="32"/>
+                                                <buttonCell key="cell" type="push" title="6" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dxh-ML-2Xs">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <color key="bezelColor" red="0.0" green="0.75294117647058822" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="hDc-gF-FIV" column="oWT-RP-hEW" id="y8E-Sw-bpL">
+                                            <comboBox key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jeo-af-9Mn">
+                                                <rect key="frame" x="36" y="23" width="137" height="25"/>
+                                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="11" id="UNn-6z-PCo">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </comboBoxCell>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="-2" id="c2m-pM-2Zc"/>
+                                                    <outlet property="delegate" destination="-2" id="gfE-gG-wPC"/>
+                                                </connections>
+                                            </comboBox>
+                                        </gridCell>
+                                        <gridCell row="hDc-gF-FIV" column="WSs-sa-Aw0" id="J3p-Sq-h9S"/>
+                                        <gridCell row="hDc-gF-FIV" column="d2g-5n-RXP" id="Z4R-Lb-q7x">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h62-k4-CoM">
+                                                <rect key="frame" x="198" y="27" width="94" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="wz5-PW-ojV">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="hRu-wZ-eT6"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="hDc-gF-FIV" column="Nr9-TM-OMS" id="Nee-wf-b81">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jfy-iq-hVz">
+                                                <rect key="frame" x="298" y="27" width="38" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="9pF-Zj-Nn0">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="WBa-Ht-MD7"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="hDc-gF-FIV" column="UEA-Sh-jPz" id="CwF-sc-PPi">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mfe-Ep-Bp0">
+                                                <rect key="frame" x="342" y="27" width="290" height="21"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="hzW-NP-J02">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="uAB-Lu-z66"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="hDc-gF-FIV" column="rFa-MG-zpN" id="Sf0-Fk-e0Q">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N6T-dc-Rb2">
+                                                <rect key="frame" x="631" y="20" width="80" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gnu-kJ-hBA">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="browseBut:" target="-2" id="2Ju-i7-vHh"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="hDc-gF-FIV" column="pWL-A1-8BX" id="akN-53-HkN">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8ki-pl-tfc">
+                                                <rect key="frame" x="703" y="20" width="100" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Edit Profile" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WTt-K0-wQi">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="customizeBut:" target="-2" id="AKZ-gX-536"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="IYy-Ee-ak6" column="Ef9-16-45B" id="f7K-bM-3QB">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Tq-Qt-yl3">
+                                                <rect key="frame" x="-7" y="-7" width="44" height="32"/>
+                                                <buttonCell key="cell" type="push" title="7" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Iw-jY-yeu">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <color key="bezelColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="IYy-Ee-ak6" column="oWT-RP-hEW" id="KHT-Yk-9MC">
+                                            <comboBox key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uaz-6B-csI">
+                                                <rect key="frame" x="36" y="-4" width="137" height="25"/>
+                                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="11" id="Cdq-FP-K1a">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </comboBoxCell>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="-2" id="3R6-pm-AFt"/>
+                                                    <outlet property="delegate" destination="-2" id="XVD-qz-0XL"/>
+                                                </connections>
+                                            </comboBox>
+                                        </gridCell>
+                                        <gridCell row="IYy-Ee-ak6" column="WSs-sa-Aw0" id="Ip0-TW-37x"/>
+                                        <gridCell row="IYy-Ee-ak6" column="d2g-5n-RXP" id="yKu-8k-kx5">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i31-Fo-1GT">
+                                                <rect key="frame" x="198" y="0.0" width="94" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="IeO-bL-CK0">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="7hI-ZE-bWb"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="IYy-Ee-ak6" column="Nr9-TM-OMS" id="5xQ-rQ-SJi">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XeV-dz-FnW">
+                                                <rect key="frame" x="298" y="0.0" width="38" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Cws-po-1sg">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="S1Y-vx-aVn"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="IYy-Ee-ak6" column="UEA-Sh-jPz" id="Opa-g9-ime">
+                                            <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Myd-tm-aYg">
+                                                <rect key="frame" x="342" y="0.0" width="290" height="21"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="yCh-zE-5LZ">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <outlet property="delegate" destination="-2" id="4Ng-xm-EzE"/>
+                                                </connections>
+                                            </textField>
+                                        </gridCell>
+                                        <gridCell row="IYy-Ee-ak6" column="rFa-MG-zpN" id="g3K-j0-TK5">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="27b-PF-cKu">
+                                                <rect key="frame" x="631" y="-7" width="80" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tTE-IT-Z4b">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="browseBut:" target="-2" id="06t-YK-Bg5"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                        <gridCell row="IYy-Ee-ak6" column="pWL-A1-8BX" id="a8B-Lb-mNF">
+                                            <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8QW-X4-DoV">
+                                                <rect key="frame" x="703" y="-7" width="100" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Edit Profile" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="foB-MF-JKc">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="customizeBut:" target="-2" id="cCv-tf-PQd"/>
+                                                </connections>
+                                            </button>
+                                        </gridCell>
+                                    </gridCells>
+                                </gridView>
+                            </subviews>
+                        </view>
+                        <font key="titleFont" textStyle="title1" name=".SFNS-Regular"/>
+                    </box>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKq-pc-vUt">
+                        <rect key="frame" x="724" y="13" width="76" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rIi-fB-vac">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelBut:" target="-2" id="Uej-H1-Rgw"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B8S-1N-8gE">
+                        <rect key="frame" x="798" y="13" width="54" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UAr-ex-Mx7">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="okBut:" target="-2" id="z50-Tq-Qjs"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LMg-eF-p8c">
+                        <rect key="frame" x="13" y="13" width="62" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Help" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vMm-JI-D86">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="helpBut:" target="-2" id="AkP-BN-RXg"/>
+                            </connections>
+                        </buttonCell>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujr-XM-PbP">
+                        <rect key="frame" x="18" y="50" width="813" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" id="FIk-f6-9eW">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="Wxv-RB-6Nk"/>
+            </connections>
+            <point key="canvasLocation" x="77.5" y="122.5"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="Cf7-f9-Axr"/>
+    </objects>
+</document>

@@ -1,0 +1,32 @@
+
+;
+;
+; using the pack and unpack instructions
+;
+; pack2/unpack2 allows 2 32-bit signed values to be stored
+; and retieved from a single 64-bit integer
+;
+; pack4/unpack4 allows 4 16-bit signed values to be stored
+; and retrieved from a single 64-bit integer.
+;
+
+main:
+{
+	-10 23 -30 43 pack4 junk call
+
+        934430 -90909090 pack2 foobar call
+
+}
+
+junk:
+{
+	unpack4
+	* * *
+}
+
+foobar:
+{
+   unpack2
+   * 
+}
+

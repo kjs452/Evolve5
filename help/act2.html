@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Activity  2:  Bullet</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> January  12th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Activity  2:  Bullet</h1><p>
+ This  example  shows  how  you  can  add  a  new  capability  to  the  simulator.  We  are  going  to  create  a  bullet
+ capability.  A  bullet  will  be  triggered  from <tt>TRAP1</tt> and <tt>TRAP6</tt>.  These  instructions  will  cause  a  bullet  to  be  emitted
+ in  a  particular  direction.
+</p>
+<IMG  SRC="NewUniverse.jpg"><p>
+ Create  a  new <i>strain  profile</i> called <b>Uneatable</b>.  To  make  a  strain  uneatable,  set  the <b>EAT  Mode</b> to  be <b>8</b>.  Install
+ the  uneatable  strain  profile  in  slot <b>5</b>.
+</p>
+<p>
+ Create  a  new <i>strain  profile</i> called <b>e_bullet</b>.  Configure  it  with  the  shoot3.kf  seed  file.  Configure <b>SPAWN-MODE</b> to  be <b>5</b> (so
+ that  this  strain  has  the  power  to  spawn  new  organisms  of  a  different  strain).
+</p>
+<p>
+ Make  sure  to  protect  all  of  this  instruction: <b>SPAWN</b> (in  the  e_bullet  strain).
+</p>
+<p>
+ Make  sure  to  protect  all  code  blocks  up  to &#x27;evolve&#x27;.
+</p>
+<p>
+ A  bullet  is  just  another  organism,  but  it  is  running  a  bullet  program.  This  file  is  provided  in  the  application
+ resource  folder <tt>ev5stuff</tt>.  Make  sure  to  use  the  file <b>shoot3.kf</b>.
+</p>
+<BR><BR>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+;
+; spawn3 - this version eats in the direction of motion until no more
+;
+; This creature uses SPAWN to make an uneat-able bullet
+; out of itself to kill a creature.
+;
+; assumes SPAWN changed to not copy stacks
+;
+; STRAIN 5 should be un-eatble eat_mode -&gt; 8
+; (x y energy strain cb -- rc)      SPAWN
+;
+main:
+{
+    evolve call
+}
+
+; (x y -- rc) shoot
+_trap1: {
+   DSLEN 50 &gt;= ?exit  DSLEN 2 &lt; ?exit R0 R1
+   2swap R1! R0! R0 R1 1 5 bullet SPAWN pop R1! R0!
+}
+
+_trap2: {  }
+_trap3: {  }
+_trap4: {  }
+_trap5: {  }
+
+; (x y -- rc) shoot
+_trap6: {
+   DSLEN 60 &gt;= ?exit  R1! R0! R0 R1 1 5 bullet SPAWN pop
+}
+
+_trap7: {  }
+_trap8: {  }
+_trap9: {  }
+
+bullet:
+{
+    R0 R1       ; (x y -- )
+    
+    2dup        ; (x y x y -- )
+
+    { 2dup OMOVE ?loop } call       ; bullet move
+
+    {
+        2dup EAT pop
+        2dup OMOVE pop      ; ( x y -- x y rc)
+        255 NEAREST EAT
+        ?loop
+    } call
+
+    HALT
+}
+
+; --- protected / unprotected ---
+
+evolve:
+{
+    -1 0 trap6
+
+    reproduce call
+    reproduce call
+
+    ;
+    ; go SOUTH-EAST until blocked (eat along the way)
+    ;
+    { 1 1 2dup eat pop omove ?loop } call
+
+    reproduce call
+
+    ;
+    ; go WEST until blocked (eat along the way)
+    ;
+    { -1 0 2dup eat pop omove ?loop } call
+
+    reproduce call
+
+    ;
+    ; go SOUTH-WEST until blocked (eat along the way)
+    ;
+    { -1 1 2dup eat pop omove ?loop } call
+
+    reproduce call
+
+    ;
+    ; go EAST until blocked (eat along the way)
+    ;
+    { 1 0 2dup eat pop omove ?loop } call
+
+    reproduce call
+
+    ;
+    ; go NORTH-EAST until blocked (eat along the way)
+    ;
+    { 1 -1 2dup eat pop omove ?loop } call
+
+    reproduce call
+
+    ;
+    ; go SOUTH until blocked (eat along the way)
+    ;
+    { 0 1 2dup eat pop omove ?loop } call
+
+    reproduce call
+
+    ;
+    ; go NORTH until blocked (eat along the way)
+    ;
+    { 0 -1 2dup eat pop omove ?loop } call
+
+    reproduce call
+
+    ;
+    ; go NORTH-WEST until blocked (eat along the way)
+    ;
+    { -1 -1 2dup eat pop omove ?loop } call
+
+    reproduce call
+
+    ;
+    ; do it all over again
+    ;
+    1 ?loop
+}
+
+reproduce:
+{
+    ;
+    ; compute 1/4 of our energy, and store in R0
+    ;
+    energy 4 / R0!
+
+    ;
+    ; Make 1st spore to the square on our left.
+    ;
+    -1 0 R0 make-spore pop
+
+    ;
+    ; Put 2nd spore at the same spot (fertilizing it)
+    ;
+    -1 0 R0 make-spore pop
+
+    ;
+    ; get the hell out of the way so we don&#x27;t eat our own
+    ; babies, or they don&#x27;t eat us.
+    ;
+    1 1 omove pop
+    0 -1 omove pop
+    0 -1 omove pop
+    0 -1 omove pop
+    0 -1 omove pop
+    0 -1 omove pop
+}
+
+
+</PRE></TD></TABLE></CENTER>
+<BR><BR><BR><BR>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:09  EST  2023
+</div>
+</body>
+</html>

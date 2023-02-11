@@ -1,0 +1,21 @@
+;
+; how to write 'if'
+;
+
+{
+     499 R0!    ; change this to 500 to make the condition true
+
+     R0 500 >= { 666 } if
+     R0 500 >= { 668 } myif call
+}
+
+;
+; a roll-your-own 'IF' instruction
+;
+; ( expr cb -- )
+;
+myif:
+{
+        1+ swap not not * 1- call
+}
+

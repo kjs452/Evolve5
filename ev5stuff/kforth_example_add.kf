@@ -1,0 +1,11 @@
+{
+   1 call 100 511 897 + + +
+}
+
+
+{
+    987 crapvalue call +
+}
+
+; a constant, as a code block
+crapvalue: { 123 }

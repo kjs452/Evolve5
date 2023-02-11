@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  5.0 -  Simulation</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> December  17th,  2022
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Simulation</h1><p>
+ This  page  describes  how  the  simulator  works.
+</p>
+<A NAME="TOC2"></A><h2> Table  of  Contents:</h2><ul>
+<li>
+<A HREF="#universe"> Universe</A>
+</li>
+
+<li>
+<A HREF="#strains"> Strains</A>
+</li>
+
+<li>
+<A HREF="#organism"> Organism</A>
+</li>
+
+<li>
+<A HREF="#cell"> Cells</A>
+</li>
+
+<li>
+<A HREF="#grid"> Grid</A>
+</li>
+
+<li>
+<A HREF="#simstep"> UNIVERSE_Simulate()</A>
+</li>
+
+<li>
+<A HREF="#customize"> Create  Your  Own  Simulation</A>
+</li>
+</ul><HR>
+<p>
+ This  diagram  shows  the  data  structures  used  to  implement  the  simulation.  I  consider  the  Evolve  5.0<i>Universe</i> to  be  analogous
+ to  an  operating  system.  Where <i>Cells</i> are  processes  and  the  process  table  is  a  two  dimensional  grid.
+</p>
+<IMG  SRC="sim1.jpg"><A NAME="universe"></A><A NAME="TOC3"></A><h2> Universe</h2><p>
+ The  overall  container  for  the  simulation  is  the <tt>UNIVERSE</tt> struct.  This  contains  all  the  information  for  the  simulation.  The  main
+ data  structure  is  a  linked  list  of <i>cells</i>.  This  is  the  task  list  in  an  operating  system.  There  is
+ also  a  linked  list  of <i>Organisms</i>.  Each  organism  has  a  linked  list  of  its  constituent  cells.
+</p>
+<p>
+ The  simulation  is  basically  a  time-sliced  operating  system  in  which  each  CELL  is  given <b>1</b> exection  cycle.
+</p>
+<HR>
+<A NAME="strains"></A><A NAME="TOC4"></A><h2> Strains</h2><p>
+ Each  simulation  allows  for <b>8</b> independent  strains  to  be  configured.  A  strain  is  a  set  of  simulation  properties.  You  can
+ combine  several  radically  different  strains  to  create  interesting  simulations.  One  strain  could  be &quot;plants&quot;.  One  strain  could  be &quot;bullets&quot;,  etc...
+ These  helper  strains  can  allow  you  to  invent  new &quot;physics&quot; for  evolution  to  occur  in.
+</p>
+<ul>
+<li>
+ Mutation  Rates:  Configure  the  mutation  rates.  For  example,  disable  mutations  altogether  when  playing  combat  modes,  or  for  robot  ants  which
+ don&#x27;t  evolve.
+</li>
+
+<li>
+ Protected  Code  Blocks:  Designate  the  first  N  code  blocks  protected.  This  code  won&#x27;t  mutate,  and  other  cool  properties
+</li>
+
+<li>
+ Protected  Instructions:  Mark  any  of  the  160+  instructions  as  protected.  A  protected  instruction  won&#x27;t  be  inserted  into  mutated  code,  and
+ other  cool  properties.
+</li>
+
+<li>
+ Modes:  Most  of  the  important  instructions  come  with  mode  bits.  Each  strain  can  independently  configure  the  behavior  of  the  instructions,
+ such  as  SPAWN,  MAKE-SPORE,  EAT.
+</li>
+
+<li>
+ Seed  Program:  The  most  powerful  way  to  customize  the  behavior  of  a  strain  is  to  write  a  mini  operating  system
+ for  your  organism.  By  writing  an  elaborate <i>protected  code</i> and <i>traps</i> you  can  craft  a  creature  with  fixed  behaviors  you  control,
+ and  other  behaviors  you  allow  evolution  to  figure  out. <p>
+Each  strain  can  have  its  own  little  sandboxed  operating  system.  Using  the <tt>SPAWN</tt> instruction,  an  organism  from  one  strain  can
+ create  a  new  organism  from  a  different  strain.
+</p>
+
+</li>
+</ul><HR>
+<A NAME="organism"></A><A NAME="TOC5"></A><h2> Organism</h2><p>
+ All  cells  must  belong  to  an  organism.  An  organism  can  consists  of  one  or  more  cells.  The  organism  belongs  to
+ a  strain  (Strains  are  limited  to  0...7).  The  ORGANISM  struct  contains  the  kforth  program  which  all  the  cells  run.
+</p>
+<HR>
+<A NAME="cell"></A><A NAME="TOC6"></A><h2> Cell</h2><p>
+ The  cell  is  a  running  program  that  exists  somewhere  on  the  grid.  It  may  or  may  not  have  other  cells
+ which  belong  to  the  same  organism.  If  it  does,  then  they  share  the  same  program,  but  not  the  same  execution
+ context.  Cells  can  communicate  in  various  ways.
+</p>
+<HR>
+<A NAME="grid"></A><A NAME="TOC7"></A><h2> Grid</h2><p>
+ The  grid  is  a  pre-allocated  data  structure  for  the  entire  WIDTH  x  HEIGHT  dimension  of  the  universe.  The  (x,y)  location
+ will  contain  a  pointer  to  the  CELL  that  occupies  it.  Simple  values  like <i>odor  map  values</i> are  also  stored  with  each  grid
+ location.
+</p>
+<HR>
+<A NAME="simstep"></A><A NAME="TOC8"></A><h2> UNIVERSE_Simulate()</h2><p>
+ This  is  the  C  API  routine  which  simulates  the  universe  for  1  step.  This  means  a  single  cell  in  the
+ cell  list  is  allowed  to  execute  a  single  instruction.  Each  time <tt>UNIVERSE_Simulate()</tt> is  called  the <b>step</b> variable  is  incremented.
+</p>
+<p>
+ After  all  cells  in  the  linked  list  are  simulated,  the <b>age</b> variable  is  incremeneted.  And  the  simulator  starts  over  at
+ the  beginning  of  the  list.
+</p>
+<HR>
+<A NAME="customize"></A><A NAME="TOC9"></A><h2> Create  Your  Own  Simulation</h2><p>
+ Evolve  5.0 allows  the  simulator  to  be  customized.  Several  features  work  together  to  allow  this  to  happen.  Such  as <i>Protected  Code  Blocks</i>, <i>Protected  Instructions</i>, <i>Strain  Profiles</i>, <i>Instruction  Mode  Flags</i>.
+</p>
+<p>
+ In  addition  to  allowing  you,  the  USER,  to  create  your  own  simulation,  these  features  also  protect  simulations  from  future  releases
+ of  the  Evolve  5.0 software.  Any  changes  to  the  simulator  can  be  done  using  Mode  Bits,  or  the  creation  of
+ new  instructions.  Existing  simulation  files  will  not  be  affected  by  such  changes.
+</p>
+<BR><BR><BR><BR><BR><BR><BR><BR>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:11  EST  2023
+</div>
+</body>
+</html>

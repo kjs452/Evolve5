@@ -1,0 +1,12 @@
+;
+; test maximum and minimum data types
+;
+main:
+{
+   minval call
+   maxval call
+   2dup +
+}
+
+minval: { -9223372036854775808 }
+maxval: { 9223372036854775807 }

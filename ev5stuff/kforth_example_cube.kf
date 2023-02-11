@@ -1,0 +1,18 @@
+main:
+{
+  
+    3 cube call
+    99 cube call
+
+   ; this line computes (9^3)^3
+   9 cube call cube call
+
+}
+
+;
+; cube the value on top of the stack
+;
+cube:
+{
+    dup dup * *
+}

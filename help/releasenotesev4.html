@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Release  Notes  for  Evolve4</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> January  14th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<p>
+<ul>
+
+<li><A HREF="#TOC1"> Release  Notes  for  Evolve4</A></li>
+
+<p>
+<ul>
+
+<li><A HREF="#TOC2"> About</A></li>
+
+<li><A HREF="#TOC3"> Modes</A></li>
+
+<li><A HREF="#TOC4"> MAKE-BARRIER  &amp;  SPAWN</A></li>
+
+<li><A HREF="#TOC5"> Files</A></li>
+
+<p>
+<ul>
+
+<li><A HREF="#TOC6"> Seed  Files</A></li>
+
+<li><A HREF="#TOC7"> Terrain  Files</A></li>
+
+<li><A HREF="#TOC8"> Kforth  Program  Files</A></li>
+
+</ul>
+</p>
+
+<li><A HREF="#TOC9"> Not  Implemented</A></li>
+
+<li><A HREF="#TOC10"> Tips  and  Tricks</A></li>
+
+<li><A HREF="#TOC11"> Sandboxed  Application</A></li>
+
+</ul>
+</p>
+
+</ul>
+</p>
+<A NAME="TOC1"></A><h1> Release  Notes  for  Evolve4</h1><A NAME="TOC2"></A><h1> About</h1><p>
+ If  you  downloaded <b>&#x27;Evolve4&#x27;</b> from  the  app  store,  these  notes  cover  the  differences  between  the  software  and  the  documentation.
+</p>
+<CENTER><IMG  SRC="rn_about.jpg"></CENTER><A NAME="TOC3"></A><h1> Modes</h1><p>
+ This  section  explains  some  of  the  mode  fields.  If  you  are  having  problems  getting  a  simulation  to  work  it  could
+ be  because  of  these  settings.  I  recommend  good  settings  to  use.
+</p>
+<CENTER><IMG  SRC="rn_modes.jpg"></CENTER><ul>
+<li>
+<b> Diagonal  Mode:</b><br> 0  or  1.  When  diagonal  mode  is  0,  the  creatures  are  constrained  to  up-down-left-right  connectivity.  When  mode  is  1,
+ then  any  of  the  8  directions  is  sufficient  for  connectivity.  This  setting  affects <tt>ROTATE</tt> too.  0=90  degree  units,  1=45  degree
+ units.  I  recommend  keeping  this  value  at <b>1</b>.
+</li><br>
+
+<li>
+<b> Bones  Mode:</b><br> 0  or  1.  Keep  1.
+</li><br>
+
+<li>
+<b> Eat  Mode:</b><br> The  mode  flag  documentation  is  accurate.  I  highly  recommend  using <b>640</b> for  good  sims.
+</li><br>
+
+<li>
+<b> Strain  Visibility:</b><br> This  has  nothing  to  do  with  strain  visibility.  This  number  forces  the  organisms  to  never  exceed  this  many  cells.
+ A  value  of  0  turns  off  this  limit.  I  recommend  using  numbers  between <b>10</b> and <b>30</b>.  Otherwise  you  may
+ end  up  with  giant  blob  creatures.
+</li><br>
+
+<li>
+<b> MAKE-SPORE  mode:</b><br> This  is  not  a  mode  bit  field.  It  is  the  minimum  number  of  energy  units  required  to  make  a
+ spore  with  the <tt>MAKE-SPORE</tt> instruction.  I  recommend  setting  playing  with  these  values: <b>1</b>, <b>10</b> and <b>100</b> with  various  level
+ of  energy  in  the  universe.
+</li><br>
+
+<li>
+<b> GROW  mode:</b><br> This  is  not  a  mode  bit  field.  It  is  the  minimum  number  of  energy  units  required  to  grow  a
+ new  cell  with  the <tt>GROW</tt> instruction.  I  recommend  setting  playing  with  these  values: <b>1</b>, <b>10</b> and <b>100</b> with  various
+ level  of  energy  in  the  universe.
+</li><br>
+</ul><p>
+ The  rest  of  the  mode  fields  are  more  or  less  accurate  with  the  documentation.  However  none  of  the  interups  are
+ working  yet.
+</p>
+<HR>
+<BR><BR><A NAME="TOC4"></A><h1> MAKE-BARRIER  &amp;  SPAWN</h1><p>
+ For  most  of  your  simulations  you  will  want  to <b>protect</b> the <tt>MAKE-BARRIER</tt> and <tt>SPAWN</tt> instructions.  Otherwise  you  will  see  a
+ lot  of  cluttered  simulations  with  unwanted  barrier  blocks.
+</p>
+<p>
+ The <tt>SPAWN</tt> instruction  does  not  mutate  the  program.  It  should  be  protected  in  most  simulations,  otherwise  evolution  may  stumble  upon
+ replication  using  SPAWN,  and  then  evolution  would  stop.
+</p>
+<CENTER><IMG  SRC="rn_spawn.jpg"></CENTER><p>
+ The  easiest  thing  to  do  is  modify  the &#x27;Default&#x27; strain  profile.  But  you  can  also  modify  your  simulation  after  it
+ has  been  created.
+</p>
+<HR>
+<BR><BR><A NAME="TOC5"></A><h1> Files</h1><p>
+ The  application  comes  with  a  bunch  of  resource  files  in  the  directory  called ev5stuff&#x27;.
+</p>
+<p>
+ This  directory  will  be  somewhere  like  this:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+/Applications/Evolve4.app/Contents/Resources/ev5stuff/
+</PRE></TD></TABLE></CENTER>
+<p>
+ This  explains  the  files  provided:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+-rwxr-xr-x@  1 jkj  staff      2095 Jan  8  2007 cmove.kf
+-rw-r--r--   1 jkj  staff    125954 Dec 30 11:15 evolve5rc.txt
+-rw-r--r--@  1 jkj  staff      1984 Nov 28 08:34 evolved_shooter_seed.kf
+-rw-r--r--   1 jkj  staff      2152 Dec  1 20:20 evolved_shooter_seed2.kf
+-rw-r--r--   1 jkj  staff      3316 Dec 18 10:01 kforth_bubble.kf
+-rwxr-xr-x@  1 jkj  staff       124 Mar  2  2006 kforth_example_add.kf
+-rwxr-xr-x   1 jkj  staff       170 Jun  7  2006 kforth_example_bigints.kf
+-rwxr-xr-x   1 jkj  staff       191 Mar  5  2006 kforth_example_cube.kf
+-rwxr-xr-x   1 jkj  staff       169 Feb 15  2006 kforth_example_factorial.kf
+-rwxr-xr-x   1 jkj  staff       234 Jun  7  2006 kforth_example_factorial_loop.kf
+-rwxr-xr-x   1 jkj  staff       230 Jan 31  2006 kforth_example_foobar.kf
+-rwxr-xr-x   1 jkj  staff       263 May  5  2006 kforth_example_goo.kf
+-rwxr-xr-x   1 jkj  staff        83 May 26  2006 kforth_example_infloop.kf
+-rwxr-xr-x   1 jkj  staff       220 Feb 12  2006 kforth_example_junk.kf
+-rwxr-xr-x   1 jkj  staff       220 Feb 13  2006 kforth_example_junk2.kf
+-rwxr-xr-x   1 jkj  staff        18 May 26  2006 kforth_example_mul.kf
+-rwxr-xr-x   1 jkj  staff       121 Jan  7  2007 kforth_example_mycall.kf
+-rwxr-xr-x   1 jkj  staff       114 Jan  2  2007 kforth_example_myfirstprog.kf
+-rwxr-xr-x   1 jkj  staff       278 Jan  7  2007 kforth_example_myif.kf
+-rwxr-xr-x   1 jkj  staff       437 Jun 12  2006 kforth_example_pack.kf
+-rwxr-xr-x   1 jkj  staff       547 Jan  7  2007 kforth_example_repeat.kf
+-rwxr-xr-x   1 jkj  staff      2327 Jun 17  2006 kforth_example_saveregs.kf
+-rwxr-xr-x   1 jkj  staff       193 Feb 15  2006 kforth_example_simple.kf
+-rwxr-xr-x   1 jkj  staff       124 May 12  2006 kforth_example_small.kf
+-rwxr-xr-x   1 jkj  staff       172 May 29  2006 kforth_example_table.kf
+-rw-r--r--@  1 jkj  staff      2685 Oct  6 12:13 nibbler.kf
+-rw-r--r--   1 jkj  staff      2687 Oct  6 00:01 nibbler2.kf
+-rw-r--r--   1 jkj  staff        79 Nov 15 11:33 nullseed.kf
+-rwxr-xr-x   1 jkj  staff      1733 Sep 30 09:35 seed.kf
+-rw-r--r--   1 jkj  staff      1628 Sep 30 08:16 seed2.kf
+-rw-r--r--   1 jkj  staff        79 Nov 15 11:33 seed_halt.kf
+-rw-r--r--@  1 jkj  staff      2160 Dec 11 03:45 seed_shoot.kf
+-rw-r--r--   1 jkj  staff      2201 Nov 15 16:50 seed_shoot2.kf
+-rw-r--r--   1 jkj  staff      2101 Nov 16 20:19 seed_shoot4.kf
+-rw-r--r--   1 jkj  staff      2160 Dec 11 03:45 shoot.kf
+-rw-r--r--   1 jkj  staff      2201 Nov 15 16:50 shoot2.kf
+-rw-r--r--@  1 jkj  staff      2293 Dec 23 12:36 shoot3.kf
+-rw-r--r--   1 jkj  staff      2101 Nov 16 20:19 shoot4.kf
+-rw-r--r--@  1 jkj  staff    485059 Nov 23 09:33 terrain_f.txt
+-rw-r--r--@  1 jkj  staff    143698 Dec 10 11:07 terrain_field.txt
+-rw-r--r--@  1 jkj  staff  10124297 Dec  1 20:39 terrain_hand.txt
+-rw-r--r--   1 jkj  staff    288761 Nov 22 19:19 terrain_maze.txt
+-rw-r--r--   1 jkj  staff    167400 Nov 23 08:31 terrain_mazec.txt
+-rw-r--r--@  1 jkj  staff    244421 Nov 22 17:58 terrain_perlin1.txt
+-rw-r--r--@  1 jkj  staff    256358 Nov 22 17:58 terrain_perlin2.txt
+-rw-r--r--   1 jkj  staff    262281 Nov 22 17:58 terrain_perlin3.txt
+-rw-r--r--@  1 jkj  staff    255703 Nov 22 17:58 terrain_perlin4.txt
+-rw-r--r--   1 jkj  staff    236806 Nov 22 19:10 terrain_world.txt
+-rw-r--r--   1 jkj  staff      4867 Nov 28 14:27 towers_of_hanoi.kf
+-rw-r--r--   1 jkj  staff      5804 Dec 23 17:55 utank.kf
+</PRE></TD></TABLE></CENTER>
+<p>
+ These  are  all  text  files  you  may  look  at.
+</p>
+<A NAME="TOC6"></A><h2> Seed  Files</h2><p>
+ The  files  precceeded  by <b>&#x27;seed&#x27;</b> can  be  used  to  overlay  some  interesting  terrain  for  your  new  simulations.  I  recommend <b>&#x27;seed.kf&#x27;</b> for  a  good  simulation.
+</p>
+<A NAME="TOC7"></A><h2> Terrain  Files</h2><p>
+ The  files  precceeded  by <b>&#x27;terrain&#x27;</b> can  be  used  to  overlay  some  interesting  terrain  for  your  new  simulations.
+</p>
+<A NAME="TOC8"></A><h2> Kforth  Program  Files</h2><p>
+ Files  that  begin  with <b>&#x27;kforth&#x27;</b> can  be  used  in  the  kforth  interpreter.  Actually  any  kforth  program  will  compile  in  the
+ kforth  interpreter.  These  particilar  files  demonstrate  different  features  of  kforth.
+</p>
+<A NAME="TOC9"></A><h1> Not  Implemented</h1><p>
+ This  is  list  of  features  that  are  not  implemented  yet:
+</p>
+<ul>
+<li>
+<b> Interrupts</b> -  ability  to  configure  interrupts  modes  bits
+</li><br>
+
+<li>
+<b> MOUSE-POS</b> -  ability  to  use  the  right  click  tool &#x27;mouse-pos&#x27; to  set  a  mouse  position
+</li><br>
+
+<li>
+<b> MOVE  ORGANISM</b> -  the  right  click  tool &#x27;move  organism&#x27;
+</li><br>
+
+<li>
+<b>Tweak  Energy</b> -  the  right  click  tool &#x27;tweak  energy&#x27;
+</li><br>
+
+<li>
+<b>Edit  Organism</b> -  kool  new  feature  where  can  edit  the  organism  from  the  View  Organism  Dialog
+</li><br>
+
+<li>
+<b> Strand  Length</b> -  mutation  setting.  change  hard  coded  value  to  allow  user  changeable.  (Strand  Length  is  fixed  at <b>10</b> right  now)
+</li><br>
+
+<li>
+<b> SAY  instruction</b> -  need  to  implement  the  SAY  instruction
+</li><br>
+
+<li>
+<b> READ/WRITE  instructions</b> -  need  to  implement  these  instructions
+</li><br>
+</ul><A NAME="TOC10"></A><h1> Tips  and  Tricks</h1><p>
+ Here  are  things  to  help  with  using  the  simulator  that  may  not  be  obvious  from  the  documentation.
+</p>
+<ul>
+<li>
+<b> Towers  of  Hanoi  Example</b> -  Make  sure  MAKE-SPORE  mode  is  set  to  1,  otherwise  it  cannot  create  spores.
+</li><br>
+
+<li>
+<b> CBEM  checkbox</b> -  The  CBEM  checkbox  (on  the  New  Universe  Dialog)  stands  for  cell  based  energy  model.  Leave  this  unchecked.  It
+ is  a  feature  i  am  removing.
+</li><br>
+
+<li>
+<b> Max  Code  Blocks</b> -  (On  the <A HREF="simulation_options_dialog.html">mutations  tab</A>)  The  default  of  100  might  be  too  large.  I  recommend  a  smaller  value  like
+<b>20</b> or <b>30</b>.  It  keeps  the  size  of  the  evolved  code  down.  Which  means  mutations  act  on  a  smaller
+ area  size  resulting  in  more  mutations  that &quot;do  something&quot; and  less  junk  code.
+</li><br>
+
+<li>
+<b> Deletion  Mutation  Rate</b> -  (On  the <A HREF="simulation_options_dialog.html">mutations  tab</A>)  The  default  of  6.0 %  might  be  too  high.  I  recommend  a  smaller  value
+ like <b>4.0 %</b> to <b>4.5 %</b>.  It&#x27;s  not  a  big  deal,  but  i  feel  it  keeps  the  genome  from  shrinking  too
+ fast.
+</li><br>
+</ul><A NAME="TOC11"></A><h1> Sandboxed  Application</h1><p>
+ I  had  to  enable &quot;sandbox&quot; mode  for  Evolve  in  the  app  store.  This  is  good,  as  the  user  is  in
+ control  of  what  the  application  does.  Only  files  that  the  user  explicitly  selects  can  be  read/written.  I  am  still  learning
+ the  rules  and  trying  to  make  the  application  smoother  to  use  in  this  mode.  Expect  some  clumsyness  when  selecting  files
+ and  such.
+</p>
+<p>
+ If  you  get  an  error  about  not  being  able  to  read  a  file,  then  just  use  the <b>[BROWSE]</b> button  to
+ reselect  the  file  again.
+</p>
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:10  EST  2023
+</div>
+</body>
+</html>

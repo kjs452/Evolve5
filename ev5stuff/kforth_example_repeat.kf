@@ -1,0 +1,42 @@
+;
+; 'repeat' will call a function 'n' times
+;
+; Example of a repeat function. Repeat is called with
+; an absolute code block number and a count.
+;
+; In this example, repeat will call 'myfunc' 100 times.
+;
+
+main:
+{
+	100 myfunc repeat call
+}
+
+
+;
+; add '1968' to R0 and store back in R0.
+;
+myfunc:
+{
+   R0 1968 + R0!
+}
+
+;
+; (n cb -- )
+;	Call 'cb' n times. If n is less than or equal to 0, do nothing
+;
+repeat:
+{
+	swap
+	{
+		dup 0 <= ?exit
+
+		{
+			swap dup call swap
+			1- dup ?loop
+		} call
+	} call
+
+	2pop
+}
+

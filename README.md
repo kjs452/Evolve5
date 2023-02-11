@@ -1,2 +1,3 @@
 # Evolve5
-Evolve 5.0 GUI
+Contains the MacOS GUI program. Xcode, Swift UI
+

@@ -1,0 +1,11 @@
+main:
+{
+   2007 1968 - R1!
+   findx call R5!
+   R1 R5 + R9!
+}
+
+findx:
+{
+   98 dup * 311 dup * + sqrt
+}

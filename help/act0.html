@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Activity  0:  Basic  Simulation</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> January  14th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Activity  0:  Basic  Simulation</h1><p>
+ You  can  use  the  following  parameters  for  a  good  simulation.
+</p>
+<p>
+<b> Energy:</b> Use  smaller  amounts  of  energy  to  reduce  the  overall  population  that  will  be  reached.  You  will  want  to  adjust
+ the  size  of  the  simulation  to  the  performance  of  your  computer  for  best  results.  E.g.,  If  4,000  organisms  is  too
+ slow,  reduce  energy  until  you  only  have  2,000  organisms.
+</p>
+<CENTER><IMG BORDER=1 SRC="start3.jpg"></CENTER><p>
+ Make  sure  to  protect  the <tt>MAKE-BARRIER</tt> and <tt>SPAWN</tt> instructions,  otherwise  you  will  see  lots  of  random  barrier  blocks  created.  (And
+ SPAWN  will  could  stop  evolution  since  it  does  not  mutate).
+</p>
+<CENTER><IMG BORDER=1 SRC="act0prot.jpg"></CENTER><p>
+ As  shipped  the <b>Default</b> strain  profile  needs  to  be  tweaked.  Start  with  the  following  mode  settings.  These  are  good  mode
+ settings  to  use.  Highlighted  are  the  main  ones  you  might  want  to  tweak:
+</p>
+<p>
+<b> Strain  Visibility</b> is  really  the  maximum  number  of  cells  that  an  organism  can  grow. <b>0</b> turns  off  the  limit.
+</p>
+<p>
+<b> MAKE-SPORE  Mode</b> is  the  number  of  energy  units  required  to  make  a  spore.
+</p>
+<p>
+<b> GROW  Mode</b> is  the  number  of  energy  units  required  to  make  grow  a  new  cell.
+</p>
+<CENTER><IMG BORDER=1 SRC="act0modes.jpg"></CENTER><p>
+ These  mutations  settings  are  good.
+</p>
+<CENTER><IMG BORDER=1 SRC="act0mut.jpg"></CENTER><BR><BR><BR><BR>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:09  EST  2023
+</div>
+</body>
+</html>

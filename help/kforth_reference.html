@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  5.0 -  KFORTH  Instruction  Reference</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> January  16th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h2> KFORTH  INSTRUCTIONS</h2><UL><LI><A HREF="#ref_call"><B>call</B></A></LI><LI><A HREF="#ref_if"><B>if</B></A></LI><LI><A HREF="#ref_ifelse"><B>ifelse</B></A></LI><LI><A HREF="#ref_?loop"><B>?loop</B></A></LI><LI><A HREF="#ref_?exit"><B>?exit</B></A></LI><LI><A HREF="#ref_pop"><B>pop</B></A></LI><LI><A HREF="#ref_dup"><B>dup</B></A></LI><LI><A HREF="#ref_swap"><B>swap</B></A></LI><LI><A HREF="#ref_over"><B>over</B></A></LI><LI><A HREF="#ref_rot"><B>rot</B></A></LI><LI><A HREF="#ref_?dup"><B>?dup</B></A></LI><LI><A HREF="#ref_-rot"><B>-rot</B></A></LI><LI><A HREF="#ref_2swap"><B>2swap</B></A></LI><LI><A HREF="#ref_2over"><B>2over</B></A></LI><LI><A HREF="#ref_2dup"><B>2dup</B></A></LI><LI><A HREF="#ref_2pop"><B>2pop</B></A></LI><LI><A HREF="#ref_nip"><B>nip</B></A></LI><LI><A HREF="#ref_tuck"><B>tuck</B></A></LI><LI><A HREF="#ref_1+"><B>1+</B></A></LI><LI><A HREF="#ref_1-"><B>1-</B></A></LI><LI><A HREF="#ref_2+"><B>2+</B></A></LI><LI><A HREF="#ref_2-"><B>2-</B></A></LI><LI><A HREF="#ref_2/"><B>2/</B></A></LI><LI><A HREF="#ref_2*"><B>2*</B></A></LI><LI><A HREF="#ref_abs"><B>abs</B></A></LI><LI><A HREF="#ref_sqrt"><B>sqrt</B></A></LI><LI><A HREF="#ref_+"><B>+</B></A></LI><LI><A HREF="#ref_-"><B>-</B></A></LI><LI><A HREF="#ref_*"><B>*</B></A></LI><LI><A HREF="#ref_/"><B>/</B></A></LI><LI><A HREF="#ref_mod"><B>mod</B></A></LI><LI><A HREF="#ref_/mod"><B>/mod</B></A></LI><LI><A HREF="#ref_negate"><B>negate</B></A></LI><LI><A HREF="#ref_2negate"><B>2negate</B></A></LI><LI><A HREF="#ref_<<"><B><<</B></A></LI><LI><A HREF="#ref_>>"><B>>></B></A></LI><LI><A HREF="#ref_="><B>=</B></A></LI><LI><A HREF="#ref_<>"><B><></B></A></LI><LI><A HREF="#ref_<"><B><</B></A></LI><LI><A HREF="#ref_>"><B>></B></A></LI><LI><A HREF="#ref_<="><B><=</B></A></LI><LI><A HREF="#ref_>="><B>>=</B></A></LI><LI><A HREF="#ref_0="><B>0=</B></A></LI><LI><A HREF="#ref_or"><B>or</B></A></LI><LI><A HREF="#ref_and"><B>and</B></A></LI><LI><A HREF="#ref_not"><B>not</B></A></LI><LI><A HREF="#ref_invert"><B>invert</B></A></LI><LI><A HREF="#ref_xor"><B>xor</B></A></LI><LI><A HREF="#ref_min"><B>min</B></A></LI><LI><A HREF="#ref_max"><B>max</B></A></LI><LI><A HREF="#ref_CB"><B>CB</B></A></LI><LI><A HREF="#ref_R0"><B>R0</B></A></LI><LI><A HREF="#ref_R1"><B>R1</B></A></LI><LI><A HREF="#ref_R2"><B>R2</B></A></LI><LI><A HREF="#ref_R3"><B>R3</B></A></LI><LI><A HREF="#ref_R4"><B>R4</B></A></LI><LI><A HREF="#ref_R5"><B>R5</B></A></LI><LI><A HREF="#ref_R6"><B>R6</B></A></LI><LI><A HREF="#ref_R7"><B>R7</B></A></LI><LI><A HREF="#ref_R8"><B>R8</B></A></LI><LI><A HREF="#ref_R9"><B>R9</B></A></LI><LI><A HREF="#ref_R0!"><B>R0!</B></A></LI><LI><A HREF="#ref_R1!"><B>R1!</B></A></LI><LI><A HREF="#ref_R2!"><B>R2!</B></A></LI><LI><A HREF="#ref_R3!"><B>R3!</B></A></LI><LI><A HREF="#ref_R4!"><B>R4!</B></A></LI><LI><A HREF="#ref_R5!"><B>R5!</B></A></LI><LI><A HREF="#ref_R6!"><B>R6!</B></A></LI><LI><A HREF="#ref_R7!"><B>R7!</B></A></LI><LI><A HREF="#ref_R8!"><B>R8!</B></A></LI><LI><A HREF="#ref_R9!"><B>R9!</B></A></LI><LI><A HREF="#ref_SIGN"><B>SIGN</B></A></LI><LI><A HREF="#ref_PACK2"><B>PACK2</B></A></LI><LI><A HREF="#ref_UNPACK2"><B>UNPACK2</B></A></LI><LI><A HREF="#ref_MAX_INT"><B>MAX_INT</B></A></LI><LI><A HREF="#ref_MIN_INT"><B>MIN_INT</B></A></LI><LI><A HREF="#ref_HALT"><B>HALT</B></A></LI><LI><A HREF="#ref_NOP"><B>NOP</B></A></LI><LI><A HREF="#ref_R0++"><B>R0++</B></A></LI><LI><A HREF="#ref_--R0"><B>--R0</B></A></LI><LI><A HREF="#ref_R1++"><B>R1++</B></A></LI><LI><A HREF="#ref_--R1"><B>--R1</B></A></LI><LI><A HREF="#ref_R2++"><B>R2++</B></A></LI><LI><A HREF="#ref_--R2"><B>--R2</B></A></LI><LI><A HREF="#ref_R3++"><B>R3++</B></A></LI><LI><A HREF="#ref_--R3"><B>--R3</B></A></LI><LI><A HREF="#ref_R4++"><B>R4++</B></A></LI><LI><A HREF="#ref_--R4"><B>--R4</B></A></LI><LI><A HREF="#ref_R5++"><B>R5++</B></A></LI><LI><A HREF="#ref_--R5"><B>--R5</B></A></LI><LI><A HREF="#ref_R6++"><B>R6++</B></A></LI><LI><A HREF="#ref_--R6"><B>--R6</B></A></LI><LI><A HREF="#ref_R7++"><B>R7++</B></A></LI><LI><A HREF="#ref_--R7"><B>--R7</B></A></LI><LI><A HREF="#ref_R8++"><B>R8++</B></A></LI><LI><A HREF="#ref_--R8"><B>--R8</B></A></LI><LI><A HREF="#ref_R9++"><B>R9++</B></A></LI><LI><A HREF="#ref_--R9"><B>--R9</B></A></LI><LI><A HREF="#ref_PEEK"><B>PEEK</B></A></LI><LI><A HREF="#ref_POKE"><B>POKE</B></A></LI><LI><A HREF="#ref_CBLEN"><B>CBLEN</B></A></LI><LI><A HREF="#ref_DSLEN"><B>DSLEN</B></A></LI><LI><A HREF="#ref_CSLEN"><B>CSLEN</B></A></LI><LI><A HREF="#ref_TRAP1"><B>TRAP1</B></A></LI><LI><A HREF="#ref_TRAP2"><B>TRAP2</B></A></LI><LI><A HREF="#ref_TRAP3"><B>TRAP3</B></A></LI><LI><A HREF="#ref_TRAP4"><B>TRAP4</B></A></LI><LI><A HREF="#ref_TRAP5"><B>TRAP5</B></A></LI><LI><A HREF="#ref_TRAP6"><B>TRAP6</B></A></LI><LI><A HREF="#ref_TRAP7"><B>TRAP7</B></A></LI><LI><A HREF="#ref_TRAP8"><B>TRAP8</B></A></LI><LI><A HREF="#ref_TRAP9"><B>TRAP9</B></A></LI><LI><A HREF="#ref_NUMBER"><B>NUMBER</B></A></LI><LI><A HREF="#ref_NUMBER!"><B>NUMBER!</B></A></LI><LI><A HREF="#ref_?NUMBER!"><B>?NUMBER!</B></A></LI><LI><A HREF="#ref_OPCODE"><B>OPCODE</B></A></LI><LI><A HREF="#ref_OPCODE!"><B>OPCODE!</B></A></LI><LI><A HREF="#ref_OPCODE'"><B>OPCODE'</B></A></LI></UL><A NAME="TOC2"></A><h2> KFORTH  INSTRUCTION  REFERENCE</h2><p>
+ Here  are  all  the  core  KFORTH  instructions.  (the  instructions  that  control  organisms/cells  are  listed <A HREF="organisms.html#reference">here</A>).
+</p>
+<p>
+ The  USAGE  column  uses  forth  notation  to  document  these  instructions.  This  notation  attempts  to  show  the  data  stack  before  and
+ after  the  call  to  the  instruction.  For  example,
+</p>
+
+<pre>
+(a b c -- n )
+</pre>
+<p>
+ The  stuff  before <tt>--</tt> is  the  state  of  the  data  stack  before  calling  the  instruction.  And  the  stuff  after <tt>--</tt> is  state  of  the  data  stack  AFTER  this  instruction  finishes.
+</p>
+<p>
+ In  this  example,  the  instruction  takes  three  arguments <b>a</b>, <b>b</b>,  and <b>c</b>.  After  the  instruction  executes  those
+ three  arguments  are  replaced  with  a  single  value <b>n</b> (which  is  the  result).
+</p>
+<CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>INSTRUCTION</B></TD><TD ALIGN=LEFT><B>USAGE</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>DESCRIPTION</B></TD><TR><TD ALIGN=LEFT><B>call</B></TD><TD ALIGN=LEFT>( code-block -- )</TD><TD ALIGN=LEFT>Subroutine  call  to  another  code  block.  The  code  block  number  is  given  by &#x27;code-block&#x27; on  top  of  the  data  stack.
+ If  code  block  is  invalid,  the  request  is  ignored.  In  disassembly  row123  is  code-block  123,  and  so  on.<P></TD><TR><TD ALIGN=LEFT><B>if</B></TD><TD ALIGN=LEFT>( expr code-block -- )</TD><TD ALIGN=LEFT> Removes  two  items  from  top  of  stack.  If <i>expr</i> is  non-zero  then <i>code-block</i> is  called.  Otherwise,  execution  continues  on  the
+ next  instruction.<P></TD><TR><TD ALIGN=LEFT><B>ifelse</B></TD><TD ALIGN=LEFT>( expr true-block false-block -- )</TD><TD ALIGN=LEFT> removes  three  items  from  top  of  stack.  If <i>expr</i> is  non-zero  then  call <i>true-block</i>,  else  call <i>false-block</i>.<P></TD><TR><TD ALIGN=LEFT><B>?loop</B></TD><TD ALIGN=LEFT>( n -- )</TD><TD ALIGN=LEFT> Remove  1  item  from  the  stack.  If  value  is  non-zero  jump  to  the  start  of  the  current  code  block.  Otherwise
+ continue  with  the  next  instruction  after &#x27;?loop&#x27;.<P></TD><TR><TD ALIGN=LEFT><B>?exit</B></TD><TD ALIGN=LEFT>( n -- )</TD><TD ALIGN=LEFT> Remove  1  item  from  the  stack.  If  non-zero  then  exit  current  code  block.<P></TD><TR><TD ALIGN=LEFT><B>pop</B></TD><TD ALIGN=LEFT>( n -- )</TD><TD ALIGN=LEFT> Remove  item  from  stack  and  discard  it.<P></TD><TR><TD ALIGN=LEFT><B>dup</B></TD><TD ALIGN=LEFT>( a -- a a )</TD><TD ALIGN=LEFT> Duplicate  item  on  top  of  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>swap</B></TD><TD ALIGN=LEFT>( a b -- b a )</TD><TD ALIGN=LEFT> Swap  top  two  elements  on  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>over</B></TD><TD ALIGN=LEFT>( a b -- a b a )</TD><TD ALIGN=LEFT> Copy  second  item  from  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>rot</B></TD><TD ALIGN=LEFT>( a b c -- b c a )</TD><TD ALIGN=LEFT> Rotate  third  item  to  top.<P></TD><TR><TD ALIGN=LEFT><B>?dup</B></TD><TD ALIGN=LEFT>( n -- n n | 0 )</TD><TD ALIGN=LEFT> Duplicate  top  element  if  non-zero.<P></TD><TR><TD ALIGN=LEFT><B>-rot</B></TD><TD ALIGN=LEFT>( a b c -- c a b )</TD><TD ALIGN=LEFT> Rotate  top  to  third  position.<P></TD><TR><TD ALIGN=LEFT><B>2swap</B></TD><TD ALIGN=LEFT>( a b c d -- c d a b )</TD><TD ALIGN=LEFT> Swap  pairs.<P></TD><TR><TD ALIGN=LEFT><B>2over</B></TD><TD ALIGN=LEFT>( a b c d -- a b c d a b)</TD><TD ALIGN=LEFT> Leapfrog  pair.<P></TD><TR><TD ALIGN=LEFT><B>2dup</B></TD><TD ALIGN=LEFT>( a b -- a b a b )</TD><TD ALIGN=LEFT> Dupicate  pair.<P></TD><TR><TD ALIGN=LEFT><B>2pop</B></TD><TD ALIGN=LEFT>( a b -- )</TD><TD ALIGN=LEFT> Remove  pair.<P></TD><TR><TD ALIGN=LEFT><B>nip</B></TD><TD ALIGN=LEFT>( a b -- b )</TD><TD ALIGN=LEFT> Remove  2nd  item  from  stack.<P></TD><TR><TD ALIGN=LEFT><B>tuck</B></TD><TD ALIGN=LEFT>( a b -- b a b)</TD><TD ALIGN=LEFT> Copy  top  item  to  third  position.<P></TD><TR><TD ALIGN=LEFT><B>1+</B></TD><TD ALIGN=LEFT>( n -- n+1 )</TD><TD ALIGN=LEFT> Add  1  to  the  item  on  top  of  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>1-</B></TD><TD ALIGN=LEFT>( n -- n-1 )</TD><TD ALIGN=LEFT> Subtract  1  from  item  on  top  of  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>2+</B></TD><TD ALIGN=LEFT>( n -- n+2 )</TD><TD ALIGN=LEFT> Add  2  to  item  on  top  of  the  stack<P></TD><TR><TD ALIGN=LEFT><B>2-</B></TD><TD ALIGN=LEFT>( n -- n-2 )</TD><TD ALIGN=LEFT> Subtract  2  from  the  item  on  top  of  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>2/</B></TD><TD ALIGN=LEFT>( n -- n/2 )</TD><TD ALIGN=LEFT> Half  value.<P></TD><TR><TD ALIGN=LEFT><B>2*</B></TD><TD ALIGN=LEFT>( n -- n*2 )</TD><TD ALIGN=LEFT> Double  value.<P></TD><TR><TD ALIGN=LEFT><B>abs</B></TD><TD ALIGN=LEFT>( n -- abs(n) )</TD><TD ALIGN=LEFT> Absolute  value  of  n.<P></TD><TR><TD ALIGN=LEFT><B>sqrt</B></TD><TD ALIGN=LEFT>( n -- sqrt(n) )</TD><TD ALIGN=LEFT> Square  root.  n  must  be  positive.<P></TD><TR><TD ALIGN=LEFT><B>+</B></TD><TD ALIGN=LEFT>( a b -- a+b )</TD><TD ALIGN=LEFT> Addition  top  to  elements  on  stack.<P></TD><TR><TD ALIGN=LEFT><B>-</B></TD><TD ALIGN=LEFT>( a b -- a-b )</TD><TD ALIGN=LEFT> Subtraction  first  item  on  stack  from  2nd.<P></TD><TR><TD ALIGN=LEFT><B>*</B></TD><TD ALIGN=LEFT>( a b -- a*b )</TD><TD ALIGN=LEFT> Multiply.<P></TD><TR><TD ALIGN=LEFT><B>/</B></TD><TD ALIGN=LEFT>( a b -- a/b )</TD><TD ALIGN=LEFT> Divide.<P></TD><TR><TD ALIGN=LEFT><B>mod</B></TD><TD ALIGN=LEFT>( a b -- a%b )</TD><TD ALIGN=LEFT> Modulos.<P></TD><TR><TD ALIGN=LEFT><B>/mod</B></TD><TD ALIGN=LEFT>( a b -- a%b a/b )</TD><TD ALIGN=LEFT> Divide  and  modulos.<P></TD><TR><TD ALIGN=LEFT><B>negate</B></TD><TD ALIGN=LEFT>( n -- -n )</TD><TD ALIGN=LEFT> negate  top  item  on  stack.<P></TD><TR><TD ALIGN=LEFT><B>2negate</B></TD><TD ALIGN=LEFT>( a b -- -a -b )</TD><TD ALIGN=LEFT> negate  top  two  items  on  stack.  (useful  for  computing  a &quot;flee&quot; direction  to  evade  something).<P></TD><TR><TD ALIGN=LEFT><B><<</B></TD><TD ALIGN=LEFT>( a b -- a << b )</TD><TD ALIGN=LEFT> Left  shift  a  by  b  bits.  Negative  b  will  perform  right  shift.<P></TD><TR><TD ALIGN=LEFT><B>>></B></TD><TD ALIGN=LEFT>( a b -- a >> b )</TD><TD ALIGN=LEFT> Right  shift  a  by  b  bits.  Negative  b  will  perform  left  shift.<P></TD><TR><TD ALIGN=LEFT><B>=</B></TD><TD ALIGN=LEFT>( a b -- EQ(a,b) )</TD><TD ALIGN=LEFT> Equal  to.<P></TD><TR><TD ALIGN=LEFT><B><></B></TD><TD ALIGN=LEFT>( a b -- NE(a,b) )</TD><TD ALIGN=LEFT> Not  equal  to.<P></TD><TR><TD ALIGN=LEFT><B><</B></TD><TD ALIGN=LEFT>( a b -- LT(a,b) )</TD><TD ALIGN=LEFT> Less  than.<P></TD><TR><TD ALIGN=LEFT><B>></B></TD><TD ALIGN=LEFT>( a b -- GT(a,b) )</TD><TD ALIGN=LEFT> Greater  than.<P></TD><TR><TD ALIGN=LEFT><B><=</B></TD><TD ALIGN=LEFT>( a b -- LE(a,b) )</TD><TD ALIGN=LEFT> Less  than  or  equal  to.<P></TD><TR><TD ALIGN=LEFT><B>>=</B></TD><TD ALIGN=LEFT>( a b -- GE(a,b) )</TD><TD ALIGN=LEFT> Greater  than  or  equal  to.<P></TD><TR><TD ALIGN=LEFT><B>0=</B></TD><TD ALIGN=LEFT>( n -- EQ(n,0) )</TD><TD ALIGN=LEFT> Is  element  on  top  of  the  stack  equal  to  0?<P></TD><TR><TD ALIGN=LEFT><B>or</B></TD><TD ALIGN=LEFT>( a b -- a|b )</TD><TD ALIGN=LEFT> Bitwise  OR.  Can  be  used  as  a  logical  OR  operator  too,  because  KFORTH  boolean  operators  return  1  and  0.<P></TD><TR><TD ALIGN=LEFT><B>and</B></TD><TD ALIGN=LEFT>( a b -- a&b )</TD><TD ALIGN=LEFT> Bitwise  AND.  Can  be  used  a  a  logical  AND  operator  too,  because  KFORTH  boolean  operators  return  1  and  0.<P></TD><TR><TD ALIGN=LEFT><B>not</B></TD><TD ALIGN=LEFT>( n -- !n )</TD><TD ALIGN=LEFT> Logical  NOT.<P></TD><TR><TD ALIGN=LEFT><B>invert</B></TD><TD ALIGN=LEFT>( n -- ~n )</TD><TD ALIGN=LEFT> Invert  bits  (Bitwise  NOT).<P></TD><TR><TD ALIGN=LEFT><B>xor</B></TD><TD ALIGN=LEFT>( a b -- a^b )</TD><TD ALIGN=LEFT> XOR  function.<P></TD><TR><TD ALIGN=LEFT><B>min</B></TD><TD ALIGN=LEFT>( a b -- min(a,b) )</TD><TD ALIGN=LEFT> Minimum  value.<P></TD><TR><TD ALIGN=LEFT><B>max</B></TD><TD ALIGN=LEFT>( a b -- max(a,b) )</TD><TD ALIGN=LEFT> Remove  2  items  from  stack  and  replace  with  maximum  value.<P></TD><TR><TD ALIGN=LEFT><B>CB</B></TD><TD ALIGN=LEFT>( -- CB )</TD><TD ALIGN=LEFT> Pushes  the  current  code  block  number  on  the  data  stack.  Can  be  used  to  implement &quot;relative&quot; code  block  addressing.<P></TD><TR><TD ALIGN=LEFT><B>R0</B></TD><TD ALIGN=LEFT>( -- R0 )</TD><TD ALIGN=LEFT> Pushes  register  R0  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R1</B></TD><TD ALIGN=LEFT>( -- R1 )</TD><TD ALIGN=LEFT> Pushes  register  R1  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R2</B></TD><TD ALIGN=LEFT>( -- R2 )</TD><TD ALIGN=LEFT> Pushes  register  R2  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R3</B></TD><TD ALIGN=LEFT>( -- R3 )</TD><TD ALIGN=LEFT> Pushes  register  R3  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R4</B></TD><TD ALIGN=LEFT>( -- R4 )</TD><TD ALIGN=LEFT> Pushes  register  R4  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R5</B></TD><TD ALIGN=LEFT>( -- R5 )</TD><TD ALIGN=LEFT> Pushes  register  R5  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R6</B></TD><TD ALIGN=LEFT>( -- R6 )</TD><TD ALIGN=LEFT> Pushes  register  R6  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R7</B></TD><TD ALIGN=LEFT>( -- R7 )</TD><TD ALIGN=LEFT> Pushes  register  R7  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R8</B></TD><TD ALIGN=LEFT>( -- R8 )</TD><TD ALIGN=LEFT> Pushes  register  R8  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R9</B></TD><TD ALIGN=LEFT>( -- R9 )</TD><TD ALIGN=LEFT> Pushes  register  R9  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R0!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R0<P></TD><TR><TD ALIGN=LEFT><B>R1!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R1<P></TD><TR><TD ALIGN=LEFT><B>R2!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R2<P></TD><TR><TD ALIGN=LEFT><B>R3!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R3<P></TD><TR><TD ALIGN=LEFT><B>R4!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R4<P></TD><TR><TD ALIGN=LEFT><B>R5!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R5<P></TD><TR><TD ALIGN=LEFT><B>R6!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R6<P></TD><TR><TD ALIGN=LEFT><B>R7!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R7<P></TD><TR><TD ALIGN=LEFT><B>R8!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R8<P></TD><TR><TD ALIGN=LEFT><B>R9!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R9<P></TD><TR><TD ALIGN=LEFT><B>SIGN</B></TD><TD ALIGN=LEFT>( n -- SIGN(n) )</TD><TD ALIGN=LEFT> Compute  sign  of &#x27;n&#x27;.  If  n  is  negative,  SIGN  will  return  -1.  if  n  is  greater  than  0,  SIGN  will
+ return  1.  If  n  is  0,  SIGN  will  return  0.<P></TD><TR><TD ALIGN=LEFT><B>PACK2</B></TD><TD ALIGN=LEFT>( a b -- n )</TD><TD ALIGN=LEFT> Combine  two  8-bit  integers &#x27;a&#x27; and &#x27;b&#x27; into  a  single  16-bit  value &#x27;n&#x27;.<P></TD><TR><TD ALIGN=LEFT><B>UNPACK2</B></TD><TD ALIGN=LEFT>( n -- a b )</TD><TD ALIGN=LEFT> Extract  two  8-bit  integers &#x27;a&#x27; and &#x27;b&#x27; from  the  16-bit  value &#x27;n&#x27;.<P></TD><TR><TD ALIGN=LEFT><B>MAX_INT</B></TD><TD ALIGN=LEFT>( -- max_int )</TD><TD ALIGN=LEFT> Push  the  maximum  signed  integer  on  the  data  stack.  Which  is  32767.<P></TD><TR><TD ALIGN=LEFT><B>MIN_INT</B></TD><TD ALIGN=LEFT>( -- min_int )</TD><TD ALIGN=LEFT> Push  the  minimum  signed  integer  on  the  data  stack.  Which  is  -32768.<P></TD><TR><TD ALIGN=LEFT><B>HALT</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> End  the  current  program.  This  means  the  cell  will  be  flagged  as  Dead  (shows  up  red).<P></TD><TR><TD ALIGN=LEFT><B>NOP</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> No  operation.  Do  nothing.<P></TD><TR><TD ALIGN=LEFT><B>R0++</B></TD><TD ALIGN=LEFT>(-- R0++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R0.  Returns  the  value  of  R0  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R0</B></TD><TD ALIGN=LEFT>(-- --R0)</TD><TD ALIGN=LEFT> Decrements  R0  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R1++</B></TD><TD ALIGN=LEFT>(-- r1++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R1.  Returns  the  value  of  R1  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R1</B></TD><TD ALIGN=LEFT>(-- --r1)</TD><TD ALIGN=LEFT> Decrements  R1  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R2++</B></TD><TD ALIGN=LEFT>(-- r2++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R2.  Returns  the  value  of  R2  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R2</B></TD><TD ALIGN=LEFT>(-- --r2)</TD><TD ALIGN=LEFT> Decrements  R2  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R3++</B></TD><TD ALIGN=LEFT>(-- r3++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R3.  Returns  the  value  of  R3  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R3</B></TD><TD ALIGN=LEFT>(-- --r3)</TD><TD ALIGN=LEFT> Decrements  R3  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R4++</B></TD><TD ALIGN=LEFT>(-- r4++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R4.  Returns  the  value  of  R4  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R4</B></TD><TD ALIGN=LEFT>(-- --r4)</TD><TD ALIGN=LEFT> Decrements  R4  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R5++</B></TD><TD ALIGN=LEFT>(-- r5++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R5.  Returns  the  value  of  R5  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R5</B></TD><TD ALIGN=LEFT>(-- --r5)</TD><TD ALIGN=LEFT> Decrements  R5  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R6++</B></TD><TD ALIGN=LEFT>(-- r6++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R6.  Returns  the  value  of  R6  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R6</B></TD><TD ALIGN=LEFT>(-- --r6)</TD><TD ALIGN=LEFT> Decrements  R6  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R7++</B></TD><TD ALIGN=LEFT>(-- r7++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R7.  Returns  the  value  of  R7  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R7</B></TD><TD ALIGN=LEFT>(-- --r7)</TD><TD ALIGN=LEFT> Decrements  R7  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R8++</B></TD><TD ALIGN=LEFT>(-- r8++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R8.  Returns  the  value  of  R8  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R8</B></TD><TD ALIGN=LEFT>(-- --r8)</TD><TD ALIGN=LEFT> Decrements  R8  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R9++</B></TD><TD ALIGN=LEFT>(-- r9++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R9.  Returns  the  value  of  R9  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R9</B></TD><TD ALIGN=LEFT>(-- --r9)</TD><TD ALIGN=LEFT> Decrements  R9  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>PEEK</B></TD><TD ALIGN=LEFT>(n -- value)</TD><TD ALIGN=LEFT> Get  the  n&#x27;th  data  stack  item  from  bottom,  or  -n&#x27;th  item  from  top.  If &#x27;n&#x27; is  invalid  (too  big  or
+ too  small),  then  return  -1.  If &#x27;n&#x27; is  valid  and  positive  then  return  the  n&#x27;th  item  from  the  bottom  (0-based).
+ If &#x27;n&#x27; is  valid  and  negative  then  return  the  n&#x27;th  item  from  the  top  (-1-based). &#x27;n&#x27; is  relative  to  the
+ state  of  the  stack  after &#x27;n&#x27; has  been  removed  by  this  instruction.<P></TD><TR><TD ALIGN=LEFT><B>POKE</B></TD><TD ALIGN=LEFT>(value n --)</TD><TD ALIGN=LEFT> If &#x27;n&#x27; is  invalid  (negative  or  too  big),  then  don&#x27;t  set  anything.  If &#x27;n&#x27; is  valid  and  positive  then  set
+ the  n&#x27;th  item  from  the  bottom  (0-based).  If &#x27;n&#x27; is  valid  and  negative  then  set  the  n&#x27;th  item  from  the
+ top  (-1-based). &#x27;n&#x27; is  relative  to  the  state  of  the  stack  after &#x27;n&#x27; and &#x27;value&#x27; have  been  removed  by  this
+ instruction.<P></TD><TR><TD ALIGN=LEFT><B>CBLEN</B></TD><TD ALIGN=LEFT>(cb -- len)</TD><TD ALIGN=LEFT> Returns  the  length  of  a  code  block.  The  code  block  number  to  use  is  given  by &#x27;cb&#x27;.<P></TD><TR><TD ALIGN=LEFT><B>DSLEN</B></TD><TD ALIGN=LEFT>( -- len)</TD><TD ALIGN=LEFT> This  instruction  returns  how  many  data  values  are  pushed  onto  the  data  stack  (excludeding &#x27;len&#x27;).<P></TD><TR><TD ALIGN=LEFT><B>CSLEN</B></TD><TD ALIGN=LEFT>( -- len)</TD><TD ALIGN=LEFT> Length  of  the  call  stack.<P></TD><TR><TD ALIGN=LEFT><B>TRAP1</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  1.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP2</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  2.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP3</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  3.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP4</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  4.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP5</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  5.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP6</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  6.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP7</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  7.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP8</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  8.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP9</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  9.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>NUMBER</B></TD><TD ALIGN=LEFT>(cb pc -- value)</TD><TD ALIGN=LEFT> Fetch  a  number  from  program  memory  and  push  that  value  onto  the  data  stack.  This  retrieves  a  value  from  the
+ program  memory. &#x27;cb&#x27; is  a  code  block  number, &#x27;pc&#x27; is  the  offset  from  the  start  of  the  code  block.  Note:
+ KFORTH  program  literals  are  signed  15-bit  integers.<P></TD><TR><TD ALIGN=LEFT><B>NUMBER!</B></TD><TD ALIGN=LEFT>(value cb pc -- )</TD><TD ALIGN=LEFT> Write &#x27;value&#x27; to  program  memory  at  location  (cb,  pc). &#x27;cb&#x27; is  the  code  block  number,  and &#x27;pc&#x27; is  the  offset
+ into  the  code  block.  KFORTH  program  literals  are  signed  15-bit  integers,  therefore &#x27;value&#x27; will  be  reduced  to  15-bits.  The  15-bit
+ value  range  is:  -16384  and  16383.<P></TD><TR><TD ALIGN=LEFT><B>?NUMBER!</B></TD><TD ALIGN=LEFT>(value cb pc -- value|0)</TD><TD ALIGN=LEFT> Test  (and  then  set)  the  KFORTH  program  memory  location  given  by  (cb,  pc).  If  it  is  zero  then  update  it
+ to  contain &#x27;value&#x27; and  return  value.  Else  return  0  and  leave  location  (cb,pc)  unchanged. &#x27;cb&#x27; is  the  code  block  number,
+ and &#x27;pc&#x27; is  the  offset  into  the  code  block.  KFORTH  program  literals  are  signed  15-bit  integers. &#x27;value&#x27; will  be  reduced
+ to  15-bits.  The  15-bit  value  range  is:  -16384  and  16383.<P></TD><TR><TD ALIGN=LEFT><B>OPCODE</B></TD><TD ALIGN=LEFT>(cb pc -- opcode)</TD><TD ALIGN=LEFT> Fetch  an  opcode  from  program  memory  and  push  its  numeric  code  onto  the  data  stack.  This  retrieves  the  opcode  from
+ the  program  memory, &#x27;cb&#x27; is  a  code  block  number, &#x27;pc&#x27; is  the  offset  from  the  start  of  the  code  block.
+ Opcodes  are  small  integers  between  0  and  ~250.  For  example  the  numeric  code  for  the  instruction &#x27;+&#x27; might  be  75.<P></TD><TR><TD ALIGN=LEFT><B>OPCODE!</B></TD><TD ALIGN=LEFT>(opcode cb pc -- )</TD><TD ALIGN=LEFT> Write  an  opcode  to  program  memory.  This  instruction  writes  code.  it  writes &#x27;opcode&#x27; to  program  memory, &#x27;cb&#x27; is  a  code
+ block  number, &#x27;pc&#x27; is  the  offset  from  the  start  of  the  code  block.  Opcodes  are  small  integers  between  0  and
+ ~250.  For  example  the  numeric  code  for  the  instruction &#x27;+&#x27; might  be  75.<P></TD><TR><TD ALIGN=LEFT><B>OPCODE'</B></TD><TD ALIGN=LEFT>( -- opcode )</TD><TD ALIGN=LEFT> Treat  the  instruction  following  the  OPCODE&#x27; instruction  as  a  literal.  Do  not  execute  the  next  instruction,  rather  return  its  opcode.
+ Execution  continues  with  the  instruction  following  the  next  instruction.  The  next  instructions  opcode  value  will  be  pushed  on  to  the
+ data  stack.  Opcodes  are  small  integers  between  0  and  ~250.  For  example  the  numeric  code  for  the  instruction &#x27;+&#x27; might
+ be  75.<P></TD></TABLE></CENTER><HR>
+<A NAME="ref_call"><H2>call</H2><B>Usage:</B> ( code-block -- )<P> call  subroutine  given  by &#x27;code-block&#x27;<P>Subroutine  call  to  another  code  block.  The  code  block  number  is  given  by &#x27;code-block&#x27; on  top  of  the  data  stack.
+ If  code  block  is  invalid,  the  request  is  ignored.  In  disassembly  row123  is  code-block  123,  and  so  on.<P><ul>
+<li>
+ Un-protected  code  cannot  call  to  protected  code  blocks.
+</li>
+
+<li>
+ This  instruction  is  a  no-op  if &#x27;code-block&#x27; is  invalid.
+</li>
+</ul><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_if"><H2>if</H2><B>Usage:</B> ( expr code-block -- )<P> call  code  block  if  condition<P> Removes  two  items  from  top  of  stack.  If <i>expr</i> is  non-zero  then <i>code-block</i> is  called.  Otherwise,  execution  continues  on  the
+ next  instruction.<P><ul>
+<li>
+ Un-protected  code  cannot  call  to  protected  code  blocks.
+</li>
+
+<li>
+ This  instruction  is  a  no-op  if &#x27;code-block&#x27; is  invalid.
+</li>
+</ul><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_ifelse"><H2>ifelse</H2><B>Usage:</B> ( expr true-block false-block -- )<P> call  code  blocks  if  condition<P> removes  three  items  from  top  of  stack.  If <i>expr</i> is  non-zero  then  call <i>true-block</i>,  else  call <i>false-block</i>.<P><ul>
+<li>
+ Un-protected  code  cannot  call  to  protected  code  blocks.
+</li>
+
+<li>
+ This  instruction  is  a  no-op  if  calling  an  invalid &#x27;true-block&#x27; or &#x27;false-block&#x27;.
+</li>
+</ul><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_?loop"><H2>?loop</H2><B>Usage:</B> ( n -- )<P> loop  back  to  start  of  code  block  if  true<P> Remove  1  item  from  the  stack.  If  value  is  non-zero  jump  to  the  start  of  the  current  code  block.  Otherwise
+ continue  with  the  next  instruction  after &#x27;?loop&#x27;.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_?exit"><H2>?exit</H2><B>Usage:</B> ( n -- )<P> exit  code  block  if  true<P> Remove  1  item  from  the  stack.  If  non-zero  then  exit  current  code  block.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_pop"><H2>pop</H2><B>Usage:</B> ( n -- )<P> Remove  item  from  stack  and  discard  it.<P> Remove  item  from  stack  and  discard  it.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_dup"><H2>dup</H2><B>Usage:</B> ( a -- a a )<P> Duplicate  item  on  top  of  the  stack.<P> Duplicate  item  on  top  of  the  stack.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_swap"><H2>swap</H2><B>Usage:</B> ( a b -- b a )<P> Swap  top  two  elements  on  the  stack.<P> Swap  top  two  elements  on  the  stack.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_over"><H2>over</H2><B>Usage:</B> ( a b -- a b a )<P> Copy  second  item  from  the  stack.<P> Copy  second  item  from  the  stack.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_rot"><H2>rot</H2><B>Usage:</B> ( a b c -- b c a )<P> Rotate  third  item  to  top.<P> Rotate  third  item  to  top.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_?dup"><H2>?dup</H2><B>Usage:</B> ( n -- n n | 0 )<P> Duplicate  top  element  if  non-zero.<P> Duplicate  top  element  if  non-zero.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_-rot"><H2>-rot</H2><B>Usage:</B> ( a b c -- c a b )<P> Rotate  top  to  third  position.<P> Rotate  top  to  third  position.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_2swap"><H2>2swap</H2><B>Usage:</B> ( a b c d -- c d a b )<P> Swap  pairs.<P> Swap  pairs.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_2over"><H2>2over</H2><B>Usage:</B> ( a b c d -- a b c d a b)<P> Leapfrog  pair.<P> Leapfrog  pair.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_2dup"><H2>2dup</H2><B>Usage:</B> ( a b -- a b a b )<P> Dupicate  pair.<P> Dupicate  pair.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_2pop"><H2>2pop</H2><B>Usage:</B> ( a b -- )<P> Remove  pair.<P> Remove  pair.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_nip"><H2>nip</H2><B>Usage:</B> ( a b -- b )<P> Remove  2nd  item  from  stack.<P> Remove  2nd  item  from  stack.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_tuck"><H2>tuck</H2><B>Usage:</B> ( a b -- b a b)<P> Copy  top  item  to  third  position.<P> Copy  top  item  to  third  position.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_1+"><H2>1+</H2><B>Usage:</B> ( n -- n+1 )<P> Add  1  to  the  item  on  top  of  the  stack.<P> Add  1  to  the  item  on  top  of  the  stack.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_1-"><H2>1-</H2><B>Usage:</B> ( n -- n-1 )<P> Subtract  1  from  item  on  top  of  the  stack.<P> Subtract  1  from  item  on  top  of  the  stack.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_2+"><H2>2+</H2><B>Usage:</B> ( n -- n+2 )<P> Add  2  to  item  on  top  of  the  stack<P> Add  2  to  item  on  top  of  the  stack<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_2-"><H2>2-</H2><B>Usage:</B> ( n -- n-2 )<P> Subtract  2  from  the  item  on  top  of  the  stack.<P> Subtract  2  from  the  item  on  top  of  the  stack.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_2/"><H2>2/</H2><B>Usage:</B> ( n -- n/2 )<P> Half  value.<P> Half  value.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_2*"><H2>2*</H2><B>Usage:</B> ( n -- n*2 )<P> Double  value.<P> Double  value.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_abs"><H2>abs</H2><B>Usage:</B> ( n -- abs(n) )<P> Absolute  value  of  n.<P> Absolute  value  of  n.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_sqrt"><H2>sqrt</H2><B>Usage:</B> ( n -- sqrt(n) )<P> Square  root.  n  must  be  positive.<P> Square  root.  n  must  be  positive.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_+"><H2>+</H2><B>Usage:</B> ( a b -- a+b )<P> Addition  top  to  elements  on  stack.<P> Addition  top  to  elements  on  stack.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_-"><H2>-</H2><B>Usage:</B> ( a b -- a-b )<P> Subtraction  first  item  on  stack  from  2nd.<P> Subtraction  first  item  on  stack  from  2nd.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_*"><H2>*</H2><B>Usage:</B> ( a b -- a*b )<P> Multiply.<P> Multiply.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_/"><H2>/</H2><B>Usage:</B> ( a b -- a/b )<P> Divide.<P> Divide.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_mod"><H2>mod</H2><B>Usage:</B> ( a b -- a%b )<P> Modulos.<P> Modulos.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_/mod"><H2>/mod</H2><B>Usage:</B> ( a b -- a%b a/b )<P> Divide  and  modulos.<P> Divide  and  modulos.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_negate"><H2>negate</H2><B>Usage:</B> ( n -- -n )<P> negate  top  item  on  stack.<P> negate  top  item  on  stack.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_2negate"><H2>2negate</H2><B>Usage:</B> ( a b -- -a -b )<P> negate  top  two  items  on  stack.<P> negate  top  two  items  on  stack.  (useful  for  computing  a &quot;flee&quot; direction  to  evade  something).<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_<<"><H2><<</H2><B>Usage:</B> ( a b -- a << b )<P> left  shift<P> Left  shift  a  by  b  bits.  Negative  b  will  perform  right  shift.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_>>"><H2>>></H2><B>Usage:</B> ( a b -- a >> b )<P> right  shift<P> Right  shift  a  by  b  bits.  Negative  b  will  perform  left  shift.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_="><H2>=</H2><B>Usage:</B> ( a b -- EQ(a,b) )<P> Equal  to.<P> Equal  to.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_<>"><H2><></H2><B>Usage:</B> ( a b -- NE(a,b) )<P> Not  equal  to.<P> Not  equal  to.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_<"><H2><</H2><B>Usage:</B> ( a b -- LT(a,b) )<P> Less  than.<P> Less  than.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_>"><H2>></H2><B>Usage:</B> ( a b -- GT(a,b) )<P> Greater  than.<P> Greater  than.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_<="><H2><=</H2><B>Usage:</B> ( a b -- LE(a,b) )<P> Less  than  or  equal  to.<P> Less  than  or  equal  to.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_>="><H2>>=</H2><B>Usage:</B> ( a b -- GE(a,b) )<P> Greater  than  or  equal  to.<P> Greater  than  or  equal  to.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_0="><H2>0=</H2><B>Usage:</B> ( n -- EQ(n,0) )<P> Is  element  on  top  of  the  stack  equal  to  0?<P> Is  element  on  top  of  the  stack  equal  to  0?<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_or"><H2>or</H2><B>Usage:</B> ( a b -- a|b )<P> Bitwise  OR<P> Bitwise  OR.  Can  be  used  as  a  logical  OR  operator  too,  because  KFORTH  boolean  operators  return  1  and  0.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_and"><H2>and</H2><B>Usage:</B> ( a b -- a&b )<P> Bitwise  AND<P> Bitwise  AND.  Can  be  used  a  a  logical  AND  operator  too,  because  KFORTH  boolean  operators  return  1  and  0.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_not"><H2>not</H2><B>Usage:</B> ( n -- !n )<P> Logical  NOT.<P> Logical  NOT.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_invert"><H2>invert</H2><B>Usage:</B> ( n -- ~n )<P> Invert  bits  (Bitwise  NOT).<P> Invert  bits  (Bitwise  NOT).<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_xor"><H2>xor</H2><B>Usage:</B> ( a b -- a^b )<P> XOR  function.<P> XOR  function.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_min"><H2>min</H2><B>Usage:</B> ( a b -- min(a,b) )<P> Minimum  value.<P> Minimum  value.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_max"><H2>max</H2><B>Usage:</B> ( a b -- max(a,b) )<P> maximum  of  top  2  items<P> Remove  2  items  from  stack  and  replace  with  maximum  value.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_CB"><H2>CB</H2><B>Usage:</B> ( -- CB )<P> current  code  block  executing<P> Pushes  the  current  code  block  number  on  the  data  stack.  Can  be  used  to  implement &quot;relative&quot; code  block  addressing.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R0"><H2>R0</H2><B>Usage:</B> ( -- R0 )<P> Register  0<P> Pushes  register  R0  on  the  data  stack<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R1"><H2>R1</H2><B>Usage:</B> ( -- R1 )<P> Register  1<P> Pushes  register  R1  on  the  data  stack<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R2"><H2>R2</H2><B>Usage:</B> ( -- R2 )<P> Register  2<P> Pushes  register  R2  on  the  data  stack<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R3"><H2>R3</H2><B>Usage:</B> ( -- R3 )<P> Register  3<P> Pushes  register  R3  on  the  data  stack<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R4"><H2>R4</H2><B>Usage:</B> ( -- R4 )<P> Register  4<P> Pushes  register  R4  on  the  data  stack<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R5"><H2>R5</H2><B>Usage:</B> ( -- R5 )<P> Register  5<P> Pushes  register  R5  on  the  data  stack<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R6"><H2>R6</H2><B>Usage:</B> ( -- R6 )<P> Register  6<P> Pushes  register  R6  on  the  data  stack<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R7"><H2>R7</H2><B>Usage:</B> ( -- R7 )<P> Register  7<P> Pushes  register  R7  on  the  data  stack<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R8"><H2>R8</H2><B>Usage:</B> ( -- R8 )<P> Register  8<P> Pushes  register  R8  on  the  data  stack<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R9"><H2>R9</H2><B>Usage:</B> ( -- R9 )<P> Register  9<P> Pushes  register  R9  on  the  data  stack<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R0!"><H2>R0!</H2><B>Usage:</B> ( val -- )<P> write  to  register  0<P> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R0<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R1!"><H2>R1!</H2><B>Usage:</B> ( val -- )<P> write  to  register  1<P> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R1<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R2!"><H2>R2!</H2><B>Usage:</B> ( val -- )<P> write  to  register  2<P> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R2<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R3!"><H2>R3!</H2><B>Usage:</B> ( val -- )<P> write  to  register  3<P> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R3<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R4!"><H2>R4!</H2><B>Usage:</B> ( val -- )<P> write  to  register  4<P> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R4<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R5!"><H2>R5!</H2><B>Usage:</B> ( val -- )<P> write  to  register  5<P> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R5<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R6!"><H2>R6!</H2><B>Usage:</B> ( val -- )<P> write  to  register  6<P> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R6<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R7!"><H2>R7!</H2><B>Usage:</B> ( val -- )<P> write  to  register  7<P> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R7<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R8!"><H2>R8!</H2><B>Usage:</B> ( val -- )<P> write  to  register  8<P> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R8<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R9!"><H2>R9!</H2><B>Usage:</B> ( val -- )<P> write  to  register  9<P> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R9<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_SIGN"><H2>SIGN</H2><B>Usage:</B> ( n -- SIGN(n) )<P> sign<P> Compute  sign  of &#x27;n&#x27;.  If  n  is  negative,  SIGN  will  return  -1.  if  n  is  greater  than  0,  SIGN  will
+ return  1.  If  n  is  0,  SIGN  will  return  0.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_PACK2"><H2>PACK2</H2><B>Usage:</B> ( a b -- n )<P> combine  2  8-bit  integers<P> Combine  two  8-bit  integers &#x27;a&#x27; and &#x27;b&#x27; into  a  single  16-bit  value &#x27;n&#x27;.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_UNPACK2"><H2>UNPACK2</H2><B>Usage:</B> ( n -- a b )<P> unpack  2  8-bit  integers<P> Extract  two  8-bit  integers &#x27;a&#x27; and &#x27;b&#x27; from  the  16-bit  value &#x27;n&#x27;.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_MAX_INT"><H2>MAX_INT</H2><B>Usage:</B> ( -- max_int )<P> maximum  integer<P> Push  the  maximum  signed  integer  on  the  data  stack.  Which  is  32767.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_MIN_INT"><H2>MIN_INT</H2><B>Usage:</B> ( -- min_int )<P> minimum  integer<P> Push  the  minimum  signed  integer  on  the  data  stack.  Which  is  -32768.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_HALT"><H2>HALT</H2><B>Usage:</B> ( -- )<P> end  the  current  program<P> End  the  current  program.  This  means  the  cell  will  be  flagged  as  Dead  (shows  up  red).<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_NOP"><H2>NOP</H2><B>Usage:</B> ( -- )<P> no  operation<P> No  operation.  Do  nothing.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R0++"><H2>R0++</H2><B>Usage:</B> (-- R0++)<P> post  increment  R0<P> Post  Increment  the  register  R0.  Returns  the  value  of  R0  before  it  has  been  incremented.<P><P><B>RETURNS:</B> The  value  of  R0  before  incrementing  it  by  1.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_--R0"><H2>--R0</H2><B>Usage:</B> (-- --R0)<P> decrements  R0  by  1,  and  returns  it<P> Decrements  R0  by  1,  and  returns  it.<P><P><B>RETURNS:</B> The  value  of  R0  after  decrementing  it.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R1++"><H2>R1++</H2><B>Usage:</B> (-- r1++)<P> post  increment  R1<P> Post  Increment  the  register  R1.  Returns  the  value  of  R1  before  it  has  been  incremented.<P><P><B>RETURNS:</B> The  value  of  R1  before  incrementing  it  by  1.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_--R1"><H2>--R1</H2><B>Usage:</B> (-- --r1)<P> decrements  R1  by  1,  and  returns  it<P> Decrements  R1  by  1,  and  returns  it.<P><P><B>RETURNS:</B> The  value  of  R1  after  decrementing  it.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R2++"><H2>R2++</H2><B>Usage:</B> (-- r2++)<P> post  increment  R2<P> Post  Increment  the  register  R2.  Returns  the  value  of  R2  before  it  has  been  incremented.<P><P><B>RETURNS:</B> The  value  of  R2  before  incrementing  it  by  1.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_--R2"><H2>--R2</H2><B>Usage:</B> (-- --r2)<P> decrements  R2  by  1,  and  returns  it<P> Decrements  R2  by  1,  and  returns  it.<P><P><B>RETURNS:</B> The  value  of  R2  after  decrementing  it.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R3++"><H2>R3++</H2><B>Usage:</B> (-- r3++)<P> post  increment  R3<P> Post  Increment  the  register  R3.  Returns  the  value  of  R3  before  it  has  been  incremented.<P><P><B>RETURNS:</B> The  value  of  R3  before  incrementing  it  by  1.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_--R3"><H2>--R3</H2><B>Usage:</B> (-- --r3)<P> decrements  R3  by  1,  and  returns  it<P> Decrements  R3  by  1,  and  returns  it.<P><P><B>RETURNS:</B> The  value  of  R3  after  decrementing  it.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R4++"><H2>R4++</H2><B>Usage:</B> (-- r4++)<P> post  increment  R4<P> Post  Increment  the  register  R4.  Returns  the  value  of  R4  before  it  has  been  incremented.<P><P><B>RETURNS:</B> The  value  of  R4  before  incrementing  it  by  1.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_--R4"><H2>--R4</H2><B>Usage:</B> (-- --r4)<P> decrements  R4  by  1,  and  returns  it<P> Decrements  R4  by  1,  and  returns  it.<P><P><B>RETURNS:</B> The  value  of  R4  after  decrementing  it.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R5++"><H2>R5++</H2><B>Usage:</B> (-- r5++)<P> post  increment  R5<P> Post  Increment  the  register  R5.  Returns  the  value  of  R5  before  it  has  been  incremented.<P><P><B>RETURNS:</B> The  value  of  R5  before  incrementing  it  by  1.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_--R5"><H2>--R5</H2><B>Usage:</B> (-- --r5)<P> decrements  R5  by  1,  and  returns  it<P> Decrements  R5  by  1,  and  returns  it.<P><P><B>RETURNS:</B> The  value  of  R5  after  decrementing  it.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R6++"><H2>R6++</H2><B>Usage:</B> (-- r6++)<P> post  increment  R6<P> Post  Increment  the  register  R6.  Returns  the  value  of  R6  before  it  has  been  incremented.<P><P><B>RETURNS:</B> The  value  of  R6  before  incrementing  it  by  1.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_--R6"><H2>--R6</H2><B>Usage:</B> (-- --r6)<P> decrements  R6  by  1,  and  returns  it<P> Decrements  R6  by  1,  and  returns  it.<P><P><B>RETURNS:</B> The  value  of  R6  after  decrementing  it.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R7++"><H2>R7++</H2><B>Usage:</B> (-- r7++)<P> post  increment  R7<P> Post  Increment  the  register  R7.  Returns  the  value  of  R7  before  it  has  been  incremented.<P><P><B>RETURNS:</B> The  value  of  R7  before  incrementing  it  by  1.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_--R7"><H2>--R7</H2><B>Usage:</B> (-- --r7)<P> decrements  R7  by  1,  and  returns  it<P> Decrements  R7  by  1,  and  returns  it.<P><P><B>RETURNS:</B> The  value  of  R7  after  decrementing  it.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R8++"><H2>R8++</H2><B>Usage:</B> (-- r8++)<P> post  increment  R8<P> Post  Increment  the  register  R8.  Returns  the  value  of  R8  before  it  has  been  incremented.<P><P><B>RETURNS:</B> The  value  of  R8  before  incrementing  it  by  1.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_--R8"><H2>--R8</H2><B>Usage:</B> (-- --r8)<P> decrements  R8  by  1,  and  returns  it<P> Decrements  R8  by  1,  and  returns  it.<P><P><B>RETURNS:</B> The  value  of  R8  after  decrementing  it.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_R9++"><H2>R9++</H2><B>Usage:</B> (-- r9++)<P> post  increment  R9<P> Post  Increment  the  register  R9.  Returns  the  value  of  R9  before  it  has  been  incremented.<P><P><B>RETURNS:</B> The  value  of  R9  before  incrementing  it  by  1.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_--R9"><H2>--R9</H2><B>Usage:</B> (-- --r9)<P> decrements  R9  by  1,  and  returns  it<P> Decrements  R9  by  1,  and  returns  it.<P><P><B>RETURNS:</B> The  value  of  R9  after  decrementing  it.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_PEEK"><H2>PEEK</H2><B>Usage:</B> (n -- value)<P> get  the  n&#x27;th  data  stack  item  from  bottom,  or  -n&#x27;th  item  from  top<P> Get  the  n&#x27;th  data  stack  item  from  bottom,  or  -n&#x27;th  item  from  top.  If &#x27;n&#x27; is  invalid  (too  big  or
+ too  small),  then  return  -1.  If &#x27;n&#x27; is  valid  and  positive  then  return  the  n&#x27;th  item  from  the  bottom  (0-based).
+ If &#x27;n&#x27; is  valid  and  negative  then  return  the  n&#x27;th  item  from  the  top  (-1-based). &#x27;n&#x27; is  relative  to  the
+ state  of  the  stack  after &#x27;n&#x27; has  been  removed  by  this  instruction.<P><p>
+ The  only  valid  positive  values  if &#x27;n&#x27; are:  0  up  to  the  current  stack  size  minus  1.  0  &lt;=  n
+ &lt; stack-size-1.
+</p>
+<p>
+ The  valid  negative  values  if &#x27;n&#x27; are:  -1  down  to  the  minus  current  stack  size.  -(stack-size)  &lt;=  n  &lt;=  -1.
+</p>
+<P><B>RETURNS:</B> Returns  the  value  of  n&#x27;th  stack  item.  If &#x27;n&#x27; is  invalid  (negative  or  too  big),  then  return  -1.  If &#x27;n&#x27; is  valid  and  positive  then  return  the  n&#x27;th  item  from  the  bottom  (0-based).  If &#x27;n&#x27; is  valid  and  negative  then
+ return  the  n&#x27;th  item  from  the  top  (-1-based).<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_POKE"><H2>POKE</H2><B>Usage:</B> (value n --)<P> set  the  n&#x27;th  data  stack  item  from  bottom,  or  -n&#x27;th  item  from  top<P> If &#x27;n&#x27; is  invalid  (negative  or  too  big),  then  don&#x27;t  set  anything.  If &#x27;n&#x27; is  valid  and  positive  then  set
+ the  n&#x27;th  item  from  the  bottom  (0-based).  If &#x27;n&#x27; is  valid  and  negative  then  set  the  n&#x27;th  item  from  the
+ top  (-1-based). &#x27;n&#x27; is  relative  to  the  state  of  the  stack  after &#x27;n&#x27; and &#x27;value&#x27; have  been  removed  by  this
+ instruction.<P><p>
+ The  only  valid  positive  values  if &#x27;n&#x27; are:  0  up  to  the  current  stack  size  minus  1.  0  &lt;=  n
+ &lt; stack-size-1.
+</p>
+<p>
+ The  valid  negative  values  if &#x27;n&#x27; are:  -1  down  to  the  minus  current  stack  size.  -(stack-size)  &lt;=  n  &lt;=  -1.
+</p>
+<P><B>RETURNS:</B> Returns  nothing.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_CBLEN"><H2>CBLEN</H2><B>Usage:</B> (cb -- len)<P> return  the  length  of  codeblock &#x27;cb&#x27;<P> Returns  the  length  of  a  code  block.  The  code  block  number  to  use  is  given  by &#x27;cb&#x27;.<P><ul>
+<li>
+ Un-protected  code  cannot  query  the  length  of  a  protected  code  block.  returns  -1
+</li>
+</ul><P><B>RETURNS:</B>Returns  length  of  code  block.  -1  is  returned  if  the  code  block  is  invalid.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_DSLEN"><H2>DSLEN</H2><B>Usage:</B> ( -- len)<P> return  the  length  of  data  stack<P> This  instruction  returns  how  many  data  values  are  pushed  onto  the  data  stack  (excludeding &#x27;len&#x27;).<P><P><B>RETURNS:</B> Returns  length  of  data  stack  (before  the &#x27;len&#x27; was  pushed).<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_CSLEN"><H2>CSLEN</H2><B>Usage:</B> ( -- len)<P> return  the  length  of  call  stack<P> Length  of  the  call  stack.<P><P><B>RETURNS:</B> returns  how  many  items  are  pushed  on  the  call  stack.<P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_TRAP1"><H2>TRAP1</H2><B>Usage:</B> ( -- )<P> call  to  code  block  1<P> Call  code  block  1.  This  allows  un-protected  code  to  call  into  protected  code.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_TRAP2"><H2>TRAP2</H2><B>Usage:</B> ( -- )<P> call  to  code  block  2<P> Call  code  block  2.  This  allows  un-protected  code  to  call  into  protected  code.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_TRAP3"><H2>TRAP3</H2><B>Usage:</B> ( -- )<P> call  to  code  block  3<P> Call  code  block  3.  This  allows  un-protected  code  to  call  into  protected  code.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_TRAP4"><H2>TRAP4</H2><B>Usage:</B> ( -- )<P> call  to  code  block  4<P> Call  code  block  4.  This  allows  un-protected  code  to  call  into  protected  code.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_TRAP5"><H2>TRAP5</H2><B>Usage:</B> ( -- )<P> call  to  code  block  5<P> Call  code  block  5.  This  allows  un-protected  code  to  call  into  protected  code.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_TRAP6"><H2>TRAP6</H2><B>Usage:</B> ( -- )<P> call  to  code  block  6<P> Call  code  block  6.  This  allows  un-protected  code  to  call  into  protected  code.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_TRAP7"><H2>TRAP7</H2><B>Usage:</B> ( -- )<P> call  to  code  block  7<P> Call  code  block  7.  This  allows  un-protected  code  to  call  into  protected  code.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_TRAP8"><H2>TRAP8</H2><B>Usage:</B> ( -- )<P> call  to  code  block  8<P> Call  code  block  8.  This  allows  un-protected  code  to  call  into  protected  code.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_TRAP9"><H2>TRAP9</H2><B>Usage:</B> ( -- )<P> call  to  code  block  9<P> Call  code  block  9.  This  allows  un-protected  code  to  call  into  protected  code.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_NUMBER"><H2>NUMBER</H2><B>Usage:</B> (cb pc -- value)<P> read  number  from  program  memory<P> Fetch  a  number  from  program  memory  and  push  that  value  onto  the  data  stack.  This  retrieves  a  value  from  the
+ program  memory. &#x27;cb&#x27; is  a  code  block  number, &#x27;pc&#x27; is  the  offset  from  the  start  of  the  code  block.  Note:
+ KFORTH  program  literals  are  signed  15-bit  integers.<P><ul>
+<li>
+ Un-protected  code  cannot  retrieve  a  number  from  a  protected  code  block.  -1
+</li>
+</ul><P><B>RETURNS:</B><ul>
+<li>
+<b> -1</b> is  returned  if  cb  is  invalid
+</li>
+
+<li>
+<b> -2</b> is  returned  if  pc  is  invalid
+</li>
+
+<li>
+<b> -3</b> is  returned  if  (cb,pc)  contains  opcode
+</li>
+
+<li>
+<b> else</b> the  15-bit  signed  kforth  program  literal  is  returned. &#x27;value&#x27; will  be  between  -16384  and  16383.
+</li>
+</ul><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_NUMBER!"><H2>NUMBER!</H2><B>Usage:</B> (value cb pc -- )<P> write  number  to  program  memory<P> Write &#x27;value&#x27; to  program  memory  at  location  (cb,  pc). &#x27;cb&#x27; is  the  code  block  number,  and &#x27;pc&#x27; is  the  offset
+ into  the  code  block.  KFORTH  program  literals  are  signed  15-bit  integers,  therefore &#x27;value&#x27; will  be  reduced  to  15-bits.  The  15-bit
+ value  range  is:  -16384  and  16383.<P><ul>
+<li>
+ Un-protected  code  cannot  write  a  number  to  a  protected  code  block.
+</li>
+
+<li>
+&#x27;value&#x27; is  reduced  to  15-bits  by  ignoring  its  top  bit.
+</li>
+</ul><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_?NUMBER!"><H2>?NUMBER!</H2><B>Usage:</B> (value cb pc -- value|0)<P> test  and  set  a  number  to  program  memory<P> Test  (and  then  set)  the  KFORTH  program  memory  location  given  by  (cb,  pc).  If  it  is  zero  then  update  it
+ to  contain &#x27;value&#x27; and  return  value.  Else  return  0  and  leave  location  (cb,pc)  unchanged. &#x27;cb&#x27; is  the  code  block  number,
+ and &#x27;pc&#x27; is  the  offset  into  the  code  block.  KFORTH  program  literals  are  signed  15-bit  integers. &#x27;value&#x27; will  be  reduced
+ to  15-bits.  The  15-bit  value  range  is:  -16384  and  16383.<P><ul>
+<li>
+ Un-protected  code  cannot  read/write  a  number  to  a  protected  code  block.  returns  0.
+</li>
+
+<li>
+&#x27;value&#x27; is  reduced  to  15-bits  by  ignoring  its  top  bit.
+</li>
+
+<li>
+ if  this  location  (cb,pc)  contains  opcode,  return  0
+</li>
+</ul><P><B>RETURNS:</B><ul>
+<li>
+<b> 0</b> -  if  the  variable  was  non-zero.
+</li>
+
+<li>
+<b> value</b> -  if  the  variable  was  zero,  and  we  updated  it  to  be &#x27;value&#x27;.
+</li>
+</ul><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_OPCODE"><H2>OPCODE</H2><B>Usage:</B> (cb pc -- opcode)<P> read  opcode  from  program  memory<P> Fetch  an  opcode  from  program  memory  and  push  its  numeric  code  onto  the  data  stack.  This  retrieves  the  opcode  from
+ the  program  memory, &#x27;cb&#x27; is  a  code  block  number, &#x27;pc&#x27; is  the  offset  from  the  start  of  the  code  block.
+ Opcodes  are  small  integers  between  0  and  ~250.  For  example  the  numeric  code  for  the  instruction &#x27;+&#x27; might  be  75.<P><ul>
+<li>
+ Un-protected  code  cannot  retrieve  an  opcode  from  a  protected  code  block.  Returns  -1
+</li>
+
+<li>
+ Un-protected  code  cannot  retrieve  a  protected  instruction.  Returns  -4.  This  can  happen  if  the  un-protected  code  was  seeded  with  protected
+ instructions.
+</li>
+</ul><P><B>RETURNS:</B><ul>
+<li>
+<b> -1</b> is  returned  if  cb  is  invalid
+</li>
+
+<li>
+<b> -2</b> is  returned  if  pc  is  invalid
+</li>
+
+<li>
+<b> -3</b> is  returned  if  (cb,pc)  contains  number
+</li>
+
+<li>
+<b> -4</b> is  returned  if  (cb,pc)  contains  a  protected  instruction
+</li>
+
+<li>
+<b> else</b> the  numeric  code  for  the  opcode  is  returned.  This  number  is  a  small  value  between  0  and  ~250.
+</li>
+</ul><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_OPCODE!"><H2>OPCODE!</H2><B>Usage:</B> (opcode cb pc -- )<P> write  opcode  to  program  memory<P> Write  an  opcode  to  program  memory.  This  instruction  writes  code.  it  writes &#x27;opcode&#x27; to  program  memory, &#x27;cb&#x27; is  a  code
+ block  number, &#x27;pc&#x27; is  the  offset  from  the  start  of  the  code  block.  Opcodes  are  small  integers  between  0  and
+ ~250.  For  example  the  numeric  code  for  the  instruction &#x27;+&#x27; might  be  75.<P><ul>
+<li>
+ Un-protected  code  cannot  write  an  opcode  to  a  protected  code  block.
+</li>
+
+<li>
+ Un-protected  code  cannot  write  a  numeric  code  corresponding  to  a  protected  instruction
+</li>
+
+<li>
+ cb  must  be  valid
+</li>
+
+<li>
+ pc  must  valid
+</li>
+
+<li>
+ opcode  must  be  a  valid  numeric  code  to  a  defined  instruction
+</li>
+</ul><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_OPCODE'"><H2>OPCODE'</H2><B>Usage:</B> ( -- opcode )<P> quote  the  next  instruction<P> Treat  the  instruction  following  the  OPCODE&#x27; instruction  as  a  literal.  Do  not  execute  the  next  instruction,  rather  return  its  opcode.
+ Execution  continues  with  the  instruction  following  the  next  instruction.  The  next  instructions  opcode  value  will  be  pushed  on  to  the
+ data  stack.  Opcodes  are  small  integers  between  0  and  ~250.  For  example  the  numeric  code  for  the  instruction &#x27;+&#x27; might
+ be  75.<P><ul>
+<li>
+ Un-protected  code  cannot  return  the  opcode  for  a  protected  instruction
+</li>
+
+<li>
+ there  must  be  a  next  instruction
+</li>
+</ul><P><B>RETURNS:</B><ul>
+<li>
+<b> -2</b> is  returned  if  no  next  instruction
+</li>
+
+<li>
+<b> -3</b> is  returned  if  next  instruction  contains  a  number
+</li>
+
+<li>
+<b> -4</b> is  returned  if  next  instruction  is  a  protected  instruction,  when  called  from  un-protected  code.
+</li>
+
+<li>
+<b> else</b> the  numeric  code  for  the  opcode  is  returned.  This  number  is  a  small  value  between  0  and  ~250.
+</li>
+</ul><P><B>ENERGY:</B><P><P><HR><P>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:10  EST  2023
+</div>
+</body>
+</html>

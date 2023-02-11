@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  5.0 -  Find  Instruction  Reference</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> February  7th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> FIND  INSTRUCTION  REFERENCE</h1><p>
+ What  follows  is  a  reference  guide  for  the  instructions  that  are  used  by  the <A HREF="find_dialog.html">Find  Dialog</A>.
+</p>
+<p>
+ The  core  KFORTH  instructions  (like  dup,  pop,  +,  *,  /,  etc..)  are  covered <A HREF="kforth_reference.html">here</A>.
+</p>
+<UL><LI><A HREF="#ref_ID"><B>ID</B></A></LI><LI><A HREF="#ref_PARENT1"><B>PARENT1</B></A></LI><LI><A HREF="#ref_PARENT2"><B>PARENT2</B></A></LI><LI><A HREF="#ref_STRAIN"><B>STRAIN</B></A></LI><LI><A HREF="#ref_ENERGY"><B>ENERGY</B></A></LI><LI><A HREF="#ref_GENERATION"><B>GENERATION</B></A></LI><LI><A HREF="#ref_NUM-CELLS"><B>NUM-CELLS</B></A></LI><LI><A HREF="#ref_AGE"><B>AGE</B></A></LI><LI><A HREF="#ref_NCHILDREN"><B>NCHILDREN</B></A></LI><LI><A HREF="#ref_EXECUTING"><B>EXECUTING</B></A></LI><LI><A HREF="#ref_NUM-CB"><B>NUM-CB</B></A></LI><LI><A HREF="#ref_NUM-DEAD"><B>NUM-DEAD</B></A></LI><LI><A HREF="#ref_MAX-ENERGY"><B>MAX-ENERGY</B></A></LI><LI><A HREF="#ref_MIN-ENERGY"><B>MIN-ENERGY</B></A></LI><LI><A HREF="#ref_AVG-ENERGY"><B>AVG-ENERGY</B></A></LI><LI><A HREF="#ref_MAX-AGE"><B>MAX-AGE</B></A></LI><LI><A HREF="#ref_MIN-AGE"><B>MIN-AGE</B></A></LI><LI><A HREF="#ref_AVG-AGE"><B>AVG-AGE</B></A></LI><LI><A HREF="#ref_MAX-NUM-CELLS"><B>MAX-NUM-CELLS</B></A></LI></UL><HR>
+<CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>INSTRUCTION</B></TD><TD ALIGN=LEFT><B>USAGE</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>DESCRIPTION</B></TD><TR><TD ALIGN=LEFT><B>ID</B></TD><TD ALIGN=LEFT>( -- id)</TD><TD ALIGN=LEFT> The  organism  ID.  Because  organism  ID&#x27;s  are  large  integers,  and  KFORTH  can  only  handle  16-bit  numbers,  the  organism  ID  is
+ modulos  10,000. <p>
+Example:  an  organism  id  of <b>10,062,527</b> becomes <b>2527</b> with  this  instruction.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>PARENT1</B></TD><TD ALIGN=LEFT>( -- parent1)</TD><TD ALIGN=LEFT> The  parent1  ID.  Because  organism  ID&#x27;s  are  large  integers,  and  KFORTH  can  only  handle  16-bit  numbers,  the  organism  ID  is
+ modulos  10,000. <p>
+Example:  a  parent  id  1  of <b>10,062,527</b> becomes <b>2527</b> with  this  instruction.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>PARENT2</B></TD><TD ALIGN=LEFT>( -- parent2)</TD><TD ALIGN=LEFT> The  parent2  ID.  Because  organism  ID&#x27;s  are  large  integers,  and  KFORTH  can  only  handle  16-bit  numbers,  the  organism  ID  is
+ modulous  10,000. <p>
+Example:  a  parent  id  2  of <b>10,062,527</b> becomes <b>2527</b> with  this  instruction.
+</p>
+<P></TD><TR><TD ALIGN=LEFT><B>STRAIN</B></TD><TD ALIGN=LEFT>( -- strain)</TD><TD ALIGN=LEFT> The  strain  number.  A  number  between  0  and  7.<P></TD><TR><TD ALIGN=LEFT><B>ENERGY</B></TD><TD ALIGN=LEFT>( -- e)</TD><TD ALIGN=LEFT> The  energy  of  the  organism.  If  the  energy  is  more  than  32,767  then  this  instruction  returns  32,767.<P></TD><TR><TD ALIGN=LEFT><B>GENERATION</B></TD><TD ALIGN=LEFT>( -- g)</TD><TD ALIGN=LEFT> The  generation.  If  the  generation  is  more  than  32,767  then  this  instruction  returns  32,767.<P></TD><TR><TD ALIGN=LEFT><B>NUM-CELLS</B></TD><TD ALIGN=LEFT>( -- n)</TD><TD ALIGN=LEFT> The  number  of  cells  that  the  organism  consists  of.<P></TD><TR><TD ALIGN=LEFT><B>AGE</B></TD><TD ALIGN=LEFT>( -- n)</TD><TD ALIGN=LEFT> The  age  of  the  organism  dividied  by  1000.  If  this  is  more  than  32,767  then  this  instruction  returns  32,767.<P></TD><TR><TD ALIGN=LEFT><B>NCHILDREN</B></TD><TD ALIGN=LEFT>( -- n)</TD><TD ALIGN=LEFT> The  number  of  living  children.  We  scan  the  simulation  and  count  the  number  of  organisms  that  have  this  organism  as
+ its  parent1  or  parent2.<P></TD><TR><TD ALIGN=LEFT><B>EXECUTING</B></TD><TD ALIGN=LEFT>(cb -- bool)</TD><TD ALIGN=LEFT> Does  organism  have  a  cell  currently  executing  inside  code  block &#x27;cb&#x27;?  Returns  1  or  0.<P></TD><TR><TD ALIGN=LEFT><B>NUM-CB</B></TD><TD ALIGN=LEFT>( -- n)</TD><TD ALIGN=LEFT> The  total  number  of  code  blocks  the  organism  has.<P></TD><TR><TD ALIGN=LEFT><B>NUM-DEAD</B></TD><TD ALIGN=LEFT>( -- n)</TD><TD ALIGN=LEFT> The  number  of  cells  that  have  just  died  (colored  red).<P></TD><TR><TD ALIGN=LEFT><B>MAX-ENERGY</B></TD><TD ALIGN=LEFT>( -- e)</TD><TD ALIGN=LEFT> Constant:  for  all  organisms  return  the  MAXIMUM  energy  amount.<P></TD><TR><TD ALIGN=LEFT><B>MIN-ENERGY</B></TD><TD ALIGN=LEFT>( -- e)</TD><TD ALIGN=LEFT> Constant:  for  all  organisms  return  the  MINIMUM  energy  amount.<P></TD><TR><TD ALIGN=LEFT><B>AVG-ENERGY</B></TD><TD ALIGN=LEFT>( -- e)</TD><TD ALIGN=LEFT> Constant:  for  all  organisms  return  the  AVERAGE  energy  amount<P></TD><TR><TD ALIGN=LEFT><B>MAX-AGE</B></TD><TD ALIGN=LEFT>( -- n)</TD><TD ALIGN=LEFT> Constant:  for  all  organisms  return  the  MAXIMUM  age  (divided  by  1,000).<P></TD><TR><TD ALIGN=LEFT><B>MIN-AGE</B></TD><TD ALIGN=LEFT>( -- n)</TD><TD ALIGN=LEFT> Constant:  for  all  organisms  return  the  MINIMUM  age  (divided  by  1,000).<P></TD><TR><TD ALIGN=LEFT><B>AVG-AGE</B></TD><TD ALIGN=LEFT>( -- n)</TD><TD ALIGN=LEFT> Constant:  for  all  organisms  return  the  AVERAGE  age  (divided  by  1,000).<P></TD><TR><TD ALIGN=LEFT><B>MAX-NUM-CELLS</B></TD><TD ALIGN=LEFT>( -- n)</TD><TD ALIGN=LEFT> Constant:  for  all  organisms  return  the  MAXIMUM  number  of  cells  an  organism  has.<P></TD></TABLE></CENTER><HR>
+<BR><BR><A NAME="ref_ID"><H2>ID</H2><B>Usage:</B> ( -- id)<P> the  organism  ID  (modulos  10,000).<P> The  organism  ID.  Because  organism  ID&#x27;s  are  large  integers,  and  KFORTH  can  only  handle  16-bit  numbers,  the  organism  ID  is
+ modulos  10,000. <p>
+Example:  an  organism  id  of <b>10,062,527</b> becomes <b>2527</b> with  this  instruction.
+</p>
+<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_PARENT1"><H2>PARENT1</H2><B>Usage:</B> ( -- parent1)<P> the  parent1  ID  (modulos  10,000)<P> The  parent1  ID.  Because  organism  ID&#x27;s  are  large  integers,  and  KFORTH  can  only  handle  16-bit  numbers,  the  organism  ID  is
+ modulos  10,000. <p>
+Example:  a  parent  id  1  of <b>10,062,527</b> becomes <b>2527</b> with  this  instruction.
+</p>
+<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_PARENT2"><H2>PARENT2</H2><B>Usage:</B> ( -- parent2)<P> the  parent2  ID  (modulos  10,000)<P> The  parent2  ID.  Because  organism  ID&#x27;s  are  large  integers,  and  KFORTH  can  only  handle  16-bit  numbers,  the  organism  ID  is
+ modulous  10,000. <p>
+Example:  a  parent  id  2  of <b>10,062,527</b> becomes <b>2527</b> with  this  instruction.
+</p>
+<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_STRAIN"><H2>STRAIN</H2><B>Usage:</B> ( -- strain)<P> the  strain  number<P> The  strain  number.  A  number  between  0  and  7.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_ENERGY"><H2>ENERGY</H2><B>Usage:</B> ( -- e)<P> the  energy  of  the  organism<P> The  energy  of  the  organism.  If  the  energy  is  more  than  32,767  then  this  instruction  returns  32,767.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_GENERATION"><H2>GENERATION</H2><B>Usage:</B> ( -- g)<P> the  generation.<P> The  generation.  If  the  generation  is  more  than  32,767  then  this  instruction  returns  32,767.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_NUM-CELLS"><H2>NUM-CELLS</H2><B>Usage:</B> ( -- n)<P> the  number  of  cells  that  the  organism  consists  of.<P> The  number  of  cells  that  the  organism  consists  of.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_AGE"><H2>AGE</H2><B>Usage:</B> ( -- n)<P> the  age  of  the  organism  (divided  by  1,000).<P> The  age  of  the  organism  dividied  by  1000.  If  this  is  more  than  32,767  then  this  instruction  returns  32,767.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_NCHILDREN"><H2>NCHILDREN</H2><B>Usage:</B> ( -- n)<P> the  number  of  living  children.<P> The  number  of  living  children.  We  scan  the  simulation  and  count  the  number  of  organisms  that  have  this  organism  as
+ its  parent1  or  parent2.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_EXECUTING"><H2>EXECUTING</H2><B>Usage:</B> (cb -- bool)<P> Does  organism  have  a  cell  currently  executing  inside  code  block &#x27;cb&#x27;?<P> Does  organism  have  a  cell  currently  executing  inside  code  block &#x27;cb&#x27;?  Returns  1  or  0.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_NUM-CB"><H2>NUM-CB</H2><B>Usage:</B> ( -- n)<P> the  total  number  of  code  blocks  the  organism  has.<P> The  total  number  of  code  blocks  the  organism  has.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_NUM-DEAD"><H2>NUM-DEAD</H2><B>Usage:</B> ( -- n)<P> the  number  of  cells  that  have  just  died  (colored  red).<P> The  number  of  cells  that  have  just  died  (colored  red).<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_MAX-ENERGY"><H2>MAX-ENERGY</H2><B>Usage:</B> ( -- e)<P> Constant:  for  all  organisms  return  the  MAXIMUM  energy  amount<P> Constant:  for  all  organisms  return  the  MAXIMUM  energy  amount.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_MIN-ENERGY"><H2>MIN-ENERGY</H2><B>Usage:</B> ( -- e)<P> Constant:  for  all  organisms  return  the  MINIMUM  energy  amount<P> Constant:  for  all  organisms  return  the  MINIMUM  energy  amount.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_AVG-ENERGY"><H2>AVG-ENERGY</H2><B>Usage:</B> ( -- e)<P> Constant:  for  all  organisms  return  the  AVERAGE  energy  amount<P> Constant:  for  all  organisms  return  the  AVERAGE  energy  amount<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_MAX-AGE"><H2>MAX-AGE</H2><B>Usage:</B> ( -- n)<P> Constant:  for  all  organisms  return  the  MAXIMUM  age  (divided  by  1,000).<P> Constant:  for  all  organisms  return  the  MAXIMUM  age  (divided  by  1,000).<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_MIN-AGE"><H2>MIN-AGE</H2><B>Usage:</B> ( -- n)<P> Constant:  for  all  organisms  return  the  MINIMUM  age  (divided  by  1,000).<P> Constant:  for  all  organisms  return  the  MINIMUM  age  (divided  by  1,000).<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_AVG-AGE"><H2>AVG-AGE</H2><B>Usage:</B> ( -- n)<P> Constant:  for  all  organisms  return  the  AVERAGE  age  (divided  by  1,000).<P> Constant:  for  all  organisms  return  the  AVERAGE  age  (divided  by  1,000).<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P><A NAME="ref_MAX-NUM-CELLS"><H2>MAX-NUM-CELLS</H2><B>Usage:</B> ( -- n)<P> Constant:  for  all  organisms  return  the  MAXIMUM  number  of  cells  an  organism  has.<P> Constant:  for  all  organisms  return  the  MAXIMUM  number  of  cells  an  organism  has.<P><P><B>RETURNS:</B><P><B>ENERGY:</B><P><P><HR><P>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:09  EST  2023
+</div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Activity  5:  Nibbler</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> January  9th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> Activity  5:  Nibbler</h1><p>
+ Add  this  organism  to  a  simulation.  It  will  roam  around  randomly.  It  will  nibble  on  creatures  that  do  not  belong
+ to  its  strain.  Then  it  will  deposit  an  organic  block  somewhere  else.
+</p>
+<p>
+ This  is  file <b>nibbler2.kf</b> in  the  application  resource  folder  ev5stuff.
+</p>
+<p>
+ The <b>LOOK  Mode</b> must  be  configured  to  include  the  strain  number  in  the  returned  results.  A  Look  mode  of <b>5</b> should
+ work.
+</p>
+<p>
+ The <b>EAT  Mode</b> for  this  strain  must  be  configured  to  be &#x27;uneatable&#x27;.
+</p>
+<p>
+ Add  this  to  the  new  universe  strain  slot <b>7</b> (the  last  one).  This  is  defined  in  the  code.
+</p>
+<p>
+ The  population  is  fixed  at  whatever  you  specify  on  the  new  universe  dialog.
+</p>
+<BR><BR>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+;
+; Designed to move around and nibble at stuff
+;
+; Use Strain slot 7. or change its definition below.
+; Define strain # that is assigned to the nibbler in R2 in main() below.
+;
+;   R0 - current move vector x
+;   R1 - current move vector y
+;   R2 - what strain this nibbler was assigned to
+;   R3 - energy/4, for reproduce
+;   R4 - x
+;   R5 - y
+;   R6 - random dir index
+;
+
+main:
+{
+    7 R2!               ; Strain 7. set the strain number here (0-7)
+
+    1 R2 5 + &lt;&lt;         ; 000ssssssss00000
+    invert              ; 111ssssssss11111          exclude our strain, see everything else
+    R2!                 ; R2 becomes look mask      This mask 
+
+    {
+        255 FARTHEST R1! R0!
+        {   
+            R0 R1 OMOVE
+        ?loop } call
+
+        rnd_dir call R1! R0!
+        {
+            R0 R1 OMOVE
+        ?loop } call
+
+        nibble call
+
+        255 FARTHEST R1! R0!
+        {   
+            R0 R1 OMOVE
+        ?loop } call
+
+        excrete call
+
+        ; reproduce call ; don&#x27;t do this, it doesn&#x27;t work
+
+    1 ?loop } call
+}
+
+rnd_dir: {
+    255 NEAREST + AGE *
+    dup 0 &lt; { negate } if
+    7 mod R6!
+
+    table R6 + call
+}
+
+table:
+    {  0 -1 }
+    {  1 -1 }
+    {  1  0 }
+    {  1  1 }
+    {  0  1 }
+    { -1  1 }
+    { -1  0 }
+    { -1 -1 }
+
+excrete:
+{
+    ENERGY 10 &gt;= {
+        255 FARTHEST ENERGY 2 / MAKE-ORGANIC pop
+    } if
+}
+
+nibble:
+{
+    AGE 32 1000 * &gt;= {              ; don&#x27;t start eating until you have roamed for 32000 steps
+        R2 NEAREST EAT pop      ; nibble
+    } if
+}
+
+;
+; Keep reproducing giving up 1/2 our energy, until we
+; are down to 5000 units of energy, then don&#x27;t reproduce anymore.
+;
+reproduce:
+{
+    ENERGY 100 &gt;= {
+        ;
+        ; Where to make spore
+        ;
+        255 FARTHEST R5! R4!
+
+        ;
+        ; compute 1/4 of our energy, and store in R2
+        ;
+        ENERGY 4 / R3!
+
+        ;
+        ; Make 1st spore to the square on our left.
+        ;
+        R4 R5 R3  MAKE-SPORE pop
+
+        ;
+        ; Put 2nd spore at the same spot (fertilizing it)
+        ;
+        R4 R5 R3  MAKE-SPORE pop
+    } if
+}
+
+</PRE></TD></TABLE></CENTER>
+<BR><BR><BR><BR>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:09  EST  2023
+</div>
+</body>
+</html>

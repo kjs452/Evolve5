@@ -1,0 +1,349 @@
+; utank.kf
+; USER CONTROLLED TANK
+;
+;	SPACE		- stop							32
+;	w			- start/stop move forard		119
+;	s			- start/stop move backward		115
+;	a			- rotate left					97
+;	d			- rotate right					100
+;	e			- eat							101
+;	r			- reproduce						114
+;	f			- fire							102
+;	.			- move							46
+;
+; trap4	- move			( -- r)				move in current direction based on thrust
+; trap5	- make-spore	(e -- rc)
+; trap6	- set thrust	(n -- )				n is: 0 -1 or 1		stopped, backward, forward
+; trap7	- shoot 		( -- )
+; trap8	- rotate		(n -- r)			n is: 0, -1 or +1
+; trap9	- eat			(x y -- rc)			eat
+;
+; Shape:
+; This organism creates a tank like shape. This is
+; the morphology:
+;
+;		JBCD
+;		 EAFL
+;		KGHI
+;
+;    #### 
+;     ####
+;    ####  
+;
+; It can only EAT and SHOOT from the turret cell
+; It breeds from the back cell.
+; It can generally Omove and rotate as it wants to.
+; Organism cannot heal itself.
+;
+; A
+; B		creates J
+; C
+; D
+; E		- reproducer
+; F		creates L
+; G		creates K
+; H
+; I
+; J
+; K
+; L		- turret/eater/shooter
+;
+; Protected Instructions:
+;	R9++ --R9 R9!
+; 	CSHIFT, CMOVE
+;	EAT, SEND-ENERGY, SPAWN
+;	MAKE-SPORE
+;	GROW, GROW.CB
+;
+; Modes:
+;	- Make EAT permissive: Don't kill cell, just nibble
+;	- rotate must use center of organism
+;	
+;
+; Principle of operation:
+; 	* Shoot (trap9) can only happen from L cell
+;	* Eating (trap8) can only happen from L cell
+;	* Reproduction: (trap7) can only happen from E cell
+;	* We use the R9 register to store our cell ID
+;	* the cell ID is the code block number we were first redirected to
+;
+;
+;
+
+main:
+{
+	dnum call directions + call
+	2negate
+	2dup OMOVE pop
+	2dup OMOVE pop
+	OMOVE pop
+
+	0 thrust 0 NUMBER!		; may have been changed by parent reset to initial state
+	6 dnum 0 NUMBER!			; may have been changed by parent reset to initial state
+
+	a_cell call
+}
+
+_trap1: { }
+_trap2: { }
+
+;
+; ( -- thrust)
+;
+_trap3: { CSLEN 63 <= ?exit thrust call }
+
+;
+; Move ( -- rc)
+;
+;;_trap4:
+;;{
+;;	DSLEN 60 >= ?exit
+;;	CSLEN 60 >= ?exit
+;;
+;;	dnum call directions + call		; -- x y
+;;	thrust call						; -- x y t
+;;	swap over						; -- x t y t
+;;	*								; x t y t -- x t y*t
+;;	-rot							; x t y*t -- y*t x t
+;;	*								; y*t x t -- y*t x*t
+;;	swap							; y*t x*t -- x*t y*t
+;;	OMOVE
+;;}
+
+_trap4:
+{
+	0 0 OMOVE
+}
+
+; make-spore replacement (e -- r)
+_trap5:
+{
+	R9 e_cell <> ?exit
+	DSLEN 60 >= ?exit
+	CSLEN 60 >= ?exit
+
+	dnum call directions + call 2negate rot MAKE-SPORE
+}
+
+; Set Thrust (n -- )
+; n is normalized to -1, 0, 1
+; -1 means backwards
+_trap6:
+{
+	DSLEN 1 < ?exit
+	SIGN thrust 0 NUMBER!
+	recompute_move_trap call
+}
+
+;
+; shoot ( -- )
+;
+_trap7:
+{
+	R9 l_cell <> ?exit
+	DSLEN 60 >= ?exit
+	CSLEN 60 >= ?exit
+
+	dnum call directions + call
+
+	1 5 bullet SPAWN pop
+}
+
+;
+; rotate (n -- r)
+;
+_trap8:
+{
+	DSLEN 60 > ?exit
+	CSLEN 60 > ?exit
+	DSLEN 1 < ?exit
+	do_rotate call
+}
+
+;
+; eat (x y -- r)
+;
+_trap9:
+{
+	R9 l_cell <> ?exit
+	EAT
+}
+
+recompute_move_trap:
+{
+	dnum 0 NUMBER
+	directions + call
+	thrust call
+	swap over						; -- x t y t
+	*								; x t y t -- x t y*t
+	-rot							; x t y*t -- y*t x t
+	*								; y*t x t -- y*t x*t
+	swap							; y*t x*t -- x*t y*t
+	_trap4 1 NUMBER!
+	_trap4 0 NUMBER!
+}
+
+do_rotate:
+{
+	SIGN			; n
+	dup ROTATE
+	{
+		dnum 0 NUMBER	; n dnum
+		+
+		dup 0 <
+			{ pop 7 }
+			{
+				dup 7 > { pop 0 } if
+			} ifelse
+		dnum 0 NUMBER!
+		recompute_move_trap call
+		1
+	} { 0 } ifelse
+}
+
+; 0 = stopped, -1 = backwards, 1 = forwards
+thrust: { 0 }
+
+; this is the current direction will always be a number
+; between 0 and 7.
+; (Initial direction corresponds to left)
+dnum: { 6 }
+
+;
+; Direcetion table for 'dnum'
+;
+directions:
+	{ 0 1 }
+	{ -1 1 }
+	{ -1 0 }
+	{ -1 -1 }
+	{ 0 -1 }
+	{ 1 -1 }
+	{ 1 0 }
+	{ 1 1 }
+
+;
+; Create the tank shape
+;		JBCD
+;		 EAFL
+;		KGHI
+;
+a_cell: {
+	{
+		0
+		-1 1	b_cell		GROW.CB not +
+		0 1		c_cell		GROW.CB not +
+		1 1		d_cell		GROW.CB not +
+		-1 0	e_cell		GROW.CB not +
+		1 0		f_cell		GROW.CB not +
+		-1 -1	g_cell		GROW.CB not +
+		0 -1	h_cell		GROW.CB not +
+		1 -1	i_cell		GROW.CB not +
+		{ HALT } if
+	} call
+	evolve_a_cell call
+}
+
+b_cell:
+{
+	CB R9!
+	 -1 0 j_cell GROW.CB not { HALT } if
+	evolve_b_cell call
+}
+
+c_cell: { CB R9! evolve_c_cell call }
+d_cell: { CB R9! evolve_d_cell call }
+e_cell: { CB R9! evolve_e_cell call }
+
+f_cell:
+{
+	CB R9!
+	1 0 l_cell GROW.CB not { HALT } if
+	evolve_f_cell call
+}
+
+g_cell:
+{
+	CB R9!
+	-1 0 k_cell GROW.CB not { HALT } if
+	evolve_g_cell call
+}
+
+h_cell: { CB R9! evolve_h_cell call }
+i_cell: { CB R9! evolve_i_cell call }
+j_cell: { CB R9! evolve_j_cell call }
+k_cell: { CB R9! evolve_k_cell call }
+l_cell: { CB R9! evolve_l_cell call }
+
+; move forward and eat
+; When the bullet is spawn'd its kforth program contains  the vector the tank
+; was moving, we just use that info to derive the direction of the bullet
+bullet:
+{
+	dnum call directions + call
+	
+	2dup		; (x y x y -- )
+
+	{ 2dup OMOVE ?loop } call		; bullet move
+
+	{
+		2dup EAT pop
+		2dup OMOVE pop		; ( x y -- x y rc)
+		255 NEAREST EAT
+		?loop
+	} call
+
+	HALT
+}
+
+
+; ---- protected / unprotected ----
+
+evolve:
+evolve_a_cell: { 1 ?loop }
+evolve_b_cell: { check_thrust call }
+evolve_c_cell: { 1 ?loop }
+evolve_d_cell: { 1 ?loop }
+evolve_e_cell: { check_reproduce call }
+evolve_f_cell: { check_steering call }
+evolve_g_cell: { check_fire call }
+evolve_h_cell: { 1 ?loop }
+evolve_i_cell: { 1 ?loop }
+evolve_j_cell: { 1 ?loop }
+evolve_k_cell: { TRAP4 pop 1 ?loop }		; move
+evolve_l_cell: { check_fire call }
+
+check_thrust:
+{
+	KEY-PRESS
+	dup 119 = { 1 TRAP6 } if
+	dup 115 = { -1 TRAP6 } if
+	32 = { 0 TRAP6 } if
+	1 ?loop
+}
+
+check_steering:
+{
+	KEY-PRESS
+	dup 97 = { 1 TRAP8 pop delay call } if
+	100 = { -1 TRAP8 pop delay call } if
+	1 ?loop
+}
+
+delay: { 50 {1- dup ?loop} call pop }
+
+check_fire:
+{
+	KEY-PRESS
+	dup 102 = { TRAP7 } if
+	101 = { 7 NEAREST TRAP9 pop } if
+	1 ?loop	
+}
+
+check_reproduce:
+{
+	KEY-PRESS
+	dup 114 = { ENERGY 5 / TRAP5 pop } if
+	46 = { TRAP4 pop } if
+	1 ?loop
+}

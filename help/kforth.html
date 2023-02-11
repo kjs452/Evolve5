@@ -1,0 +1,1086 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>Evolve  5.0 -  The  KFORTH  Language</title>
+<!--Change this href to "msfunk_03.css" to give the page a different look!-->
+<link rel="stylesheet" type="text/css" href="msfunk_02.css" />
+
+</head>
+<body>
+<!--Begin headers-->
+<div id="title2" class="title2">
+<B>Last updated:</B> January  28th,  2023
+</div>
+
+<div id="title3" class="title3">
+<a name="title">Evolve  5.0</a>
+</div>
+
+
+<div id="subnav" class="subnav">
+    
+		<a href="executable.html">Get Application</a>
+		 | 
+    
+		<a href="sourcecode.html">Get Source Code</a>
+		 | 
+    
+		<a href="contents.html">User Manual</a>
+		
+    
+</div>
+<!--End headers-->
+
+<!--Begin nav-->
+<div id="menu">
+
+
+<!-- ********************************************************************** -->
+
+	
+		<p class="menu"><a href="index.html">Home</a></p>
+	
+		<p class="menu"><a href="screen_shots.html">Screen  Shots</a></p>
+	
+		<p class="menu"><a href="overview.html">Overview</a></p>
+	
+		<p class="menu"><a href="getting_started.html">Getting  Started</a></p>
+	
+		<p class="menu"><a href="organisms.html">Organisms  and  Cells</a></p>
+	
+		<p class="menu"><a href="spores.html">Spores</a></p>
+	
+		<p class="menu"><a href="genetics.html">Genetics</a></p>
+	
+		<p class="menu"><a href="kforth.html">KFORTH  Language</a></p>
+	
+		<p class="menu"><a href="mutations.html">Mutations/Replication</a></p>
+	
+		<p class="menu"><a href="simulation.html">Simulation</a></p>
+	
+		<p class="menu"><a href="architecture.html">CPU  Architecture</a></p>
+	
+		<p class="menu"><a href="activities.html">Activities</a></p>
+	
+		<p class="menu"><a href="faq.html">FAQ</a></p>
+	
+		<p class="menu"><a href="links.html">Links</a></p>
+	
+
+<!-- ********************************************************************** -->
+
+</div>
+
+<!--End nav-->
+
+<!--Begin main text-->
+<div id="maintext" height="600px">
+
+<IMG SRC="e.gif"><B><FONT SIZE=5>VOLVE</FONT> &nbsp;&nbsp; <FONT SIZE=6>5.0</FONT></B>
+
+<A NAME="TOC1"></A><h1> The  KFORTH  Language</h1><b> Table  of  Contents:</b><ul>
+<li>
+<A HREF="#introduction"> Introduction</A>
+</li>
+
+<li>
+<A HREF="#labels"> Labels</A>
+</li>
+
+<li>
+<A HREF="#registers"> Registers</A>
+</li>
+
+<li>
+<A HREF="#comments"> Comments</A>
+</li>
+
+<li>
+<A HREF="#flowcontrol"> Flow  Control</A>
+</li>
+
+<li>
+<A HREF="#nesting"> Nested  Code  Blocks</A>
+</li>
+
+<li>
+<A HREF="#datatypes"> Data  Types</A>
+</li>
+
+<li>
+<A HREF="#ram"> RAM</A>
+</li>
+
+<li>
+<A HREF="#selfmod"> Self  Modifying  Code</A>
+</li>
+
+<li>
+<A HREF="#traps"> Traps  and  Trap  Handlers</A>
+</li>
+
+<li>
+<A HREF="#trapsafety"> Trap  Safety</A>
+</li>
+
+<li>
+<A HREF="#protections"> Protections</A>
+</li>
+
+<li>
+<A HREF="#int"> Interrupts</A>
+</li>
+
+<li>
+<A HREF="#intsafety"> Interrupt  Safety</A>
+</li>
+
+<li>
+<A HREF="#reference"> Instruction  Reference</A>
+</li>
+
+<li>
+<A HREF="#examples"> Examples</A>
+</li>
+</ul><HR>
+<A NAME="introduction"></A><A NAME="TOC2"></A><h2> Introduction:</h2><p>
+ So  you  want  to  learn  KFORTH,  do  you?  Well  lets  start  with  a  simple  example.
+</p>
+<p>
+ First  launch  the  KFORTH  Interpreter  from  the  Evolve  program.  You&#x27;ll  see  this  dialog:
+</p>
+<IMG  SRC="KforthInterpreter.jpg"><p>
+ Now  lets  write  a  program  to  subtract  two  years.  In  the  KFORTH  SOURCE  CODE  pane  enter  the  following  KFORTH  program:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+{ 2022  1968 - }
+</PRE></TD></TABLE></CENTER>
+<p>
+ All  KFORTH  instructions  must  be  enclosed  within  curly  braces.  This  is  called  a &quot;code  block&quot;.  Code  blocks  are  assigned  numbers
+ starting  with  0.  Inside  of  the  curly  braces  goes &quot;the  code&quot;.  This  consists  of  numbers  and  instructions  (using  in  postfix
+ notation).
+</p>
+<p>
+ Now  press  the <b>[Compile]</b> button.  And  this  is  what  you  will  see  in  the  upper  pane:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+     2022  1968 -
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ The  compiled  version  looks  very  similar  to  what  we  typed  it.  The  first  thing  to  note  is  the  label <b>main:</b> was  added  in  front  our  code  block.  In  KFORTH  the  first  code  block  (code  block  0)  is  where  program  execution
+ starts.  That  is  why  the  disassmbler  inserted  the  label <b>main:</b>.
+</p>
+<p>
+ Now  click  on <b>[RUN]</b>.  The  answer &#x27;54&#x27; will  appear  in  the  data  stack  pane.  You  can  also  single-step  through
+ this  example.  To  single  step,  first  press <b>[Reset]</b>.
+</p>
+<p>
+ Lets  add  another  code  block  to  this  example.
+</p>
+<CENTER><IMG BORDER=1 SRC="findx.jpg"></CENTER><p>
+ Your  neighbor  is  building  a  BBQ,  to  measure  for  the  foundation  he  needs  to  know  what &#x27;x&#x27; is  (I  know,
+ lame  example,  but  I&#x27;m  hungry  right  now).  You  want  to  help  him  so  he&#x27;ll  invite  you  over  for  BBQ.  You
+ realize  that  this  is  a  perfect  job  for  KFORTH!  We  will  add  a  new  code  block  to  our  example,  which
+ when  executed  will  compute &#x27;x&#x27;:
+</p>
+<p>
+ Here,  type  this:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+{ 2022 1968 - }
+{ 98 dup * 71 dup * + sqrt }
+</PRE></TD></TABLE></CENTER>
+<p>
+ When  you  compile  this  program,  the  disassembly  will  be  shown  as:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	2022 1968 -
+}
+
+row1:
+{
+	98 dup * 71 dup * + sqrt
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ The  disassembler  gives  every  code  block  a  label.  The  first  one,  as  we  already  saw  is  called <b>main:</b> subsequent  code
+ blocks  are  labeled <b>row1,  row2,  row3  and  so  on...</b>
+</p>
+<p>
+ Now  click  on <b>[Run]</b>.  Whoooa!  What  the  fuck?  The  data  stack  only  shows  the  same  value &#x27;54&#x27;?  What&#x27;s  wrong?
+</p>
+<p>
+ The  problem  is  KFORTH  automatically  executes  code  block  0,  but  all  other  code  blocks  must  be  explictly  called,  using  the
+<b>call</b> instruction.
+</p>
+<p>
+ Let&#x27;s  try  this  again....  Now  we  will  add <b>&#x27;1  call&#x27;</b> to  the  end  of  the  first  code  block,  like  so:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+{ 2022 1968 - 1 call }
+{ 98 dup * 71 dup * + sqrt }
+</PRE></TD></TABLE></CENTER>
+<p>
+ Now  click  on <b>[Compile]</b> and  then <b>[Run]</b>.
+</p>
+<p>
+ Hopefully,  when  the  program  terminates  there  are  two  items  on  the  stack. &#x27;121&#x27; and &#x27;54&#x27;.  The &#x27;121&#x27; is  the  answer
+ to  our &quot;find  x?&quot; problem.  Since  KFORTH  only  uses  integers  the  answer  has  been  rounded  to  the  nearest  whole  number.
+</p>
+<p>
+ This  example  shows  how  code  blocks  are  treated  as  executable  functions.  The <b>call</b> instructions  pops  a  number  from  the  top
+ of  the  data  stack  and  treats  it  as  a  code  block  number,  and  calls  that  code  block.
+</p>
+<p>
+ When  humans  write  KFORTH  they  should  use  labels,  so  here  is  the  same  program  with  labels  added:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+	{ 2022 1968 - findx call }
+
+findx:
+	{ 98 dup * 71 dup * + sqrt }
+</PRE></TD></TABLE></CENTER>
+<p>
+ When  your <b>[Compile]</b> this,  your  labels  are  lost  and  the  disassembler  picks  labels  like: <b>&quot;main,  row1,  row2,  row3, ...&quot;</b>.  Anyway,  here  is  what
+ you&#x27;ll  see  in  the  disassembly  pane:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	2022 1968 - 1 call
+}
+
+row1:
+{
+	98 dup * 71 dup * + sqrt
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ Also  notice  the  label  before  the <b>call</b> instruction  is <b>1</b> not <b>row1</b>.  This  is  because  the  disassembler  cannot  reliably
+ regenerate  labels  INSIDE  of  code  blocks  (I  don&#x27;t  want  to  go  into  the  reasons  why,  but  you  could  calculate  the
+ code  block  number  rather  than  hard  code  a  value).
+</p>
+<HR>
+<A NAME="labels"></A><A NAME="TOC3"></A><h2> Labels</h2><p>
+ A  label  is  any  text  followed  by  a  colon :&#x27;.  A  label  can  consist  of  any  characters  except:  whitespace,
+ colon :&#x27;,  semi-colon ;&#x27;,  or  curly  braces {&#x27;, }&#x27;.  Also,  a  label  cannot  clash  with
+ the  name  of  an  existing  instruction.
+</p>
+<p>
+ To  define  a  label  simply  follow  it  by  a  colon  (without  spaces).  The  value  of  the  label  is  the  next
+ code  block  number  to  be  assigned  (code  block  numbers  are  assigned  startig  at  0  and  then  incrementing  by  1  for
+ each  new  code  block).
+</p>
+<p>
+ To  use  a  label,  just  enter  its  name  (do  not  use  colon).  The  compiler  will  convert  this  label  reference  to
+ the  code  block  number.
+</p>
+<HR>
+<A NAME="TOC4"></A><h2> Case  Insensitive</h2><p>
+ Instructions  and  labels  are  case  insensitive.  So &quot;MAKE-SPORE&quot; is  the  same  as &quot;Make-Spore&quot;.
+</p>
+<HR>
+<A NAME="registers"></A><A NAME="TOC5"></A><h2> Registers</h2><p>
+ The  KFORTH  computing  model  includes  ten  registers  R0  through  R9.  These  can  be  used  to  store/retrieve  temporary  values.  For  example,
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{	2022 1968 - R1!
+	findx call R5!
+	R1 R5 + R9!
+}
+
+findx:
+{
+	98 dup * 71 dup * + sqrt
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ This  is  the  same  example  as  before,  but  we  have  added <b>&#x27;R5!&#x27;</b> and <b>&#x27;R1!&#x27;</b>.  These  instructions  take  the  value
+ on  top  of  the  data  stack  and  stores  it  into  the  indicated  register.
+</p>
+<p>
+ The  line <b>R1  R5  +  R9!</b> fetches  the  value  of  R1  and  R5  and  adds  these  values  and  then  writes  the  result  to
+ register <b>R9</b>.
+</p>
+<p>
+ Registers  are  not  used  by  any  KFORTH  instructions,  so  they  can  be  managed  and  used  by  the  user  without  worrying
+ about  conflicts.
+</p>
+<HR>
+<A NAME="comments"></A><A NAME="TOC6"></A><h2> Comments</h2><p>
+ Use  the  semi-colon <b>;</b> to  insert  a  comment  into  a  KFORTH  program.  The  rest  of  the  line  after  the  semi-colon
+ is  ignored.
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+; my first KFORTH program
+main:
+{
+	2022 1968 - R1! ; compute difference between 2022 and 1968
+	findx call R5!  ; call the findx routine and store in result in R5.
+	R1 R5 + R9!
+}
+
+; my first KFORTH subroutine
+findx:
+{
+	98 dup * 71 dup * + sqrt
+}
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="TOC7"></A><h2> Stack  Underflow</h2><p>
+ It  can  be  expected  that  a  mutated  KFORTH  program  would  attempt  instructions  without  having  enough  data  on  the  data  stack.
+ How  does  KFORTH  handle  this?
+</p>
+<p>
+ KFORTH&#x27;s  policy  for <b>stack  underflow</b> is  to  treat  the  operation  as  a  NO-OP.  Meaning  the  program  just  continues  to  the  next
+ instruction  without  removing  anything  from  the  stack.
+</p>
+<p>
+ For  example,  this  code  calls  the  plus  (+)  instruction  but  only  1  data  item  is  on  the  stack.
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	200 + 3 *
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ The <b>&#x27;+&#x27;</b> operation  needs  two  values  on  the  stack.  Since  this  is  not  the  case,  the  stack  underflow  policy  is
+ to  simply  proceed  to  the  next  instruction.  When  the <b>&#x27;*&#x27;</b> operation  is  executed  it  finds  two  values  on  the  data
+ stack,  so  it  is  able  to  perform  its  job  (computes  600,  replacing  200  and  3  on  the  data  stack).
+</p>
+<HR>
+<A NAME="TOC8"></A><h2> Undefined  Functions</h2><p>
+ In  addition  to  stack  underflow,  sometimes  the  value  to  an  instruction  (a  function)  are  not  defined.  For  example  division  by
+ 0  and  trying  to  take  the  square  root  of  a  negative  number.  Therefore, <b>div</b><b> mod</b>,  and <b>/mod</b> will  act
+ as  NO-OP  instructions  when  the  second  operand  is  zero.  And  when  the  argument  to <b>sqrt</b> is  negative  the  instruction  leaves
+ the  stack  unchanged.
+</p>
+<HR>
+<A NAME="flowcontrol"></A><A NAME="TOC9"></A><h2> Flow  Control</h2><p>
+ We  already  know  about  the <b>call</b> instruction,  which  transfers  control  to  a  new  code  block.  What  else  can  we  do?
+ KFORTH  includes  the  following  instructions  for  flow  control:
+</p>
+<ul>
+<li>
+<b> call</b> -  call  a  code  block
+</li>
+
+<li>
+<b> if</b> -  call  a  code  block  IF  true
+</li>
+
+<li>
+<b> ifelse</b> -  call  one  of  two  code  blocks  IF  true/false
+</li>
+
+<li>
+<b>?loop</b> -  jump  to  beginning  of  code  block  if  true
+</li>
+
+<li>
+<b>?exit</b> -  jump  to  end  of  code  block  if  true
+</li>
+
+<li>
+<b> trap1 ...  trap9</b> -  call  one  of  the  trap  handlers
+</li>
+</ul><HR>
+<A NAME="TOC10"></A><h2> call</h2><p>
+ We  have  already  seen  this  instruction  at  work.  It&#x27;s  the  unconditional  form  of  subroutine  call.  Below  we  explore <b>if</b> and
+<b>ifelse</b> which  are  conditional  subroutine  call  instructions.
+</p>
+<p>
+ You  may  be  wondering  what &quot;call&quot; does  with  a  bogus  code  block  number?  For  example, &quot;-900  call&quot;,  or &quot;555  call&quot;.
+ When <b>call</b> instruction  (and <b>if</b>, <b>ifelse</b>)  is  used  with  a  bogus  code  block  number,  it  removes  the  values
+ from  the  stack,  as  if  this  were  a  normal  instruction,  but  it  won&#x27;t  call  any  code  block.  Conceptually,  we  can
+ think  of  a  KFORTH  program  as  having  empty  rows  for  every  possible  integer  (except  the  ones  that  have  been  defined).
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	5000 call
+}
+
+row1: { }
+row2: { }
+row3: { }
+row4: { }
+row5: { }
+row6: { }
+...
+row9999999: { }
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="TOC11"></A><h2> if</h2><p>
+ Here&#x27;s  an  example  of  using  the  IF  instruction.
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	521 R1!
+	R1 dup 500 &gt;= blah if
+}
+
+blah:
+{
+	500 -
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ This  code  checks  if  R1  is  greater  than  500  and  if  true,  calls  the  subroutine <b>blah</b>.  Blah  will  subtract
+ 500.  The &#x27;dup&#x27; instruction  creates  a  2nd  copy  of  R1  on  the  data  stack.
+</p>
+<HR>
+<A NAME="nesting"></A><A NAME="TOC12"></A><h2> Nested  Code  Blocks:</h2> There  is  another  human  friendly  way  to  write  this  same  thing.  It  is  called
+ nested  code  blocks.  Here  is  how  to  re-write  this  example, 
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	521 R1!
+	R1 dup 500 &gt;= { 500 - } if
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+We  nested  the  code  block  that  use  to  be <b>blah</b>,  directly  into  main.  If  you <b>[Compile]</b>,  you&#x27;ll  notice
+ that  the  nesting  is  removed.  This  reveals  how  the  nesting  actually  works.  Nesting  code  blocks  is  just  for  human  convienience.
+</p>
+<p>
+ When  compiled  it  maps  to  the  orginal  version  we  wrote  that  used  the  code  block <b>blah</b>,  see:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	521 R1! R1 dup 500 &gt;= 1 if
+}
+
+row1:
+{
+	500 -
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ Nesting  can  be  of  unlimited  depth.  But,  again  this  nesting  is  a  lexical  feature,  and  does  not  imply  and  special
+ powers  in  the  KFORTH  language.  It  is  simply  a  way  to  make  writing  KFORTH  programs  simpler.
+</p>
+<HR>
+<A NAME="TOC13"></A><h2> ifelse</h2><p>
+ This  instruction  calls  one  of  two  code  blocks  depening  on  if  the  condition  is  true  or  false.
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	499 R1!
+	R1 dup 500 &gt;=
+		{ 500 - R1! }
+		{ 2 / R1! }  ifelse
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ First  notice  that  the  KFORTH  compiler  is  free-format,  allowing  you  to  space  your  KFORTH  programs  any  way  which  you  desire.
+</p>
+<p>
+ This  is  what  the  code  will  be  converted  into  by  the  compiler:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	499 R1! R1 dup 500 &gt;= 1 2 ifelse
+}
+
+row1:
+{
+	500 - R1!
+}
+
+row2:
+{
+	2 / R1!
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ Which  does  the  same  as  this  C  code:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+/* C code, not KFORTH */
+void main()
+{
+	int R1;
+
+	R1 = 499;
+	if( R1 &gt;= 500 ) {
+		R1 = R1 - 500;
+	} else {
+		R1 = R1 / 2;
+	}
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ The <b>ifelse</b> instruction  requires  three  arguments  to  be  on  the  data  stack.  If  this  is  not  the  case,  then  the
+<b>stack  underflow</b> policy  is  to  just  treat  the <b>ifelse</b> as  a  no-op.
+</p>
+<HR>
+<A NAME="TOC14"></A><h2>?loop</h2><CENTER><IMG  SRC="loopop.gif"></CENTER><p>
+ As  this  awsome  diagram  illustrates,  the <b>?loop</b> instruction  loops!  It  is  a  form  of  controlled  goto.  It  does  not  do
+ a  subroutine  call,  instead  we  simply  branch  back  to  the  beginning  of  the  current  code  block  (if  the  value  on
+ top  of  the  stack  is  non-zero).  Otherwise  we  continue  to  the  next  instruction.
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	{ ...stuff... 1 ?loop } call
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ The  instructions <b>1 ?loop</b> causes  execution  to  return  to  the  start  of  the  code  block,  therefore  this  will  loop  forever  running
+ the  instructions <tt>...stuff...</tt>.
+</p>
+<HR>
+<A NAME="TOC15"></A><h2>?exit</h2><CENTER><IMG  SRC="exitop.gif"></CENTER><p>
+ This  diagram  shows  how  the  exit  instruction  works.  The <b>?exit</b> instruction  conditionally  exits  (branches  to  the  end  of  the  code
+ block)  the  current  code  block.  If  the  top  of  the  data  stack  is  non-zero  then  we  jump  to  the  end
+ of  the  code-block.  Otherwise  we  continue  to  the  next  instruction.  As  with <b>?loop</b>,  this  instruction  does  not  involve  any
+ subroutine  calling.  It  is  a  branch.
+</p>
+<p>
+ These  are  the  only  branching  instructions  in  KFORTH.
+</p>
+<HR>
+<A NAME="datatypes"></A><A NAME="TOC16"></A><h2> DATA  TYPES</h2><p>
+ KFORTH  has  the  most  elaborate  and  rich  data  types  in  the  whole  history  of  computer  languages!!!!  Bwhahahahaha!  Just  kidding.  KFORTH
+ only  has  one  data  type:  a  16-bit  signed  integer.
+</p>
+<p>
+ That&#x27;s  it.  There  are  no  strings,  booleans,  arrays,  etc...
+</p>
+<p>
+ A  16-bit  number  isn&#x27;t  very  large.  Here  is  the  min/max  range  of  this  data  type:
+</p>
+<p>
+<b> -32,768</b> to <b>+32,767</b>
+</p>
+<p>
+ Only  decimal  notation  is  accepted.  Numeric  literals  may  be  preceeded  by  a  minus  (-)  sign  to  indicate  a  negative  value.
+</p>
+<HR>
+<A NAME="ram"></A><A NAME="TOC17"></A><h2> RAM</h2><p>
+ The  kforth  program  is  itself  a  memory  store.  It  appears  to  be  just  code,  but  it  is  in  fact  a
+ read  and  write  storage.  The  numbers  and  instructions  share  the  same  16-bit  word.  This  means  numbers  stored  in  RAM  must
+ be  reduced  to  15-bit  values  by  dropping  the  top  bit.
+</p>
+<p>
+ The  instructions: <tt>NUMBER</tt>, <tt>NUMBER!</tt>, <tt>?NUMBER!</tt>, <tt>OPCODE</tt>, <tt>OPCODE!</tt> read  and  write  to  RAM.  There  are  16,000  code
+ block  addressess.  And  each  code  block  can  hold  16,000  values.  This  gives  about  256MB  of  storage.
+</p>
+<p>
+ Before:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	666 mydata 2 NUMBER!
+	777 mydata 5 NUMBER!
+}
+mydata: { 0 0 0 0 0 0 0 }
+</PRE></TD></TABLE></CENTER>
+<p>
+ After:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	666 mydata 2 NUMBER!
+	777 mydata 5 NUMBER!
+}
+mydata: { 0 0 666 0 0 777 0 }
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="selfmod"></A><A NAME="TOC18"></A><h2> Self  Modifying  Code</h2><p>
+ The  previous  example  shows  that  the  program  area  can  be  written  to.  In  addition  to  being  able  to  read  &amp;
+ write  numbers,  you  can  write  instructions  with  the <tt>OPCODE!</tt> instruction.
+</p>
+<p>
+ Before:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	OPCODE&#x27; &gt;= myfunc 2 OPCODE!
+	OPCODE&#x27; ?exit myfunc 3 OPCODE!
+}
+myfunc: { nop nop nop nop }
+</PRE></TD></TABLE></CENTER>
+<p>
+ After:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	OPCODE&#x27; &gt;= myfunc 2 OPCODE!
+	OPCODE&#x27; ?exit myfunc 3 OPCODE!
+}
+myfunc: { nop nop &gt;= ?exit }
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="traps"></A><A NAME="TOC19"></A><h2> Traps  &amp;  Trap  Handlers</h2><p>
+ There  are  9  instructions, <tt>TRAP1</tt>, <tt>TRAP2</tt>, ..., <tt>TRAP9</tt>,  which  are  for  implementing  system  calls.  The  trap  instructions
+ call  the  code  block  numbers  1,  2, ...  9.  They  are  the  same  as, 
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+ {
+	trap2		; call code block 2
+	2 call		; call code block 2, if not going from unprotected to protected code.
+ }
+</PRE></TD></TABLE></CENTER>
+
+</p>
+<p>
+The  difference  between  trap2  and <tt>2  call</tt> is  the  call  instruction  respects  the  boundary  between  the  protected  code  and  unprotected  code.
+ Unprotected  code  cannot  call  protected  code  (unless  a  trap  is  used).
+</p>
+<p>
+ You  can  reserve  the  first  10  code  blocks  for  your  trap  handlers.  Then  protect  your  code.  Here  _trap9  is  the
+ label  for  the  9th  code  block.  It  will  get  called  when  the  instruction <tt>trap9</tt> is  executed.
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	evolve call
+}
+
+_trap1: { }
+_trap2: { }
+_trap3: { }
+_trap4: { }
+_trap5: { }
+_trap6: { }
+_trap7: { }
+_trap8: { }
+_trap9: { EAT }
+
+; ---- protected / unprotected ----
+
+evolve: { 10 -9 trap9  }
+</PRE></TD></TABLE></CENTER>
+<p>
+ How  does  this  help  implement  system  calls?  If  you  split  your  program  into  two  parts.  A  protected  part  and  an
+ unprotected  part.  You  can  implement  special  operations  that  only  protected  code  can  do.  You  can  expose  this  functionality  as  a
+ trap  handler.  Now  the  unprotected  code  must  call  a  trap  to  use  this  functionality.
+</p>
+<p>
+ In  this  example <tt>EAT</tt> is  the  special  operation.  To  make  this  special  you  would  mark  this  instruction  as  PROTECTED.  That
+ way  it  won&#x27;t  be  available  in  the  unprotected  part  of  the  program.
+</p>
+<HR>
+<A NAME="trapsafety"></A><A NAME="TOC20"></A><h2> Trap  Safety</h2><p>
+ If  you  write  your  own  evolving  robots  with  traps/interrupts  you  will  discover  that <i>evolving</i> code  will  call  your  trap  handlers
+ with  all  possible  stack  states.  A  full  or  partially  full  data  stack  can  cause  your  protected  code  to  misbehave  and
+ end  up  doing  unintended  things.  Evolution  likes  to  exploit  such  opportunities.  This  section  covers  how  to  protect  your  trap  handler.
+</p>
+<p>
+ The  trap  instruction  will  not  call  the  trap  handler  unless  there  are  at  least <b>2</b> data  stack  elements  available  on
+ the  data  stack.  If  there  is  not,  then  the  trap  instruction  behaves  like  NOP.  There  must  also  be <b>1</b> call
+ stack  element  available  to  perform  the  subroutine  call  to  the  trap  handler.  This  is  done  so  that  the  trap  handler
+ can  always  perform  safety  checks  such  as  these:
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+_trap7: {
+	DSLEN 60 &gt; ?exit
+	CSLEN 59 &gt; ?exit
+	DSLEN 3 &lt; ?exit		; make sure three arguments provided
+	do_something call
+}
+</PRE></TD></TABLE></CENTER>
+<p>
+ Here  we  ensure  there  at  least  4  (64-60)  data  stack  elements  and  5  (64-59)  call  stack  elements  available  before  proceeding.
+ Why  are  these  safety  checks  important?  Because  the  caller  won&#x27;t  be  expected  to  follow  your  API  conventions.  The  caller  of
+ this  trap  could  be <b>evolving</b> code,  which  could  have  all  of  their  stacks  filled  up.  Or  any  other  strange  state.
+</p>
+<p>
+ Why  is  this  a  concern?  Why  not  allow  the  trap  handler  to  fail  in  strange  ways  when  the  evolved  code
+ has  called  you  in  strange  ways?  Won&#x27;t  this  just  harm  the  evolving  creature  and  it  won&#x27;t  persists?  It  ends  up
+ exposing  a  whole  host  of  functionality  you  didn&#x27;t  intend  to  the  evolving  code,  and  that  will  mess  up  your  newly
+ invented  physics.
+</p>
+<HR>
+<A NAME="protections"></A><A NAME="TOC21"></A><h2> Protections</h2><p>
+ This  section  documents  the  properites  of <b>Protected  Code  Blocks</b> and <b>Protected  Instructions</b>.  See  the  section, <A HREF="architecture.html">CPU  Architecture</A>,  for  a  good  explaination  of
+ protections.  Here  are  the  rules  they  follow  inside  the  simulator.
+</p>
+<A NAME="TOC22"></A><h3> Protected  Instructions</h3><p>
+ A  protected  instruction,
+</p>
+<ol>
+<li>
+<b> will  not  be  generated  by  the  mutation  algorithm</b>
+</li><br>
+
+<li>
+<b> cannot  be  generated  by <tt>OPCODE</tt>, <tt>OPCODE!</tt> and <tt>OPCODE&#x27;</tt></b> (when  executed  in  unprotected  code)
+</li><br>
+</ol><p>
+ This  applies  to  the &#x27;insert  code  block&#x27; and &#x27;insert  instruction&#x27; mutations  as  well  as  the &#x27;modify  instruction&#x27; and &#x27;modify  code
+ block&#x27; mutations.
+</p>
+<p>
+ This  means  you  are  allowed  to  have  a  kforth  program  that  starts  out  with  protected  instructions  inside  of  unprotected  code.
+ There  is  no  restriction  on  this  (by  the  rules  above).
+</p>
+<p>
+ But  if  you  choose  to  make  an  instruction  only  available  to  your  protected  code,  then  you  shouldn&#x27;t  put  any  protected
+ instructions  into  the  unprotected  zone,  this  would  defeat  the  purpose.
+</p>
+<A NAME="TOC23"></A><h3> Protected  Code  Blocks</h3><p>
+ A  protected  code  block,
+</p>
+<ol>
+<li>
+<b> will  not  be  mutated  by  the  mutation  algorithm</b>
+</li><br>
+
+<li>
+<b> is  not  callable  from  unprotected  code</b> (except  via <tt>TRAP</tt> instructions)
+</li><br>
+
+<li>
+<b> is  not  readable  from  unprotected  code</b> (<tt>CBLEN</tt> / <tt>OPCODE</tt> / <tt>NUMBER</tt> / <tt>?NUMBER!</tt> instructions)
+</li><br>
+
+<li>
+<b> is  not  writable  from  unprotected  code</b> (<tt>OPCODE!</tt> / <tt>NUMBER!</tt> / <tt>?NUMBER!</tt> instructions)
+</li><br>
+</ol><p>
+ Them&#x27;s  the  rules.
+</p>
+<HR>
+<A NAME="int"></A><A NAME="TOC24"></A><h2> Interrupts</h2><p>
+ Some  of  the  instructions  that  interact  with  other  cells  can  be  configured  to <b>interrupt</b> the  cell  which  was  acted  on.
+ For  example,  the <tt>SEND</tt> instruction  will  write  a  value  to  another  cell,  but  if  configured,  it  will  also  cause  that
+ other  cell  to  be  interrupted.
+</p>
+<p>
+ When  a  cell  is  interrupted  its  flow  of  control  transferred  to  one  of  the  trap  handlers.
+</p>
+<p>
+<b> Masking:</b> All  interrupt  handling  logic  will  mask  an  interrupt  if  it  finds  that  the  target  cell  is  already  running  inside
+ of  the  corresponding  trap  code  block.  If  you  transfer  control  to  another  code  block  number,  then  you  will  need  to
+ set  a  flag  to  ensure  the  interrupt  remains  masked  (See  Interrupt  Safety  below).
+</p>
+<p>
+<b> Other  rules:</b> As  with  traps,  if  the  data  stack  does  not  have <b>2</b> elements  available,  then  the  interrupt  will  not  be
+ triggered.  Also,  at  least <b>1</b> call  stack  element  must  be  available  to  perform  the  subroutine  call  to  the  trap  handler.
+</p>
+<p>
+<b> Configuring:</b> There  are  three  bits  in  the  Instruction <A HREF="modes.html">Modes</A> for  some  instructions.  These  three  bits  control  which  trap  handler  will
+ be  called.  This  only  allows  trap&#x27;s  1  thru  7  to  be  configured  (not  trap8  or  trap9).  For  example  a  three
+ bit  value  of <b>110</b> corresponds  to <tt>trap6</tt>.
+</p>
+<HR>
+<A NAME="intsafety"></A><A NAME="TOC25"></A><h2> Interrupt  Safety</h2><p>
+ The  normal  trap  safety  applies  to  interrupt  handlers.  You  will  want  to  add  a  way  to  check  if  you  are
+ already  inside  of  the  interrupt  handler.  If  you  keep  your  logic  within  the  original  trap  handler  you  are  okay,  because
+ the  interrupt  will  be  masked  for  you.  But  if  you  call  another  code  block,  you&#x27;ll  need  to  check  a  flag.
+</p>
+<p>
+ With  the  test-and-set  instruction  you  can  ensure  only  one  cell  enters  the  interrupt  handler  logic.  When  done,  you  clear  the
+ flag,  and  the  interrupt  is  re-activated.
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+;
+; interrupt handler.
+; &#x27;flag&#x27; will be set to 1 if somebody is already servicing this interrupt.
+;
+_trap3: {
+    DSLEN 60 &gt; ?exit
+    CSLEN 59 &gt; ?exit
+    1 flag 0 ?NUMBER!  not ?exit   ; check lock flag
+    do_something call
+    0 flag 0 NUMBER!        ; clear the flag, re-enable this interrupt.
+}
+
+...
+
+do_something:
+{
+    ...
+}
+
+flag: { 0 }
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="reference"></A><A NAME="TOC26"></A><h2> KFORTH  INSTRUCTION  REFERENCE</h2><p>
+ The  core  KFORTH  instructions  are  summarized  below,  complete  instruction  documentation  is  available <A HREF="kforth_reference.html">here</A>.
+</p>
+<p>
+ The  instructions  that  control  organisms/cells  are  listed <A HREF="organisms.html#reference">here</A>.
+</p>
+<p>
+ The  USAGE  column  uses  forth  notation  to  document  these  instructions.  This  notation  attempts  to  show  the  data  stack  before  and
+ after  the  call  to  the  instruction.  For  example,
+</p>
+
+<pre>
+(a b c -- n )
+</pre>
+<p>
+ The  stuff  before <tt>--</tt> is  the  state  of  the  data  stack  before  calling  the  instruction.  And  the  stuff  after <tt>--</tt> is  state  of  the  data  stack  AFTER  this  instruction  finishes.
+</p>
+<p>
+ In  this  example,  the  instruction  takes  three  arguments <b>a</b>, <b>b</b>,  and <b>c</b>.  After  the  instruction  executes  those
+ three  arguments  are  replaced  with  a  single  value <b>n</b> (which  is  the  result).
+</p>
+<CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>INSTRUCTION</B></TD><TD ALIGN=LEFT><B>USAGE</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>DESCRIPTION</B></TD><TR><TD ALIGN=LEFT><B>call</B></TD><TD ALIGN=LEFT>( code-block -- )</TD><TD ALIGN=LEFT>Subroutine  call  to  another  code  block.  The  code  block  number  is  given  by &#x27;code-block&#x27; on  top  of  the  data  stack.
+ If  code  block  is  invalid,  the  request  is  ignored.  In  disassembly  row123  is  code-block  123,  and  so  on.<P></TD><TR><TD ALIGN=LEFT><B>if</B></TD><TD ALIGN=LEFT>( expr code-block -- )</TD><TD ALIGN=LEFT> Removes  two  items  from  top  of  stack.  If <i>expr</i> is  non-zero  then <i>code-block</i> is  called.  Otherwise,  execution  continues  on  the
+ next  instruction.<P></TD><TR><TD ALIGN=LEFT><B>ifelse</B></TD><TD ALIGN=LEFT>( expr true-block false-block -- )</TD><TD ALIGN=LEFT> removes  three  items  from  top  of  stack.  If <i>expr</i> is  non-zero  then  call <i>true-block</i>,  else  call <i>false-block</i>.<P></TD><TR><TD ALIGN=LEFT><B>?loop</B></TD><TD ALIGN=LEFT>( n -- )</TD><TD ALIGN=LEFT> Remove  1  item  from  the  stack.  If  value  is  non-zero  jump  to  the  start  of  the  current  code  block.  Otherwise
+ continue  with  the  next  instruction  after &#x27;?loop&#x27;.<P></TD><TR><TD ALIGN=LEFT><B>?exit</B></TD><TD ALIGN=LEFT>( n -- )</TD><TD ALIGN=LEFT> Remove  1  item  from  the  stack.  If  non-zero  then  exit  current  code  block.<P></TD><TR><TD ALIGN=LEFT><B>pop</B></TD><TD ALIGN=LEFT>( n -- )</TD><TD ALIGN=LEFT> Remove  item  from  stack  and  discard  it.<P></TD><TR><TD ALIGN=LEFT><B>dup</B></TD><TD ALIGN=LEFT>( a -- a a )</TD><TD ALIGN=LEFT> Duplicate  item  on  top  of  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>swap</B></TD><TD ALIGN=LEFT>( a b -- b a )</TD><TD ALIGN=LEFT> Swap  top  two  elements  on  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>over</B></TD><TD ALIGN=LEFT>( a b -- a b a )</TD><TD ALIGN=LEFT> Copy  second  item  from  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>rot</B></TD><TD ALIGN=LEFT>( a b c -- b c a )</TD><TD ALIGN=LEFT> Rotate  third  item  to  top.<P></TD><TR><TD ALIGN=LEFT><B>?dup</B></TD><TD ALIGN=LEFT>( n -- n n | 0 )</TD><TD ALIGN=LEFT> Duplicate  top  element  if  non-zero.<P></TD><TR><TD ALIGN=LEFT><B>-rot</B></TD><TD ALIGN=LEFT>( a b c -- c a b )</TD><TD ALIGN=LEFT> Rotate  top  to  third  position.<P></TD><TR><TD ALIGN=LEFT><B>2swap</B></TD><TD ALIGN=LEFT>( a b c d -- c d a b )</TD><TD ALIGN=LEFT> Swap  pairs.<P></TD><TR><TD ALIGN=LEFT><B>2over</B></TD><TD ALIGN=LEFT>( a b c d -- a b c d a b)</TD><TD ALIGN=LEFT> Leapfrog  pair.<P></TD><TR><TD ALIGN=LEFT><B>2dup</B></TD><TD ALIGN=LEFT>( a b -- a b a b )</TD><TD ALIGN=LEFT> Dupicate  pair.<P></TD><TR><TD ALIGN=LEFT><B>2pop</B></TD><TD ALIGN=LEFT>( a b -- )</TD><TD ALIGN=LEFT> Remove  pair.<P></TD><TR><TD ALIGN=LEFT><B>nip</B></TD><TD ALIGN=LEFT>( a b -- b )</TD><TD ALIGN=LEFT> Remove  2nd  item  from  stack.<P></TD><TR><TD ALIGN=LEFT><B>tuck</B></TD><TD ALIGN=LEFT>( a b -- b a b)</TD><TD ALIGN=LEFT> Copy  top  item  to  third  position.<P></TD><TR><TD ALIGN=LEFT><B>1+</B></TD><TD ALIGN=LEFT>( n -- n+1 )</TD><TD ALIGN=LEFT> Add  1  to  the  item  on  top  of  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>1-</B></TD><TD ALIGN=LEFT>( n -- n-1 )</TD><TD ALIGN=LEFT> Subtract  1  from  item  on  top  of  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>2+</B></TD><TD ALIGN=LEFT>( n -- n+2 )</TD><TD ALIGN=LEFT> Add  2  to  item  on  top  of  the  stack<P></TD><TR><TD ALIGN=LEFT><B>2-</B></TD><TD ALIGN=LEFT>( n -- n-2 )</TD><TD ALIGN=LEFT> Subtract  2  from  the  item  on  top  of  the  stack.<P></TD><TR><TD ALIGN=LEFT><B>2/</B></TD><TD ALIGN=LEFT>( n -- n/2 )</TD><TD ALIGN=LEFT> Half  value.<P></TD><TR><TD ALIGN=LEFT><B>2*</B></TD><TD ALIGN=LEFT>( n -- n*2 )</TD><TD ALIGN=LEFT> Double  value.<P></TD><TR><TD ALIGN=LEFT><B>abs</B></TD><TD ALIGN=LEFT>( n -- abs(n) )</TD><TD ALIGN=LEFT> Absolute  value  of  n.<P></TD><TR><TD ALIGN=LEFT><B>sqrt</B></TD><TD ALIGN=LEFT>( n -- sqrt(n) )</TD><TD ALIGN=LEFT> Square  root.  n  must  be  positive.<P></TD><TR><TD ALIGN=LEFT><B>+</B></TD><TD ALIGN=LEFT>( a b -- a+b )</TD><TD ALIGN=LEFT> Addition  top  to  elements  on  stack.<P></TD><TR><TD ALIGN=LEFT><B>-</B></TD><TD ALIGN=LEFT>( a b -- a-b )</TD><TD ALIGN=LEFT> Subtraction  first  item  on  stack  from  2nd.<P></TD><TR><TD ALIGN=LEFT><B>*</B></TD><TD ALIGN=LEFT>( a b -- a*b )</TD><TD ALIGN=LEFT> Multiply.<P></TD><TR><TD ALIGN=LEFT><B>/</B></TD><TD ALIGN=LEFT>( a b -- a/b )</TD><TD ALIGN=LEFT> Divide.<P></TD><TR><TD ALIGN=LEFT><B>mod</B></TD><TD ALIGN=LEFT>( a b -- a%b )</TD><TD ALIGN=LEFT> Modulos.<P></TD><TR><TD ALIGN=LEFT><B>/mod</B></TD><TD ALIGN=LEFT>( a b -- a%b a/b )</TD><TD ALIGN=LEFT> Divide  and  modulos.<P></TD><TR><TD ALIGN=LEFT><B>negate</B></TD><TD ALIGN=LEFT>( n -- -n )</TD><TD ALIGN=LEFT> negate  top  item  on  stack.<P></TD><TR><TD ALIGN=LEFT><B>2negate</B></TD><TD ALIGN=LEFT>( a b -- -a -b )</TD><TD ALIGN=LEFT> negate  top  two  items  on  stack.  (useful  for  computing  a &quot;flee&quot; direction  to  evade  something).<P></TD><TR><TD ALIGN=LEFT><B><<</B></TD><TD ALIGN=LEFT>( a b -- a << b )</TD><TD ALIGN=LEFT> Left  shift  a  by  b  bits.  Negative  b  will  perform  right  shift.<P></TD><TR><TD ALIGN=LEFT><B>>></B></TD><TD ALIGN=LEFT>( a b -- a >> b )</TD><TD ALIGN=LEFT> Right  shift  a  by  b  bits.  Negative  b  will  perform  left  shift.<P></TD><TR><TD ALIGN=LEFT><B>=</B></TD><TD ALIGN=LEFT>( a b -- EQ(a,b) )</TD><TD ALIGN=LEFT> Equal  to.<P></TD><TR><TD ALIGN=LEFT><B><></B></TD><TD ALIGN=LEFT>( a b -- NE(a,b) )</TD><TD ALIGN=LEFT> Not  equal  to.<P></TD><TR><TD ALIGN=LEFT><B><</B></TD><TD ALIGN=LEFT>( a b -- LT(a,b) )</TD><TD ALIGN=LEFT> Less  than.<P></TD><TR><TD ALIGN=LEFT><B>></B></TD><TD ALIGN=LEFT>( a b -- GT(a,b) )</TD><TD ALIGN=LEFT> Greater  than.<P></TD><TR><TD ALIGN=LEFT><B><=</B></TD><TD ALIGN=LEFT>( a b -- LE(a,b) )</TD><TD ALIGN=LEFT> Less  than  or  equal  to.<P></TD><TR><TD ALIGN=LEFT><B>>=</B></TD><TD ALIGN=LEFT>( a b -- GE(a,b) )</TD><TD ALIGN=LEFT> Greater  than  or  equal  to.<P></TD><TR><TD ALIGN=LEFT><B>0=</B></TD><TD ALIGN=LEFT>( n -- EQ(n,0) )</TD><TD ALIGN=LEFT> Is  element  on  top  of  the  stack  equal  to  0?<P></TD><TR><TD ALIGN=LEFT><B>or</B></TD><TD ALIGN=LEFT>( a b -- a|b )</TD><TD ALIGN=LEFT> Bitwise  OR.  Can  be  used  as  a  logical  OR  operator  too,  because  KFORTH  boolean  operators  return  1  and  0.<P></TD><TR><TD ALIGN=LEFT><B>and</B></TD><TD ALIGN=LEFT>( a b -- a&b )</TD><TD ALIGN=LEFT> Bitwise  AND.  Can  be  used  a  a  logical  AND  operator  too,  because  KFORTH  boolean  operators  return  1  and  0.<P></TD><TR><TD ALIGN=LEFT><B>not</B></TD><TD ALIGN=LEFT>( n -- !n )</TD><TD ALIGN=LEFT> Logical  NOT.<P></TD><TR><TD ALIGN=LEFT><B>invert</B></TD><TD ALIGN=LEFT>( n -- ~n )</TD><TD ALIGN=LEFT> Invert  bits  (Bitwise  NOT).<P></TD><TR><TD ALIGN=LEFT><B>xor</B></TD><TD ALIGN=LEFT>( a b -- a^b )</TD><TD ALIGN=LEFT> XOR  function.<P></TD><TR><TD ALIGN=LEFT><B>min</B></TD><TD ALIGN=LEFT>( a b -- min(a,b) )</TD><TD ALIGN=LEFT> Minimum  value.<P></TD><TR><TD ALIGN=LEFT><B>max</B></TD><TD ALIGN=LEFT>( a b -- max(a,b) )</TD><TD ALIGN=LEFT> Remove  2  items  from  stack  and  replace  with  maximum  value.<P></TD><TR><TD ALIGN=LEFT><B>CB</B></TD><TD ALIGN=LEFT>( -- CB )</TD><TD ALIGN=LEFT> Pushes  the  current  code  block  number  on  the  data  stack.  Can  be  used  to  implement &quot;relative&quot; code  block  addressing.<P></TD><TR><TD ALIGN=LEFT><B>R0</B></TD><TD ALIGN=LEFT>( -- R0 )</TD><TD ALIGN=LEFT> Pushes  register  R0  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R1</B></TD><TD ALIGN=LEFT>( -- R1 )</TD><TD ALIGN=LEFT> Pushes  register  R1  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R2</B></TD><TD ALIGN=LEFT>( -- R2 )</TD><TD ALIGN=LEFT> Pushes  register  R2  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R3</B></TD><TD ALIGN=LEFT>( -- R3 )</TD><TD ALIGN=LEFT> Pushes  register  R3  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R4</B></TD><TD ALIGN=LEFT>( -- R4 )</TD><TD ALIGN=LEFT> Pushes  register  R4  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R5</B></TD><TD ALIGN=LEFT>( -- R5 )</TD><TD ALIGN=LEFT> Pushes  register  R5  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R6</B></TD><TD ALIGN=LEFT>( -- R6 )</TD><TD ALIGN=LEFT> Pushes  register  R6  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R7</B></TD><TD ALIGN=LEFT>( -- R7 )</TD><TD ALIGN=LEFT> Pushes  register  R7  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R8</B></TD><TD ALIGN=LEFT>( -- R8 )</TD><TD ALIGN=LEFT> Pushes  register  R8  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R9</B></TD><TD ALIGN=LEFT>( -- R9 )</TD><TD ALIGN=LEFT> Pushes  register  R9  on  the  data  stack<P></TD><TR><TD ALIGN=LEFT><B>R0!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R0<P></TD><TR><TD ALIGN=LEFT><B>R1!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R1<P></TD><TR><TD ALIGN=LEFT><B>R2!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R2<P></TD><TR><TD ALIGN=LEFT><B>R3!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R3<P></TD><TR><TD ALIGN=LEFT><B>R4!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R4<P></TD><TR><TD ALIGN=LEFT><B>R5!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R5<P></TD><TR><TD ALIGN=LEFT><B>R6!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R6<P></TD><TR><TD ALIGN=LEFT><B>R7!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R7<P></TD><TR><TD ALIGN=LEFT><B>R8!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R8<P></TD><TR><TD ALIGN=LEFT><B>R9!</B></TD><TD ALIGN=LEFT>( val -- )</TD><TD ALIGN=LEFT> Removes  1  item &#x27;val&#x27; from  the  data  stack  and  stores &#x27;val&#x27; into  register  R9<P></TD><TR><TD ALIGN=LEFT><B>SIGN</B></TD><TD ALIGN=LEFT>( n -- SIGN(n) )</TD><TD ALIGN=LEFT> Compute  sign  of &#x27;n&#x27;.  If  n  is  negative,  SIGN  will  return  -1.  if  n  is  greater  than  0,  SIGN  will
+ return  1.  If  n  is  0,  SIGN  will  return  0.<P></TD><TR><TD ALIGN=LEFT><B>PACK2</B></TD><TD ALIGN=LEFT>( a b -- n )</TD><TD ALIGN=LEFT> Combine  two  8-bit  integers &#x27;a&#x27; and &#x27;b&#x27; into  a  single  16-bit  value &#x27;n&#x27;.<P></TD><TR><TD ALIGN=LEFT><B>UNPACK2</B></TD><TD ALIGN=LEFT>( n -- a b )</TD><TD ALIGN=LEFT> Extract  two  8-bit  integers &#x27;a&#x27; and &#x27;b&#x27; from  the  16-bit  value &#x27;n&#x27;.<P></TD><TR><TD ALIGN=LEFT><B>MAX_INT</B></TD><TD ALIGN=LEFT>( -- max_int )</TD><TD ALIGN=LEFT> Push  the  maximum  signed  integer  on  the  data  stack.  Which  is  32767.<P></TD><TR><TD ALIGN=LEFT><B>MIN_INT</B></TD><TD ALIGN=LEFT>( -- min_int )</TD><TD ALIGN=LEFT> Push  the  minimum  signed  integer  on  the  data  stack.  Which  is  -32768.<P></TD><TR><TD ALIGN=LEFT><B>HALT</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> End  the  current  program.  This  means  the  cell  will  be  flagged  as  Dead  (shows  up  red).<P></TD><TR><TD ALIGN=LEFT><B>NOP</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> No  operation.  Do  nothing.<P></TD><TR><TD ALIGN=LEFT><B>R0++</B></TD><TD ALIGN=LEFT>(-- R0++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R0.  Returns  the  value  of  R0  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R0</B></TD><TD ALIGN=LEFT>(-- --R0)</TD><TD ALIGN=LEFT> Decrements  R0  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R1++</B></TD><TD ALIGN=LEFT>(-- r1++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R1.  Returns  the  value  of  R1  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R1</B></TD><TD ALIGN=LEFT>(-- --r1)</TD><TD ALIGN=LEFT> Decrements  R1  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R2++</B></TD><TD ALIGN=LEFT>(-- r2++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R2.  Returns  the  value  of  R2  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R2</B></TD><TD ALIGN=LEFT>(-- --r2)</TD><TD ALIGN=LEFT> Decrements  R2  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R3++</B></TD><TD ALIGN=LEFT>(-- r3++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R3.  Returns  the  value  of  R3  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R3</B></TD><TD ALIGN=LEFT>(-- --r3)</TD><TD ALIGN=LEFT> Decrements  R3  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R4++</B></TD><TD ALIGN=LEFT>(-- r4++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R4.  Returns  the  value  of  R4  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R4</B></TD><TD ALIGN=LEFT>(-- --r4)</TD><TD ALIGN=LEFT> Decrements  R4  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R5++</B></TD><TD ALIGN=LEFT>(-- r5++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R5.  Returns  the  value  of  R5  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R5</B></TD><TD ALIGN=LEFT>(-- --r5)</TD><TD ALIGN=LEFT> Decrements  R5  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R6++</B></TD><TD ALIGN=LEFT>(-- r6++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R6.  Returns  the  value  of  R6  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R6</B></TD><TD ALIGN=LEFT>(-- --r6)</TD><TD ALIGN=LEFT> Decrements  R6  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R7++</B></TD><TD ALIGN=LEFT>(-- r7++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R7.  Returns  the  value  of  R7  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R7</B></TD><TD ALIGN=LEFT>(-- --r7)</TD><TD ALIGN=LEFT> Decrements  R7  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R8++</B></TD><TD ALIGN=LEFT>(-- r8++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R8.  Returns  the  value  of  R8  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R8</B></TD><TD ALIGN=LEFT>(-- --r8)</TD><TD ALIGN=LEFT> Decrements  R8  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>R9++</B></TD><TD ALIGN=LEFT>(-- r9++)</TD><TD ALIGN=LEFT> Post  Increment  the  register  R9.  Returns  the  value  of  R9  before  it  has  been  incremented.<P></TD><TR><TD ALIGN=LEFT><B>--R9</B></TD><TD ALIGN=LEFT>(-- --r9)</TD><TD ALIGN=LEFT> Decrements  R9  by  1,  and  returns  it.<P></TD><TR><TD ALIGN=LEFT><B>PEEK</B></TD><TD ALIGN=LEFT>(n -- value)</TD><TD ALIGN=LEFT> Get  the  n&#x27;th  data  stack  item  from  bottom,  or  -n&#x27;th  item  from  top.  If &#x27;n&#x27; is  invalid  (too  big  or
+ too  small),  then  return  -1.  If &#x27;n&#x27; is  valid  and  positive  then  return  the  n&#x27;th  item  from  the  bottom  (0-based).
+ If &#x27;n&#x27; is  valid  and  negative  then  return  the  n&#x27;th  item  from  the  top  (-1-based). &#x27;n&#x27; is  relative  to  the
+ state  of  the  stack  after &#x27;n&#x27; has  been  removed  by  this  instruction.<P></TD><TR><TD ALIGN=LEFT><B>POKE</B></TD><TD ALIGN=LEFT>(value n --)</TD><TD ALIGN=LEFT> If &#x27;n&#x27; is  invalid  (negative  or  too  big),  then  don&#x27;t  set  anything.  If &#x27;n&#x27; is  valid  and  positive  then  set
+ the  n&#x27;th  item  from  the  bottom  (0-based).  If &#x27;n&#x27; is  valid  and  negative  then  set  the  n&#x27;th  item  from  the
+ top  (-1-based). &#x27;n&#x27; is  relative  to  the  state  of  the  stack  after &#x27;n&#x27; and &#x27;value&#x27; have  been  removed  by  this
+ instruction.<P></TD><TR><TD ALIGN=LEFT><B>CBLEN</B></TD><TD ALIGN=LEFT>(cb -- len)</TD><TD ALIGN=LEFT> Returns  the  length  of  a  code  block.  The  code  block  number  to  use  is  given  by &#x27;cb&#x27;.<P></TD><TR><TD ALIGN=LEFT><B>DSLEN</B></TD><TD ALIGN=LEFT>( -- len)</TD><TD ALIGN=LEFT> This  instruction  returns  how  many  data  values  are  pushed  onto  the  data  stack  (excludeding &#x27;len&#x27;).<P></TD><TR><TD ALIGN=LEFT><B>CSLEN</B></TD><TD ALIGN=LEFT>( -- len)</TD><TD ALIGN=LEFT> Length  of  the  call  stack.<P></TD><TR><TD ALIGN=LEFT><B>TRAP1</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  1.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP2</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  2.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP3</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  3.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP4</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  4.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP5</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  5.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP6</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  6.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP7</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  7.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP8</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  8.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>TRAP9</B></TD><TD ALIGN=LEFT>( -- )</TD><TD ALIGN=LEFT> Call  code  block  9.  This  allows  un-protected  code  to  call  into  protected  code.<P></TD><TR><TD ALIGN=LEFT><B>NUMBER</B></TD><TD ALIGN=LEFT>(cb pc -- value)</TD><TD ALIGN=LEFT> Fetch  a  number  from  program  memory  and  push  that  value  onto  the  data  stack.  This  retrieves  a  value  from  the
+ program  memory. &#x27;cb&#x27; is  a  code  block  number, &#x27;pc&#x27; is  the  offset  from  the  start  of  the  code  block.  Note:
+ KFORTH  program  literals  are  signed  15-bit  integers.<P></TD><TR><TD ALIGN=LEFT><B>NUMBER!</B></TD><TD ALIGN=LEFT>(value cb pc -- )</TD><TD ALIGN=LEFT> Write &#x27;value&#x27; to  program  memory  at  location  (cb,  pc). &#x27;cb&#x27; is  the  code  block  number,  and &#x27;pc&#x27; is  the  offset
+ into  the  code  block.  KFORTH  program  literals  are  signed  15-bit  integers,  therefore &#x27;value&#x27; will  be  reduced  to  15-bits.  The  15-bit
+ value  range  is:  -16384  and  16383.<P></TD><TR><TD ALIGN=LEFT><B>?NUMBER!</B></TD><TD ALIGN=LEFT>(value cb pc -- value|0)</TD><TD ALIGN=LEFT> Test  (and  then  set)  the  KFORTH  program  memory  location  given  by  (cb,  pc).  If  it  is  zero  then  update  it
+ to  contain &#x27;value&#x27; and  return  value.  Else  return  0  and  leave  location  (cb,pc)  unchanged. &#x27;cb&#x27; is  the  code  block  number,
+ and &#x27;pc&#x27; is  the  offset  into  the  code  block.  KFORTH  program  literals  are  signed  15-bit  integers. &#x27;value&#x27; will  be  reduced
+ to  15-bits.  The  15-bit  value  range  is:  -16384  and  16383.<P></TD><TR><TD ALIGN=LEFT><B>OPCODE</B></TD><TD ALIGN=LEFT>(cb pc -- opcode)</TD><TD ALIGN=LEFT> Fetch  an  opcode  from  program  memory  and  push  its  numeric  code  onto  the  data  stack.  This  retrieves  the  opcode  from
+ the  program  memory, &#x27;cb&#x27; is  a  code  block  number, &#x27;pc&#x27; is  the  offset  from  the  start  of  the  code  block.
+ Opcodes  are  small  integers  between  0  and  ~250.  For  example  the  numeric  code  for  the  instruction &#x27;+&#x27; might  be  75.<P></TD><TR><TD ALIGN=LEFT><B>OPCODE!</B></TD><TD ALIGN=LEFT>(opcode cb pc -- )</TD><TD ALIGN=LEFT> Write  an  opcode  to  program  memory.  This  instruction  writes  code.  it  writes &#x27;opcode&#x27; to  program  memory, &#x27;cb&#x27; is  a  code
+ block  number, &#x27;pc&#x27; is  the  offset  from  the  start  of  the  code  block.  Opcodes  are  small  integers  between  0  and
+ ~250.  For  example  the  numeric  code  for  the  instruction &#x27;+&#x27; might  be  75.<P></TD><TR><TD ALIGN=LEFT><B>OPCODE'</B></TD><TD ALIGN=LEFT>( -- opcode )</TD><TD ALIGN=LEFT> Treat  the  instruction  following  the  OPCODE&#x27; instruction  as  a  literal.  Do  not  execute  the  next  instruction,  rather  return  its  opcode.
+ Execution  continues  with  the  instruction  following  the  next  instruction.  The  next  instructions  opcode  value  will  be  pushed  on  to  the
+ data  stack.  Opcodes  are  small  integers  between  0  and  ~250.  For  example  the  numeric  code  for  the  instruction &#x27;+&#x27; might
+ be  75.<P></TD></TABLE></CENTER><HR>
+<A NAME="examples"></A><A NAME="TOC27"></A><h2> Example  Code  1</h2>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+
+    3 cube call
+    99 cube call
+
+   ; this line computes (9^3)^3
+   9 cube call cube call
+
+}
+
+;
+; cube the value on top of the stack
+;
+cube:
+{
+    dup dup * *
+}
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="TOC28"></A><h2> Example  Code  2</h2>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	20 fact call
+}
+
+;
+; Recursive factorial algorithm:
+; ( n -- factorial(n) )
+;
+fact:
+{
+	dup 0 =
+		{ pop 1 }
+		{ dup 1 - fact call * } ifelse
+}
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="TOC29"></A><h2> Example  Code  3</h2>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+;
+; compute: (R0 * 8 / R3 + R1) * R2
+;
+; Where:
+;   R0 = 10
+;   R1 = 20
+;   R2 = 5
+;   R3 = 2
+;
+main:
+{
+    10 R0!
+    20 R1!
+    5  R2!
+    2 R3!
+
+   R0 8 * R3 / R1 + R2 *
+}
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="TOC30"></A><h2> Example  Code  4</h2>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+	20 fact call
+}
+
+;
+; non-recursive factorial algorithm:
+; ( n -- factorial(n) )
+;
+fact:
+{
+    1 swap
+    {
+        dup 0 = ?exit
+        dup 1- -rot
+        * swap
+        1 ?loop
+    } call
+
+    pop
+}
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="TOC31"></A><h2> Example  Code  5</h2>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+;
+; use code blocks as a form of array/table lookup.
+; This will fetch the pair (5, 6) from the &quot;table&quot;:
+;
+main:
+{
+    mytable 3 + call
+}
+
+
+mytable:
+   { 2 3 }		; index 0
+   { 1 1 }		; index 1
+   { 3 4 }		; index 2
+   { 5 6 }		; index 3
+   { 10 5 }	; index 4
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="TOC32"></A><h2> Example  Code  6</h2>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+;
+; Code blocks can also be used as a cheap
+; way to implement named contants.
+; (see PI).
+;
+main: {
+	ugly call 100 511 897 + + +
+}
+
+ugly: {
+    987 PI call +
+}
+
+; a constant, as a code block
+PI: { 3 }
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="TOC33"></A><h2> Example  Code  7</h2>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+;
+; look_n_fertilize
+; ----------------
+;
+; USAGE: (x y e -- r)
+;
+; DESCRIPTION:
+;	This subroutine looks for a spore in direction (x, y).
+;	If a spore is found, then ferilize it with a second
+;	spore with energy &#x27;e&#x27;
+;
+; RETURNS
+;	0 is no spore found, or could not create a spore
+;	1 is returned on success
+;
+; HOW TO CALL:
+;	1 0 5 look_n_fertilize call
+;
+look_n_fertilize:
+{
+	-rot 2dup look-spore
+		{ rot make-spore } { 2pop pop 0 } ifelse
+}
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="TOC34"></A><h2> Example  Code  8</h2>
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+main:
+{
+    -100 19 normalize call
+    -40 -234 normalize call
+}
+
+;
+;  ( x y -- NORM(x) NORM(y) )
+;
+; normalized a pair of values:
+;
+normalize:
+{
+         norm1 call swap norm1 call swap
+}
+
+;
+; (n -- NORM(n))
+;
+; Compute this function:
+;
+;	n &lt; 0	NORM(n) = -1
+;	n = 0	NORM(n) = 0
+;	n &gt; 0	NORM(n) = 1
+;
+norm1:
+{
+	dup 0 &gt; { pop 1 } { 0= { 0 } { -1 } ifelse } ifelse
+}
+</PRE></TD></TABLE></CENTER>
+<HR>
+<A NAME="TOC35"></A><h2> Example  Code  9</h2><p>
+ See  an  example  of <A HREF="hanoi_example.html">Towers  of  Hanoi</A> in  KFORTH.
+</p>
+</div>
+
+<div id="footer">
+&copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
+Generated on: Wed  Feb  08  09:42:10  EST  2023
+</div>
+</body>
+</html>
