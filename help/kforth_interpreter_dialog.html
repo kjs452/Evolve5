@@ -11,7 +11,7 @@
 <body>
 <!--Begin headers-->
 <div id="title2" class="title2">
-<B>Last updated:</B> December  15th,  2022
+<B>Last updated:</B> February  10th,  2023
 </div>
 
 <div id="title3" class="title3">
@@ -196,16 +196,92 @@ This  dialog  lets  you  browse  the  list  of  available  instructions.
 <p>
  The  mutations  tab.
 </p>
-<IMG  SRC="KforthInterpreterMut.jpg"><HR>
+<IMG  SRC="KforthInterpreterMut.jpg"><p>
+ Detailed  information  about  these  mutations  available <A HREF="simulation_options_dialog.html">here.</A>
+</p>
+<p>
+ Here  is  how  the <b>[MUTATE!]</b> button  and  other  fields  are  used  to  implement <i>mini-evolution</i>.
+</p>
+
+<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
+MUTATE_BUTTON(TIMES, POPULATION, TRIALS)
+{
+    STEP_LIMIT = 10,000 ; fixed constant, prevents infinite loops
+    PROGRAM p1          ; program we start and end with
+    PROGRAM p           ; program used during trials
+    PROGRAM best        ; best program so far
+    integer best_score  ; best score so far
+    integer best_steps  ; best number of steps
+    integer avg_score   ; average score across # of TRIALs
+    integer avg_nsteps  ; average steps taken over  # of TRIALs
+    bool    first_time  ; on first member of population
+
+    p1 = &lt;KFORTH Disassembly&gt;
+
+    for(i=0; i &lt; TIMES; i++) {
+
+        first_time = true
+        for(j=0; j &lt; POPULATION; j++) {
+
+            p = Mutate(p1)
+
+            avg_score = 0
+            avg_nsteps = 0;
+            for(k=0; k &lt; TRIALS; k++) {
+                rr = Run(p, STEP_LIMIT)
+                avg_score += rr.score
+                avg_nsteps += rr.steps
+            }
+            avg_score = avg_score / TRIALS
+            avg_nsteps = avg_nsteps / TRIALS
+
+            if first_time
+                    or avg_score &gt; best.score
+                    or (avg_score == best_score and avg_nsteps &lt; best_nsteps)
+            {
+                best = p
+                best_score = avg_score
+                best_nsteps = avg_nsteps
+                first_time = false
+            }
+        }
+
+        p1 = best
+    }
+
+    &lt;KFORTH Disassembly&gt; = p1
+}
+</PRE></TD></TABLE></CENTER>
+<CENTER><I> Pseudo-Code</I></CENTER><BR><p>
+ The <b>Run()</b> function  runs  the  program  for  up  to  10,000  steps  and  returns  whatever  is  on  the  top  of  the
+ data  stack.  An  empty  data  stack  is  treated  as  0.  Returns  two  things: <b>the  score</b> and <b>the  number  of  steps  required</b>.
+</p>
+<p>
+<b> Scoring</b> is  based  on  the  16-bit  KFORTH  integer  returned  from  the  program.  The  larger  the  value,  the  better  the  score.
+</p>
+<p>
+ The <b>Mutate()</b> function  returns  a  copy  of  the  provided  program,  except  it  has  been  mutated.  The  algortihm  is  described <A HREF="mutations.html#mutations">here</A>.
+</p>
+<HR>
 <p>
  The  protections  tab.
 </p>
-<IMG  SRC="KforthInterpreterProt.jpg">
+<IMG  SRC="KforthInterpreterProt.jpg"><p>
+ Protections  are  explained <A HREF="architecture.html">here.</A>
+</p>
+<p>
+<b> Lookup  Symbol:</b> This  field  allows  you  to  lookup  a  symbol  in  the  source  code  pane  and  place  its  code  block  number
+ into  the <b>Protected  Code  Blocks</b> field.
+</p>
+<p>
+ This  is  handy  when  you  are  developing  a  new  program.  It  is  annoying  to  constantly  count  code  block  numbers  to
+ just  set  the  protections.
+</p>
 </div>
 
 <div id="footer">
 &copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
-Generated on: Wed  Feb  08  09:42:10  EST  2023
+Generated on: Tue  Feb  14  11:35:55  EST  2023
 </div>
 </body>
 </html>

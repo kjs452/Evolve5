@@ -44,7 +44,8 @@ class KforthInterpreter: NSWindowController,
 		var seed = UInt32( generate_seed() )
 		sim_random_init(seed, &kfcd.er)
 
-		kfops = DummyEvolveOperations()
+		kfopsBuf = DummyEvolveOperations().pointee
+		kfops = UnsafeMutablePointer<KFORTH_OPERATIONS>(&kfopsBuf)
 		KforthInterpreter_Replace_Instructions(kfops)
 		find_call_instructions()
 		populate_instructions()
@@ -767,7 +768,7 @@ class KforthInterpreter: NSWindowController,
 			return
 		}
 
-        kfd = kforth_disassembly_make(kfops, kfp, 55, 0)
+        kfd = kforth_disassembly_make(kfops, kfp, 55, 1)
 
 		if kfd == nil {
 			var str = "kforth dissasembly make failed"
@@ -882,44 +883,45 @@ class KforthInterpreter: NSWindowController,
 			return
 		}
 
+		if kforth_machine_terminated(kfm) != 0 {
+			error("Terminated.")
+			return
+		}
+
 		if !is_call_instruction() {
 			stepBut(sender)
 			return
 		}
 
-		if kforth_machine_terminated(kfm) != 0 {
-			error("Terminated.")
-		} else {
-			css = kfm!.pointee.csp
-			cb = kfm!.pointee.loc.cb
-			pc = kfm!.pointee.loc.pc
+		css = kfm!.pointee.csp
+		cb = kfm!.pointee.loc.cb
+		pc = kfm!.pointee.loc.pc
 
-			for i in 0..<step_limit {
+		for i in 0..<step_limit {
 
-				if i > 0 && break_point_reached() {
-					error("Break Point.")
-					break
-				}
-
-				if is_write_instruction() { modified = true }
-
-				kforth_machine_execute(kfops, kfp, kfm, &kfcd)
-				if kforth_machine_terminated(kfm) != 0 {
-					error("Terminated.")
-					break
-				}
-
-				if kfm!.pointee.csp == css
-							&& kfm!.pointee.loc.cb == cb
-							&& kfm!.pointee.loc.pc == pc + 1 {
-					break
-				}
-				count += 1
+			if i > 0 && break_point_reached() {
+				error("Break Point.")
+				break
 			}
 
-			if count == step_limit {
-				error("Step limit reached.")
+			if is_write_instruction() { modified = true }
+
+			kforth_machine_execute(kfops, kfp, kfm, &kfcd)
+			if kforth_machine_terminated(kfm) != 0 {
+				error("Terminated.")
+				break
 			}
+
+			if kfm!.pointee.csp == css
+						&& kfm!.pointee.loc.cb == cb
+						&& kfm!.pointee.loc.pc == pc + 1 {
+				break
+			}
+			count += 1
+		}
+
+		if count == step_limit {
+			error("Step limit reached.")
 		}
 
 		if modified {
@@ -1067,9 +1069,13 @@ class KforthInterpreter: NSWindowController,
 			}
 		}
 
-		r3 = NSRange(location: r2!.location-1, length: 1)
-		disassembly.textStorage!.replaceCharacters(in: r3!, with: bpChar)
-		clear_error()
+		if r2 != nil {
+			r3 = NSRange(location: r2!.location-1, length: 1)
+			disassembly.textStorage!.replaceCharacters(in: r3!, with: bpChar)
+			clear_error()
+		} else {
+			error("No location selected.")
+		}
 	}
 	
 	@IBAction func helpBut(_ sender: Any) {
@@ -1418,6 +1424,7 @@ class KforthInterpreter: NSWindowController,
     var kfm = UnsafeMutablePointer<KFORTH_MACHINE>(nil)
     var kfd = UnsafeMutablePointer<KFORTH_DISASSEMBLY>(nil)
 	var kfops = UnsafeMutablePointer<KFORTH_OPERATIONS>(nil)
+	var kfopsBuf = KFORTH_OPERATIONS()
 	var breakpoints = Array<KFORTH_LOC>()
 	var disassembly_updated: Bool = false
 	var callopcodes = Array<Int16>()

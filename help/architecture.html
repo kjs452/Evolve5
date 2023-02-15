@@ -11,7 +11,7 @@
 <body>
 <!--Begin headers-->
 <div id="title2" class="title2">
-<B>Last updated:</B> February  2nd,  2023
+<B>Last updated:</B> February  12th,  2023
 </div>
 
 <div id="title3" class="title3">
@@ -113,11 +113,11 @@
 </li>
 
 <li>
-<A HREF="#interrupts"> Interrupts</A>
+<A HREF="#trap_safety"> Trap  Safety</A>
 </li>
 
 <li>
-<A HREF="#trap_safety"> Trap  Safety</A>
+<A HREF="#interrupts"> Interrupts</A>
 </li>
 
 <li>
@@ -183,14 +183,14 @@ row15: { 0 19 21 31 42 55 60 }
  (unless  it  is  via  the <tt>TRAPn</tt> instructions).
 </p>
 <HR>
-<A NAME="maxcb"></A><A NAME="TOC7"></A><h2> Maximum  Code  Blocks</h2><p>
- This  value  controls  the  number  of  un-protected  code  blocks  that  can  be  mutated  into  existence.  You  can  set  this  value
- from  the  Mutations  tab  of  the  strain  settings  dialog.
+<A NAME="protected_instructions"></A><A NAME="TOC7"></A><h2> Protected  Instructions</h2><p>
+ Protected  instructions  can  be  configured  by  the <A HREF="strain_properties_dialog.html#protections">Protections  tab</A> of  the  strain  settings  dialog. <b>A  protected  instruction  will  not  be  generated  by  the  mutation  algorithm.</b> This  gives  the  user  the  ability
+ to  customize  the  behavior  of  instructions.
 </p>
 <HR>
-<A NAME="protected_instructions"></A><A NAME="TOC8"></A><h2> Protected  Instructions</h2><p>
- Protected  instructions  can  be  configured  by  the  Protections  tab  of  the  strain  settings  dialog. <b>A  protected  instruction  will  not  be  generated  by  the  mutation  algorithm.</b> This  gives  the  user  the
- ability  to  customize  the  behavior  of  instructions.
+<A NAME="maxcb"></A><A NAME="TOC8"></A><h2> Maximum  Code  Blocks</h2><p>
+ This  value  controls  the  number  of  un-protected  code  blocks  that  can  be  mutated  into  existence.  You  can  set  this  value
+ from  the <A HREF="strain_properties_dialog.html#mutations">Mutations  tab</A> of  the  strain  settings  dialog.
 </p>
 <HR>
 <A NAME="traps"></A><A NAME="TOC9"></A><h2> Traps</h2><p>
@@ -199,15 +199,7 @@ row15: { 0 19 21 31 42 55 60 }
  would  use  a  TRAP  instruction.  For  example,  the <tt>TRAP7</tt> instruciton  calls  code  block  7.
 </p>
 <HR>
-<A NAME="interrupts"></A><A NAME="TOC10"></A><h2> Interrupts</h2><p>
- Some  instructions  can  be  configured  to  interupt  the  target  cell.  For  example,  the <tt>SEND</tt> instruction  can  interrupt  the  cell  in
- which  the  SEND  operation  was  applied  to.  An  interrupt  uses  the  trap  code  blocks.  By  setting  bits  in  the <tt>SEND</tt> mode,  it  can  be  configured  to  trigger  an  interupt  using  the <tt>TRAP3</tt> code  block.
-</p>
-<p>
- The  cell  that  is  interrupted  will  finds  its  flow  of  control  transferred  to  the  appropriate  trap  code  block.
-</p>
-<HR>
-<A NAME="trap_safety"></A><A NAME="TOC11"></A><h2> Trap  Safety</h2><p>
+<A NAME="trap_safety"></A><A NAME="TOC10"></A><h2> Trap  Safety</h2><p>
  Evolving  code  will  call  your  trap  handlers  with  all  concievable  arguments  and  states.  You  need  to  protect  your  trap  handler
  so  that  you  don&#x27;t  leak  protected  behavior  to  the  evolving  programs.
 </p>
@@ -228,6 +220,14 @@ _trap7: {
 <p>
  This  checks  that  there  are  enough  call  stack  and  data  stack  elements  to  perform  the  operation.  If  not,  then  exit.
  The  third  statement  checks  if  there  are  the  right  number  of  arguments  provided.
+</p>
+<HR>
+<A NAME="interrupts"></A><A NAME="TOC11"></A><h2> Interrupts</h2><p>
+ Some  instructions  can  be  configured  to  interupt  the  target  cell.  For  example,  the <tt>SEND</tt> instruction  can  interrupt  the  cell  in
+ which  the  SEND  operation  was  applied  to.  An  interrupt  uses  the  trap  code  blocks.  By  setting  bits  in  the <tt>SEND</tt> mode,  it  can  be  configured  to  trigger  an  interupt  using  the <tt>TRAP3</tt> code  block.
+</p>
+<p>
+ The  cell  that  is  interrupted  will  finds  its  flow  of  control  transferred  to  the  appropriate  trap  code  block.
 </p>
 <HR>
 <A NAME="strains"></A><A NAME="TOC12"></A><h2> Strains  and  Modes</h2><p>
@@ -267,7 +267,7 @@ _trap7: {
 
 <div id="footer">
 &copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
-Generated on: Wed  Feb  08  09:42:09  EST  2023
+Generated on: Tue  Feb  14  11:35:54  EST  2023
 </div>
 </body>
 </html>

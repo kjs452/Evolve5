@@ -1166,7 +1166,7 @@ class ViewOrganismDialog: NSWindowController,
 				kfd = nil
 			}
 
-	        kfd = kforth_disassembly_make(kfops, kfp, 45, 0)
+	        kfd = kforth_disassembly_make(kfops, kfp, 45, 1)
 			if kfd == nil {
 				errorStr = "kforth_dissasembly_make failed"
 				return false
