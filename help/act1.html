@@ -11,7 +11,7 @@
 <body>
 <!--Begin headers-->
 <div id="title2" class="title2">
-<B>Last updated:</B> January  9th,  2023
+<B>Last updated:</B> February  21th,  2023
 </div>
 
 <div id="title3" class="title3">
@@ -91,7 +91,7 @@
 ;
 ; a Tower of Hanoi creature
 ; =========================
-; (c) 2007-2022, Ken Stauffer
+; (c) 2007 - 2022, Ken Stauffer
 ;
 ; This is revised to work with Evolve 5.0
 ; 1. PICK instruction changed
@@ -285,6 +285,7 @@ goto_pile:
     pop
 
     ; go all the way down
+;   { 0 1 OMOVE ?loop } call
     { 0 -1 OMOVE ?loop } call
 
 }
@@ -361,7 +362,7 @@ play_towers_of_hanoi:
 
 <div id="footer">
 &copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
-Generated on: Tue  Feb  14  11:35:54  EST  2023
+Generated on: Tue  Feb  21  17:32:43  EST  2023
 </div>
 </body>
 </html>

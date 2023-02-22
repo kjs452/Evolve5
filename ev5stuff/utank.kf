@@ -79,7 +79,7 @@ main:
 	OMOVE pop
 
 	0 thrust 0 NUMBER!		; may have been changed by parent reset to initial state
-	6 dnum 0 NUMBER!			; may have been changed by parent reset to initial state
+	2 dnum 0 NUMBER!		; may have been changed by parent reset to initial state
 
 	a_cell call
 }
@@ -206,21 +206,21 @@ thrust: { 0 }
 
 ; this is the current direction will always be a number
 ; between 0 and 7.
-; (Initial direction corresponds to left)
-dnum: { 6 }
+; (Initial direction corresponds to pointing right)
+dnum: { 2 }
 
 ;
 ; Direcetion table for 'dnum'
 ;
 directions:
 	{ 0 1 }
-	{ -1 1 }
-	{ -1 0 }
-	{ -1 -1 }
-	{ 0 -1 }
-	{ 1 -1 }
-	{ 1 0 }
 	{ 1 1 }
+	{ 1 0 }
+	{ 1 -1 }
+	{ 0 -1 }
+	{ -1 -1 }
+	{ -1 0 }
+	{ -1 1 }
 
 ;
 ; Create the tank shape
@@ -325,8 +325,8 @@ check_thrust:
 check_steering:
 {
 	KEY-PRESS
-	dup 97 = { 1 TRAP8 pop delay call } if
-	100 = { -1 TRAP8 pop delay call } if
+	dup 97 = { -1 TRAP8 pop delay call } if
+	100 = { 1 TRAP8 pop delay call } if
 	1 ?loop
 }
 

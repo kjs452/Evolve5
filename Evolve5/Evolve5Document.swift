@@ -82,10 +82,16 @@ class Evolve5Document: NSDocument {
 
 		age = Int( u!.pointee.age )
 		curr_age = Int( u!.pointee.age )
+
+		u!.pointee.barrier_flag = 0
 		
 		while age == curr_age {
 			Universe_Simulate(u)
 			curr_age = Int( u!.pointee.age )
+		}
+		
+		if u!.pointee.barrier_flag != 0 {
+			ec.barriersNeedRebuilt = true
 		}
 
 		populate()
@@ -114,6 +120,7 @@ class Evolve5Document: NSDocument {
 		let timeInterval: Double = 0.0001
 		var count: Int = 0
 		stopped = false
+		u!.pointee.barrier_flag = 0
 				
 		let tm = Timer(timeInterval: timeInterval, repeats: true, block:
 						{ (t: Timer) -> Void in
@@ -123,6 +130,10 @@ class Evolve5Document: NSDocument {
 					break
 				}
 				Universe_Simulate(self.u)
+			}
+			if self.u!.pointee.barrier_flag != 0 {
+				self.ec.barriersNeedRebuilt = true
+				self.u!.pointee.barrier_flag = 0
 			}
 			self.populate()
 			count += 1
@@ -177,7 +188,7 @@ class Evolve5Document: NSDocument {
 		
 		NewUniverseOptions_Init(&nuo)
 		
-		nuo.seed = 70422111
+		nuo.seed = generate_seed()
 		nuo.width = 700
 		nuo.height = 400
 		nuo.want_barrier = 1

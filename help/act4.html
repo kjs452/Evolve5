@@ -11,7 +11,7 @@
 <body>
 <!--Begin headers-->
 <div id="title2" class="title2">
-<B>Last updated:</B> January  12th,  2023
+<B>Last updated:</B> February  21th,  2023
 </div>
 
 <div id="title3" class="title3">
@@ -94,9 +94,9 @@
 ; utank.kf
 ; USER CONTROLLED TANK
 ;
-;   SPACE       - set thrust off stop           32
-;   w           - set thrust forward            119
-;   s           - set thrust backward           115
+;   SPACE       - stop                          32
+;   w           - start/stop move forard        119
+;   s           - start/stop move backward      115
 ;   a           - rotate left                   97
 ;   d           - rotate right                  100
 ;   e           - eat                           101
@@ -119,9 +119,27 @@
 ;        EAFL
 ;       KGHI
 ;
-;    ####
+;    #### 
 ;     ####
-;    ####
+;    ####  
+;
+; It can only EAT and SHOOT from the turret cell
+; It breeds from the back cell.
+; It can generally Omove and rotate as it wants to.
+; Organism cannot heal itself.
+;
+; A
+; B     creates J
+; C
+; D
+; E     - reproducer
+; F     creates L
+; G     creates K
+; H
+; I
+; J
+; K
+; L     - turret/eater/shooter
 ;
 ; Protected Instructions:
 ;   R9++ --R9 R9!
@@ -133,6 +151,7 @@
 ; Modes:
 ;   - Make EAT permissive: Don&#x27;t kill cell, just nibble
 ;   - rotate must use center of organism
+;   
 ;
 ; Principle of operation:
 ;   * Shoot (trap9) can only happen from L cell
@@ -140,6 +159,8 @@
 ;   * Reproduction: (trap7) can only happen from E cell
 ;   * We use the R9 register to store our cell ID
 ;   * the cell ID is the code block number we were first redirected to
+;
+;
 ;
 
 main:
@@ -151,7 +172,7 @@ main:
     OMOVE pop
 
     0 thrust 0 NUMBER!      ; may have been changed by parent reset to initial state
-    6 dnum 0 NUMBER!            ; may have been changed by parent reset to initial state
+    2 dnum 0 NUMBER!        ; may have been changed by parent reset to initial state
 
     a_cell call
 }
@@ -278,21 +299,21 @@ thrust: { 0 }
 
 ; this is the current direction will always be a number
 ; between 0 and 7.
-; (Initial direction corresponds to left)
-dnum: { 6 }
+; (Initial direction corresponds to pointing right)
+dnum: { 2 }
 
 ;
 ; Direcetion table for &#x27;dnum&#x27;
 ;
 directions:
     { 0 1 }
-    { -1 1 }
-    { -1 0 }
-    { -1 -1 }
-    { 0 -1 }
-    { 1 -1 }
-    { 1 0 }
     { 1 1 }
+    { 1 0 }
+    { 1 -1 }
+    { 0 -1 }
+    { -1 -1 }
+    { -1 0 }
+    { -1 1 }
 
 ;
 ; Create the tank shape
@@ -353,7 +374,7 @@ l_cell: { CB R9! evolve_l_cell call }
 bullet:
 {
     dnum call directions + call
-
+    
     2dup        ; (x y x y -- )
 
     { 2dup OMOVE ?loop } call       ; bullet move
@@ -397,8 +418,8 @@ check_thrust:
 check_steering:
 {
     KEY-PRESS
-    dup 97 = { 1 TRAP8 pop delay call } if
-    100 = { -1 TRAP8 pop delay call } if
+    dup 97 = { -1 TRAP8 pop delay call } if
+    100 = { 1 TRAP8 pop delay call } if
     1 ?loop
 }
 
@@ -409,7 +430,7 @@ check_fire:
     KEY-PRESS
     dup 102 = { TRAP7 } if
     101 = { 7 NEAREST TRAP9 pop } if
-    1 ?loop
+    1 ?loop 
 }
 
 check_reproduce:
@@ -419,13 +440,14 @@ check_reproduce:
     46 = { TRAP4 pop } if
     1 ?loop
 }
+
 </PRE></TD></TABLE></CENTER>
 <BR><BR><BR><BR>
 </div>
 
 <div id="footer">
 &copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
-Generated on: Tue  Feb  14  11:35:54  EST  2023
+Generated on: Tue  Feb  21  17:32:43  EST  2023
 </div>
 </body>
 </html>

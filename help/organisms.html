@@ -11,7 +11,7 @@
 <body>
 <!--Begin headers-->
 <div id="title2" class="title2">
-<B>Last updated:</B> January  16th,  2023
+<B>Last updated:</B> February  16th,  2023
 </div>
 
 <div id="title3" class="title3">
@@ -87,7 +87,7 @@
  CELLs  are  CPUs  that  have  a  small  repertoire  of  instructions  for  manipulating  the  world.  All  of  the  physics  of  the
  simulation  are  embodied  by  these  instructions.  The  general  physics  to  be  maintained  are:  (1)  Locality  (most  instructions  operate  on  nearest
  neighbors).  (2)  Conservation  of  energy  (energy  is  only  ever  transferred).  (3)  Exclusion  principle  (nothing  can  occupy  the  same  grid  location
- as  something  else).  (4)  Organism  connectivity  maintained.
+ as  something  else).  (4)  Connectivity  of  the  cells  in  an  organism.
 </p>
 <p>
  These  instructions  can  all  be  independenly  enabled/disabled  in  your  simulation.  Each  instruction  can  be  tweaked  and  modified  using <A HREF="modes.html">mode  flags</A>.
@@ -222,7 +222,7 @@
 <HR>
 <A NAME="connectivity"></A><A NAME="TOC7"></A><h2> Organism  Connectivity</h2><p>
  Organisms  consists  of  one  or  more  cells.  To  ensure  the  shape  of  an  organism  remains  coherent  Evolve  will  enforce  the
- connectivity  constrain  that <b>a  cell  much  be  reachable  in  one  of  the  8  directions  surrounding  the  cell</b>.
+ connectivity  constraint  that <b>a  cell  much  be  reachable  in  one  of  the  8  directions  surrounding  the  cell</b>.
 </p>
 <p>
  Here  are  examples  of  organisms:
@@ -235,27 +235,21 @@
  8  directions.
 </p>
 <p>
- In  this  example,  after  the  dead  cell  is  removed,  we  have  a  properly  connected  organism.
+ In  this  example,  after  the  dead  cell  is  removed,  we  still  have  a  properly  connected  organism.
 </p>
 <IMG  SRC="connect3.gif"><p>
- The &quot;L&quot; shaped  region  had  the  smaller  number  of  cells,  so  it  was  killed  off.  This  is  how &quot;organic  material&quot; gets  created.  It  is  left  over  material  from  such  interactions.  Each  white  square  has  a  fraction  of  the  original  organisms
- energy  amount.
-</p>
-<p>
- Let&#x27;s  look  at  another  example:
+ Sometimes  the  connectivity  between  the  cells  is  broken.  If  a  cell  is  kills,  the  largest  region  is  kept,  and  the
+ smaller  regions  will  be  converted  to  organic  material.
 </p>
 <IMG  SRC="connect4.gif"><p>
  In  this  case  the  death  of  this  cell  does  not  break  the  organism  into  multiple  sections.  So  in  this  case
  we  just  kill  of  the  cell  in  question.
 </p>
 <IMG  SRC="connect5.gif"><p>
- The  following  are  examples  of  bogus  organisms:
+ These  are  properly  connected:
 </p>
-<IMG  SRC="organism_bad1.gif"><p>
- This  is  bogus  because  cell  2  doesn&#x27;t  connect  to  cell  4.  And  cell  4  doesn&#x27;t  connect  to  cell  5.
-</p>
-<IMG  SRC="organism_bad2.gif"><p>
- This  organism  is  bogus  because  cell  1  doesn&#x27;t  connect  to  cell  3.  The  rest  of  the  organism  is  okay  though.
+<IMG  SRC="organism_bad1.gif"><IMG  SRC="organism_bad2.gif"><p>
+ This  is  because  all  the  cells  are  touching  in  at  least  one  of  the  8  directions.
 </p>
 <HR>
 <A NAME="energy"></A><A NAME="TOC8"></A><h2> Energy</h2><p>
@@ -906,11 +900,10 @@ unpack2         ; the values 23, -99 are now on the stack
 </li>
 
 <li>
-<b> n</b> -  success.  where  n  is  the  number  of  cells  moved  was  successful.
+<b> n</b> -  success.  where  n  is  the  number  of  cells  moved.
 </li>
 </ul><P><B>ENERGY:</B> Does  not  require  any  energy.<P><B>OMOVE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> NOT  USED<P></TD><TD ALIGN=LEFT> NOT  USED<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_ROTATE"><H2>ROTATE</H2><B>Usage:</B> ( n -- r )<P> rotate  organism<P> Rotate  the  organism  by  45  degree  units  around  the  cell  that  executes  this  instruction.  The  rotate  direction  is  given  by
-&#x27;n&#x27;.  A  positive &#x27;n&#x27; rotates  the  organism  is  a  clock-wise  direction.  A  negative &#x27;n&#x27; rotates  the  organism  by  45  degrees
- counter-clockwise. <p>
+&#x27;n&#x27;.  A  positive &#x27;n&#x27; rotates  the  organism  clock-wise  45  degrees.  A  negative &#x27;n&#x27; rotates  the  organism  45  degrees  counter-clockwise. <p>
 If &#x27;n&#x27; is  zero  don&#x27;t  rotate  the  organism  and  return  0.
 </p>
 <P><ol>
@@ -932,7 +925,7 @@ If &#x27;n&#x27; is  zero  don&#x27;t  rotate  the  organism  and  return  0.
 </li>
 
 <li>
- A  rotation  value  of <b>0</b> always  fails,  and  returns  0.
+ A  rotation  value  of <b>0</b> does  nothing,  and  returns  0.
 </li>
 </ol><P><B>RETURNS:</B><ul>
 <li>
@@ -942,7 +935,7 @@ If &#x27;n&#x27; is  zero  don&#x27;t  rotate  the  organism  and  return  0.
 <li>
 <b> r</b> - &#x27;r&#x27; is  the  number  of  cells  that  were  rotated.
 </li>
-</ul><P><B>ENERGY:</B> Does  not  require  any  energy.<P><B>ROTATE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> use  my  location  as  the  orgin  of  rotation<P></TD><TD ALIGN=LEFT> use  the  organism  center  as  the  origin  of  rotation<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> rotate  in  45  degree  units<P></TD><TD ALIGN=LEFT> rotate  in  90  degree  units<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_EAT"><H2>EAT</H2><B>Usage:</B> ( x y -- n )<P> eat  energy  from  surrounding  cells<P> Eat  stuff  at  (x,  y)  from  this  cell.  Return &#x27;n&#x27; the  amount  of  energy  eaten.<P><ol>
+</ul><P><B>ENERGY:</B> Does  not  require  any  energy.<P><B>ROTATE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> use  my  location  as  the  origin  of  rotation<P></TD><TD ALIGN=LEFT> use  the  organism  center  as  the  origin  of  rotation<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> rotate  in  45  degree  units<P></TD><TD ALIGN=LEFT> rotate  in  90  degree  units<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_EAT"><H2>EAT</H2><B>Usage:</B> ( x y -- n )<P> eat  energy  from  surrounding  cells<P> Eat  stuff  at  (x,  y)  from  this  cell.  Return &#x27;n&#x27; the  amount  of  energy  eaten.<P><ol>
 <li>
  Normalize  the  (x,  y)  coordinates.
 </li>
@@ -1965,7 +1958,7 @@ This  variable  can  be  used  by  a  swarm  of  organisms,  from  the  same  st
 
 <div id="footer">
 &copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
-Generated on: Tue  Feb  14  11:35:55  EST  2023
+Generated on: Tue  Feb  21  17:32:44  EST  2023
 </div>
 </body>
 </html>

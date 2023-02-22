@@ -1034,7 +1034,10 @@ class StrainCustomizeDialog: NSWindowController,
 	
 	@IBAction func browseBut(_ sender: Any) {
 		let url = URL(fileURLWithPath: seedTxt!.stringValue)
-		let dirUrl = url.deletingLastPathComponent()
+		var dirUrl = url.deletingLastPathComponent()
+		if seedTxt!.stringValue == "" {
+			dirUrl = URL(fileURLWithPath: ApplicationDirectory() + "/ev5stuff", isDirectory: true)
+		}
 		
 		let f = file_selector(dirUrl.path)
 		if f != nil {

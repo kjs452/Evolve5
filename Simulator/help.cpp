@@ -954,7 +954,7 @@ static KFORTH_IHELP Kforth_Instruction_Help_Table[] =
 	"Move organism. Organism will move in the direction "
 	"specified by (x, y). These coordinates are normalized, "
 	"so that (-20, 15) maps to a direction of (-1, 1). "
-	"r is 1 on success, else r is 0. ",
+	"r is non-zero on success, else r is 0. ",
 
 
 	MASK_INTERACT | MASK_C,
@@ -1322,7 +1322,7 @@ static KFORTH_IHELP Kforth_Instruction_Help_Table[] =
 	"MOUSE-POS",
 	"MOUSE_POS",
 	"( -- x y)",
-	"Query the mouse position. Returns (0, 0) if no mouse position set. ",
+	"Query the mouse position. Returns (-1, -1) if no mouse position set. ",
 
 
 	MASK_MISC | MASK_C,

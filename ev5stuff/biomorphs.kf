@@ -1,0 +1,559 @@
+;
+; biomorphs.kf
+;
+; Strain 0: Biomorph
+; Protected Code Blocks: 91
+; Protected Instructions: call if ifelse ?loop ?exit CB 
+;    CBLEN CSLEN DSLEN R0 R1 R2 R3 R4 R5 R6 R7 R8 R9 R0! 
+;    R1! R2! R3! R4! R5! R6! R7! R8! R9! R0++ R1++ R2++ 
+;    R3++ R4++ R5++ R6++ R7++ R8++ R9++ --R0 --R1 --R2 
+;    --R3 --R4 --R5 --R6 --R7 --R8 --R9 PEEK POKE NUMBER 
+;    NUMBER! ?NUMBER! OPCODE OPCODE! OPCODE' TRAP1 TRAP2 
+;    TRAP3 TRAP4 TRAP5 TRAP6 TRAP7 TRAP8 TRAP9 MAX_INT 
+;    MIN_INT HALT nop OMOVE EAT MAKE-SPORE MAKE-ORGANIC 
+;    MAKE-BARRIER GROW.CB EXUDE LOOK NEAREST FARTHEST SIZE 
+;    BIGGEST SMALLEST TEMPERATURE HOTTEST COLDEST SMELL 
+;    MOOD MOOD! BROADCAST SEND RECV ENERGY AGE NUM-CELLS 
+;    HAS-NEIGHBOR SEND-ENERGY POPULATION POPULATION.S SHOUT 
+;    LISTEN SAY READ WRITE KEY-PRESS MOUSE-POS SPAWN S0 
+;    S0! G0 G0! 
+; Instruction Modes: LM=1 GS=100 ROM=1 KPM=16 
+; MaxApply=10 MaxCB=1 StrandLen=4 
+;
+; When running... Use MOUSE-POS right click mode to
+; pick the creature you like. It will make 15 children for you
+; to choose from again.
+;
+; Add this creature to a blank universe (without oval barriers or terrain)
+; Give this creature 16 units of energy, no more, no less.
+; And additional properties:
+;	* Protect all code blocks up to 'evolve'
+;	* Protect instructions: SPAWN, MAKE-SPORE, MAKE-BARRIER
+;	* Grow Energy should be 0.
+;	* Make-spore energy should be 0.
+;
+; Pen - A pen is a holding area for the biomorph. there are 5 x 3 = 15 pens
+; on the grid. Numbered 0 ... 14.
+;
+;	00 | 01 | 02 | 03 | 04
+;   ---+----+----+----+----
+;	05 | 06 | 07 | 08 | 09
+;   ---+----+----+----+----
+;	10 | 11 | 12 | 13 | 14
+;
+; State varible:
+; The strain wide variable 'S0' will be used to coordinate the program.
+; S0 will be a state variable. 
+;
+;		0	- begining state
+;		1	- waiting
+;		2	- running
+;		3	- die
+;
+; The MOUSE-POS will be used. Interrupt using trap2. 010
+;
+; When the mouse is used to choose a pen, the organism in that
+; pen will replicate itself. In all other pens goes
+; a copy of itself. Then the simualtion enters state '2'.
+; And all the offspring run 'evolve' code.
+;
+; Organisms that were in pens which were not selected, HALT.
+; Because energy is limited to 16. Only 1 or 2 organic blocks should be evident
+; in each pen after the cleanup.
+;
+; All cells (except for one) from the selected pen will HALT. Using the ?NUMBER!
+; instruction to implement a lock.
+;
+; Dimension of Grid:
+; The width of the universe should be evenly divisible by 5.
+; The height of the universe should be evenly divisible by 3 (this avoids glitches
+; with clicking the mouse on the extreme outermost border grid locations)
+;
+; Hardcoded Strain Number:
+; In the function 'clone' the strain number is hard coded, you need
+; to change this number to reflect which strain # is used in the simulation.
+;
+
+main:
+{
+	do_main call
+}
+
+_trap1: { }
+
+_trap2:				; MOUSE-POS interrupt 010
+{
+	DSLEN 50 > ?exit
+	CSLEN 50 > ?exit
+
+	mouse_pos_changed call
+}
+
+_trap3: { }
+_trap4: { }
+_trap5: { }
+_trap6: { }
+_trap7: { }
+_trap8: { }
+_trap9: { }
+
+do_main:
+{
+	S0 0 = {
+		measure_universe call
+		calc_points call
+		create_pens call
+		7 goto_pen call
+		2 S0!
+	} if
+
+	{ S0 2 <> ?loop } call		; wait until running
+
+	7 NEAREST EAT pop			; eat parent
+
+	0 single_lock 0 NUMBER!		; reset lock variable
+
+	evolve call
+	{ 1 ?loop } call			; wait if evolve finishes
+}
+
+; dimensions of the universe (width, height)
+dim: { 0 0 }
+
+;
+; set the 'dim' variable based on the empty universe
+;
+measure_universe:
+{
+	{ 1 0 OMOVE ?loop } call
+	{ 0 1 OMOVE ?loop } call
+	GPS
+	1+ swap 1+ swap
+	dim 1 NUMBER!
+	dim 0 NUMBER!
+}
+
+;
+; Create all the enclosure PENS out of barriers.
+;
+create_pens:
+{
+	P 0 NUMBER 
+	Q 1 NUMBER 1-
+	goto_xy call
+	barrier_to_right call
+
+	P 0 NUMBER 
+	Q 2 NUMBER 1-
+	goto_xy call
+	barrier_to_right call
+
+	P 1 NUMBER 1+
+	Q 3 NUMBER
+	goto_xy call
+	barrier_up call
+
+	P 2 NUMBER 1+
+	Q 0 NUMBER
+	goto_xy call
+	barrier_down call
+
+	P 3 NUMBER 1+
+	Q 3 NUMBER
+	goto_xy call
+	barrier_up call
+
+	P 4 NUMBER 1+
+	Q 0 NUMBER
+	goto_xy call
+	barrier_down call
+}
+
+; create barrier as we move all the way to the right
+barrier_to_right:
+{
+	{
+		0 1 MAKE-BARRIER pop
+		1 0 OMOVE
+		?loop
+	} call
+}
+
+; create barrier as we move all the way up
+barrier_up:
+{
+	{
+		-1 0 MAKE-BARRIER pop
+		0 1 LOOK swap pop				; -- dist
+		1 = {
+			0 1 MAKE-BARRIER
+			{
+				0 1 OMOVE pop
+				0 1 OMOVE pop
+				0 -1 MAKE-BARRIER pop
+				-1 0 MAKE-BARRIER pop
+			} if
+		} if
+
+		0 1 OMOVE
+		?loop
+	} call
+}
+
+; create barrier as we move all the way down
+barrier_down:
+{
+	{
+		-1 0 MAKE-BARRIER pop
+		0 -1 LOOK swap pop				; -- dist
+		1 = {
+			0 -1 MAKE-BARRIER
+			{
+				0 -1 OMOVE pop
+				0 -1 OMOVE pop
+				0 1 MAKE-BARRIER pop
+				-1 0 MAKE-BARRIER pop
+			} if
+		} if
+
+		0 -1 OMOVE
+		?loop
+	} call
+}
+
+;
+; Width and Height of a pen
+;
+pen_width: { 0 }
+pen_height: { 0 }
+
+;
+; Pen map:
+;
+;     P0   P1   P2   P3   P4   P5
+; Q0  +----+----+----+----+----+
+;     | 00 | 01 | 02 | 03 | 04 |
+; Q1  +----+----+----+----+----+
+;     | 05 | 06 | 07 | 08 | 09 |
+; Q2  +----+----+----+----+----+
+;     | 10 | 11 | 12 | 13 | 14 |
+; Q3  +----+----+----+----+----+
+;
+; The outer border is not converted to barriers.
+;
+P: { 0 0 0 0 0 0 }
+Q: { 0 0 0 0 }
+
+;
+; calculate P and Q arrays (and pen_width/pen_height)
+;
+calc_points:
+{
+	dim 0 NUMBER 5 /		pen_width 0 NUMBER!
+	dim 1 NUMBER 3 /		pen_height 0 NUMBER!
+
+	0						P 0 NUMBER!
+	pen_width call			P 1 NUMBER!
+	pen_width call	2 *		P 2 NUMBER!
+	pen_width call	3 *		P 3 NUMBER!
+	pen_width call	4 *		P 4 NUMBER!
+	dim 0 NUMBER 1-			P 5 NUMBER!
+
+	0						Q 3 NUMBER!
+	pen_height call			Q 2 NUMBER!
+	pen_height call	2 *		Q 1 NUMBER!
+	dim 1 NUMBER 1-			Q 0 NUMBER!
+}
+
+; lock variable, to ensure only 1 cell creates larva
+single_lock: { 0 }
+
+mouse_pos_changed:
+{
+	MOUSE-POS -1 = swap -1 = and ?exit			; exit if mouse-pos = (-1, -1)
+
+	S0 2 <> ?exit								; exit if not in running state
+
+	MOUSE-POS find_pen call
+	GPS find_pen call
+	=
+	{
+		15 FARTHEST 2dup DIST 1 = {
+			{ S0 3 <> ?loop } call
+			HALT		; halt if no vacant square to spawn
+		} if
+
+		1 single_lock 0 ?NUMBER!
+		0 = {
+			{ S0 3 <> ?loop } call
+			HALT								; halt if we weren't first
+		} if
+
+		{ POPULATION.S 1 <> ?loop } call			; wait for population to become 1.
+;		-1 -1 MOUSE-POS!							; clear mouse position
+
+		clone call									; make 100%  clone at (x,y) offset
+
+		3 S0!										; enter waiting state
+		HALT									; halt because we spawned the larva in a vacant square
+	}
+	{
+		HALT							; halt if my pen was not selected
+	} ifelse
+}
+
+;
+; create a clone of self in the "larva" state.
+; (x y -- )
+; make a 100% copy of myself at the (x,y) offset (assumed to be vacant)
+; this clone runs in the 'larva' code block waiting
+;
+clone:
+{
+	1			; energy
+	0 			; NOTE: STRAIN NUMBER use '0' must change this to reflect the correct strain number
+	larva
+	SPAWN
+	pop
+}
+
+;
+; ( -- )
+;
+; breed at (0,1)
+;
+; shift position so that we
+; don't collide with them on the way to
+; populating other pens.
+;
+reproduce:
+{
+	-1 1 OMOVE pop
+	-1 1 OMOVE pop
+	-1 1 OMOVE pop
+
+	0 1 2 MAKE-SPORE pop
+	0 1 0 MAKE-SPORE pop
+
+	1 -1 OMOVE pop
+	1 -1 OMOVE pop
+	1 -1 OMOVE pop
+}
+
+larva:
+{
+	{ S0 3 <> ?loop } call		; wait until we are in the "die" state
+
+	{ POPULATION.S 1 <> ?loop } call			; wait for population to become 1
+
+	0
+	{
+		dup goto_pen call
+		clean_pen call
+		1+
+		dup 15 < ?loop
+	} call
+	pop
+
+	0
+	{
+		dup goto_pen call
+		reproduce call
+		1+
+		dup 15 < ?loop
+	} call
+	pop
+
+	;
+	; Spread to all pens. make a child organism everywhere
+	;
+
+	2 S0!					; enter running state
+	HALT
+}
+
+;
+; roam around the current pen until nothing more to eat
+;
+; Algorithm:
+;	1) Move toward the left until no more (Eat along way)
+;	2) Scan right now, for each sucessful move to the right, do cleanup loop.
+;
+; cleanup loop:
+;	1) Look for NEAREST thing to eat in all 8 directions.
+;	2) if nothing found, exit loop
+;	3) Move toward the thing and eat
+;
+; A bunch of looping logic that ends up searching the whole pen
+; for any blocks. We must feed in order to breed.
+;
+clean_pen:
+{
+	; move to left
+	{
+		7 NEAREST EAT pop
+		-1 0 OMOVE
+		?loop
+	} call
+
+	GPS			; -- x y
+	{
+		{
+			7 NEAREST 2dup DIST
+			0 > {
+				OMOVE pop
+				7 NEAREST EAT pop
+				1			; continue loop
+			}
+			{
+				2pop
+				0			; exit loop
+			} ifelse
+			?loop
+		} call
+
+		1 0 LOOK swap pop 1 = ?exit
+
+		swap 1+ swap				; x y -- x+1 y
+		2dup goto_xy call			; x y -- x y
+
+		1 ?loop
+	} call
+	2pop
+}
+
+;
+; (pen -- )
+; Move self to 'pen'. Eat barriers and restore
+; barriers if encountered. Eat organic/spores if possible too
+;
+; 'pen' must be a number from 0 to 14.
+;
+goto_pen:
+{
+	pen_center call
+	goto_xy call
+}
+
+;
+; (x y -- ) move to (x,y) move thru barriers if encounterd
+;	x y does not lie on a barriers
+;
+goto_xy:
+{
+	swap			; y x -- y x
+	GPS pop			; y x -- y x gx
+	-				; y diffx
+
+			
+	{							; move left or right diffx units
+		dup 0 = ?exit
+		dup 0 OMOVE 			; y leftx -- y leftx rc
+		0 = {
+			dup 0 LOOK pop 8 = {
+				dup 0 MAKE-BARRIER pop
+				dup 0 OMOVE pop
+				dup 0 OMOVE pop
+				dup negate 0 MAKE-BARRIER pop
+				dup negate sign 2* +
+			} { dup 0 EAT pop dup 0 OMOVE pop } ifelse
+		} if
+
+		dup negate sign +		; y leftx -- y DecrementTowardZero(leftx)
+		dup 0 <> ?loop			; y leftx -- y 0 n
+	} call
+	pop
+
+	GPS swap pop	; y gy
+	-				; diffy
+
+	{							; move up or down diffy units
+		dup 0 = ?exit
+		dup 0 swap OMOVE		; lefty -- lefty rc
+		0 = {
+			dup 0 swap LOOK pop 8 = {
+				dup 0 swap MAKE-BARRIER pop
+				dup 0 swap OMOVE pop
+				dup 0 swap OMOVE pop
+				dup negate 0 swap MAKE-BARRIER pop
+				dup negate sign 2* +
+			} { dup 0 swap EAT pop dup 0 swap OMOVE pop } ifelse
+		} if
+		dup negate sign +		; lefty -- DecrementTowardZero(lefty)
+		dup 0 <> ?loop			; lefty -- n
+	} call
+	pop
+
+}
+
+;
+; (x y -- pen)
+;
+find_pen:
+{
+	pen_height call /			; x y -- x Qj
+	swap						; -- Qj x
+	pen_width call /			; -- Qj Pi
+
+	swap pen_map + swap			; -- cb Pi
+	NUMBER						; -- pen
+}
+
+;
+; (pen -- x y)  return the center point for a pen
+;
+pen_center:
+{
+	pen_table + call			; (pen -- i j)
+	Q swap NUMBER				; (i j -- i Qj)
+	pen_height call 2/ -		; (i Qj -- i y)
+
+	swap P swap NUMBER			; (i y -- y Pi)
+	pen_width call 2/ +			; (y Pi -- y x)
+	swap						; x y
+}
+
+; maps pen numbers to Pi and Qj indexes (i,j)
+pen_table:
+	{ 0 0 }			; pen 0
+	{ 1 0 }
+	{ 2 0 }
+	{ 3 0 }
+	{ 4 0 }
+
+	{ 0 1 }
+	{ 1 1 }
+	{ 2 1 }
+	{ 3 1 }
+	{ 4 1 }
+
+	{ 0 2 }
+	{ 1 2 }
+	{ 2 2 }
+	{ 3 2 }
+	{ 4 2 }			; pen 14
+
+pen_map:
+	{ 10 11 12 13 14 }
+	{ 5 6 7 8 9 }
+	{ 0 1 2 3 4 }
+
+; === protected / unprotected ===================================================================
+
+evolve:
+{
+	1 0 GROW pop
+	1 0 GROW pop
+	1 0 GROW pop
+	1 1 GROW pop
+	-1 1 GROW pop
+	0 -1 GROW pop
+	0 1 GROW pop
+	-1 0 GROW pop
+	1 1 GROW pop
+	0 1 GROW pop
+	-1 1 GROW pop
+	-1 -1 GROW pop
+	0 -1 GROW pop
+	0 1 GROW pop
+}

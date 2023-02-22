@@ -85,8 +85,7 @@
  follows  is  a  detailed  reference  guide  for  the  instructions  that  control  organisms  and  cells:
 </p>
 <A NAME="TOC2"></A><h2> Interacting  with  the  universe:</h2><UL><LI><A HREF="#ref_CMOVE"><B>CMOVE</B></A></LI><LI><A HREF="#ref_OMOVE"><B>OMOVE</B></A></LI><LI><A HREF="#ref_ROTATE"><B>ROTATE</B></A></LI><LI><A HREF="#ref_EAT"><B>EAT</B></A></LI><LI><A HREF="#ref_SEND-ENERGY"><B>SEND-ENERGY</B></A></LI><LI><A HREF="#ref_MAKE-SPORE"><B>MAKE-SPORE</B></A></LI><LI><A HREF="#ref_GROW"><B>GROW</B></A></LI><LI><A HREF="#ref_MAKE-ORGANIC"><B>MAKE-ORGANIC</B></A></LI><LI><A HREF="#ref_GROW.CB"><B>GROW.CB</B></A></LI><LI><A HREF="#ref_CSHIFT"><B>CSHIFT</B></A></LI><LI><A HREF="#ref_SPAWN"><B>SPAWN</B></A></LI><LI><A HREF="#ref_MAKE-BARRIER"><B>MAKE-BARRIER</B></A></LI><LI><A HREF="#ref_EXUDE"><B>EXUDE</B></A></LI><LI><A HREF="#ref_SMELL"><B>SMELL</B></A></LI></UL><A NAME="TOC3"></A><h2> Vision:</h2><UL><LI><A HREF="#ref_LOOK"><B>LOOK</B></A></LI><LI><A HREF="#ref_NEAREST"><B>NEAREST</B></A></LI><LI><A HREF="#ref_FARTHEST"><B>FARTHEST</B></A></LI><LI><A HREF="#ref_SIZE"><B>SIZE</B></A></LI><LI><A HREF="#ref_BIGGEST"><B>BIGGEST</B></A></LI><LI><A HREF="#ref_SMALLEST"><B>SMALLEST</B></A></LI><LI><A HREF="#ref_TEMPERATURE"><B>TEMPERATURE</B></A></LI><LI><A HREF="#ref_HOTTEST"><B>HOTTEST</B></A></LI><LI><A HREF="#ref_COLDEST"><B>COLDEST</B></A></LI></UL><A NAME="TOC4"></A><h2> Communicating  between  cells:</h2><UL><LI><A HREF="#ref_MOOD"><B>MOOD</B></A></LI><LI><A HREF="#ref_MOOD!"><B>MOOD!</B></A></LI><LI><A HREF="#ref_BROADCAST"><B>BROADCAST</B></A></LI><LI><A HREF="#ref_SEND"><B>SEND</B></A></LI><LI><A HREF="#ref_RECV"><B>RECV</B></A></LI><LI><A HREF="#ref_SHOUT"><B>SHOUT</B></A></LI><LI><A HREF="#ref_SAY"><B>SAY</B></A></LI><LI><A HREF="#ref_LISTEN"><B>LISTEN</B></A></LI><LI><A HREF="#ref_READ"><B>READ</B></A></LI><LI><A HREF="#ref_WRITE"><B>WRITE</B></A></LI></UL><A NAME="TOC5"></A><h2> Query  information  about  ourselves:</h2><UL><LI><A HREF="#ref_ENERGY"><B>ENERGY</B></A></LI><LI><A HREF="#ref_AGE"><B>AGE</B></A></LI><LI><A HREF="#ref_NUM-CELLS"><B>NUM-CELLS</B></A></LI><LI><A HREF="#ref_HAS-NEIGHBOR"><B>HAS-NEIGHBOR</B></A></LI><LI><A HREF="#ref_NEIGHBORS"><B>NEIGHBORS</B></A></LI><LI><A HREF="#ref_GPS"><B>GPS</B></A></LI></UL><A NAME="TOC6"></A><h2> Universe  Instructions:</h2><UL><LI><A HREF="#ref_G0"><B>G0</B></A></LI><LI><A HREF="#ref_G0!"><B>G0!</B></A></LI><LI><A HREF="#ref_S0"><B>S0</B></A></LI><LI><A HREF="#ref_S0!"><B>S0!</B></A></LI><LI><A HREF="#ref_POPULATION"><B>POPULATION</B></A></LI><LI><A HREF="#ref_POPULATION.S"><B>POPULATION.S</B></A></LI><LI><A HREF="#ref_KEY-PRESS"><B>KEY-PRESS</B></A></LI><LI><A HREF="#ref_MOUSE-POS"><B>MOUSE-POS</B></A></LI></UL><A NAME="TOC7"></A><h2> Misc.  instructions:</h2><UL><LI><A HREF="#ref_DIST"><B>DIST</B></A></LI><LI><A HREF="#ref_CHOOSE"><B>CHOOSE</B></A></LI><LI><A HREF="#ref_RND"><B>RND</B></A></LI></UL><A NAME="TOC8"></A><h2> Interacting  with  the  universe:</h2><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>INSTRUCTION</B></TD><TD ALIGN=LEFT><B>USAGE</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>DESCRIPTION</B></TD><TR><TD ALIGN=LEFT><B>CMOVE</B></TD><TD ALIGN=LEFT>( x y -- r )</TD><TD ALIGN=LEFT> Move  the  cell  that  executes  this  instruction  relative  to  the  organism.<P></TD><TR><TD ALIGN=LEFT><B>OMOVE</B></TD><TD ALIGN=LEFT>( x y -- n )</TD><TD ALIGN=LEFT> Move  entire  organism  by  one  square  in  the  up,  down,  left,  right,  or  diagonal  direction.<P></TD><TR><TD ALIGN=LEFT><B>ROTATE</B></TD><TD ALIGN=LEFT>( n -- r )</TD><TD ALIGN=LEFT> Rotate  the  organism  by  45  degree  units  around  the  cell  that  executes  this  instruction.  The  rotate  direction  is  given  by
-&#x27;n&#x27;.  A  positive &#x27;n&#x27; rotates  the  organism  is  a  clock-wise  direction.  A  negative &#x27;n&#x27; rotates  the  organism  by  45  degrees
- counter-clockwise. <p>
+&#x27;n&#x27;.  A  positive &#x27;n&#x27; rotates  the  organism  clock-wise  45  degrees.  A  negative &#x27;n&#x27; rotates  the  organism  45  degrees  counter-clockwise. <p>
 If &#x27;n&#x27; is  zero  don&#x27;t  rotate  the  organism  and  return  0.
 </p>
 <P></TD><TR><TD ALIGN=LEFT><B>EAT</B></TD><TD ALIGN=LEFT>( x y -- n )</TD><TD ALIGN=LEFT> Eat  stuff  at  (x,  y)  from  this  cell.  Return &#x27;n&#x27; the  amount  of  energy  eaten.<P></TD><TR><TD ALIGN=LEFT><B>SEND-ENERGY</B></TD><TD ALIGN=LEFT>(e x y -- rc)</TD><TD ALIGN=LEFT> send  the  energy  to  the  cell  at  normalized  coordinate  (x,y).  negative &#x27;e&#x27; values  take  from  that  cell.  If  there  isn&#x27;t
@@ -617,11 +616,10 @@ This  variable  can  be  used  by  a  swarm  of  organisms,  from  the  same  st
 </li>
 
 <li>
-<b> n</b> -  success.  where  n  is  the  number  of  cells  moved  was  successful.
+<b> n</b> -  success.  where  n  is  the  number  of  cells  moved.
 </li>
 </ul><P><B>ENERGY:</B> Does  not  require  any  energy.<P><B>OMOVE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> NOT  USED<P></TD><TD ALIGN=LEFT> NOT  USED<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_ROTATE"><H2>ROTATE</H2><B>Usage:</B> ( n -- r )<P> rotate  organism<P> Rotate  the  organism  by  45  degree  units  around  the  cell  that  executes  this  instruction.  The  rotate  direction  is  given  by
-&#x27;n&#x27;.  A  positive &#x27;n&#x27; rotates  the  organism  is  a  clock-wise  direction.  A  negative &#x27;n&#x27; rotates  the  organism  by  45  degrees
- counter-clockwise. <p>
+&#x27;n&#x27;.  A  positive &#x27;n&#x27; rotates  the  organism  clock-wise  45  degrees.  A  negative &#x27;n&#x27; rotates  the  organism  45  degrees  counter-clockwise. <p>
 If &#x27;n&#x27; is  zero  don&#x27;t  rotate  the  organism  and  return  0.
 </p>
 <P><ol>
@@ -643,7 +641,7 @@ If &#x27;n&#x27; is  zero  don&#x27;t  rotate  the  organism  and  return  0.
 </li>
 
 <li>
- A  rotation  value  of <b>0</b> always  fails,  and  returns  0.
+ A  rotation  value  of <b>0</b> does  nothing,  and  returns  0.
 </li>
 </ol><P><B>RETURNS:</B><ul>
 <li>
@@ -653,7 +651,7 @@ If &#x27;n&#x27; is  zero  don&#x27;t  rotate  the  organism  and  return  0.
 <li>
 <b> r</b> - &#x27;r&#x27; is  the  number  of  cells  that  were  rotated.
 </li>
-</ul><P><B>ENERGY:</B> Does  not  require  any  energy.<P><B>ROTATE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> use  my  location  as  the  orgin  of  rotation<P></TD><TD ALIGN=LEFT> use  the  organism  center  as  the  origin  of  rotation<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> rotate  in  45  degree  units<P></TD><TD ALIGN=LEFT> rotate  in  90  degree  units<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_EAT"><H2>EAT</H2><B>Usage:</B> ( x y -- n )<P> eat  energy  from  surrounding  cells<P> Eat  stuff  at  (x,  y)  from  this  cell.  Return &#x27;n&#x27; the  amount  of  energy  eaten.<P><ol>
+</ul><P><B>ENERGY:</B> Does  not  require  any  energy.<P><B>ROTATE MODE BITS:</B><P><CENTER><TABLE  BORDER=1 WIDTH="80%"><TR BGCOLOR=#10f050><TD ALIGN=LEFT><B>BIT</B></TD><TD ALIGN=LEFT><B>MASK</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 0</B></TD><TD ALIGN=LEFT WIDTH="40%"><B>Meaning when bit is 1</B></TD><TR><TD ALIGN=LEFT><B>0</B></TD><TD ALIGN=LEFT>1</TD><TD ALIGN=LEFT> use  my  location  as  the  origin  of  rotation<P></TD><TD ALIGN=LEFT> use  the  organism  center  as  the  origin  of  rotation<P></TD><TR><TD ALIGN=LEFT><B>1</B></TD><TD ALIGN=LEFT>2</TD><TD ALIGN=LEFT> rotate  in  45  degree  units<P></TD><TD ALIGN=LEFT> rotate  in  90  degree  units<P></TD></TABLE></CENTER><P><HR><P><A NAME="ref_EAT"><H2>EAT</H2><B>Usage:</B> ( x y -- n )<P> eat  energy  from  surrounding  cells<P> Eat  stuff  at  (x,  y)  from  this  cell.  Return &#x27;n&#x27; the  amount  of  energy  eaten.<P><ol>
 <li>
  Normalize  the  (x,  y)  coordinates.
 </li>
@@ -1676,7 +1674,7 @@ This  variable  can  be  used  by  a  swarm  of  organisms,  from  the  same  st
 
 <div id="footer">
 &copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
-Generated on: Tue  Feb  14  11:35:55  EST  2023
+Generated on: Tue  Feb  21  17:32:44  EST  2023
 </div>
 </body>
 </html>

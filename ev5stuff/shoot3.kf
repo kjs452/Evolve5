@@ -6,30 +6,42 @@
 ;
 ; assumes SPAWN changed to not copy stacks
 ;
+; STRAIN 5 should be un-eatble eat_mode -> 8
+; (x y energy strain cb -- rc)		SPAWN
+;
+; SPAWN mode: set these bits	(spawn_mode=46)
+;	bit 1	keep protected code blocks	(optional)
+;	bit 2	can change strains
+;	bit 8	dont mutate
+;	bit 5	inherit "010" data stack items (2)
+;
 main:
 {
 	evolve call
 }
 
-				; STRAIN 5 should be un-eatble eat_mode -> 8
-				; (x y energy strain cb -- rc)		SPAWN
-_trap1: { DSLEN 50 >= ?exit  DSLEN 2 < ?exit R0 R1 2swap R1! R0! R0 R1 1 5 bullet SPAWN pop R1! R0! }				; (x y -- rc) shoot
-_trap2: {  }
-_trap3: {  }
-_trap4: {  }
-_trap5: {  }
-_trap6: { DSLEN 60 >= ?exit  R1! R0! R0 R1 1 5 bullet SPAWN pop }				; (x y -- rc) shoot
+_trap1: { }
+_trap2: { }
+_trap3: { }
+_trap4: { }
+_trap5: { }
+
+; (x y -- rc) shoot
+_trap6: {
+	DSLEN 54 >= ?exit
+	2dup 1 5 bullet SPAWN pop 2pop
+}
+
 _trap7: {  }
 _trap8: {  }
 _trap9: {  }
 
-; go out and come back with energy
+;
+; (x y -- )
+; go out
+;
 bullet:
 {
-	R0 R1		; (x y -- )
-	
-	2dup		; (x y x y -- )
-
 	{ 2dup OMOVE ?loop } call		; bullet move
 
 	{
@@ -42,6 +54,11 @@ bullet:
 	HALT
 }
 
+; --- protected / unprotected ---
+
+;
+; standard seed program
+;
 evolve:
 {
 	-1 0 trap6

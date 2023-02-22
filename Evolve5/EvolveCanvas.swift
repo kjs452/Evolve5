@@ -1215,7 +1215,7 @@ class EvolveCanvas: NSView {
 	var change_cursor_cb: (_ x: Int, _ y: Int) -> Void = do_nothing
 	
 	var barrierLayer = CGLayer?(nil)
-	var barriersNeedRebuilt: Bool = true
+	public var barriersNeedRebuilt: Bool = true
 	var barrierDrawState: Bool = false
 }
 

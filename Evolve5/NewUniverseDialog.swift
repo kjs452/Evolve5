@@ -468,7 +468,10 @@ class NewUniverseDialog: NSWindowController, NSWindowDelegate,
 		let c = C2(5, y)
 							
 		let url = URL(fileURLWithPath: c!.stringValue)
-		let dirUrl = url.deletingLastPathComponent()
+		var dirUrl = url.deletingLastPathComponent()
+		if c!.stringValue == "" {
+			dirUrl = URL(fileURLWithPath: ApplicationDirectory() + "/ev5stuff", isDirectory: true)
+		}
 		
 		let f = file_selector(dirUrl.path)
 		if f != nil {
@@ -690,7 +693,10 @@ class NewUniverseDialog: NSWindowController, NSWindowDelegate,
 	
 	@IBAction func browseTerrainBut(_ sender: Any) {
 		let url = URL(fileURLWithPath: terrainTxt!.stringValue)
-		let dirUrl = url.deletingLastPathComponent()
+		var dirUrl = url.deletingLastPathComponent()
+		if terrainTxt!.stringValue == "" {
+			dirUrl = URL(fileURLWithPath: ApplicationDirectory() + "/ev5stuff", isDirectory: true)
+		}
 		let f = file_selector(dirUrl.path)
 		if f != nil {
 			terrainTxt!.stringValue = f!

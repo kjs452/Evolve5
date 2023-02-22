@@ -116,37 +116,39 @@
 ; STRAIN 5 should be un-eatble eat_mode -&gt; 8
 ; (x y energy strain cb -- rc)      SPAWN
 ;
+; SPAWN mode: set these bits    (spawn_mode=46)
+;   bit 1   keep protected code blocks  (optional)
+;   bit 2   can change strains
+;   bit 8   dont mutate
+;   bit 5   inherit &quot;010&quot; data stack items (2)
+;
 main:
 {
     evolve call
 }
 
-; (x y -- rc) shoot
-_trap1: {
-   DSLEN 50 &gt;= ?exit  DSLEN 2 &lt; ?exit R0 R1
-   2swap R1! R0! R0 R1 1 5 bullet SPAWN pop R1! R0!
-}
-
-_trap2: {  }
-_trap3: {  }
-_trap4: {  }
-_trap5: {  }
+_trap1: { }
+_trap2: { }
+_trap3: { }
+_trap4: { }
+_trap5: { }
 
 ; (x y -- rc) shoot
 _trap6: {
-   DSLEN 60 &gt;= ?exit  R1! R0! R0 R1 1 5 bullet SPAWN pop
+    DSLEN 54 &gt;= ?exit
+    2dup 1 5 bullet SPAWN pop 2pop
 }
 
 _trap7: {  }
 _trap8: {  }
 _trap9: {  }
 
+;
+; (x y -- )
+; go out
+;
 bullet:
 {
-    R0 R1       ; (x y -- )
-    
-    2dup        ; (x y x y -- )
-
     { 2dup OMOVE ?loop } call       ; bullet move
 
     {
@@ -161,6 +163,9 @@ bullet:
 
 ; --- protected / unprotected ---
 
+;
+; standard seed program
+;
 evolve:
 {
     -1 0 trap6
@@ -266,7 +271,7 @@ reproduce:
 
 <div id="footer">
 &copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
-Generated on: Tue  Feb  14  11:35:54  EST  2023
+Generated on: Tue  Feb  21  17:32:43  EST  2023
 </div>
 </body>
 </html>

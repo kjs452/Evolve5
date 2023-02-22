@@ -11,7 +11,7 @@
 <body>
 <!--Begin headers-->
 <div id="title2" class="title2">
-<B>Last updated:</B> December  14th,  2022
+<B>Last updated:</B> February  21th,  2023
 </div>
 
 <div id="title3" class="title3">
@@ -99,23 +99,23 @@
 </p>
 
 <CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
-1 NEAREST		; returns (-1, 1)
+1 NEAREST		; returns (1, 0)
 </PRE></TD></TABLE></CENTER>
 <p>
- The  mask  is &#x27;1&#x27; meaning  find  the  nearest  CELL.  Which  would  be  direction  (-1,  1).  There  are  three  cells  visible
- to  this  cell,  and  the  one  at  (-1,  1)  has  the  smallest  distance;  29.
+ The  mask  is &#x27;1&#x27; meaning  find  the  nearest  CELL.  Which  would  be  direction  (1,  0).  There  are  six  cells  visible
+ to  this  cell,  and  the  one  at  (1,  0)  has  the  smallest  distance:  3.
 </p>
 
 <CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
-3 NEAREST		; returns (-1, -1)
+3 NEAREST		; returns (1, 0)
 </PRE></TD></TABLE></CENTER>
 <p>
- The  mask  is &#x27;3&#x27; meaning  find  the  nearest  CELL  or  SPORE.  Which  would  be  direction  (-1,  -1)  as  the  distance
+ The  mask  is &#x27;3&#x27; meaning  find  the  nearest  CELL  or  SPORE.  Which  would  be  direction  (1,  0)  as  the  distance
  11  is  the  smallest  containing  a  SPORE.
 </p>
 
 <CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
-8 FARTHEST	; returns (1, 1)
+8 FARTHEST	; returns (-1, 0)
 </PRE></TD></TABLE></CENTER>
 <p>
  The  mask  is &#x27;8&#x27; meaning  find  the  farthest  BARRIER.  Which  would  be  direction  (1,  1)  as  the  distance  43  is
@@ -124,36 +124,20 @@
 </p>
 
 <CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
-1 -1 WHERE	; returns 46.
-</PRE></TD></TABLE></CENTER>
-<p>
- The  WHERE  instruction  returns  the  distance  value  for  the  what  is  seen  along  direction  (1,  -1).  The  result  would  be
- 46.
-</p>
-
-<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
-0 1 WHAT		; returns 8.
-</PRE></TD></TABLE></CENTER>
-<p>
- The  WHAT  instruction  returns  the  type  of  thing  seen  (a &#x27;what&#x27; value).  In  this  case  it  returns  8,  because  the
- along  direction  (0,  1)  we  see  a  barrier.  And  a  BARRIER&#x27;s &#x27;what&#x27; value  is  8.
-</p>
-
-<CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
-15 NEAREST		; returns (-1, -1)
+15 NEAREST		; returns (1, 0)
 </PRE></TD></TABLE></CENTER>
 <p>
  The  NEAREST  and  FARTHEST  instructions  take  a  mask,  so  OR&#x27;ing  1,  2,  4,  and  8  is &quot;everything&quot;.  The  OR&#x27;ing  of
  all  what-values  is  15.  This  instruction  therefore  will  return  the  direction  to  nearest  CELL,  SPORE,  ORGANIC,  or  BARRIER.  The  result
- is  direction  (-1,  -1)  because  11  is  the  smallest  distance.
+ is  direction  (1,  0)  because  3  is  the  smallest  distance.
 </p>
 
 <CENTER><TABLE BORDER=1 BGCOLOR="#F9FBDE" WIDTH="70%"><TR><TD ALIGN=LEFT><PRE>
-15 FARTHEST		; returns (1, 0)
+15 FARTHEST		; returns (0, -1)
 </PRE></TD></TABLE></CENTER>
 <p>
- Here  we  get  (1,  0).  Looing  along  direction  (1,  0)  we  see  something  at  a  distance  of  87.  This  is
- the  largest  distance.
+ Here  we  get  (0,  -1).  Looing  along  direction  (0,  -1)  we  see  something  at  a  distance  of  49.  This  is
+ the  largest  distance
 </p>
 <HR>
 <p>
@@ -164,11 +148,14 @@
 <A NAME="TOC4"></A><h2> HOTTEST,  COLDEST  and  TEMPERATURE  Examples</h2> The  TEMPERATURE  of  the  organism  is  how  much  energy  it  has.  The  HOTTEST  thing  is  the  thing  with  the
  most  energy.  The  COLDEST  thing  is  the  thing  with  the  least  energy.
 </p>
+<p>
+ More  information  about  vision  instructions <A HREF="organisms.html#look">here</A>.
+</p>
 </div>
 
 <div id="footer">
 &copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
-Generated on: Tue  Feb  14  11:35:56  EST  2023
+Generated on: Tue  Feb  21  17:32:45  EST  2023
 </div>
 </body>
 </html>

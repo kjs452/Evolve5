@@ -206,7 +206,8 @@ func load_preferences(_ ep: UnsafeMutablePointer<EVOLVE_PREFERENCES>) -> Bool {
 	var errbuf = Array(repeating: CChar(0), count: 1000)
 	  var success: Int32
 	  let fn = HomeDirectory() + "/.evolve5rc"
-	  success = EvolvePreferences_Load_Or_Create_From_Scratch(ep, fn, &errbuf)
+	  let appdir = ApplicationDirectory() + "/ev5stuff"
+	  success = EvolvePreferences_Load_Or_Create_From_Scratch(ep, fn, appdir, &errbuf)
 	  if success == 0 {
 		  let str = String(cString: errbuf)
 		  print("Unable to read prefs: \(str)\n")

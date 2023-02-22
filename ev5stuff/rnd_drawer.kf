@@ -1,0 +1,46 @@
+;
+; rnd_drawer.kf
+;
+; Move around randomly, when user presses SPACE key, draw barrier blocks.
+;
+; Add this creature as any strain you want, with
+; whatever energy you want.
+; Make sure this strain is uneatable (EAT Mode = 5)
+; Make sure this strain can MAKE-BARRIER
+;
+
+main:
+{
+	0		; 0: current x
+	0		; 1: current y
+	0		; 2: mode
+
+	{
+		pick_direction call
+
+		{
+			check_key call
+			2 PEEK { 0 PEEK 1 PEEK 2negate MAKE-BARRIER pop } if
+
+			0 PEEK 1 PEEK OMOVE
+
+			?loop
+		} call
+
+		1 ?loop
+	} call
+}
+
+pick_direction:
+{
+	-1 1 CHOOSE 0 POKE
+	-1 1 CHOOSE 1 POKE
+}
+
+check_key:
+{
+	KEY-PRESS R0!
+	R0 0 = { 0 2 POKE } if
+	R0 32 = { 1 2 POKE } if
+	R0 65 = { pick_direction call } if
+}

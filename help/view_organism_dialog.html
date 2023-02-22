@@ -11,7 +11,7 @@
 <body>
 <!--Begin headers-->
 <div id="title2" class="title2">
-<B>Last updated:</B> December  13th,  2022
+<B>Last updated:</B> February  21th,  2023
 </div>
 
 <div id="title3" class="title3">
@@ -128,12 +128,19 @@ generation = MAX(parent1.generation, parent2.generation) + 1
 </li>
 
 <li>
-<b> Energy:</b> How  much  energy  does  this  organism  have?  This  excludes  the  amount  of  energy  that  went  into  stack  elements.
+<b> Energy:</b> How  much  energy  does  this  organism  have?  The  first  number  is  energy <b>per  cell</b>.  The  second  number  is  total
+ energy  for  the  entire  organism.  Energy  per  cell  is  calculated  by <tt>total_energy  /  number_of_cells</tt>. <p>
+<i>Energy  per  cell</i> is  useful  to  see  because  the <tt>EAT,  GROW,  MAKE-SPORE</tt> instructions  use  it.
+</p>
+
 </li>
 
 <li>
-<b> Strain  #:</b> This  is  the  strain  number  for  the  whole  organism.  The  color  of  the  organism  is  also  a  clue  to
- its  strain.
+<b> G0:</b> This  is  the  simulation-wide  global  variable.
+</li>
+
+<li>
+<b> S0:</b> This  is  the  per  strain  global  variable.
 </li>
 </ul><A NAME="TOC3"></A><h2> CELL</h2><p>
  This  section  shows  the  state  of  the  cell  you  have  selected  in  the  display  window.  Use  your  mouse  to  select
@@ -187,17 +194,12 @@ generation = MAX(parent1.generation, parent2.generation) + 1
 </li>
 </ul><A NAME="TOC4"></A><h2> BUTTONS:</h2><ul>
 <li>
-<b> Vision  Data:</b> This  button  will  pop  up  another  dialog  showing  the  vision  data  that  the  KFORTH  instructions  LOOK,  WHERE,  WHAT,  NEAREST,
- FARTHEST. <A HREF="vision_dialog.html">See  vision  dialog</A> for  more  information.
-</li>
-
-<li>
 <b> Step:</b> This  button  will  simulate  the  universe  for  1  step.  The  current  instruction  about  to  execute  is  highlighted.  In  this
- way  you  can  observe  the  inner  workings  of  a  genetic  program.  (Function  key: <b>F11</b>).
+ way  you  can  observe  the  inner  workings  of  a  genetic  program.  (Function  key: <b>F7</b>).
 </li>
 
 <li>
-<b> Step  Over:</b> This  button  will  simulate  the  universe  for  1  step,  but  step  over  any  subroutine  calls.  (Function  key: <b>F10</b>).
+<b> Step  Over:</b> This  button  will  simulate  the  universe  for  1  step,  but  step  over  any  subroutine  calls.  (Function  key: <b>F6</b>).
 </li>
 
 <li>
@@ -221,6 +223,10 @@ Breakpoints  only  apply  to  the  current  cell  being  debugged.  When  you  s
 <li>
 <b> Instructions:</b> This  button  will  pop  up  a  list  of  KFORTH  instructions  for  your  reference.  Whatever  instruction  the  cursor  is  pointing
  to  will  be  displayed  in  the  KFORTH  Instruction  dialog.
+</li>
+
+<li>
+<b> Save:</b> Save  the  current  KFORTH  program  showing  to  a  file.
 </li>
 </ul><HR>
 <A NAME="TOC5"></A><h2> Vision  Tab</h2><p>
@@ -279,7 +285,7 @@ Breakpoints  only  apply  to  the  current  cell  being  debugged.  When  you  s
 
 <div id="footer">
 &copy; 2006-2023 Kenneth  Stauffer. All rights reserved.<BR>
-Generated on: Tue  Feb  14  11:35:56  EST  2023
+Generated on: Tue  Feb  21  17:32:45  EST  2023
 </div>
 </body>
 </html>

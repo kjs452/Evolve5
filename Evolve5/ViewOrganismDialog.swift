@@ -183,16 +183,12 @@ class ViewOrganismDialog: NSWindowController,
 			butRun.isEnabled = false
 			butBreakPoint.isEnabled = false
 			butClear.isEnabled = false
-			buttLoad.isEnabled = true
-			butCompile.isEnabled = true
 		} else {
 			butStep.isEnabled = true
 			butStepOver.isEnabled = true
 			butRun.isEnabled = true
 			butBreakPoint.isEnabled = true
 			butClear.isEnabled = true
-			buttLoad.isEnabled = false
-			butCompile.isEnabled = false
 		}
 	}
 
@@ -758,6 +754,7 @@ class ViewOrganismDialog: NSWindowController,
 	func redraw_evolve5_document()
 	{
 		m.ec.needsDisplay = true
+		m.ec.barriersNeedRebuilt = true
 		// KJS TODO: Tell the simulation window to update the status bar.
 	}
 
@@ -934,12 +931,6 @@ class ViewOrganismDialog: NSWindowController,
 		clear_breakpoints()
 	}
 
-	@IBAction func CompileBut(_ sender: Any) {
-	}
-
-	@IBAction func ReloadBut(_ sender: Any) {
-	}
-
 	@IBAction func SaveBut(_ sender: Any) {
 		var str: String
 		var filename: String?
@@ -965,6 +956,7 @@ class ViewOrganismDialog: NSWindowController,
 	}
 	
 	@IBAction func editBut(_ sender: Any) {
+		// edit button was removed, keeping this
 		change_edit_state()
 	}
 	
@@ -980,8 +972,6 @@ class ViewOrganismDialog: NSWindowController,
 	@IBOutlet var butRun: NSButton!
 	@IBOutlet var butBreakPoint: NSButton!
 	@IBOutlet var butClear: NSButton!
-	@IBOutlet var buttLoad: NSButton!
-	@IBOutlet var butCompile: NSButton!
 
 	//////////////////////////////////////////////////////////////////////
 	//
